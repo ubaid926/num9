@@ -1,160 +1,954 @@
-import React from 'react';
-import { ArrowRight, Car, Building2, Plane } from 'lucide-react';
-import carImage from '../assets/ChatGPT Image Jun 19, 2026, 07_52_28 PM 1.png'
-import microsoftImage from '../assets/ChatGPT Image Jun 19, 2026, 07_52_28 PM 1 (1).png'
-import emiratesImage from '../assets/ChatGPT Image Jun 19, 2026, 07_52_28 PM 1 (2).png'
-import lexuslogo from '../assets/Logo (2).png'
-import msLogo from '../assets/mlogo 1.png'
-import emiratesLogo from '../assets/Group 132.png'
-import electricCar from '../assets/electric-car 1.png'
-import building from '../assets/electric-car 1 (1).png'
-import plane from '../assets/electric-car 1 (2).png'
+import React, { useState, useRef } from 'react';
+import {
+  ArrowLeft,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react';
 
-const caseStudies = [
+import carImage from '../assets/ChatGPT Image Jun 19, 2026, 07_52_28 PM 1.png';
+import microsoftImage from '../assets/ChatGPT Image Jun 19, 2026, 07_52_28 PM 1 (1).png';
+import emiratesImage from '../assets/ChatGPT Image Jun 19, 2026, 07_52_28 PM 1 (2).png';
+
+import lexuslogo from '../assets/Logo (2).png';
+import msLogo from '../assets/mlogo 1.png';
+import emiratesLogo from '../assets/Group 132.png';
+
+import electricCar from '../assets/electric-car 1.png';
+import building from '../assets/electric-car 1 (1).png';
+import plane from '../assets/electric-car 1 (2).png';
+
+/* =========================================================
+   ORIGINAL CASE STUDIES
+========================================================= */
+
+const originalCaseStudies = [
   {
     id: '01',
     category: 'AUTOMOTIVE',
-    title: 'Lexus Interactive Experience',
-    description: 'An immersive digital platform & configurator that redefines luxury vehicle exploration.',
-    icon: <img src={electricCar} className="w-[41px] h-[41px] " />,
+    titleLine1: 'Lexus Interactive',
+    titleLine2: 'Experience',
+    description:
+      'An immersive digital platform & configurator that redefines luxury vehicle exploration.',
+    icon: (
+      <img
+        src={electricCar}
+        className="w-[36px] h-[36px]"
+        alt="car icon"
+      />
+    ),
     image: carImage,
-    logo: lexuslogo
+    logo: lexuslogo,
+    logoClass:
+      '-ml-[15px] h-[70px] sm:h-[80px] w-[180px] sm:w-[210px]',
   },
+
   {
     id: '02',
     category: 'ENTERPRISE',
-    title: 'Microsoft Enterprise Solutions',
-    description: 'Enterprise-grade solutions and digital transformation for global teams and business units.',
-    icon: <img src={building} className="w-[41px] h-[41px] " />,
+    titleLine1: 'Microsoft Enterprise',
+    titleLine2: 'Solutions',
+    description:
+      'Enterprise-grade solutions and digital transformation for global teams and business units.',
+    icon: (
+      <img
+        src={building}
+        className="w-[36px] h-[36px]"
+        alt="building icon"
+      />
+    ),
     image: microsoftImage,
-    logo: msLogo
+    logo: msLogo,
+    logoClass:
+      'h-[70px] sm:h-[80px] w-[180px] sm:w-[210px]',
   },
+
   {
     id: '03',
     category: 'TRAVEL & HOSPITALITY',
-    title: 'Emirates Digital Experience Platform',
-    description: 'Digital experience platform enhancing customer engagement across global touchpoints.',
-    icon: <img src={plane} className="w-[41px] h-[41px] " />,
+    titleLine1: 'Emirates Digital',
+    titleLine2: 'Experience Platform',
+    description:
+      'Digital experience platform enhancing customer engagement across global touchpoints.',
+    icon: (
+      <img
+        src={plane}
+        className="w-[36px] h-[36px]"
+        alt="plane icon"
+      />
+    ),
     image: emiratesImage,
-    logo: emiratesLogo
+    logo: emiratesLogo,
+    logoClass:
+      'w-[180px] sm:w-[210px] h-[75px] sm:h-[90px]',
+  },
+];
+
+/* =========================================================
+   DUPLICATED CARDS
+========================================================= */
+
+const caseStudies = [
+  {
+    ...originalCaseStudies[0],
+    id: '01',
+  },
+  {
+    ...originalCaseStudies[1],
+    id: '02',
+  },
+  {
+    ...originalCaseStudies[2],
+    id: '03',
+  },
+  {
+    ...originalCaseStudies[0],
+    id: '04',
+  },
+  {
+    ...originalCaseStudies[1],
+    id: '05',
+  },
+  {
+    ...originalCaseStudies[2],
+    id: '06',
+  },
+  {
+    ...originalCaseStudies[0],
+    id: '07',
   },
 ];
 
 const CaseStudies = () => {
+  /*
+   * Start Microsoft in center
+   */
+  const [activeIndex, setActiveIndex] = useState(1);
+
+  // Touch swipe tracking
+  const touchStartX = useRef(null);
+  const touchStartY = useRef(null);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    const dy = e.changedTouches[0].clientY - touchStartY.current;
+    // Only treat as horizontal swipe if horizontal movement dominates
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+      if (dx < 0) handleNext();
+      else handlePrev();
+    }
+    touchStartX.current = null;
+    touchStartY.current = null;
+  };
+
+  /* =========================================================
+     PREVIOUS
+  ========================================================= */
+
+  const handlePrev = () => {
+    setActiveIndex((prev) =>
+      prev === 0 ? caseStudies.length - 1 : prev - 1
+    );
+  };
+
+  /* =========================================================
+     NEXT
+  ========================================================= */
+
+  const handleNext = () => {
+    setActiveIndex((prev) =>
+      prev === caseStudies.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  /* =========================================================
+     INFINITE CAROUSEL POSITION
+  ========================================================= */
+
+  const getCardPosition = (index) => {
+    let position = index - activeIndex;
+
+    const totalCards = caseStudies.length;
+
+    if (position > totalCards / 2) {
+      position -= totalCards;
+    }
+
+    if (position < -totalCards / 2) {
+      position += totalCards;
+    }
+
+    return position;
+  };
+
   return (
-    <section className=" min-h-fit 2xl:h-[1087px] py-12 sm:py-16 xl:py-20 px-4 sm:px-6 lg:px-8 bg-[#E4E4E4] overflow-hidden">
-      <div className="2xl:max-w-[102rem] mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center xl:items-start gap-6 md:gap-8 mb-8 sm:mb-12">
-          <div className="max-w-3xl">
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[75px] font-medium text-gray-900 mb-4 leading-[1.1]">
-              Featured{' '}
-              <span className="bg-gradient-to-r from-[#169C55] to-[#044E36] bg-clip-text text-transparent">
-                Case Studies
-              </span>
-            </h2>
-            <p className="text-gray-600 mb-6 text-base sm:text-lg md:text-[20px]">
-              Explore how we partner with global brands to deliver innovative digital solutions that create real business impact.
-            </p>
-            <div className="w-16 h-0.5 bg-gradient-to-r from-[#199A61] to-[#1FBB68]/[0.17] rounded-full" />
-          </div>
+    <section
+      className="
+        w-full
+        bg-white
+        overflow-hidden
+        py-12
+        sm:py-16
+        lg:py-20
+        xl:py-0
+      "
+    >
+      {/* =====================================================
+          TOP CONTENT
+      ===================================================== */}
 
-          <div className="mt-2 md:mt-4 shrink-0 ">
-            <button
-              className="group flex items-center justify-between bg-white transition-all duration-300 max-w-full"
-              style={{
-                width: '298px',
-                height: '81px',
-                borderRadius: '40.5px',
-                border: '2px solid #1FBB68',
-                padding: '4px'
-              }}
-            >
-              <span className="pl-4 sm:pl-6 font-medium text-base sm:text-[20px] whitespace-nowrap">View All Case Studies</span>
+      <div className="w-full">
+        {/* =================================================
+            WE ARE MOMENTUM
+        ================================================= */}
 
-              <div className="bg-gradient-to-br from-[#29C46C] to-[#1CAC69] text-white p-4 sm:p-5 rounded-full hover:opacity-90 transition-opacity shrink-0 flex items-center justify-center">
-                <ArrowRight size={24} />
-              </div>
-            </button>
-          </div>
+        <div
+          className="
+            px-4
+            sm:px-20
+            mb-14
+            sm:mb-16
+            lg:mb-24
+            xl:mb-[clamp(60px,5vw,110px)]
+          "
+        >
+          <h1
+            className="
+              text-[38px]
+              sm:text-[48px]
+              md:text-[58px]
+              lg:text-[64px]
+              xl:text-[clamp(64px,3.8vw,92px)]
+              font-bold
+              
+              tracking-tight
+              leading-[0.95]
+              mb-4
+            "
+          >
+            We are Momentum
+          </h1>
+
+          <p
+            className="
+              text-[18px]
+              sm:text-[21px]
+              md:text-[24px]
+              lg:text-[28px]
+              xl:text-[clamp(28px,2.36vw,59px)]
+              font-normal
+              leading-tight
+            "
+          >
+            The modern-day experiential agency.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-12 xl:gap-16 2xl:gap-24 justify-items-center  py-6 md:py-10">
-          {caseStudies.map((study) => (
+        {/* =================================================
+            LATEST + NAVIGATION
+        ================================================= */}
+
+        <div
+          className="
+            px-4
+            sm:px-20
+            flex
+            items-end
+            justify-between
+            gap-6
+            mb-8
+            sm:mb-10
+            lg:mb-12
+          "
+        >
+          <h2
+            className="
+              text-[40px]
+              sm:text-[48px]
+              md:text-[58px]
+              lg:text-[68px]
+              xl:text-[clamp(68px,3.7vw,92px)]
+              font-bold
+              tracking-tight
+              leading-none
+            "
+          >
+            Latest
+          </h2>
+
+        </div>
+      </div>
+
+      {/* =====================================================
+          CAROUSEL
+
+          Desktop / Laptop:
+          ONLY 3 cards visible
+
+          LEFT    CENTER    RIGHT
+      ===================================================== */}
+
+      <div
+        className="
+          relative
+          w-full
+
+          min-h-[580px]
+          sm:h-[640px]
+          md:h-[670px]
+          lg:h-[720px]
+          xl:h-[clamp(740px,calc(560px+13vw),900px)]
+
+          overflow-hidden
+        "
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        {caseStudies.map((study, index) => {
+          const position = getCardPosition(index);
+
+          /*
+           * ONLY positions:
+           *
+           * -1 = left card
+           *  0 = active center card
+           * +1 = right card
+           *
+           * Everything else completely hidden.
+           */
+          const isVisible = Math.abs(position) <= 1;
+          const isActive = position === 0;
+
+          return (
             <div
-              key={study.id}
-              className="relative group hover:-translate-y-2 transition-all duration-500 w-full max-w-[480px] h-[580px] sm:h-[603px] "
+              key={`${study.id}-${index}`}
+              onClick={() => {
+                if (isVisible) {
+                  setActiveIndex(index);
+                }
+              }}
+              className={`
+                absolute
+                left-1/2
+                top-4
+                sm:top-5
+                lg:top-6
+
+                transition-all
+                duration-[700ms]
+                ease-[cubic-bezier(0.22,1,0.36,1)]
+
+                w-[85vw]
+                max-w-[420px]
+
+                sm:w-[380px]
+                sm:max-w-none
+                md:w-[360px]
+                lg:w-[31vw]
+                lg:max-w-[480px]
+                xl:w-[30vw]
+                xl:max-w-[520px]
+                2xl:w-[29vw]
+                2xl:max-w-[640px]
+
+                ${isVisible
+                  ? 'pointer-events-auto cursor-pointer'
+                  : 'pointer-events-none'
+                }
+
+                ${isActive
+                  ? 'z-30'
+                  : 'z-10'
+                }
+              `}
+              style={{
+                /*
+                 * On desktop:
+                 *
+                 * -1 = left
+                 *  0 = center
+                 * +1 = right
+                 */
+                transform: `
+                  translateX(
+                    calc(
+                      -50% +
+                      ${position * 114}%
+                    )
+                  )
+                  scale(${isActive ? 1 : 0.94})
+                `,
+
+                /*
+                 * EXACTLY 3 visible:
+                 */
+                opacity: !isVisible
+                  ? 0
+                  : isActive
+                    ? 1
+                    : 0.36,
+
+                visibility: isVisible
+                  ? 'visible'
+                  : 'hidden',
+              }}
             >
-              {/* Outer Outer Glow Effect (starts from borders, behind card) */}
-              <div className="absolute -inset-4 bg-emerald-500 opacity-0 group-hover:opacity-40 blur-[50px] transition-all duration-500 rounded-[4rem] -z-20" />
+              {/* =================================================
+                  CARD
+              ================================================= */}
 
-              {/* Main Card Content */}
-              <div className="relative bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100 z-10 transition-shadow group-hover:shadow-lg w-full h-full flex flex-col justify-between">
-                {/* Image Section */}
-                <div className="relative h-[270px] sm:h-[313px] overflow-hidden shrink-0">
-                  <img src={study.image} alt={study.title} className="w-full h-full object-cover" />
+              <div
+                className={`
+                  rounded-[34px]
+                  overflow-hidden
 
-                  {/* Left Column Wrapper (ID + Logo) */}
-                  <div className="absolute top-4 sm:top-6 left-5 sm:left-8 flex flex-col items-start gap-2 sm:gap-3 z-10">
+                  bg-white
 
-                    {/* ID Badge */}
-                    <span className="w-[36px] h-[36px] sm:w-[41px] sm:h-[41px] flex items-center justify-center border border-[#17A229] text-[#17A229] px-2 py-1 rounded-[8px] text-[16px] sm:text-[20px] font-medium bg-black/20 backdrop-blur-sm">
+                  border
+                  border-gray-100
+
+                  flex
+                  flex-col
+
+                  transition-all
+                  duration-500
+
+                  ${isActive
+                    ? `
+                        shadow-[0_22px_60px_rgba(0,0,0,0.14)]
+                      `
+                    : `
+                        shadow-[0_6px_25px_rgba(0,0,0,0.07)]
+                      `
+                  }
+                `}
+                style={{
+                  minHeight: isActive
+                    ? 'clamp(520px, calc(460px + 13.6vw), 800px)'
+                    : 'clamp(490px, calc(440px + 12.8vw), 760px)',
+                }}
+              >
+                {/* =================================================
+                    IMAGE
+                ================================================= */}
+
+                <div
+                  className="
+                    relative
+                    overflow-hidden
+                    shrink-0
+                  "
+                  style={{
+                    height: isActive
+                      ? 'clamp(240px, calc(210px + 8.4vw), 420px)'
+                      : 'clamp(220px, calc(195px + 7.8vw), 390px)',
+                  }}
+                >
+                  <img
+                    src={study.image}
+                    alt={`${study.titleLine1} ${study.titleLine2}`}
+                    className="
+                      w-full
+                      h-full
+                      object-cover
+
+                      transition-transform
+                      duration-700
+                    "
+                  />
+
+                  {/* =================================================
+                      NUMBER + LOGO
+                  ================================================= */}
+
+                  <div
+                    className="
+                      absolute
+                      top-4
+                      left-5
+
+                      sm:top-5
+                      sm:left-6
+
+                      flex
+                      flex-col
+
+                      items-start
+                      gap-2
+
+                      z-10
+                    "
+                  >
+                    <span
+                      className="
+                        flex
+                        items-center
+                        justify-center
+
+                        border
+                        border-[#28B023]
+
+                        text-[#28B023]
+
+                        rounded-[7px]
+
+                        text-[13px]
+                        sm:text-[14px]
+
+                        font-medium
+
+                        bg-black/20
+                        backdrop-blur-sm
+
+                        px-2
+                        py-[3px]
+                      "
+                    >
                       {study.id}
                     </span>
 
-                    {/* Logo */}
                     <img
                       src={study.logo}
-                      alt="Logo"
-                      className={`object-left object-contain drop-shadow-lg ${study.id === '01' ? '-ml-[15px] h-[70px] sm:h-[86px] w-[180px] sm:w-[222px]' : study.id === '03' ? 'w-[180px] sm:w-[222px] h-[80px] sm:h-[100px]' : 'h-[70px] sm:h-[86px] w-[180px] sm:w-[222px]'
-                        }`}
+                      alt="Brand Logo"
+                      className={`
+                        object-left
+                        object-contain
+                        drop-shadow-lg
+                        ${study.logoClass}
+                      `}
                     />
                   </div>
 
-                  {/* Right Bottom Arrow */}
-                  <div className="w-[44px] h-[44px] sm:w-[52px] sm:h-[52px] absolute bottom-4 right-4 bg-white p-2.5 sm:p-3 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <ArrowRight className="text-[#17A229] w-5 h-5 sm:w-[29px] sm:h-[29px]" />
+                  {/* =================================================
+                      TOP IMAGE ARROW
+                  ================================================= */}
+
+                  <div
+                    className={`
+                      absolute
+
+                      bottom-4
+                      right-4
+
+                      w-[44px]
+                      h-[44px]
+
+                      rounded-full
+
+                      bg-white
+
+                      flex
+                      items-center
+                      justify-center
+
+                      shadow-lg
+
+                      transition-all
+                      duration-500
+
+                      ${isActive
+                        ? `
+                            opacity-100
+                            translate-y-0
+                          `
+                        : `
+                            opacity-100
+                            translate-y-0
+                          `
+                      }
+                    `}
+                  >
+                    <ArrowRight
+                      className="
+                        text-[#17A229]
+                        w-5
+                        h-5
+                      "
+                    />
                   </div>
                 </div>
 
-                {/* Content Section */}
-                <div className="p-5 sm:p-6 flex flex-col justify-between h-[300px] sm:h-[290px]">
-                  <div>
-                    <span className="inline-flex items-center text-[15px] sm:text-[19px] h-[28px] sm:h-[32px] text-[#28B023] border border-[#28B023] px-3 sm:px-4 py-0.5 rounded-full mb-3 sm:mb-4">
+                {/* =================================================
+                    CONTENT
+                ================================================= */}
+
+                <div
+                  className="
+                    p-5
+                    sm:p-6
+                    lg:p-7
+                    xl:p-[clamp(24px,1.4vw,34px)]
+
+                    flex
+                    flex-col
+                    justify-between
+                    flex-1
+
+                    gap-4
+                    sm:gap-5
+                    xl:gap-[clamp(18px,1.1vw,26px)]
+                  "
+                >
+                  {/* Top content group */}
+                  <div
+                    className="
+                      flex
+                      flex-col
+                      gap-4
+                      sm:gap-5
+                      xl:gap-[clamp(16px,1vw,22px)]
+                    "
+                  >
+                    {/* =================================================
+                        CATEGORY
+                    ================================================= */}
+
+                    <span
+                      className="
+                        self-start
+                        inline-flex
+                        items-center
+
+                        text-[12px]
+                        sm:text-[13px]
+                        md:text-[14px]
+                        xl:text-[clamp(14px,0.76vw,17px)]
+
+                        px-3.5
+                        py-[5px]
+                        sm:px-4
+                        sm:py-[6px]
+
+                        rounded-full
+
+                        border
+                        border-[#28B023]
+
+                        text-[#28B023]
+
+                        font-medium
+
+                        transition-colors
+                        duration-300
+                      "
+                    >
                       {study.category}
                     </span>
 
-                    <div className="flex justify-between items-start gap-3 sm:gap-4">
-                      {/* Title Section */}
-                      <div className="mb-2">
-                        <h3 className="text-[26px] sm:text-[30px] lg:text-[35px] font-semibold leading-tight">
-                          {study.title.split(' ').slice(0, 2).join(' ')} <br className="hidden sm:block" />
-                          <span className="text-[#1DC16A]">
-                            {' '}{study.title.split(' ').slice(2).join(' ')}
-                          </span>
-                        </h3>
-                      </div>
-                      <div className="flex-shrink-0 bg-[#E1F5ED] w-[54px] h-[54px] sm:w-[67px] sm:h-[67px] p-2.5 sm:p-3 rounded-full flex items-center justify-center">
+                    {/* =================================================
+                        TITLE + ICON
+                    ================================================= */}
+
+                    <div
+                      className="
+                        flex
+                        justify-between
+                        items-start
+                        gap-4
+                      "
+                    >
+                      <h3
+                        className="
+                          leading-[1.18]
+                          flex-1
+                        "
+                      >
+                        <span
+                          className="
+                            block
+
+                            text-[22px]
+                            sm:text-[24px]
+                            lg:text-[26px]
+                            xl:text-[clamp(26px,1.72vw,40px)]
+
+                            font-semibold
+
+                            tracking-[-0.02em]
+
+                            text-gray-900
+
+                            transition-colors
+                            duration-300
+                          "
+                        >
+                          {study.titleLine1}
+                        </span>
+
+                        <span
+                          className="
+                            block
+
+                            text-[22px]
+                            sm:text-[24px]
+                            lg:text-[26px]
+                            xl:text-[clamp(26px,1.72vw,40px)]
+
+                            font-semibold
+
+                            tracking-[-0.02em]
+
+                            text-[#1DC16A]
+
+                            transition-colors
+                            duration-300
+                          "
+                        >
+                          {study.titleLine2}
+                        </span>
+                      </h3>
+
+                      {/* Icon */}
+
+                      <div
+                        className="
+                          flex-shrink-0
+
+                          w-[50px]
+                          h-[50px]
+                          p-3
+
+                          sm:w-[58px]
+                          sm:h-[58px]
+                          sm:p-3.5
+
+                          xl:w-[clamp(60px,3.1vw,76px)]
+                          xl:h-[clamp(60px,3.1vw,76px)]
+                          xl:p-[clamp(14px,0.85vw,20px)]
+
+                          rounded-full
+
+                          flex
+                          items-center
+                          justify-center
+
+                          bg-[#E1F5ED]
+                        "
+                      >
                         {study.icon}
                       </div>
                     </div>
 
-                    <p className="text-gray-600 text-[15px] sm:text-[17px] leading-relaxed line-clamp-3 sm:line-clamp-none">{study.description}</p>
+                    {/* =================================================
+                        DESCRIPTION
+                    ================================================= */}
+
+                    <p
+                      className="
+                        text-[14px]
+                        sm:text-[15px]
+                        lg:text-[16px]
+                        xl:text-[clamp(16px,0.92vw,21px)]
+
+                        leading-[1.65]
+
+                        text-gray-600
+                      "
+                    >
+                      {study.description}
+                    </p>
                   </div>
 
-                  <a href="#" className="flex items-center  justify-between group mt-auto ">
-                    {/* Text */}
-                    <span className="text-gray-900 text-[16px] sm:text-[18px] font-semibold">View Case Study</span>
+                  {/* =================================================
+                      VIEW CASE STUDY
+                  ================================================= */}
 
-                    {/* Rounded Arrow Icon */}
-                    <div className="border border-[#1DC16A] p-2 sm:p-2.5 rounded-full text-[#1DC16A] w-[44px] h-[44px] sm:w-[52px] sm:h-[52px] transition-transform duration-300 group-hover:translate-x-1 flex items-center justify-center shrink-0  ">
-                      <ArrowRight className="text-[#17A229] w-5 h-5 sm:w-[29px] sm:h-[29px]" />
-                    </div>
-                  </a>
+                  <div
+                    className="
+                      pt-4
+                      sm:pt-5
+
+                      border-t
+                      border-gray-100
+
+                      mt-auto
+                    "
+                  >
+                    <a
+                      href="#"
+                      onClick={(event) => event.stopPropagation()}
+                      className="
+                        flex
+                        items-center
+                        justify-between
+
+                        group/link
+                      "
+                    >
+                      <span
+                        className="
+                          text-[15px]
+                          sm:text-[16px]
+                          lg:text-[17px]
+                          xl:text-[clamp(17px,0.88vw,21px)]
+
+                          font-semibold
+
+                          text-gray-900
+                        "
+                      >
+                        View Case Study
+                      </span>
+
+                      <div
+                        className="
+                          border
+                          border-[#1DC16A]
+
+                          rounded-full
+
+                          w-[44px]
+                          h-[44px]
+                          sm:w-[48px]
+                          sm:h-[48px]
+                          xl:w-[clamp(48px,2.2vw,54px)]
+                          xl:h-[clamp(48px,2.2vw,54px)]
+
+                          flex
+                          items-center
+                          justify-center
+
+                          shrink-0
+
+                          text-[#17A229]
+
+                          transition-transform
+                          duration-300
+
+                          group-hover/link:translate-x-1
+                        "
+                      >
+                        <ArrowRight className="w-5 h-5 xl:w-6 xl:h-6" />
+                      </div>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+          );
+        })}
+
+        {/* =================================================
+            PREV BUTTON — floats over the left card
+        ================================================= */}
+        <button
+          type="button"
+          onClick={handlePrev}
+          aria-label="Previous case study"
+          className="
+            hidden
+            sm:flex
+            absolute
+            left-[calc(70%-50vw+2vw)]
+            top-1/2
+            -translate-y-1/2
+            z-40
+
+            w-[44px]
+            h-[44px]
+
+            lg:w-[clamp(48px,2.48vw,62px)]
+            lg:h-[clamp(48px,2.48vw,62px)]
+
+            rounded-full
+
+            border-3
+            border-[#000000]
+
+            bg-white
+
+            items-center
+            justify-center
+
+            text-[#000000]
+
+            transition-all
+            duration-300
+
+            hover:bg-[#28B023]
+
+            active:scale-95
+          "
+        >
+          <ArrowLeft className="w-[20px] h-[20px] lg:w-[clamp(22px,1.12vw,28px)] lg:h-[clamp(22px,1.12vw,28px)]" />
+        </button>
+
+        {/* =================================================
+            NEXT BUTTON — floats over the right card
+        ================================================= */}
+        <button
+          type="button"
+          onClick={handleNext}
+          aria-label="Next case study"
+          className="
+            hidden
+            sm:flex
+            absolute
+            right-[calc(70%-50vw+2vw)]
+            top-1/2
+            -translate-y-1/2
+            z-40
+
+            w-[44px]
+            h-[44px]
+
+            lg:w-[clamp(48px,2.48vw,62px)]
+            lg:h-[clamp(48px,2.48vw,62px)]
+
+            rounded-full
+
+               border-3
+            border-[#000000]
+
+            bg-white
+
+            items-center
+            justify-center
+
+            text-[#000000]
+
+            transition-all
+            duration-300
+
+            hover:bg-[#28B023]
+
+            active:scale-95
+          "
+        >
+          <ArrowRight className="w-[20px] h-[20px] lg:w-[clamp(22px,1.12vw,28px)] lg:h-[clamp(22px,1.12vw,28px)]" />
+        </button>
+      </div>
+
+      {/* =================================================
+          DOTS — below the carousel
+      ================================================= */}
+      <div className="flex items-center justify-center gap-[7px] mt-8">
+        {[0, 1, 2].map((index) => {
+          const isActiveDot = index === activeIndex % 3;
+          return (
+            <button
+              key={index}
+              type="button"
+              onClick={() => setActiveIndex(index)}
+              aria-label={`Go to slide ${index + 1}`}
+              className={`
+                rounded-full
+                transition-all
+                duration-500
+                ${isActiveDot
+                  ? 'w-[20px] h-[7px] bg-[#28B023]'
+                  : 'w-[7px] h-[7px] bg-gray-300 hover:bg-gray-400'
+                }
+              `}
+            />
+          );
+        })}
       </div>
     </section>
   );

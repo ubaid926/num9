@@ -1,62 +1,85 @@
 import { useState } from 'react'
 import AppNav from './components/nav'
 import HeroSectionFullWidth from './components/heroSection'
-import ServicesSection from './components/services'
 import CaseStudies from './components/caseStudies'
 import FourthSection from './components/fourthSection'
-import MarqueeSection from './components/marqueeSection'
+import WhatWeDo from './components/whatWeDo'
 import FifthSection from './components/fifthSection'
+import WhyWorkWithUs from './components/contact'
+import AccelerateBusinessSection from './components/AccelerateBusinessSection'
+import Footer from './components/footer'
+import ServicesPage from './pages/ServicesPage'
+import AboutPage from './pages/AboutPage'
+import ContactPage from './pages/ContactPage'
+import OurWorkPage from './pages/OurWorkPage'
+import MicrosoftCaseStudy  from './pages/case-studies/MicrosoftCaseStudy'
+import PepsiCoCaseStudy    from './pages/case-studies/PepsiCoCaseStudy'
+import NutrienCaseStudy    from './pages/case-studies/NutrienCaseStudy'
+import CitibankCaseStudy   from './pages/case-studies/CitibankCaseStudy'
+import LexusCaseStudy      from './pages/case-studies/LexusCaseStudy'
+import ArgoCaseStudy       from './pages/case-studies/ArgoCaseStudy'
+import MedImpactCaseStudy  from './pages/case-studies/MedImpactCaseStudy'
+import JCPenneyCaseStudy   from './pages/case-studies/JCPenneyCaseStudy'
+import EmiratesCaseStudy   from './pages/case-studies/EmiratesCaseStudy'
 
 export default function App() {
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [page, setPage] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const urlPage = params.get('page');
+      if (urlPage) return urlPage;
+      if (window.location.hash) return window.location.hash.replace('#', '');
+    }
+    return 'home';
+  });
+
+  const sharedNavProps = {
+    onNavigate: setPage,
+    activeDropdown,
+    setActiveDropdown,
+  };
 
   return (
     <div className="bg-white font-outfit text-slate-900 relative min-h-screen overflow-x-hidden">
+      {page === 'services' && <ServicesPage {...sharedNavProps} />}
 
-      {/* Navbar */}
-      <AppNav activeDropdown={activeDropdown} setActiveDropdown={setActiveDropdown} />
+      {page === 'about' && <AboutPage {...sharedNavProps} />}
 
-      {/* Hero */}
-      <div className={`bg-white transition-all duration-300 ${activeDropdown ? 'brightness-50 pointer-events-none blur-[1px]' : ''}`}>
-        <HeroSectionFullWidth isDarkened={!!activeDropdown} />
-      </div>
+      {page === 'contact' && <ContactPage {...sharedNavProps} />}
 
-      {/* Services */}
-      <div className="w-full  relative z-20 -top-35 max-[769px]:top-0 -mt-16 sm:-mt-24 md:-mt-32 lg:-mt-42">
+      {page === 'our-work' && <OurWorkPage {...sharedNavProps} />}
 
-        {/* DOME SVG CURVE LAYER: Yeh upar ke dono edges ko smoothly absolute wave path deta hai */}
+      {page === 'case-study/microsoft'  && <MicrosoftCaseStudy  {...sharedNavProps} />}
+      {page === 'case-study/pepsico'    && <PepsiCoCaseStudy    {...sharedNavProps} />}
+      {page === 'case-study/nutrien'    && <NutrienCaseStudy    {...sharedNavProps} />}
+      {page === 'case-study/citibank'   && <CitibankCaseStudy   {...sharedNavProps} />}
+      {page === 'case-study/lexus'      && <LexusCaseStudy      {...sharedNavProps} />}
+      {page === 'case-study/argo'       && <ArgoCaseStudy       {...sharedNavProps} />}
+      {page === 'case-study/medimpact'  && <MedImpactCaseStudy  {...sharedNavProps} />}
+      {page === 'case-study/jcpenney'   && <JCPenneyCaseStudy   {...sharedNavProps} />}
+      {page === 'case-study/emirates'   && <EmiratesCaseStudy   {...sharedNavProps} />}
 
-
-        {/* ACTUAL CONTENT CANVAS */}
-        {/* Pure White background jo upar wale SVG arc se smooth attach ho kar niche content barhayega */}
-        <div
-          className={` pb-16 pt-4 sm:pb-24 transition-all duration-300 
-    [clip-path:ellipse(150%_150%_at_50%_0%)] 
-    sm:[clip-path:ellipse(150%_48%_at_50%_50%)] 
-    lg:[clip-path:ellipse(92%_45%_at_50%_50%)] ${activeDropdown ? 'brightness-50 pointer-events-none blur-[1px]' : ''
-      
-            }`}
-        >
-          <ServicesSection />
-        </div>
-
-      </div>
-
-      {/* Case Studies */}
-      <CaseStudies />
-
-      {/* Featured / As featured in box */}
-      <FourthSection />
-
-      {/* Marquee + tagline */}
-      <MarqueeSection />
-
-      {/* Fifth Section — testimonials + awards */}
-      <FifthSection />
-
-      {/* Footer placeholder */}
-      <div className="max-w-7xl mx-auto px-6 py-12" />
-
+      {page === 'home' && (
+        <>
+          {/* Navbar */}
+          <AppNav activeDropdown={activeDropdown} setActiveDropdown={setActiveDropdown} onNavigate={setPage} />
+          {/* Hero */}
+          <div className={`bg-white transition-all duration-300 ${activeDropdown ? 'brightness-50 pointer-events-none blur-[1px]' : ''}`}>
+            <HeroSectionFullWidth isDarkened={!!activeDropdown} />
+          </div>
+          {/* Case Studies */}
+          <CaseStudies />
+          {/* What We Do */}
+          <WhatWeDo />
+          {/* Fifth Section — testimonials + awards */}
+          <FifthSection />
+          <WhyWorkWithUs />
+          <AccelerateBusinessSection />
+          {/* Footer */}
+          <Footer />
+        </>
+      )}
     </div>
   );
 }

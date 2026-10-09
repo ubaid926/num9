@@ -1,5 +1,5 @@
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import personPhoto from '../assets/fifthSection.png';
 import emiratesLogo from '../assets/Group 132.png';
 import microsoftLogo from '../assets/microsoftLogo.png';
@@ -9,15 +9,96 @@ import safewayLogo from '../assets/safewayLogo.png';
 import pepsicoLogo from '../assets/pepsicoLogo.png';
 import citibankLogo from '../assets/citibankLogo.png';
 import nutrienLogo from '../assets/nutrienLogo.png';
+import brandActivationIcon from '../assets/speaker 1 (7).png';
+import digitalStrategyIcon from '../assets/speaker 1 (6).png';
+import uiUxDesignIcon from '../assets/speaker 1 (4).png';
+import websiteAppsIcon from '../assets/speaker 1 (3).png';
+import digitalMarketingIcon from '../assets/speaker 1 (5).png';
+import retailMarketingIcon from '../assets/speaker 1 (2).png';
 
 // Layer logo assets (W:110 H:49 as per Figma)
-import layer4  from '../assets/Layer 4 2.png';
-import layer6  from '../assets/Layer 6 2.png';
-import layer7  from '../assets/Layer 7 2.png';
+import layer4 from '../assets/Layer 4 2.png';
+import layer6 from '../assets/Layer 6 2.png';
+import layer7 from '../assets/Layer 7 2.png';
 import layer11 from '../assets/Layer 11 2.png';
 import layer12 from '../assets/Layer 12 2.png';
 
 // Exactly 7 cards — no repeat
+const impactCards = [
+  {
+    title: 'Brand Activation',
+    desc: 'Turn attention into action',
+    icon: brandActivationIcon,
+    border: '#7BCB24',
+  },
+  {
+    title: 'Digital Strategy',
+    desc: 'Invest where it matters',
+    icon: digitalStrategyIcon,
+    border: '#1C9CD8',
+  },
+  {
+    title: 'UI/UX Design',
+    desc: 'Reduce friction, lift conversions',
+    icon: uiUxDesignIcon,
+    border: '#1C9CD8',
+  },
+  {
+    title: 'Website & Web Apps',
+    desc: 'Move visitors toward enquiry',
+    icon: websiteAppsIcon,
+    border: '#7BCB24',
+  },
+  {
+    title: 'Digital Marketing',
+    desc: 'Reach qualified customers',
+    icon: digitalMarketingIcon,
+    border: '#7BCB24',
+  },
+  {
+    title: 'Retail Marketing',
+    desc: 'Influence purchase decisions',
+    icon: retailMarketingIcon,
+    border: '#1C9CD8',
+  },
+];
+
+const impactStats = [
+  {
+    title: (
+      <>
+        MORE
+        <br />
+        CONVERSIONS
+      </>
+    ),
+    desc: (
+      <>
+        Better UI/UX and faster
+        <br />
+        web experiences
+      </>
+    ),
+  },
+  {
+    title: (
+      <>
+        STRONGER
+        <br />
+        ENGAGEMENT
+      </>
+    ),
+    desc: (
+      <>
+        Connected digital and
+        <br />
+        Retail Campaigns
+      </>
+    ),
+  },
+];
+
+
 const testimonials = [
   {
     logo: layer4,
@@ -60,6 +141,16 @@ const testimonials = [
 const CARD_W = 341;
 const CARD_H = 449;
 const CARD_GAP = 20;
+const CARD_VISUAL_GAP = 55;
+
+// 2500px+ only — keep every smaller breakpoint identical
+const ULTRA_MIN = 2500;
+const ULTRA_CARD_W = 456;
+const ULTRA_CARD_H = 601;
+const ULTRA_GAP = 55;
+const ULTRA_PAD = '36px 36px 32px 36px';
+const ULTRA_LOGO_W = 147;
+const ULTRA_LOGO_H = 65;
 
 function CircularText({ text, radius, fontSize, color }) {
   const chars = text.split('');
@@ -79,7 +170,7 @@ function CircularText({ text, radius, fontSize, color }) {
               left: `${x}%`,
               top: `${y}%`,
               transform: `translate(-50%, -50%) rotate(${angle}deg)`,
-              fontSize,
+              fontSize: fontSize || 'clamp(13px, 2.2vw, 17.95px)',
               color,
               fontWeight: 500,
               letterSpacing: '0.04em',
@@ -95,27 +186,70 @@ function CircularText({ text, radius, fontSize, color }) {
 }
 
 const clientGrid = [
-  { logo: microsoftLogo, logoAlt: 'Microsoft', logoClass: 'h-6',  title: 'Global Technology Leader',    desc: 'Cloud, AI & Enterprise Solutions' },
-  { logo: emiratesLogo,  logoAlt: 'Emirates',  logoClass: 'h-9',  title: 'World-Class Airline Brand',    desc: 'Premium Travel & Customer Experience' },
-  { logo: lexusLogo,     logoAlt: 'Lexus',     logoClass: 'h-5',  title: 'Luxury Automotive Excellence', desc: 'Premium Customer Experience & Innovation' },
-  { logo: jcpenneyLogo,  logoAlt: 'JCPenney',  logoClass: 'h-6',  title: 'Leading Retail Brand',         desc: 'Omnichannel Commerce & Customer Engagement' },
-  { logo: safewayLogo,   logoAlt: 'Safeway',   logoClass: 'h-6',  title: 'Trusted Grocery Retailer',     desc: 'Retail Marketing & Consumer Activation' },
-  { logo: pepsicoLogo,   logoAlt: 'PepsiCo',   logoClass: 'h-6',  title: 'Global Consumer Goods Leader', desc: 'Brand Activation & Shopper Marketing' },
+  { logo: microsoftLogo, logoAlt: 'Microsoft', logoClass: 'h-6', title: 'Global Technology Leader', desc: 'Cloud, AI & Enterprise Solutions' },
+  { logo: emiratesLogo, logoAlt: 'Emirates', logoClass: 'h-9', title: 'World-Class Airline Brand', desc: 'Premium Travel & Customer Experience' },
+  { logo: lexusLogo, logoAlt: 'Lexus', logoClass: 'h-5', title: 'Luxury Automotive Excellence', desc: 'Premium Customer Experience & Innovation' },
+  { logo: jcpenneyLogo, logoAlt: 'JCPenney', logoClass: 'h-6', title: 'Leading Retail Brand', desc: 'Omnichannel Commerce & Customer Engagement' },
+  { logo: safewayLogo, logoAlt: 'Safeway', logoClass: 'h-6', title: 'Trusted Grocery Retailer', desc: 'Retail Marketing & Consumer Activation' },
+  { logo: pepsicoLogo, logoAlt: 'PepsiCo', logoClass: 'h-6', title: 'Global Consumer Goods Leader', desc: 'Brand Activation & Shopper Marketing' },
 ];
 
 // How many cards fit in viewport at once (approx)
 // We show cards starting from offset 0; last valid offset = total - visibleAtOnce
 // Use window width to calc, but for SSR-safety default to 3 visible
-function getVisibleCount() {
+function getVisibleCount(cardW, gap) {
   if (typeof window === 'undefined') return 3;
-  return Math.max(1, Math.floor(window.innerWidth / (CARD_W + CARD_GAP)));
+  return Math.max(1, Math.floor(window.innerWidth / (cardW + gap)));
+}
+
+function useIsUltraWide() {
+  const [isUltra, setIsUltra] = useState(
+    () => typeof window !== 'undefined' && window.innerWidth >= ULTRA_MIN
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia(`(min-width: ${ULTRA_MIN}px)`);
+    const onChange = (event) => setIsUltra(event.matches);
+    setIsUltra(mq.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
+  return isUltra;
 }
 
 export default function FifthSection() {
   const [offset, setOffset] = useState(0);
+  const isUltra = useIsUltraWide();
 
-  // Max offset: last card should be the rightmost visible card, not go further
-  const visibleCount = getVisibleCount();
+  // Touch swipe tracking
+  const touchStartX = useRef(null);
+  const touchStartY = useRef(null);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    const dy = e.changedTouches[0].clientY - touchStartY.current;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+      if (dx < 0) next();
+      else prev();
+    }
+    touchStartX.current = null;
+    touchStartY.current = null;
+  };
+
+  const cardW = isUltra ? ULTRA_CARD_W : CARD_W;
+  const cardH = isUltra ? ULTRA_CARD_H : CARD_H;
+  const strideGap = isUltra ? ULTRA_GAP : CARD_GAP;
+  const rowGap = isUltra ? ULTRA_GAP : CARD_VISUAL_GAP;
+
+  // Use the actual rendered gap
+  const visibleCount = getVisibleCount(cardW, rowGap);
   const maxOffset = Math.max(0, testimonials.length - visibleCount);
 
   const canPrev = offset > 0;
@@ -124,6 +258,12 @@ export default function FifthSection() {
   const prev = () => { if (canPrev) setOffset((p) => p - 1); };
   const next = () => { if (canNext) setOffset((p) => p + 1); };
 
+  useEffect(() => {
+    if (offset > maxOffset) setOffset(maxOffset);
+  }, [offset, maxOffset]);
+  const desktopTrackWidth =
+    visibleCount * cardW +
+    Math.max(0, visibleCount - 1) * rowGap;
   return (
     <section className="w-full bg-white font-outfit overflow-hidden">
 
@@ -133,7 +273,7 @@ export default function FifthSection() {
         <div className="flex flex-col lg:flex-row">
 
           {/* LEFT — Photo: user-set w-[627px] h-[1271px], border-radius */}
-          <div className="shrink-0 w-full lg:w-[627px]">
+          <div className="hidden lg:block shrink-0 w-full lg:w-[627px]">
             <img
               src={personPhoto}
               alt="Team"
@@ -144,11 +284,11 @@ export default function FifthSection() {
 
           {/* RIGHT — Heading + desc + button */}
           <div className="flex-1  flex flex-col justify-start pt-10 sm:pt-14 px-6 sm:px-10 lg:pl-12 xl:pl-16 pb-6">
-            <h2 className="text-[20px] sm:text-[26px] md:text-[30px] lg:text-[34px] xl:text-[40px] font-bold  leading-[1.3] max-w-[900px]">
+            <h2 className="text-[26px] sm:text-[26px] md:text-[30px] lg:text-[34px] xl:text-[40px] font-bold  leading-[1.3] max-w-[900px]">
               We've helped brands connect, engage, and grow.{' '}
               Trusted by industry leaders across North America.
             </h2>
-            <p className="text-slate-500 text-[14px] sm:text-[20px] leading-relaxed mt-5 max-w-[800px]">
+            <p className="text-slate-500 text-[18px] sm:text-[20px] leading-relaxed mt-5 max-w-[800px]">
               20+ years of experience delivering brand activation, digital strategy, creative campaigns,
               and technology solutions for leading organizations.
             </p>
@@ -162,46 +302,57 @@ export default function FifthSection() {
         {/* ══ CARDS ROW — absolute, overlaps photo bottom ══ */}
         <div className="w-full   py-2 lg:absolute  lg:bottom-50 lg:left-0">
 
-          <div className=" w-full">
-            <div
-              className="flex transition-transform duration-500 ease-in-out px-4 lg:px-0"
-              style={{
-                gap: `55px`,
-                transform: `translateX(calc(-${offset * (CARD_W + CARD_GAP)}px))`,
-              }}
-            >
-             
+        <div className="w-full lg:flex lg:justify-center">
+  <div
+    className="flex transition-transform duration-500 ease-in-out px-4 lg:px-0"
+    onTouchStart={handleTouchStart}
+    onTouchEnd={handleTouchEnd}
+    style={{
+      gap: `${rowGap}px`,
+      transform: `translateX(calc(-${offset * (cardW + rowGap)}px))`,
+      width:
+        typeof window !== 'undefined' && window.innerWidth >= 1024
+          ? `${desktopTrackWidth}px`
+          : 'max-content',
+    }}
+  >
               {testimonials.map((t, i) => (
                 <div
                   key={i}
-                className="shrink-0 bg-white border border-slate-100 rounded-2xl flex flex-col  justify-between cursor-pointer transition-all duration-300 hover:-translate-z-2 shadow-md hover:shadow-xl"
-  style={{
-    width: `341px`,
-    height: `449px`,
-    padding: '28px 28px 24px 28px',
-    // boxShadow: '0 4px 24px 0 rgba(0,0,0,0.08)',
-  }}
-                  // onMouseEnter={e => {
-                  //   e.currentTarget.style.transform = 'translateY(-6px)';
-                  //   e.currentTarget.style.boxShadow = '0 16px 48px 0 rgba(0,0,0,0.16)';
-                  // }}
-                  // onMouseLeave={e => {
-                  //   e.currentTarget.style.transform = 'translateY(0px)';
-                  //   e.currentTarget.style.boxShadow = '0 4px 24px 0 rgba(0,0,0,0.08)';
-                  // }}
+                  className="shrink-0 bg-white border border-slate-100 rounded-2xl flex flex-col justify-between cursor-pointer transition-all duration-300 hover:-translate-z-2 shadow-md hover:shadow-xl"
+                  style={{
+                    width: `${cardW}px`,
+                    height: `${cardH}px`,
+                    padding: isUltra
+                      ? ULTRA_PAD
+                      : '28px 28px 24px 28px',
+                  }}
                 >
-                  {/* Logo — W:110 H:49 as per Figma */}
                   <div>
                     <img
                       src={t.logo}
                       alt={t.logoAlt}
-                      style={{ width: '110px', height: '49px', objectFit: 'contain', objectPosition: 'left center' }}
+                      style={{
+                        width: isUltra ? `${ULTRA_LOGO_W}px` : '110px',
+                        height: isUltra ? `${ULTRA_LOGO_H}px` : '49px',
+                        objectFit: 'contain',
+                        objectPosition: 'left center',
+                      }}
                       className="mb-5"
                     />
-                    {/* Text — sized for 341×449 card */}
-                    <p className="text-[20px] leading-[1.5]">{t.text}</p>
+
+                    <p
+                      className={`leading-[1.5] ${isUltra ? 'text-[26px]' : 'text-[20px]'
+                        }`}
+                    >
+                      {t.text}
+                    </p>
                   </div>
-                  <button className="text-[20px] text-left hover:underline w-fit mt-4">
+
+                  <button
+                    className={` sm:block text-left hover:underline w-fit mt-4 ${isUltra ? 'text-[26px]' : 'text-[20px]'
+                      }`}
+                  >
                     Learn More
                   </button>
                 </div>
@@ -209,8 +360,8 @@ export default function FifthSection() {
             </div>
           </div>
 
-          {/* Arrows — centered, both green, disabled = no pointer events */}
-          <div className="flex items-center justify-center gap-4 mt-5 pb-5">
+          {/* Arrows — centered, both green, desktop only */}
+          <div className="hidden sm:flex items-center justify-center gap-4 mt-5 pb-5">
             <button
               onClick={prev}
               disabled={!canPrev}
@@ -238,86 +389,112 @@ export default function FifthSection() {
       </div>
 
       {/* ══ BLACK BOX ══ */}
-      {/* User-set: w-[1494px] h-[932px] mx-auto, overlaps photo with -mt */}
-      <div
-        className="mx-auto relative z-10 px-4 lg:px-0"
-        style={{ width: 'min(1494px, 100%)', marginTop: '-80px' }}
-      >
-        <div
-          className="bg-[#0D0D0D] rounded-[24px] w-full"
-          style={{ height: '932px', padding: '52px 56px' }}
-        >
-          <div className="flex flex-col lg:flex-row h-full gap-8 lg:gap-10 xl:gap-14">
+      <div className="relative z-10 mx-auto w-full max-w-[1494px] min-[2500px]:max-w-[1966px] px-0 sm:px-6 lg:px-8 mt-8 sm:mt-10 lg:-mt-[80px]">
+        <div className="relative overflow-hidden bg-black rounded-none sm:rounded-[24px] px-5 py-8 sm:px-8 sm:py-12 lg:px-10 lg:py-14 xl:px-[82px] xl:py-[70px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-[minmax(0,1.08fr)_minmax(220px,0.62fr)_minmax(0,1.35fr)] gap-8 sm:gap-10 lg:gap-10 xl:gap-12 min-h-0 xl:min-h-[790px]">
 
-            {/* LEFT — text block */}
-            <div className="flex flex-col justify-between shrink-0 lg:w-[280px] xl:w-[320px]">
+            {/* LEFT — BUSINESS IMPACT */}
+            <div className="flex flex-col justify-between min-w-0 lg:pr-4 xl:pr-10">
               <div>
-                <p className="text-slate-500 text-[11px] tracking-[0.18em] uppercase mb-4">Our Awards</p>
-                <h3 className="text-[28px] sm:text-[34px] lg:text-[38px] font-bold leading-[1.25] text-white">
-                  <span className="text-[#11C911]">Excellence.</span>
+                <p className="text-white/70 uppercase text-[11px] sm:text-[12px] tracking-[0.28em] mb-5 sm:mb-8 lg:mb-10">
+                  Business Impact
+                </p>
+
+                <h2 className="text-white font-semibold text-[40px] sm:text-[clamp(40px,7vw,64px)] xl:text-[64px] leading-[1.08] sm:leading-[1.02] tracking-[-0.04em] max-w-[280px] sm:max-w-none">
+                  <span className="text-[#8DEB28]">Designed to</span>
                   <br />
-                  Our minimum bar
+                  perform.
                   <br />
-                  for client delivery
-                  <span className="text-[#F25C22]">.</span>
-                </h3>
-                <p className="text-slate-400 text-[13px] leading-relaxed mt-5 max-w-[260px]">
-                  Over 130 awards, accolades, and achievements showcase our quality and commitment to client success.
+                  Built to deliver
+                  <br />
+                  results.
+                </h2>
+
+                <p className="mt-5 sm:mt-8 lg:mt-14 max-w-[400px] text-white/70 text-[18px] sm:text-[17px] md:text-[19px] xl:text-[23px] leading-[1.55]">
+                  Strategy, design, development, and
+                  marketing working together to improve
+                  every step of the customer journey.
                 </p>
               </div>
-              <button className="group flex items-center gap-2 text-[#11C911] text-[13px] font-medium border-b border-[#11C911]/40 pb-1 w-fit hover:border-[#11C911] transition-colors">
-                View Our Awards
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-              </button>
+
+              <a
+                href="#"
+                className="group mt-8 lg:mt-10 xl:mt-0 flex items-center justify-between w-full max-w-[260px] pb-3 border-b border-[#22B8F3] text-white text-[16px] sm:text-[18px] xl:text-[22px]"
+              >
+                <span>Let’s Talk Results</span>
+                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 text-[#22B8F3] transition-transform duration-300 group-hover:translate-x-1" />
+              </a>
             </div>
 
-            {/* CENTER — 2 rotating circles */}
-            <div className="flex flex-col items-center justify-center gap-10 lg:flex-1">
-              {[
-                { stat: '1,250+', label: 'projects\ndelivered' },
-                { stat: '130+',   label: 'Industry\nsectors'   },
-              ].map(({ stat, label }, idx) => (
+            {/* CENTER — KPI CIRCLES */}
+            <div className="flex flex-row lg:flex-col flex-wrap items-center justify-center gap-4 sm:gap-8 lg:gap-16 xl:gap-24 lg:px-1">
+              {impactStats.map((item, index) => (
                 <div
-                  key={idx}
-                  className="relative flex items-center justify-center"
-                  style={{ width: '200px', height: '200px' }}
+                  key={index}
+                  className="relative flex items-center justify-center shrink-0 w-[min(42vw,160px)] h-[min(42vw,160px)] sm:w-[190px] sm:h-[190px] md:w-[210px] md:h-[210px] xl:w-[265.54px] xl:h-[265.54px]"
                 >
-                  {/* Rotating outer text */}
-                  <div className="absolute inset-0">
+                  <div className="absolute inset-0 opacity-[0.52]">
                     <CircularText
-                      text="Accomplished · Projects · Delivered · "
-                      radius={44}
-                      fontSize="10px"
-                      color="rgba(255,255,255,0.3)"
+                      text="Successfully executed projects · "
+                      radius={52}
+                      color="#FFFFFF"
                     />
                   </div>
-                  {/* Inner circle */}
-                  <div className="relative z-10 flex flex-col items-center justify-center w-[110px] h-[110px] rounded-full border border-white/15 bg-white/5">
-                    <span className="text-white text-[28px] font-bold leading-none">{stat}</span>
-                    <span className="text-slate-400 text-[11px] mt-1.5 text-center leading-tight whitespace-pre-line">{label}</span>
+
+                  <div className="relative z-10 text-center px-2 max-w-[78%] sm:max-w-[180px]">
+                    <h3 className="text-white text-[18px] sm:text-[20px] md:text-[22px] xl:text-[29px] font-semibold leading-[1.08] tracking-[-0.025em]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1.5 sm:mt-4 xl:mt-5 text-white/90 text-[13px] sm:text-[13px] xl:text-[15px] leading-[1.4]">
+                      {item.desc}
+                    </p>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* RIGHT — client logos 2×3 grid */}
-            <div className="grid grid-cols-2 gap-x-10 gap-y-8 lg:flex-1 content-center">
-              {clientGrid.map((c, i) => (
-                <div key={i} className="flex flex-col gap-1.5">
-                  <img
-                    src={c.logo}
-                    alt={c.logoAlt}
-                    className={`${c.logoClass} w-auto object-contain object-left brightness-0 invert opacity-90`}
-                  />
-                  <p className="text-slate-300 text-[12px] font-semibold leading-tight mt-2">{c.title}</p>
-                  <p className="text-slate-500 text-[11px] leading-tight">{c.desc}</p>
-                </div>
-              ))}
+            {/* RIGHT — SERVICES */}
+            <div className="relative flex items-center min-w-0 pt-6 sm:pt-8 border-t border-white/20 lg:col-span-2 xl:col-span-1 xl:border-t-0 xl:pt-0 xl:border-l xl:border-white/20 xl:pl-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5 xl:gap-x-14 xl:gap-y-16 w-full">
+                {impactCards.map((card, index) => {
+                  const mobileBorder = index % 2 === 0 ? '#7BCB24' : '#1C9CD8';
+                  return (
+                  <div
+                    key={index}
+                    className="min-h-0 sm:min-h-[170px] xl:min-h-[206px] rounded-[18px] sm:rounded-[24px] px-4 py-4 sm:px-5 sm:py-6 xl:px-5 xl:py-7 flex flex-col justify-center transition-transform duration-300 hover:-translate-y-1 impact-card"
+                    style={{
+                      border: `1px solid ${mobileBorder}`,
+                      '--desktop-border': card.border,
+                    }}
+                  >
+                    <img
+                      src={card.icon}
+                      alt=""
+                      className="w-8 h-8 sm:w-[47px] sm:h-[47px] mb-3 sm:mb-5 object-contain brightness-0 invert"
+                    />
+                    <h3 className="text-white font-semibold text-[15px] sm:text-[19px] xl:text-[22px] leading-tight">
+                      {card.title}
+                    </h3>
+                    <p className="mt-1 text-white/65 text-[13px] sm:text-[15px] xl:text-[18px] leading-[1.3] sm:leading-[1.15] max-w-none xl:max-w-[180px]">
+                      {card.desc}
+                    </p>
+                  </div>
+                  );
+                })}              </div>
             </div>
 
           </div>
         </div>
       </div>
+
+      {/* Restore desktop border colors for impact cards at sm+ */}
+      <style>{`
+        @media (min-width: 640px) {
+          .impact-card {
+            border-color: var(--desktop-border) !important;
+          }
+        }
+      `}</style>
 
     </section>
   );
