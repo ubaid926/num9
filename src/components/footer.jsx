@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowRight, Phone } from 'lucide-react';
-import logo from '../assets/Black Logo.png';
+import logo from '../assets/Green 9 with Blue NO Badge.webp';
 
 const Footer = () => {
   const discoverLinks = [

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, X, Menu } from 'lucide-react';
-import logo from '../assets/Black Logo.png';
+import logo from '../assets/Green 9 with Blue NO Badge.webp';
 import whiteLogo from '../assets/white_logo.png';
 
 export default function AppNav({ activeDropdown, setActiveDropdown, onNavigate }) {
