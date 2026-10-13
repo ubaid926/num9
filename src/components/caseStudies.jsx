@@ -232,7 +232,7 @@ const CaseStudies = () => {
               mb-4
             "
           >
-            We are Momentum
+            We are Num9.
           </h1>
 
           <p
