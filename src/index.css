@@ -1,51 +1,62 @@
 @font-face {
-    font-family: 'Outfit';
-    src: url('./fonts/Outfit-Regular.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Outfit";
+  src: url("./fonts/Outfit-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* Grift font family */
 @font-face {
-    font-family: 'Grift';
-    src: url('./fonts/grift-light.ttf') format('truetype');
-    font-weight: 300;
-    font-style: normal;
+  font-family: "Grift";
+  src: url("./fonts/grift-light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Grift';
-    src: url('./fonts/grift-medium.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
+  font-family: "Grift";
+  src: url("./fonts/grift-medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Grift';
-    src: url('./fonts/grift-semibold.ttf') format('truetype');
-    font-weight: 600;
-    font-style: normal;
+  font-family: "Grift";
+  src: url("./fonts/grift-semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Grift';
-    src: url('./fonts/grift-black.ttf') format('truetype');
-    font-weight: 900;
-    font-style: normal;
+  font-family: "Grift";
+  src: url("./fonts/grift-black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
 }
-
 
 @import "tailwindcss";
 
 @theme {
-    --font-outfit: Outfit
+  --font-outfit: Outfit;
 }
 
 /* ─── Reusable Grift font utility classes ─────────────────────────────────── */
-.font-grift-light   { font-family: 'Grift', sans-serif; font-weight: 300; }
-.font-grift-medium  { font-family: 'Grift', sans-serif; font-weight: 500; }
-.font-grift-semibold{ font-family: 'Grift', sans-serif; font-weight: 600; }
-.font-grift-black   { font-family: 'Grift', sans-serif; font-weight: 900; }
+.font-grift-light {
+  font-family: "Grift", sans-serif;
+  font-weight: 300;
+}
+.font-grift-medium {
+  font-family: "Grift", sans-serif;
+  font-weight: 500;
+}
+.font-grift-semibold {
+  font-family: "Grift", sans-serif;
+  font-weight: 600;
+}
+.font-grift-black {
+  font-family: "Grift", sans-serif;
+  font-weight: 900;
+}
 /* ─────────────────────────────────────────────────────────────────────────── */
 
 @layer utilities {
@@ -70,10 +81,14 @@
     opacity: 1;
   }
   85% {
-    transform: translateY(3%);  /* Elasticity ke sath thoda sa wapas niche recoil hoga */
+    transform: translateY(
+      3%
+    ); /* Elasticity ke sath thoda sa wapas niche recoil hoga */
   }
   100% {
-    transform: translateY(0);   /* Apni final static perfect scale position par lock ho jayega */
+    transform: translateY(
+      0
+    ); /* Apni final static perfect scale position par lock ho jayega */
     opacity: 1;
   }
 }
@@ -84,7 +99,9 @@
     opacity: 1;
   }
   30% {
-    transform: translateY(5%);  /* Exit hone se pehle halka sa piche ki taraf stretch lega */
+    transform: translateY(
+      5%
+    ); /* Exit hone se pehle halka sa piche ki taraf stretch lega */
     opacity: 1;
   }
   100% {
@@ -94,13 +111,21 @@
 }
 
 @keyframes marquee-ltr {
-  0%   { transform: translateX(-50%); }
-  100% { transform: translateX(0%); }
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
 
 @keyframes marquee-rtl {
-  0%   { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .animate-marquee-rtl {
@@ -119,15 +144,19 @@
 
 /* Circular rotating text */
 @keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 .animate-spin-slow {
   animation: spin-slow 22s linear infinite;
 }
 
-
-html, body {
+html,
+body {
   overflow-x: hidden;
   max-width: 100%;
 }

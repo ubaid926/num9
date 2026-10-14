@@ -150,42 +150,39 @@ export default function LexusCaseStudySections() {
           <div
             className="
               w-full
-              max-w-[1030px]
+              max-w-[1130px]
               mx-auto
             "
           >
             {/* SUMMARY + LOGO */}
+
+
             <div
               className="
-                grid
-                grid-cols-1
-                md:grid-cols-2
+    w-full
+    max-w-[1400px]
+    mx-auto
+    px-5 sm:px-8 lg:px-0
 
-                gap-8
-                md:gap-[36px]
-                lg:gap-[50px]
+    grid grid-cols-1
+    md:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]
 
-                items-start
-              "
+    gap-8 md:gap-[45px] lg:gap-[60px]
+    items-center
+  "
             >
               {/* LEFT CONTENT */}
               <div className="w-full min-w-0">
                 <h2
                   className="
-                    font-grift-semibold
-
-                    text-[32px]
-                    sm:text-[42px]
-                    md:text-[44px]
-                    lg:text-[60px]
-
-                    leading-[1.12]
-                    tracking-[-0.035em]
-                    text-[#414A55]
-
-                    mb-[20px]
-                    lg:mb-[25px]
-                  "
+        font-grift-semibold
+        text-[32px] sm:text-[42px]
+        md:text-[44px] lg:text-[60px]
+        leading-[1.12]
+        tracking-[-0.035em]
+        text-[#414A55]
+        mb-[20px] lg:mb-[27px]
+      "
                 >
                   The summary
                   <span className="text-[#29C812]">.</span>
@@ -193,20 +190,15 @@ export default function LexusCaseStudySections() {
 
                 <p
                   className="
-                    font-grift-medium
-
-                    text-[16px]
-                    sm:text-[20px]
-                    md:text-[22px]
-                    lg:text-[33px]
-
-                    leading-[1.33]
-                    tracking-[-0.015em]
-                    text-[#555555]
-
-                    max-w-[500px]
-                    m-0
-                  "
+        font-grift-medium
+        text-[16px] sm:text-[20px]
+        md:text-[22px] lg:text-[30px]
+        leading-[1.37]
+        tracking-[-0.015em]
+        text-[#555555]
+        max-w-[570px]
+        m-0
+      "
                 >
                   Lexus partnered with us to develop an
                   interactive platform that allows
@@ -223,42 +215,40 @@ export default function LexusCaseStudySections() {
               </div>
 
               {/* RIGHT LOGO CARD */}
+              {/* RIGHT LOGO CARD */}
               <div
                 className="
-                  w-full
-                  min-w-0
+    w-full
+    min-w-0
 
-                  md:mt-[55px]
-                  lg:mt-[62px]
+    h-[280px]
+    sm:h-[350px]
+    md:h-[420px]
+    lg:h-[380px]
 
-                  aspect-[1.47/1]
-                  max-w-[500px]
+    border border-[#BDBDBD]
+    rounded-[24px] lg:rounded-[35px]
 
-                  border border-[#C8C8C8]
-                  rounded-[24px]
-                  lg:rounded-[30px]
+    overflow-hidden
+    bg-white
 
-                  overflow-hidden
-                  bg-white
-
-                  flex
-                  items-center
-                  justify-center
-                "
+    flex items-center justify-center
+  "
               >
                 <img
                   src={lexusLogo}
                   alt="Lexus logo"
                   className="
-                    block
-                    w-[52%]
-                    max-h-[55%]
-                    object-contain
-                  "
+      block
+      w-[55%]
+      max-h-[60%]
+      object-contain
+    "
                   loading="lazy"
                 />
               </div>
             </div>
+
 
             {/* ==================================
                 STATISTICS

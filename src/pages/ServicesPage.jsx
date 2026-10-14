@@ -160,9 +160,9 @@ function ServiceCard({ title, text }) {
       className="
         group
         bg-white
-        rounded-[14px]
-        border border-[#E7E9ED]
-        p-5 sm:p-6
+        rounded-[18px]
+        border border-[#c0c0c0ff]
+        p-5 sm:px-8 sm:py-8
         flex flex-col justify-start
         transition-all duration-200
         hover:-translate-y-1
@@ -171,7 +171,7 @@ function ServiceCard({ title, text }) {
       "
       style={{ width: '100%', height: 'auto' }}
     >
-      <h3 className="font-grift-semibold text-[18.75px] sm:text-[25px] text-[#181818] tracking-[-0.02em] mb-2 leading-[1.3] group-hover:text-black transition-colors">
+      <h3 className="font-semibold text-[18.75px] sm:text-[25px] text-[#181818] tracking-[-0.02em] mb-2 leading-[1.3] group-hover:text-black transition-colors">
         {title}
       </h3>
       <p className="font-grift-medium text-[15.84px] sm:text-[21px] leading-[1.58] text-[#6B7280]">
@@ -191,17 +191,17 @@ function ServiceCategorySection({ title, items }) {
         </h2>
       </div>
 
-      <div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-14"
-      >
-        {items.map((item, idx) => (
-          <ServiceCard
-            key={`${item.title}-${idx}`}
-            title={item.title}
-            text={item.text}
-          />
-        ))}
-      </div>
+ 
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-7">
+  {items.map((item, idx) => (
+    <ServiceCard
+      key={`${item.title}-${idx}`}
+      title={item.title}
+      text={item.text}
+    />
+  ))}
+</div>
+
     </section>
   );
 }
@@ -325,9 +325,9 @@ function HeroSection() {
 
           {/* Breadcrumb / Tag */}
           <div className="flex items-center gap-1.5 mb-4 text-[#555] font-normal">
-            <svg className="w-4 h-4 text-slate-500 shrink-0" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7m-9 2v8m4-8v8m-4 0h4" />
-            </svg>
+             <svg className="w-[20px] h-[20px] text-black shrink-0" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 11.25 12 3l8.25 8.25M5.25 9.75v10.5h13.5V9.75M9 20.25v-6h6v6" />
+          </svg>
             <svg className="w-3 h-3 text-slate-400 shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
@@ -337,7 +337,8 @@ function HeroSection() {
           {/* Eyebrow Label */}
           <div className="flex items-center gap-2 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#15B83E] shrink-0" />
-            <span className="font-grift-semibold text-[14.78px] sm:text-[13px] lg:text-[21px] tracking-[0.18em] text-[#15B83E] uppercase">
+            <span className=" text-[14.78px] sm:text-[13px] lg:text-[21px] tracking-[0.18em] uppercase"
+            style={{fontWeight:'600'}}>
               NUMBER 9 SERVICES
             </span>
           </div>
@@ -346,13 +347,13 @@ function HeroSection() {
           <h1 className="font-grift-semibold text-[48px] sm:text-[54px] lg:text-[70px] text-[#141414] leading-[1.08] mb-6">
             Build smarter{' '}
             <span className="text-[#15B83E] relative inline-block">
-              <svg
+              {/* <svg
                 className="absolute -top-1.5 -left-3.5 w-3.5 h-3.5 text-[#15B83E]"
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
                 <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
-              </svg>
+              </svg> */}
               digital products
             </span>
             <br />
@@ -429,7 +430,7 @@ function MarqueeAndSummary() {
       </div>
 
       {/* Explore All Services Pill Button */}
-      <div className="mt-10 sm:mt-12 flex justify-center">
+      <div className="mt-10 sm:mt-12  flex justify-center">
         <a
           href="#services-grid"
           className="
@@ -469,7 +470,7 @@ export default function ServicesPage({ onNavigate, activeDropdown, setActiveDrop
       <HeroSection />
 
       {/* 3. Three Services Categories (9 Cards Each = 27 Cards) */}
-      <div id="services-grid" className="max-w-[1540px] mx-auto px-4 sm:px-8 lg:px-12 space-y-16 sm:space-y-20 lg:space-y-24 pb-16 sm:pb-20">
+      <div id="services-grid" className="max-w-[1540px] mx-auto px-4 sm:px-8 lg:px-12 space-y-16 sm:space-y-20 lg:space-y-36 pb-16 sm:pb-20">
         <ServiceCategorySection
           title="Strategy, Creative & Execution"
           items={strategyServices}

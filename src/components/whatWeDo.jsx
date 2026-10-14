@@ -1,11 +1,11 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
-import tradeShowImage from '../assets/starImage.jpg';
-import digitalImage from '../assets/digital-experience.jpg';
-import andrasImage from '../assets/andras.jpg';
-import dataAnalysisImage from '../assets/data-analysis.jpg';
-import interactiveImage from '../assets/Paper-Cut Web Design Workspace.png';
-import laptopImage from '../assets/laptopImage.png';
+import React from "react";
+import { ArrowRight } from "lucide-react";
+import tradeShowImage from "../assets/Neon_Prism_Stage_Star.webp";
+import digitalImage from "../assets/digital-experience.jpg";
+import andrasImage from "../assets/andras.jpg";
+import dataAnalysisImage from "../assets/data-analysis.jpg";
+import interactiveImage from "../assets/Paper-Cut Web Design Workspace.png";
+import laptopImage from "../assets/laptopImage.webp";
 
 /* =========================================================
    STAR PATHS (for cards 01 & 03)
@@ -38,32 +38,31 @@ const STAR_PATH = `
   Z
 `;
 
-const OUTLINE_PATH = `
-  M 425 26
-  Q 438 24 446 38
-  L 523 179
-  Q 527 187 538 187
-  L 611 184
-  Q 624 184 620 198
-  L 611 306
-  Q 610 319 599 325
-  L 537 354
-  Q 529 358 528 370
-  L 514 582
-  Q 513 596 503 584
-  L 348 405
-  Q 342 397 331 399
-  L 132 414
-  Q 117 415 126 403
-  L 226 272
-  Q 231 265 225 257
-  L 134 120
-  Q 125 106 142 109
-  L 333 137
-  Q 343 139 350 129
-  L 412 36
-  Q 418 27 425 26
-  Z
+const STAR_BORDER_PATH = `
+  M 260 -40
+  C 255 -20 265 0 280 20
+  L 400 145
+  Q 420 165 443 160
+  L 545 145
+  Q 570 140 583 160
+
+  M 635 20
+  L 700 160
+
+  M 685 295
+  L 540 375
+  Q 520 390 535 412
+  L 680 620
+
+  M 395 665
+  L 315 505
+  Q 305 485 285 488
+  L 100 505
+  Q 65 510 50 490
+  Q 42 475 60 455
+  L 220 292
+  Q 237 275 222 255
+  L 105 115
 `;
 /* =========================================================
    CROSS PATH GENERATOR (for card 02)
@@ -71,30 +70,47 @@ const OUTLINE_PATH = `
 ========================================================= */
 function crossPath(cx, cy, hw, reach, oR, iR) {
   const V = [
-    [cx - hw, cy - reach], [cx + hw, cy - reach],
-    [cx + hw, cy - hw], [cx + reach, cy - hw],
-    [cx + reach, cy + hw], [cx + hw, cy + hw],
-    [cx + hw, cy + reach], [cx - hw, cy + reach],
-    [cx - hw, cy + hw], [cx - reach, cy + hw],
-    [cx - reach, cy - hw], [cx - hw, cy - hw],
+    [cx - hw, cy - reach],
+    [cx + hw, cy - reach],
+    [cx + hw, cy - hw],
+    [cx + reach, cy - hw],
+    [cx + reach, cy + hw],
+    [cx + hw, cy + hw],
+    [cx + hw, cy + reach],
+    [cx - hw, cy + reach],
+    [cx - hw, cy + hw],
+    [cx - reach, cy + hw],
+    [cx - reach, cy - hw],
+    [cx - hw, cy - hw],
   ];
   const inner = [0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1];
   const n = V.length;
   const d = [];
   for (let i = 0; i < n; i++) {
-    const pp = V[(i - 1 + n) % n], pc = V[i], pn = V[(i + 1) % n];
+    const pp = V[(i - 1 + n) % n],
+      pc = V[i],
+      pn = V[(i + 1) % n];
     const r = inner[i] ? iR : oR;
-    const lpx = pp[0] - pc[0], lpy = pp[1] - pc[1], lp = Math.hypot(lpx, lpy);
-    const lnx = pn[0] - pc[0], lny = pn[1] - pc[1], ln = Math.hypot(lnx, lny);
-    const sx = pc[0] + lpx / lp * r, sy = pc[1] + lpy / lp * r;
-    const ex = pc[0] + lnx / ln * r, ey = pc[1] + lny / ln * r;
-    d.push(i === 0
-      ? `M${sx.toFixed(1)} ${sy.toFixed(1)}`
-      : `L${sx.toFixed(1)} ${sy.toFixed(1)}`
+    const lpx = pp[0] - pc[0],
+      lpy = pp[1] - pc[1],
+      lp = Math.hypot(lpx, lpy);
+    const lnx = pn[0] - pc[0],
+      lny = pn[1] - pc[1],
+      ln = Math.hypot(lnx, lny);
+    const sx = pc[0] + (lpx / lp) * r,
+      sy = pc[1] + (lpy / lp) * r;
+    const ex = pc[0] + (lnx / ln) * r,
+      ey = pc[1] + (lny / ln) * r;
+    d.push(
+      i === 0
+        ? `M${sx.toFixed(1)} ${sy.toFixed(1)}`
+        : `L${sx.toFixed(1)} ${sy.toFixed(1)}`,
     );
-    d.push(`Q${pc[0].toFixed(1)} ${pc[1].toFixed(1)} ${ex.toFixed(1)} ${ey.toFixed(1)}`);
+    d.push(
+      `Q${pc[0].toFixed(1)} ${pc[1].toFixed(1)} ${ex.toFixed(1)} ${ey.toFixed(1)}`,
+    );
   }
-  return d.join(' ') + 'Z';
+  return d.join(" ") + "Z";
 }
 
 /* =========================================================
@@ -102,51 +118,58 @@ function crossPath(cx, cy, hw, reach, oR, iR) {
 ========================================================= */
 const services = [
   {
-    id: '01',
-    titleLine1: 'TRADE SHOWS /',
-    titleLine2: 'BRAND ACTIVATION',
-    headingGradient: 'linear-gradient(180deg, #FCFBFB 0%, #E8E1E0 49%, #F2F2F1 100%)',
-    description: 'We create the experiences\nthat make brands matter.',
-    background: 'radial-gradient(ellipse at 42% 50%, #5B886A 0%, #3A6E4C 100%)',
+    id: "01",
+    titleLine1: "TRADE SHOWS /",
+    titleLine2: "BRAND ACTIVATION",
+    headingGradient:
+      "linear-gradient(180deg, #FCFBFB 0%, #E8E1E0 49%, #F2F2F1 100%)",
+    description: "We create the experiences\nthat make brands matter.",
+    background: "radial-gradient(ellipse at 42% 50%, #5B886A 0%, #3A6E4C 100%)",
     image: tradeShowImage,
     dark: true,
-    decoration: 'star',
+    decoration: "star",
   },
-
   {
-    id: '02',
-    titleLine1: 'INTERACTIVE',
-    titleLine2: 'DIGITAL EXPERIENCES',
-    accentLine2: true,                       // blue second line
-    description: 'Engaging, intuitive, and seamless experiences that bring\nyour brand to life online.',
-    background: '#E8F4FF',
+    id: "02",
+    titleLine1: "INTERACTIVE",
+    titleLine2: "DIGITAL EXPERIENCES",
+    accentLine2: true,
+    description:
+      "Engaging, intuitive, and seamless experiences that bring your brand to life online.",
+
+    background: "#DCEEFF",
+
     topImage: digitalImage,
     mainImage: dataAnalysisImage,
     bottomImage: andrasImage,
+
     dark: false,
-    decoration: 'cross',
+    decoration: "cross",
   },
   {
-    id: '03',
-    titleLine1: 'DIGITAL VIDEO',
-    titleLine2: 'PRODUCTIONS',
-    headingGradient: 'linear-gradient(180deg, #FCFBFB 0%, #E8E1E0 49%, #F2F2F1 100%)',
-    description: 'Designing intuitive experiences that\nengage users across digital platforms.',
-    background: 'linear-gradient(135deg, #263E50 0%, #527184 100%)',
+    id: "03",
+    titleLine1: "DIGITAL VIDEO",
+    titleLine2: "PRODUCTIONS",
+    headingGradient:
+      "linear-gradient(180deg, #FCFBFB 0%, #E8E1E0 49%, #F2F2F1 100%)",
+    description:
+      "Designing intuitive experiences that\nengage users across digital platforms.",
+    background: "linear-gradient(135deg, #263E50 0%, #527184 100%)",
     image: interactiveImage,
     dark: true,
-    decoration: 'circles',
+    decoration: "circles",
   },
   {
-    id: '04',
-    titleLine1: 'DIGITAL',
-    titleLine2: 'MARKETING',
-    description: 'Driving engagement through content,\ncreators, and targeted paid campaigns',
-    background: 'linear-gradient(180deg, #E7D2C2 0%, #F1B68F 100%)',
+    id: "04",
+    titleLine1: "DIGITAL",
+    titleLine2: "MARKETING",
+    description:
+      "Driving engagement through content,\ncreators, and targeted paid campaigns",
+    background: "linear-gradient(180deg, #E7D2C2 0%, #F1B68F 100%)",
     image: laptopImage,
     dark: false,
     lightBtn: true,
-    decoration: 'laptop',
+    decoration: "laptop",
   },
 ];
 
@@ -159,7 +182,7 @@ const crossPath2 = (
   halfArm,
   halfSize,
   outerRadius = 18,
-  innerRadius = 22
+  innerRadius = 22,
 ) => {
   const l = cx - halfSize;
   const r = cx + halfSize;
@@ -214,15 +237,10 @@ const crossPath2 = (
   `;
 };
 
-const CrossDecoration = ({
-  topImage,
-  mainImage,
-  bottomImage,
-  serviceId,
-}) => {
+const CrossDecoration = ({ topImage, mainImage, bottomImage, serviceId }) => {
   const crosses = [
     {
-      id: 'top',
+      id: "top",
       cx: 390,
       cy: 48,
       halfArm: 21,
@@ -234,7 +252,7 @@ const CrossDecoration = ({
     },
 
     {
-      id: 'main',
+      id: "main",
       cx: 468,
       cy: 248,
       halfArm: 48,
@@ -246,7 +264,7 @@ const CrossDecoration = ({
     },
 
     {
-      id: 'bottom',
+      id: "bottom",
       cx: 355,
       cy: 412,
       halfArm: 20,
@@ -260,30 +278,30 @@ const CrossDecoration = ({
 
   // Mobile cross positions — matches the reference image layout:
   // large main cross centered at bottom overflowing, small ones at corners
+
   const mobileCrosses = [
     {
-      id: 'top',     // small purple cross — top-right, partially outside card
-      cx: 350,
-      cy: 290,
+      id: "top",
+      cx: 320,
+      cy: 165,
       halfArm: 21,
-      halfSize: 58,
-      outerRadius: 13,
-      innerRadius: 15,
+      halfSize: 48,
+      outerRadius: 12,
+      innerRadius: 14,
       imageScale: 1.18,
       image: topImage,
     },
     {
-      id: 'main',    // large cross with VR person — bottom-center, overflowing below
-      cx: 110,
-      cy: 400,
-      halfArm: 48,
-      halfSize: 102,
-      outerRadius: 20,
-      innerRadius: 25,
+      id: "main",
+      cx: 125,
+      cy: 335,
+      halfArm: 45,
+      halfSize: 90,
+      outerRadius: 18,
+      innerRadius: 22,
       imageScale: 1.14,
       image: mainImage,
     },
-
   ];
 
   const renderCrosses = (crossList, idSuffix) => (
@@ -296,9 +314,12 @@ const CrossDecoration = ({
           >
             <path
               d={crossPath2(
-                cross.cx, cross.cy,
-                cross.halfArm, cross.halfSize,
-                cross.outerRadius, cross.innerRadius
+                cross.cx,
+                cross.cy,
+                cross.halfArm,
+                cross.halfSize,
+                cross.outerRadius,
+                cross.innerRadius,
               )}
             />
           </clipPath>
@@ -325,9 +346,12 @@ const CrossDecoration = ({
         <path
           key={`outline-${cross.id}-${idSuffix}`}
           d={crossPath2(
-            cross.cx, cross.cy,
-            cross.halfArm, cross.halfSize,
-            cross.outerRadius, cross.innerRadius
+            cross.cx,
+            cross.cy,
+            cross.halfArm,
+            cross.halfSize,
+            cross.outerRadius,
+            cross.innerRadius,
           )}
           fill="none"
           stroke="rgba(0,0,0,0.06)"
@@ -341,23 +365,27 @@ const CrossDecoration = ({
   return (
     <>
       {/* ── Mobile SVG (hidden at md+) ── */}
+
+      {/* Mobile Crosses */}
       <svg
         viewBox="0 0 360 400"
         preserveAspectRatio="xMidYMid meet"
         overflow="visible"
         className="
-          absolute
-          pointer-events-none
-          overflow-visible
-          z-10
-          md:hidden
+    absolute
+    pointer-events-none
+    overflow-visible
+    z-10
+    md:hidden
 
-          w-full
-          h-full
-          inset-0
-        "
+    w-full
+    h-[400px]
+
+    left-0
+    bottom-[-35px]
+  "
       >
-        {renderCrosses(mobileCrosses, 'mob')}
+        {renderCrosses(mobileCrosses, "mob")}
       </svg>
 
       {/* ── Desktop SVG (hidden below md) ── */}
@@ -379,7 +407,7 @@ const CrossDecoration = ({
           h-full
         "
       >
-        {renderCrosses(crosses, 'desk')}
+        {renderCrosses(crosses, "desk")}
       </svg>
     </>
   );
@@ -387,9 +415,7 @@ const CrossDecoration = ({
 /* =========================================================
    CIRCLE DECORATION — four overlapping circles (card 03 only)
 ========================================================= */
-const CircleDecoration = ({
-  image,
-}) => {
+const CircleDecoration = ({ image }) => {
   return (
     <img
       src={image}
@@ -421,13 +447,14 @@ const CircleDecoration = ({
 ========================================================= */
 const ServiceCard = ({ service }) => {
   const { dark, decoration, accentLine2 } = service;
-  const isCross = decoration === 'cross';
+  const isCross = decoration === "cross";
 
   return (
     <div
       className={`
         relative
         w-full
+            max-w-full
         flex
         flex-col
         min-h-0
@@ -436,13 +463,16 @@ const ServiceCard = ({ service }) => {
         xl:min-h-[685px]
         rounded-[18px]
         overflow-visible
-        md:overflow-visible
-        ${decoration === 'star' ? 'pb-[140px] sm:pb-[170px] md:pb-0' : ''}
-        ${decoration === 'cross' ? 'pb-[200px] sm:pb-[220px] md:pb-0' : ''}
-        ${decoration === 'circles' ? 'pb-[220px] sm:pb-[240px] md:pb-0' : ''}
-        ${decoration === 'laptop' ? 'pb-[180px] sm:pb-[200px] md:pb-0' : ''}
+        ${decoration === "star" ? "pb-[140px] sm:pb-[170px] md:pb-0 " : ""}
+        ${decoration === "cross" ? "pb-[200px] sm:pb-[220px] md:pb-0" : ""}
+        ${decoration === "circles" ? "pb-[220px] sm:pb-[240px] md:pb-0" : ""}
+        ${decoration === "laptop" ? "pb-[180px] sm:pb-[200px] md:pb-0" : ""}
       `}
-      style={{ background: service.background }}
+      style={{
+        background: service.background,
+        borderColor: decoration === "cross" ? "#76A9FF" : "transparent",
+        borderWidth: decoration === "cross" ? "1px" : "0px",
+      }}
     >
       {/* ── Text Content ── */}
       <div
@@ -475,8 +505,9 @@ const ServiceCard = ({ service }) => {
       >
         {/* Accent line */}
         <div
-          className={`w-[28px] sm:w-[34px] md:w-[38px] h-[3px] mb-5 sm:mb-6 md:mb-7 rounded-full ${dark ? 'bg-white' : 'bg-gray-900'
-            }`}
+          className={`w-[28px] sm:w-[34px] md:w-[38px] h-[3px] mb-5 sm:mb-6 md:mb-7 rounded-full ${
+            dark ? "bg-white" : "bg-gray-900"
+          }`}
         />
 
         {/* Heading */}
@@ -492,37 +523,39 @@ const ServiceCard = ({ service }) => {
             leading-[1.02]
             md:leading-[0.95]
             tracking-[-0.04em]
-            ${service.headingGradient ? 'bg-clip-text text-transparent inline-block' : ''}
+            ${service.headingGradient ? "bg-clip-text text-transparent inline-block" : ""}
           `}
           style={
             service.headingGradient
               ? {
-                backgroundImage: service.headingGradient,
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }
+                  backgroundImage: service.headingGradient,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }
               : undefined
           }
         >
           <span
-            className={`block ${service.headingGradient
-              ? ''
-              : dark
-                ? 'text-white'
-                : 'text-gray-900'
-              }`}
+            className={`block ${
+              service.headingGradient
+                ? ""
+                : dark
+                  ? "text-white"
+                  : "text-gray-900"
+            }`}
           >
             {service.titleLine1}
           </span>
           <span
-            className={`block ${service.headingGradient
-              ? ''
-              : dark
-                ? 'text-white'
-                : accentLine2
-                  ? 'text-[#2563EB]'
-                  : 'text-gray-900'
-              }`}
+            className={`block ${
+              service.headingGradient
+                ? ""
+                : dark
+                  ? "text-white"
+                  : accentLine2
+                    ? "text-[#2563EB]"
+                    : "text-gray-900"
+            }`}
           >
             {service.titleLine2}
           </span>
@@ -546,145 +579,156 @@ const ServiceCard = ({ service }) => {
             md:leading-[1.35]
             max-w-[42rem]
             2xl:max-w-[880px]
-            ${dark ? 'text-white/85' : 'text-gray-600'}
+            ${dark ? "text-white/85" : "text-gray-600"}
           `}
         >
           {service.description}
         </p>
 
         {/* Learn More button */}
+
         <a
           href="#"
           className={`
-            mt-6
-            sm:mt-8
-            md:mt-9
-            inline-flex
-            items-center
-            gap-3
-            sm:gap-4
-            pl-4
-            sm:pl-5
-            pr-3
-            h-[40px]
-            sm:h-[42px]
-            lg:h-[52px]
-            rounded-full
-            text-[13px]
-            sm:text-[14px]
-            md:text-[16px]
-            lg:text-[20px]
-            xl:text-[25px]
-            font-medium
-            transition-all
-            duration-300
-            group
-            ${dark || service.lightBtn
-              ? 'bg-white text-gray-900 hover:bg-gray-100 shadow-sm'
-              : 'bg-gray-900 text-white hover:bg-black shadow-sm'
-            }
-          `}
+    mt-6 sm:mt-8 md:mt-9
+    inline-flex
+    w-fit
+    items-center
+    justify-between
+    gap-7 sm:gap-9 lg:gap-10
+    pl-5 pr-4
+    sm:pl-6 sm:pr-5
+    h-[44px]
+    sm:h-[48px]
+    lg:h-[56px]
+    rounded-full
+    text-[14px]
+    sm:text-[16px]
+    lg:text-[20px]
+    xl:text-[25px]
+    font-medium
+    whitespace-nowrap
+    transition-all
+    duration-300
+    group
+    ${
+      dark || service.lightBtn
+        ? "bg-white text-black hover:bg-gray-100"
+        : "bg-gray-900 text-white hover:bg-black"
+    }
+  `}
         >
-          <span>Learn More</span>
-          <span className="flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
-            <ArrowRight className="w-4 h-4" />
-          </span>
+          <span className="leading-none">Learn More</span>
+
+          <svg
+            width="55"
+            height="24"
+            viewBox="0 0 55 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="
+      w-[38px]
+      sm:w-[45px]
+      lg:w-[55px]
+      h-auto
+      shrink-0
+      transition-transform
+      duration-300
+      group-hover:translate-x-1
+    "
+            aria-hidden="true"
+          >
+            <path
+              d="M1 12H53M43 2L53 12L43 22"
+              stroke="currentColor"
+              strokeWidth="2.3"
+              strokeLinecap="square"
+              strokeLinejoin="miter"
+            />
+          </svg>
         </a>
       </div>
 
       <div className="contents pointer-events-none">
         {/* ── Decoration: STAR (card 01 only) ── */}
-        {decoration === 'star' && (
-          <svg
-            viewBox="0 0 640 640"
-            className="
-        absolute
-        pointer-events-none
-        overflow-visible
-        z-10
 
-        w-[300px]
-        h-[300px]
-        right-[-20px]
-        bottom-[-100px]
-        top-auto
-
-        sm:w-[340px]
-        sm:h-[340px]
-        sm:right-[-40px]
-        sm:bottom-[-170px]
-
-        md:w-[480px]
-        md:h-[480px]
-        md:right-[-120px]
-        md:bottom-auto
-        md:top-[-90px]
-
-        lg:w-[590px]
-        lg:h-[590px]
-        lg:right-[-150px]
-        lg:top-[-110px]
-
-        xl:w-[650px]
-        xl:h-[650px]
-        xl:right-[-155px]
-        xl:top-[-125px]
-
-        2xl:w-[890px]
-        2xl:h-[890px]
-        2xl:right-[-165px]
-        2xl:top-[-135px]
-      "
-          >
-            <defs>
-              <clipPath id={`starClip-${service.id}`}>
-                <path d={STAR_PATH} />
-              </clipPath>
-            </defs>
-
-            {/* Star image */}
-            <image
-              href={service.image}
-              x="115"
-              y="40"
-              width="525"
-              height="525"
-              preserveAspectRatio="xMidYMid slice"
-              clipPath={`url(#starClip-${service.id})`}
-            />
-
-            {/* Thin outline */}
-            <path
-              d={OUTLINE_PATH}
-              fill="none"
-              stroke={
-                dark
-                  ? 'rgba(255,255,255,0.48)'
-                  : 'rgba(255,255,255,0.50)'
-              }
-              strokeWidth="1"
-              vectorEffect="non-scaling-stroke"
-            />
-          </svg>
-        )}
-
-        {/* ── Decoration: CROSS (card 02) ── */}
-        {isCross && (
+        {/* Decoration: CROSSES - Card 02 */}
+        {decoration === "cross" && (
           <CrossDecoration
-            topImage={digitalImage}
-            mainImage={dataAnalysisImage}
-            bottomImage={andrasImage}
+            topImage={service.topImage}
+            mainImage={service.mainImage}
+            bottomImage={service.bottomImage}
             serviceId={service.id}
           />
         )}
 
-        {/* ── Decoration: CIRCLES (card 03) ── */}
-        {decoration === 'circles' && (
-          <CircleDecoration image={service.image} />
+        {decoration === "star" && (
+          <svg
+            viewBox="0 0 640 640"
+            preserveAspectRatio="xMidYMid meet"
+            className="
+      absolute
+      pointer-events-none
+      overflow-visible
+      z-10
+
+      w-[300px] h-[300px]
+      right-[-20px] bottom-[-100px] top-auto
+
+      sm:w-[340px] sm:h-[340px]
+      sm:right-[-40px] sm:bottom-[-170px]
+
+      md:w-[500px] md:h-[500px]
+      md:right-[-60px] md:bottom-auto md:top-[-30px]
+
+      lg:w-[600px] lg:h-[600px]
+      lg:right-[-80px] lg:top-[-40px]
+
+      xl:w-[680px] xl:h-[680px]
+      xl:right-[-90px] xl:top-[-50px]
+
+      2xl:w-[900px] 2xl:h-[900px]
+      2xl:right-[-100px] 2xl:top-[-60px]
+    "
+            aria-hidden="true"
+          >
+            {/* White outline - vector based, cleaner corners */}
+            <g
+              transform="
+        translate(396 238)
+        scale(1.37)
+        translate(-376 -308)
+        translate(-14 38)
+      "
+            >
+              <path
+                d={STAR_PATH}
+                fill="none"
+                stroke="rgba(255,255,255,0.42)"
+                strokeWidth="1.1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                vectorEffect="non-scaling-stroke"
+              />
+            </g>
+
+            {/* Existing star image */}
+            <image
+              href={service.image}
+              x="140"
+              y="0"
+              width="600"
+              height="500"
+              preserveAspectRatio="xMidYMid meet"
+            />
+          </svg>
         )}
 
+        {/* ── Decoration: CIRCLES (card 03) ── */}
+        {decoration === "circles" && <CircleDecoration image={service.image} />}
+
         {/* ── Decoration: LAPTOP (card 04) ── */}
-        {decoration === 'laptop' && (
+        {decoration === "laptop" && (
           <div
             className="
             absolute
@@ -731,25 +775,42 @@ const ServiceCard = ({ service }) => {
 ========================================================= */
 const WhatWeDo = () => {
   return (
-    <section className="w-full bg-white py-12 sm:py-16 lg:py-20 xl:py-24">
-      <div className="w-full px-4 sm:px-8 md:px-10 lg:px-14 xl:px-16 2xl:px-20">
-
+    <section className="w-full bg-white py-12 sm:py-16 lg:py-20 xl:py-24 xl:pb-40 ">
+      <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-16 2xl:px-20">
         {/* Section header */}
         <div className="flex items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12 md:mb-16 lg:mb-20">
           <h2 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[64px] xl:text-[72px] font-bold tracking-[-0.035em] leading-none text-black">
             What We Do
           </h2>
+
           <a
             href="#"
-            className="hidden md:flex items-center justify-between shrink-0 pb-1 border-b border-black text-[16px] lg:text-[22px] text-black group gap-3"
+            className="hidden md:flex items-center justify-between shrink-0 pb-3 border-b-2 border-black text-[16px] lg:text-[22px] text-black group gap-14"
           >
             <span>Explore All Services</span>
-            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="shrink-0 transition-transform duration-300 group-hover:translate-x-1"
+              aria-hidden="true"
+            >
+              <path
+                d="M1 12H22M14 4L22 12L14 20"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="square"
+                strokeLinejoin="miter"
+              />
+            </svg>
           </a>
         </div>
 
         {/* Service Cards */}
-        <div className="flex flex-col gap-[110px] sm:gap-12 lg:gap-16">
+        <div className="flex flex-col gap-[110px] sm:gap-12 lg:gap-23">
           {services.map((service) => (
             <ServiceCard key={service.id} service={service} />
           ))}
@@ -763,7 +824,6 @@ const WhatWeDo = () => {
           Explore All Services
           <ArrowRight className="w-4 h-4" />
         </a>
-
       </div>
     </section>
   );

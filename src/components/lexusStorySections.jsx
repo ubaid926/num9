@@ -275,66 +275,65 @@ export default function LexusStorySections({
      SCROLL ANIMATION
   ========================================= */
 
-  useEffect(() => {
-    const root = sectionRef.current;
-    const cta = ctaRef.current;
+ 
+useEffect(() => {
+  const root = sectionRef.current;
+  const cta = ctaRef.current;
 
-    if (!root || !cta) return;
+  if (!root || !cta) return;
 
-    let frame = null;
+  let frame;
+  let currentProgress = 0;
+  let targetProgress = 0;
 
-    const update = () => {
-      const rootRect = root.getBoundingClientRect();
-      const ctaRect = cta.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
+  const updateTarget = () => {
+    const rootRect = root.getBoundingClientRect();
+    const ctaRect = cta.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
 
-      // Begin only when the Challenge area approaches view.
-      const start = viewportHeight * 0.65;
+    const start = viewportHeight * 0.65;
 
-      // Finish as the final CTA approaches the viewport.
-      const finishPosition =
-        ctaRect.top - rootRect.top +
-        ctaRect.height * 0.5;
+    const finishPosition =
+      ctaRect.top - rootRect.top +
+      ctaRect.height * 0.5;
 
-      const distance = Math.max(
-        1,
-        finishPosition - start
-      );
+    const distance = Math.max(1, finishPosition - start);
+    const traveled = start - rootRect.top;
 
-      const traveled = start - rootRect.top;
+    targetProgress = Math.min(
+      1,
+      Math.max(0, traveled / distance)
+    );
+  };
 
-      const next = Math.min(
-        1,
-        Math.max(0, traveled / distance)
-      );
+  const animate = () => {
+    const smoothness = 0.045;
 
-      setProgress(next);
-      frame = null;
-    };
+    currentProgress +=
+      (targetProgress - currentProgress) * smoothness;
 
-    const onScroll = () => {
-      if (frame !== null) return;
+    if (Math.abs(targetProgress - currentProgress) < 0.0001) {
+      currentProgress = targetProgress;
+    }
 
-      frame = requestAnimationFrame(update);
-    };
+    setProgress(currentProgress);
+    frame = requestAnimationFrame(animate);
+  };
 
-    update();
+  updateTarget();
+  animate();
 
-    window.addEventListener("scroll", onScroll, {
-      passive: true,
-    });
+  window.addEventListener("scroll", updateTarget, {
+    passive: true,
+  });
+  window.addEventListener("resize", updateTarget);
 
-    window.addEventListener("resize", onScroll);
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-
-      if (frame !== null) {
-        cancelAnimationFrame(frame);
-      }
-    };
-  }, []);
+  return () => {
+    window.removeEventListener("scroll", updateTarget);
+    window.removeEventListener("resize", updateTarget);
+    cancelAnimationFrame(frame);
+  };
+}, []);
 
   /* =========================================
      SVG PATH LENGTH
@@ -508,6 +507,9 @@ export default function LexusStorySections({
               text-[#4A4A4A]
               mb-[50px] sm:mb-[70px] lg:mb-[110px]
             "
+            // style={{
+            //   fontWeight:'600'
+            // }}
           >
             The challenge
             <span className="text-[#F2693A]">.</span>

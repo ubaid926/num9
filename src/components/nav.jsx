@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, X, Menu } from 'lucide-react';
-import logo from '../assets/Green 9 with Blue NO Badge.webp';
-import whiteLogo from '../assets/white_logo.png';
+import logo from '../assets/logoGreen.webp';
+import whiteLogo from '../assets/logoWhite.webp';
 
 export default function AppNav({ activeDropdown, setActiveDropdown, onNavigate }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,15 +45,15 @@ export default function AppNav({ activeDropdown, setActiveDropdown, onNavigate }
       {/* ──────────────────────────────────────────────────────────
           1. CLOSED NAVBAR (Full width across screen corners)
       ────────────────────────────────────────────────────────── */}
-      <header className="w-full bg-white border-b border-slate-100/80 sticky top-0 z-40 transition-all duration-200">
-        <div className="w-full px-6 sm:px-10 lg:px-16 py-4 sm:py-7 flex items-center justify-between">
+      <header className="w-full bg-white sticky top-0 z-40 transition-all duration-200">
+        <div className="w-full px-6 sm:px-10 lg:px-18 py-3 sm:py-4 lg:py-4 flex items-center justify-between">
 
           {/* Left: Brand Logo */}
           <a href="#" className="flex items-center group focus:outline-none" aria-label="Home">
             <img
               src={logo}
               alt="Number 9"
-              className="h-10 sm:h-18 w-auto object-contain block transition-transform group-hover:scale-[1.02]"
+              className="h-10 sm:h-15 w-auto object-contain block transition-transform group-hover:scale-[1.02]"
             />
           </a>
 
@@ -61,7 +61,7 @@ export default function AppNav({ activeDropdown, setActiveDropdown, onNavigate }
           <div className="flex items-center gap-4 sm:gap-6">
             <a
               href="#contact"
-              className="px-5 sm:px-7 py-2 sm:py-4.5 rounded-full border-3 border-slate-200  text-[14px] sm:text-[17px] font-semibold bg-white hover:border-slate-900 hover:text-black transition-all duration-200 shadow-[0_1px_2px_rgba(0,0,0,0.04)] whitespace-nowrap"
+              className="px-5 sm:px-7 py-2 sm:py-3 rounded-full border-3 border-slate-200  text-[14px] sm:text-[17px] font-semibold bg-white hover:border-slate-900 hover:text-black transition-all duration-200 shadow-[0_1px_2px_rgba(0,0,0,0.04)] whitespace-nowrap"
             >
               Schedule a Call
             </a>
@@ -90,13 +90,13 @@ export default function AppNav({ activeDropdown, setActiveDropdown, onNavigate }
         }}
       >
         {/* Top Header Row inside Overlay - Full width matching closed navbar */}
-        <div className="w-full px-6 sm:px-10 lg:px-16 py-4 sm:py-7 flex items-center justify-between shrink-0">
+        <div className="w-full px-6 sm:px-10 lg:px-18 py-4 sm:py-7 flex items-center justify-between shrink-0">
 
           <div className="flex items-center">
             <img
               src={whiteLogo}
               alt="Number 9"
-              className="h-9 sm:h-18 w-auto object-contain block brightness-0 invert"
+              className="h-9 sm:h-15 w-auto object-contain block brightness-0 invert"
             />
           </div>
 

@@ -1,138 +1,300 @@
-import React, { useState } from 'react';
-import { ChevronRight, Check } from 'lucide-react';
-import lexusHeroBg from '../assets/lexus/lexusHeroImg.webp';
 
-export default function LexusHeroSection({ onNavigate }) {
-  const [email, setEmail] = useState('');
+import React, { useState } from "react";
+import { ChevronRight, Check } from "lucide-react";
+import lexusHeroBg from "../assets/lexus/lexusHeroImg.webp";
+
+export default function LexusHeroSection({ onNavigate, onSubmit }) {
+  const [email, setEmail] = useState("");
   const [isSent, setIsSent] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!email) return;
-    setIsSent(true);
-    setTimeout(() => {
-      setIsSent(false);
-      setEmail('');
-    }, 3500);
-  };
+    if (!email || isSent) return;
 
-  const handleCaseStudiesClick = () => {
-    if (onNavigate) {
-      onNavigate('our-work');
+    // Only show success after an actual submission succeeds.
+    if (!onSubmit) return;
+
+    try {
+      await onSubmit(email);
+      setIsSent(true);
+      setEmail("");
+      setTimeout(() => setIsSent(false), 3500);
+    } catch (error) {
+      console.error("Case study submission failed:", error);
     }
   };
 
   return (
-    <section className="relative w-full bg-[#080808] text-white overflow-hidden">
-      {/* Background car image */}
-      <div className="absolute inset-0 z-0 pointer-events-none select-none">
+    <section className="relative w-full overflow-hidden bg-[#080808] text-white">
+      {/* BACKGROUND */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <img
           src={lexusHeroBg}
           alt="Lexus Luxury Automotive"
-          className="w-full h-full object-cover object-center lg:object-[center_35%]"
+          className="
+            h-full w-full object-cover
+            object-center lg:object-[center_35%]
+          "
         />
-        {/* Subtle dark gradient overlay to ensure perfect contrast across all devices */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/35 to-transparent pointer-events-none" />
+
+        <div
+          className="
+            absolute inset-0
+            bg-gradient-to-b
+            from-black/65 via-black/55 to-black/75
+            lg:bg-gradient-to-r
+            lg:from-black/80 lg:via-black/35 lg:to-transparent
+          "
+        />
       </div>
 
-      {/* Main content container */}
-      <div className="relative z-10 max-w-[1680px] mx-auto px-5 sm:px-8 lg:px-14 xl:px-20 pt-8 sm:pt-10 lg:pt-12 pb-14 sm:pb-16 lg:pb-20">
-        
-        {/* Breadcrumb: > Case Studies > Lexus */}
-        <nav className="flex items-center gap-2 text-[13px] sm:text-[16px] text-white/90 font-grift-medium mb-10 sm:mb-14 lg:mb-16">
-          <ChevronRight className="w-3.5 h-3.5 text-white/80 shrink-0 stroke-[2.5]" />
+      {/* MAIN CONTAINER */}
+      <div
+        className="
+          relative z-10 mx-auto
+          max-w-[1680px]
+          px-[18px] sm:px-8 lg:px-14 xl:px-20
+          pt-[52px] sm:pt-10 lg:pt-12
+          pb-[46px] sm:pb-16 lg:pb-20
+        "
+      >
+        {/* BREADCRUMB */}
+        <nav
+          className="
+            flex items-center gap-[16px]
+            font-grift-semibold
+            text-[16px]
+            text-white
+            mb-[42px] sm:mb-14 lg:mb-16
+          "
+        >
+          <ChevronRight className="h-[18px] w-[18px] shrink-0 stroke-[3]" />
+
           <button
             type="button"
-            onClick={handleCaseStudiesClick}
-            className="text-white/90 hover:text-white transition-colors cursor-pointer"
+            onClick={() => onNavigate?.("our-work")}
+            className="cursor-pointer transition-colors hover:text-white/75"
           >
-            Case Studies
+            Our Clients
           </button>
-          <ChevronRight className="w-3.5 h-3.5 text-white/80 shrink-0 stroke-[2.5]" />
-          <span className="text-white font-grift-medium">Lexus</span>
+
+          <ChevronRight className="h-[18px] w-[18px] shrink-0 stroke-[3]" />
+
+          <span>Lexus</span>
         </nav>
 
-        {/* Hero grid / layout */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 lg:gap-12 xl:gap-16">
-          
-          {/* Left column: Title & tags */}
-          <div className="w-full lg:max-w-[720px] xl:max-w-[820px]">
-            {/* Eyebrow */}
-            <p className="font-grift-semibold text-[10px] sm:text-[12px] lg:text-[13px] tracking-[0.16em] sm:tracking-[0.24em] text-[#b0b0b0] uppercase mb-4 sm:mb-5">
+        {/* HERO CONTENT */}
+        <div
+          className="
+            flex flex-col
+            lg:flex-row lg:items-center lg:justify-between
+            gap-0 lg:gap-12 xl:gap-16
+          "
+        >
+          {/* LEFT CONTENT */}
+          <div className="w-full min-w-0 lg:max-w-[720px] xl:max-w-[820px]">
+            {/* SUBHEADING */}
+            <p
+              className="
+                font-grift-bold
+                text-[18px] lg:text-[13px]
+                leading-[1.25]
+                tracking-[0.23em] lg:tracking-[0.16em]
+                text-[#B9B9B9]
+                uppercase
+                mb-[26px] lg:mb-5
+                max-w-[390px] lg:max-w-none
+              "
+            >
               LEXUS CASE STUDY - LUXURY AUTOMOTIVE
             </p>
 
-            {/* Title */}
-            <h1 className="font-grift-semibold text-[34px] sm:text-[50px] md:text-[62px] lg:text-[70px] xl:text-[80px] leading-[1.04] tracking-[-0.03em] text-white mb-6 sm:mb-7">
-              Digital Experience<br />Redefined
+            {/* MOBILE HEADING */}
+            <h1
+              className="
+                lg:hidden
+                font-grift-extrabold
+                text-[45px]
+                leading-[1.09]
+                tracking-[-0.035em]
+                text-white
+                m-0
+              "
+            >
+              Elevating Luxury Customer Experiences Across North America
             </h1>
 
-            {/* Green horizontal accent bar */}
-            <div className="w-[48px] h-[3.5px] bg-[#3fc000] rounded-[1px] mb-8 sm:mb-9" />
+            {/* DESKTOP HEADING */}
+            <h1
+              className="
+                hidden lg:block
+                font-grift-semibold
+                lg:text-[70px] xl:text-[80px]
+                leading-[1.04]
+                tracking-[-0.03em]
+                text-white
+                mb-7
+              "
+            >
+              Digital Experience
+              <br />
+              Redefined
+            </h1>
 
-            {/* Tags / Pills in 2 rows matching reference */}
-            <div className="flex flex-col gap-3 sm:gap-3.5">
-              {/* Row 1 */}
-              <div className="flex flex-wrap items-center gap-2.5 sm:gap-3.5">
-                <span className="inline-flex items-center px-4 sm:px-5 py-1.5 sm:py-2 rounded-full border border-white/70 text-white font-grift-medium text-[13px] sm:text-[14px] lg:text-[20px] bg-black/25 backdrop-blur-[2px] hover:border-white hover:bg-white/10 transition-colors select-none">
-                  UI/UX Design
-                </span>
-                <span className="inline-flex items-center px-4 sm:px-5 py-1.5 sm:py-2 rounded-full border border-white/70 text-white font-grift-medium text-[13px] sm:text-[14px] lg:text-[20px] bg-black/25 backdrop-blur-[2px] hover:border-white hover:bg-white/10 transition-colors select-none">
-                  Interactive Experience
-                </span>
-                <span className="inline-flex items-center px-4 sm:px-5 py-1.5 sm:py-2 rounded-full border border-white/70 text-white font-grift-medium text-[13px] sm:text-[14px] lg:text-[20px] bg-black/25 backdrop-blur-[2px] hover:border-white hover:bg-white/10 transition-colors select-none">
-                  Vehicle Customization
-                </span>
+            {/* DESKTOP ACCENT */}
+            <div
+              className="
+                hidden lg:block
+                w-[48px] h-[3.5px]
+                bg-[#3fc000]
+                rounded-[1px]
+                mb-9
+              "
+            />
+
+            {/* DESKTOP TAGS */}
+            <div className="hidden lg:flex flex-col gap-3.5">
+              <div className="flex flex-wrap gap-3.5">
+                {[
+                  "UI/UX Design",
+                  "Interactive Experience",
+                  "Vehicle Customization",
+                ].map((tag) => (
+                  <span
+                    key={tag}
+                    className="
+                      inline-flex items-center
+                      rounded-full
+                      border border-white/70
+                      bg-black/25
+                      px-5 py-2
+                      font-grift-medium
+                      text-[20px]
+                      text-white
+                    "
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
 
-              {/* Row 2 */}
-              <div className="flex flex-wrap items-center gap-2.5 sm:gap-3.5">
-                <span className="inline-flex items-center px-4 sm:px-5 py-1.5 sm:py-2 rounded-full border border-white/70 text-white font-grift-medium text-[13px] sm:text-[14px] lg:text-[20px] bg-black/25 backdrop-blur-[2px] hover:border-white hover:bg-white/10 transition-colors select-none">
-                  Digital Experience
-                </span>
-                <span className="inline-flex items-center px-4 sm:px-5 py-1.5 sm:py-2 rounded-full border border-white/70 text-white font-grift-medium text-[13px] sm:text-[14px] lg:text-[20px] bg-black/25 backdrop-blur-[2px] hover:border-white hover:bg-white/10 transition-colors select-none">
-                  Mutimedia Experience
-                </span>
+              <div className="flex flex-wrap gap-3.5">
+                {[
+                  "Digital Experience",
+                  "Multimedia Experience",
+                ].map((tag) => (
+                  <span
+                    key={tag}
+                    className="
+                      inline-flex items-center
+                      rounded-full
+                      border border-white/70
+                      bg-black/25
+                      px-5 py-2
+                      font-grift-medium
+                      text-[20px]
+                      text-white
+                    "
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Right column: Floating PDF Subscription Card */}
-          <div className="w-full lg:w-auto flex justify-start lg:justify-end pt-2 lg:pt-0 lg:pr-4 xl:pr-10">
-            <div className="w-full sm:w-[380px] lg:w-[390px] xl:w-[410px] bg-white rounded-[22px] sm:rounded-[26px] p-5 sm:p-7 shadow-[0_22px_60px_rgba(0,0,0,0.45)] text-[#1a1a1a]">
-              <p className="font-grift-medium text-[14px] sm:text-[16px] text-[#222222] mb-3.5 sm:mb-4 leading-snug">
+          {/* PDF CARD */}
+          <div
+            className="
+              w-full flex justify-start
+              mt-[51px]
+              lg:mt-0
+              lg:w-auto lg:justify-end
+              lg:pr-4 xl:pr-10
+            "
+          >
+            <div
+              className="
+                w-full
+                lg:w-[390px] xl:w-[410px]
+                bg-white
+                text-[#222222]
+                rounded-[28px] lg:rounded-[26px]
+                px-[34px] py-[28px]
+                lg:p-7
+                shadow-[0_22px_60px_rgba(0,0,0,0.35)]
+              "
+            >
+              <p
+                className="
+                  font-grift-medium
+                  text-[20px] lg:text-[16px]
+                  leading-[1.32]
+                  mb-[17px] lg:mb-4
+                "
+              >
                 Get this case study in PDF to your inbox.
               </p>
 
-              <form onSubmit={handleSubmit} className="flex items-center gap-2 sm:gap-2.5">
+              <form
+                onSubmit={handleSubmit}
+                className="flex items-center gap-[20px] lg:gap-2.5"
+              >
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your email"
                   required
-                  className="w-full min-w-0 flex-1 h-[42px] sm:h-[46px] px-3.5 sm:px-4 rounded-[10px] border border-[#cfd4dc] text-[13px] sm:text-[15px] text-[#111] placeholder:text-[#9ca3af] focus:outline-none focus:border-[#3fc000] focus:ring-1 focus:ring-[#3fc000] transition-colors"
+                  className="
+                    w-full min-w-0 flex-1
+                    h-[61px] lg:h-[46px]
+                    px-[15px]
+                    rounded-[11px]
+                    border border-[#999999]
+                    bg-white
+                    font-grift-medium
+                    text-[20px] lg:text-[15px]
+                    text-[#222222]
+                    placeholder:text-[#929292]
+                    outline-none
+                    focus:border-[#35C900]
+                    focus:ring-1 focus:ring-[#35C900]
+                    transition-colors
+                  "
                 />
+
                 <button
                   type="submit"
-                  disabled={isSent}
-                  className="h-[42px] sm:h-[46px] px-5 sm:px-7 rounded-[10px] bg-[#3fc000] hover:bg-[#36a800] active:scale-95 text-white font-grift-semibold text-[13px] sm:text-[15px] transition-all cursor-pointer shrink-0 flex items-center justify-center gap-1.5 shadow-sm"
+                  disabled={isSent || !onSubmit}
+                  className="
+                    h-[61px] lg:h-[46px]
+                    px-[21px] lg:px-7
+                    shrink-0
+                    rounded-[11px]
+                    bg-[#35C900]
+                    font-grift-medium
+                    text-[20px] lg:text-[15px]
+                    text-white
+                    flex items-center justify-center gap-1.5
+                    transition-colors
+                    hover:bg-[#2DB500]
+                    disabled:opacity-60
+                  "
                 >
                   {isSent ? (
                     <>
-                      <Check className="w-4 h-4" />
-                      <span>Sent</span>
+                      <Check className="h-4 w-4" />
+                      Sent
                     </>
                   ) : (
-                    'Send'
+                    "Send"
                   )}
                 </button>
               </form>
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
   );

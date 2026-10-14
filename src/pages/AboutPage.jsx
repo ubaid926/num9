@@ -33,7 +33,7 @@ function AboutHero() {
             <div className="flex items-center gap-2 mb-2 sm:mb-4">
               <span className="w-[5px] h-[5px] sm:w-2 sm:h-2 rounded-full bg-[#15B83E] shrink-0" />
 
-              <span className="font-grift-semibold font-semibold text-[11.62px] tracking-[0.28em] sm:text-[15px] sm:tracking-[0.22em] lg:text-[17px] xl:text-[21px] uppercase text-[#333]">
+              <span className=" font-semibold text-[11.62px] tracking-[0.28em] sm:text-[15px] sm:tracking-[0.22em] lg:text-[17px] xl:text-[21px] uppercase text-[#333]">
                 About Number9
               </span>
             </div>
