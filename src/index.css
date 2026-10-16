@@ -160,3 +160,25 @@ body {
   overflow-x: hidden;
   max-width: 100%;
 }
+
+@keyframes number9LogoPulse {
+  0%, 100% {
+    opacity: 0.04;
+  }
+
+  50% {
+    opacity: 0.18;
+  }
+}
+
+.animate-number9-pulse {
+  animation: number9LogoPulse 4s ease-in-out infinite;
+  will-change: opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-number9-pulse {
+    animation: none;
+    opacity: 0.1;
+  }
+}

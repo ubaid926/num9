@@ -412,7 +412,7 @@ const CaseStudies = () => {
 
 
 
-        <div
+        {/* <div
 
           className="
 
@@ -492,7 +492,7 @@ const CaseStudies = () => {
 
           </p>
 
-        </div>
+        </div> */}
 
 
 

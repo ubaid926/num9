@@ -1,43 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowRight, X, Menu } from 'lucide-react';
-import logo from '../assets/logoGreen.webp';
-import whiteLogo from '../assets/logoWhite.webp';
+import React, { useState, useEffect } from "react";
+import { ArrowRight, X, Menu } from "lucide-react";
+import logo from "../assets/logoGreen.webp";
+import whiteLogo from "../assets/logoWhite.webp";
 
-export default function AppNav({ activeDropdown, setActiveDropdown, onNavigate }) {
+export default function AppNav({
+  activeDropdown,
+  setActiveDropdown,
+  onNavigate,
+}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   // Close menu on Escape key
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         setIsMenuOpen(false);
       }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   // Lock body scroll when full-screen menu is open
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-      if (setActiveDropdown) setActiveDropdown('menu-open');
+      document.body.style.overflow = "hidden";
+      if (setActiveDropdown) setActiveDropdown("menu-open");
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
       if (setActiveDropdown) setActiveDropdown(null);
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [isMenuOpen, setActiveDropdown]);
 
   const menuItems = [
-    { label: 'Home',     href: '#',        isPage: 'home'     },
-    { label: 'Services', href: '#',        isPage: 'services' },
-    { label: 'About Us', href: '#',        isPage: 'about'    },
-    { label: 'Contact',  href: '#',        isPage: 'contact'  },
-    { label: 'Our Work', href: '#',        isPage: 'our-work' },
+    { label: "Home", href: "#", isPage: "home" },
+    { label: "About Us", href: "#", isPage: "about" },
+    { label: "Services", href: "#", isPage: "services" },
+    { label: "Our Work", href: "#", isPage: "our-work" },
+    { label: "Contact", href: "#", isPage: "contact" },
   ];
 
   return (
@@ -47,9 +51,12 @@ export default function AppNav({ activeDropdown, setActiveDropdown, onNavigate }
       ────────────────────────────────────────────────────────── */}
       <header className="w-full bg-white sticky top-0 z-40 transition-all duration-200">
         <div className="w-full px-6 sm:px-10 lg:px-18 py-3 sm:py-4 lg:py-4 flex items-center justify-between">
-
           {/* Left: Brand Logo */}
-          <a href="#" className="flex items-center group focus:outline-none" aria-label="Home">
+          <a
+            href="#"
+            className="flex items-center group focus:outline-none"
+            aria-label="Home"
+          >
             <img
               src={logo}
               alt="Number 9"
@@ -75,7 +82,6 @@ export default function AppNav({ activeDropdown, setActiveDropdown, onNavigate }
               <Menu className="w-6 h-6 text-slate-900" strokeWidth={1.8} />
             </button>
           </div>
-
         </div>
       </header>
 
@@ -83,15 +89,27 @@ export default function AppNav({ activeDropdown, setActiveDropdown, onNavigate }
           2. OPENED FULL-SCREEN MENU (Full width across screen corners)
       ────────────────────────────────────────────────────────── */}
       <div
-        className={`fixed inset-0 z-[100] bg-[#0e7428] text-white flex flex-col justify-between transition-all duration-400 ease-in-out overflow-y-auto ${isMenuOpen ? 'opacity-100 pointer-events-auto visible' : 'opacity-0 pointer-events-none invisible'
-          }`}
+        className={`fixed inset-0 z-[100] bg-[#0e7428] text-white flex flex-col justify-between transition-all duration-400 ease-in-out overflow-y-auto ${
+          isMenuOpen
+            ? "opacity-100 pointer-events-auto visible"
+            : "opacity-0 pointer-events-none invisible"
+        }`}
         style={{
-          backgroundImage: 'linear-gradient(135deg, #0d6b24 0%, #0e7428 50%, #11842e 100%)',
+          backgroundImage:
+            "linear-gradient(135deg, #0d6b24 0%, #0e7428 50%, #11842e 100%)",
         }}
       >
+        {/* Animated Number9 Background Logo */}
+        <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none overflow-hidden">
+          <img
+            src={whiteLogo}
+            alt=""
+            aria-hidden="true"
+            className="w-[85%] sm:w-[70%] lg:w-[60%] max-w-[900px] h-auto object-contain animate-number9-pulse select-none"
+          />
+        </div>
         {/* Top Header Row inside Overlay - Full width matching closed navbar */}
-        <div className="w-full px-6 sm:px-10 lg:px-18 py-4 sm:py-7 flex items-center justify-between shrink-0">
-
+        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-18 py-4 sm:py-7 flex items-center justify-between shrink-0">
           <div className="flex items-center">
             <img
               src={whiteLogo}
@@ -110,9 +128,8 @@ export default function AppNav({ activeDropdown, setActiveDropdown, onNavigate }
         </div>
 
         {/* Content Container */}
-        <div className="w-full px-6 sm:px-10 lg:px-16 flex-1 flex flex-col justify-center py-6 sm:py-10">
+        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-16 flex-1 flex flex-col justify-center py-6 sm:py-10">
           <div className="w-full max-w-xl lg:max-w-2xl">
-
             <div className="w-full h-[1px] bg-white/40" />
 
             <nav className="flex flex-col">
@@ -122,7 +139,7 @@ export default function AppNav({ activeDropdown, setActiveDropdown, onNavigate }
                 return (
                   <div key={item.label} className="w-full">
                     <a
-                      href={item.isPage ? '#' : item.href}
+                      href={item.isPage ? "#" : item.href}
                       onClick={(e) => {
                         if (item.isPage && onNavigate) {
                           e.preventDefault();
@@ -131,10 +148,11 @@ export default function AppNav({ activeDropdown, setActiveDropdown, onNavigate }
                         setIsMenuOpen(false);
                       }}
                       onMouseEnter={() => setHoveredIndex(idx)}
-                      className={`block w-full py-2.5 sm:py-3 transition-all duration-150 text-[18px] sm:text-[22px] lg:text-[24px] tracking-tight ${isHovered
-                          ? 'bg-white text-[#0e7428] font-bold px-4 -mx-0 shadow-sm'
-                          : 'text-white font-bold px-1 hover:text-white/90'
-                        }`}
+                      className={`block w-full py-2.5 sm:py-3 transition-all duration-150 text-[18px] sm:text-[22px] lg:text-[24px] tracking-tight ${
+                        isHovered
+                          ? "bg-white text-[#0e7428] font-bold px-4 -mx-0 shadow-sm"
+                          : "text-white font-bold px-1 hover:text-white/90"
+                      }`}
                     >
                       {item.label}
                     </a>
@@ -145,7 +163,7 @@ export default function AppNav({ activeDropdown, setActiveDropdown, onNavigate }
               })}
             </nav>
 
-            <div className="pt-6 sm:pt-8">
+            {/* <div className="pt-6 sm:pt-8">
               <a
                 href="#contact"
                 onClick={() => setIsMenuOpen(false)}
@@ -154,12 +172,11 @@ export default function AppNav({ activeDropdown, setActiveDropdown, onNavigate }
                 <span>Contact Us</span>
                 <ArrowRight className="w-5 h-5 text-slate-900 group-hover:translate-x-1 transition-transform duration-200" />
               </a>
-            </div>
-
+            </div> */}
           </div>
         </div>
 
-        <div className="h-6 sm:h-10 shrink-0" />
+        <div className="relative z-10 h-6 sm:h-10 shrink-0" />
       </div>
     </>
   );

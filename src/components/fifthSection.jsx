@@ -74,23 +74,24 @@ import retailMarketingIcon from '../assets/speaker 1 (2).png';
 
 
 
-import layer4 from '../assets/Layer 4 2.png';
+import layer4 from '../assets/Logos/Layer 4.png';
+// import microsoftLogo from '../assets/microsoftLogo.png';
 
 
 
-import layer6 from '../assets/Layer 6 2.png';
+import layer6 from '../assets/Logos/Layer 6.png';
 
 
 
-import layer7 from '../assets/Layer 7 2.png';
+import layer7 from '../assets/Logos/Layer 7.png';
 
 
 
-import layer11 from '../assets/Layer 11 2.png';
+import layer11 from '../assets/Logos/Layer 11.png';
 
 
 
-import layer12 from '../assets/Layer 12 2.png';
+import layer12 from '../assets/Logos/Layer 12.png';
 
 
 
@@ -415,6 +416,8 @@ const testimonials = [
 
 
     logoAlt: 'PepsiCo',
+    logoWidth: 145,
+    logoHeight: 60,
 
 
 
@@ -435,6 +438,8 @@ const testimonials = [
 
 
     logoAlt: 'Lexus',
+    logoWidth: 125,
+    logoHeight: 55,
 
 
 
@@ -455,6 +460,8 @@ const testimonials = [
 
 
     logoAlt: 'Citibank',
+    logoWidth: 140,
+    logoHeight: 55,
 
 
 
@@ -475,6 +482,8 @@ const testimonials = [
 
 
     logoAlt: 'Safeway',
+    logoWidth: 132,
+    logoHeight: 78,
 
 
 
@@ -495,6 +504,8 @@ const testimonials = [
 
 
     logoAlt: 'Emirates',
+    logoWidth: 145,
+    logoHeight: 65,
 
 
 
@@ -510,11 +521,13 @@ const testimonials = [
 
 
 
-    logo: layer4,
+    logo: microsoftLogo,
 
 
 
     logoAlt: 'Microsoft',
+    logoWidth: 165,
+    logoHeight: 55,
 
 
 
@@ -535,6 +548,8 @@ const testimonials = [
 
 
     logoAlt: 'Nutrien',
+    logoWidth: 140,
+    logoHeight: 57,
 
 
 
@@ -882,7 +897,10 @@ export default function FifthSection() {
 
 
 
-  const [offset, setOffset] = useState(0);
+  const [offset, setOffset] = useState(testimonials.length);
+  const [isLoopResetting, setIsLoopResetting] = useState(false);
+  const isSliding = useRef(false);
+  const loopingCards = [...testimonials, ...testimonials, ...testimonials];
 
 
 
@@ -1015,51 +1033,39 @@ export default function FifthSection() {
 
 
 
-  const maxOffset = Math.max(0, testimonials.length - visibleCount);
+    // Three copies keep the next and previous cards available at both ends.
+  const prev = () => {
+    if (isSliding.current || isLoopResetting) return;
+    isSliding.current = true;
+    setOffset((current) => current - 1);
+  };
 
+  const next = () => {
+    if (isSliding.current || isLoopResetting) return;
+    isSliding.current = true;
+    setOffset((current) => current + 1);
+  };
 
+  const handleCarouselTransitionEnd = (e) => {
+    if (e.target !== e.currentTarget || e.propertyName !== 'transform') return;
 
+    const count = testimonials.length;
+    if (offset < count || offset >= count * 2) {
+      // Jump to the identical card in the middle copy, invisibly.
+      setIsLoopResetting(true);
+      setOffset((current) => current < count ? current + count : current - count);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsLoopResetting(false);
+          isSliding.current = false;
+        });
+      });
+    } else {
+      isSliding.current = false;
+    }
+  };
 
-
-
-
-  const canPrev = offset > 0;
-
-
-
-  const canNext = offset < maxOffset;
-
-
-
-
-
-
-
-  const prev = () => { if (canPrev) setOffset((p) => p - 1); };
-
-
-
-  const next = () => { if (canNext) setOffset((p) => p + 1); };
-
-
-
-
-
-
-
-  useEffect(() => {
-
-
-
-    if (offset > maxOffset) setOffset(maxOffset);
-
-
-
-  }, [offset, maxOffset]);
-
-
-
-  const desktopTrackWidth =
+const desktopTrackWidth =
 
 
 
@@ -1159,7 +1165,7 @@ export default function FifthSection() {
 
 
 
-              Trusted by industry leaders across North America.
+              Trusted by industry leaders across America.
 
 
 
@@ -1231,7 +1237,7 @@ export default function FifthSection() {
 
 
 
-    className="flex w-max transition-transform duration-500 ease-in-out px-4 lg:px-0"
+    className={`flex w-max ease-in-out px-4 lg:px-0 ${isLoopResetting ? 'transition-none' : 'transition-transform duration-500'}`}
 
 
 
@@ -1240,6 +1246,7 @@ export default function FifthSection() {
 
 
     onTouchEnd={handleTouchEnd}
+    onTransitionEnd={handleCarouselTransitionEnd}
 
 
 
@@ -1267,7 +1274,7 @@ export default function FifthSection() {
 
 
 
-              {testimonials.map((t, i) => (
+              {loopingCards.map((t, i) => (
 
 
 
@@ -1335,11 +1342,11 @@ export default function FifthSection() {
 
 
 
-                        width: isUltra ? `${ULTRA_LOGO_W}px` : '110px',
+                        width: `${t.logoWidth}px`,
 
 
 
-                        height: isUltra ? `${ULTRA_LOGO_H}px` : '49px',
+                        height: `${t.logoHeight}px`,
 
 
 
@@ -1451,7 +1458,7 @@ export default function FifthSection() {
 
 
 
-              disabled={!canPrev}
+              
 
 
 
@@ -1459,19 +1466,7 @@ export default function FifthSection() {
 
 
 
-                ${canPrev
-
-
-
-                  ? 'border-[#11C911] text-[#11C911] hover:bg-[#11C911] hover:text-white cursor-pointer'
-
-
-
-                  : 'border-[#11C911]/30 text-[#11C911]/30 cursor-not-allowed'
-
-
-
-                }`}
+                border-[#11C911] text-[#11C911] hover:bg-[#11C911] hover:text-white cursor-pointer`}
 
 
 
@@ -1495,7 +1490,7 @@ export default function FifthSection() {
 
 
 
-              disabled={!canNext}
+              
 
 
 
@@ -1503,19 +1498,7 @@ export default function FifthSection() {
 
 
 
-                ${canNext
-
-
-
-                  ? 'border-[#11C911] text-[#11C911] hover:bg-[#11C911] hover:text-white cursor-pointer'
-
-
-
-                  : 'border-[#11C911]/30 text-[#11C911]/30 cursor-not-allowed'
-
-
-
-                }`}
+                border-[#11C911] text-[#11C911] hover:bg-[#11C911] hover:text-white cursor-pointer`}
 
 
 

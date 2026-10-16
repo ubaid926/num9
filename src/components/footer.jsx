@@ -82,7 +82,7 @@ const Footer = () => {
             "
           >
             {/* LOGO */}
-            <div className="flex items-start">
+            <div className="flex justify-end items-start">
               <a href="#" className="flex items-center" aria-label="Home">
                 <img
                   src={logo}
