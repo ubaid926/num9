@@ -1,16 +1,20 @@
-@font-face {
-  font-family: "Outfit";
-  src: url("./fonts/Outfit-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
+@import "tailwindcss";
 
-/* Grift font family */
+/* ─── Grift Font Family (All Weights) ─────────────────────────────────────── */
 @font-face {
   font-family: "Grift";
   src: url("./fonts/grift-light.ttf") format("truetype");
-  font-weight: 300;
+  font-weight: 100 300;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Grift";
+  src: url("./fonts/grift-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -18,6 +22,7 @@
   src: url("./fonts/grift-medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -25,6 +30,23 @@
   src: url("./fonts/grift-semibold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Grift";
+  src: url("./fonts/grift-semibold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Grift";
+  src: url("./fonts/grift-extrabold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -32,31 +54,150 @@
   src: url("./fonts/grift-black.ttf") format("truetype");
   font-weight: 900;
   font-style: normal;
+  font-display: swap;
 }
 
-@import "tailwindcss";
+/* ─── Named Aliases to Grift ──────────────────────────────────────────────── */
+@font-face {
+  font-family: "Outfit";
+  src: url("./fonts/grift-regular.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GriftLight";
+  src: url("./fonts/grift-light.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GriftRegular";
+  src: url("./fonts/grift-regular.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GriftMedium";
+  src: url("./fonts/grift-medium.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Griftsemibold";
+  src: url("./fonts/grift-semibold.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GriftSemibold";
+  src: url("./fonts/grift-semibold.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GriftExtrabold";
+  src: url("./fonts/grift-extrabold.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GriftBlack";
+  src: url("./fonts/grift-black.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 @theme {
-  --font-outfit: Outfit;
+  --font-outfit: "Grift";
+  --font-grift: "Grift";
+  --font-grift-light: "Grift";
+  --font-grift-regular: "Grift";
+  --font-grift-medium: "Grift";
+  --font-grift-semibold: "Grift";
+  --font-grift-extrabold: "Grift";
+  --font-grift-black: "Grift";
 }
 
-/* ─── Reusable Grift font utility classes ─────────────────────────────────── */
+/* ─── Global Strict Typography (Grift Only, No Fallback) ─────────────────── */
+*,
+*::before,
+*::after {
+  font-family: "Grift" !important;
+  font-synthesis: none !important;
+}
+
+html,
+body {
+  font-family: "Grift" !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: "Grift" !important;
+}
+
+/* ─── Consistent Typography Utility Classes (Grift) ───────────────────────── */
+.font-outfit {
+  font-family: "Grift" !important;
+}
+
 .font-grift-light {
-  font-family: "Grift", sans-serif;
-  font-weight: 300;
+  font-family: "Grift" !important;
+  font-weight: 300 !important;
 }
+
+.font-grift-regular {
+  font-family: "Grift" !important;
+  font-weight: 400 !important;
+}
+
 .font-grift-medium {
-  font-family: "Grift", sans-serif;
-  font-weight: 500;
+  font-family: "Grift" !important;
+  font-weight: 500 !important;
 }
+
 .font-grift-semibold {
-  font-family: "Grift", sans-serif;
-  font-weight: 600;
+  font-family: "Grift" !important;
+  font-weight: 600 !important;
+  font-synthesis: none;
 }
+
+.font-grift-extrabold {
+  font-family: "Grift" !important;
+  font-weight: 800 !important;
+}
+
 .font-grift-black {
-  font-family: "Grift", sans-serif;
-  font-weight: 900;
+  font-family: "Grift" !important;
+  font-weight: 900 !important;
 }
+
+.font-grift {
+  font-family: "Grift" !important;
+}
+/* ─────────────────────────────────────────────────────────────────────────── */
 /* ─────────────────────────────────────────────────────────────────────────── */
 
 @layer utilities {

@@ -1,106 +1,248 @@
-import React from 'react';
-import AppNav from '../components/nav';
-import AccelerateBusinessSection from '../components/AccelerateBusinessSection';
-import Footer from '../components/footer';
-import aboutHeroImage from '../assets/aboutHeroImage.webp';
-import aboutus3rdSect from '../assets/aboutus3rdSect.webp';
+import React, { useState, useEffect, useRef } from "react";
+import AppNav from "../components/nav";
+import AccelerateBusinessSection from "../components/AccelerateBusinessSection";
+import Footer from "../components/footer";
+import aboutHeroImage from "../assets/aboutHeroImage.webp";
+import aboutus3rdSect from "../assets/aboutus3rdSect.webp";
 
 /* ─── Brand logos ─────────────────────────────────────────── */
-import pepsicoLogo   from '../assets/pepsicoLogo.png';
-import lexusLogo     from '../assets/lexusLogo.png';
-import citibankLogo  from '../assets/citibankLogo.png';
-import emiratesLogo  from '../assets/emiratesLogo.png';
-import microsoftLogo from '../assets/microsoftLogo.png';
-import safewayLogo   from '../assets/safewayLogo.png';
-import magellanLogo  from '../assets/magellanLogo.jpg';
-import argoLogo      from '../assets/argoLogo.jpg';
-import nutrienLogo   from '../assets/nutrienLogo.png';
+import pepsicoLogo from "../assets/pepsicoLogo.png";
+import lexusLogo from "../assets/lexusLogo.png";
+import citibankLogo from "../assets/citibankLogo.png";
+import emiratesLogo from "../assets/emiratesLogo.png";
+import microsoftLogo from "../assets/microsoftLogo.png";
+import safewayLogo from "../assets/safewayLogo.png";
+import magellanLogo from "../assets/magellanLogo.jpg";
+import argoLogo from "../assets/argoLogo.jpg";
+import nutrienLogo from "../assets/nutrienLogo.png";
 
 /* ─── About Hero ─────────────────────────────────────────── */
 
 function AboutHero() {
   return (
     <section className="w-full bg-white">
-      <div className="max-w-[1640px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 pt-5 sm:pt-10 lg:pt-12 pb-6 sm:pb-8 lg:pb-10">
+      <div
+        className="
+          w-full max-w-[1814px] mx-auto
+          px-[6.4%] sm:px-8 md:px-10
+          lg:px-[60px] xl:px-[100px]
+          pt-[70px] sm:pt-10 lg:pt-[30px]
+          pb-[70px] sm:pb-12 lg:pb-[60px]
+        "
+      >
+        {/* TOP CONTENT */}
+        <div
+          className="
+            grid grid-cols-1
+            lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.95fr)]
+            gap-0 lg:gap-[65px] xl:gap-[80px]
+            mb-[32px] sm:mb-12 lg:mb-[78px]
+            lg:mt-[80px]
+          "
+        >
+          {/* LEFT CONTENT */}
+          <div className="min-w-0">
+            {/* EYEBROW */}
+            <div
+              className="
+                flex items-center
+                gap-[20px] lg:gap-[24px]
+                mb-[26px] lg:mb-[34px]
+              "
+            >
+              <span
+                className="
+                  w-[8px] h-[8px]
+                  lg:w-[9px] lg:h-[9px]
+                  rounded-full bg-[#119E0B]
+                  shrink-0
+                "
+              />
 
-        {/* Heading + desktop description */}
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between lg:gap-16 mb-3 sm:mb-8 lg:mb-10">
-
-          {/* LEFT: Eyebrow + heading */}
-          <div className="w-full lg:flex-1 lg:min-w-0 lg:max-w-[540px] xl:max-w-[720px]">
-
-            {/* Eyebrow */}
-            <div className="flex items-center gap-2 mb-2 sm:mb-4">
-              <span className="w-[5px] h-[5px] sm:w-2 sm:h-2 rounded-full bg-[#15B83E] shrink-0" />
-
-              <span className=" font-semibold text-[11.62px] tracking-[0.28em] sm:text-[15px] sm:tracking-[0.22em] lg:text-[17px] xl:text-[21px] uppercase text-[#333]">
+              <span
+                className="
+                  font-grift-semibold uppercase
+                  text-[clamp(11px,2.1vw,14px)]
+                  sm:text-[16px] lg:text-[19px]
+                  tracking-[0.28em]
+                  text-[#555353]
+                "
+              >
                 About Number9
               </span>
             </div>
 
-            {/* Main heading */}
-            <h1 className="font-grift-semibold font-semibold text-[34.73px] leading-[1.08] tracking-[-0.03em] sm:text-[48px] md:text-[54px] lg:text-[60px] xl:text-[70px] text-[#111]">
-              Creative thinking.
-              <br />
-              <span className="text-[#0F9E11]">
-                Meaningful connections.
+            {/* HEADING */}
+            <h1
+              className="
+                font-grift-semibold
+                text-[clamp(28px,6.5vw,44px)]
+                sm:text-[46px] md:text-[54px]
+                lg:text-[53px] xl:text-[62px]
+                2xl:text-[66px]
+                leading-[1.08]
+                tracking-[-0.035em]
+                text-black
+                m-0
+              "
+            >
+              <span className="block whitespace-nowrap">
+                Creative thinking.
+              </span>
+
+              <span className="block text-[#139E0A]">
+                Meaningful
+                <span className="block lg:inline"> connections.</span>
               </span>
             </h1>
           </div>
 
-          {/* RIGHT: Desktop only */}
-          <div className="hidden lg:block lg:w-[36%] lg:max-w-[380px] xl:max-w-[520px] lg:pt-3 xl:pt-5 lg:border-l lg:border-[#000000] lg:pl-10 xl:pl-12">
-
-            <p className="font-grift-semibold text-[18px] xl:text-[23px] leading-[1.65] text-[#555] mb-6">
-              We connect strategy, design, technology,
-              and activation to help brands move forward.
+          {/* RIGHT CONTENT - DESKTOP ONLY */}
+          <div
+            className="
+              hidden lg:flex
+              flex-col items-start
+              lg:border-l lg:border-black
+              lg:pl-[40px]
+              lg:pt-[20px]
+              lg:min-h-[218px]
+            "
+          >
+            <p
+              className="
+                font-grift-semibold
+                lg:text-[19px] xl:text-[21px]
+                leading-[1.35]
+                tracking-[-0.015em]
+                text-[#151515]
+                max-w-[590px]
+                mb-[24px]
+              "
+            >
+              We connect strategy, design, technology, and activation to help
+              brands move forward.
             </p>
 
             <a
               href="#"
-              className="inline-flex items-center justify-center px-5 py-2.5 border border-[#999] rounded-[6px] text-[15px] xl:text-[20px] font-medium text-[#111] hover:border-black hover:bg-black hover:text-white transition-all duration-200"
+              className="
+                inline-flex items-center justify-center
+                min-h-[53px]
+                px-[16px] py-[10px]
+                border border-[#222]
+                rounded-[7px]
+                font-grift-semibold
+                text-[18px] text-black
+                no-underline
+                transition-all duration-300
+                hover:bg-black hover:text-white
+              "
             >
               Explore Our Story
             </a>
           </div>
         </div>
 
-        {/* Hero image */}
-        <div className="relative w-full overflow-hidden rounded-[7px] sm:rounded-[14px] lg:rounded-[18px] xl:rounded-[22px]">
-
+        {/* HERO IMAGE */}
+        <div
+          className="
+    relative w-full overflow-hidden
+    aspect-[2.25/1]
+    sm:aspect-auto
+    rounded-[12px] sm:rounded-[18px]
+    lg:rounded-[24px]
+    border border-[#B8C2C4]
+    shadow-[0_1px_2px_rgba(0,0,0,0.08)]
+  "
+        >
           <img
             src={aboutHeroImage}
             alt="Number9 team collaborating"
-            className="block w-full h-[100px] min-[375px]:h-[140px] min-[480px]:h-[190px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[560px] object-cover object-center"
             loading="eager"
+            className="
+              block w-full h-full
+              sm:h-[350px] md:h-[410px]
+              lg:h-[440px] xl:h-[500px]
+              object-cover object-center
+            "
           />
 
-          {/* Caption hidden on mobile to match reference */}
-          <div className="hidden sm:block absolute bottom-7 left-7 lg:bottom-9 lg:left-9">
-            <p className="font-grift-semibold text-[11px] lg:text-[13px] tracking-[0.22em] uppercase text-white/90 leading-[1.8] drop-shadow-sm">
+          {/* CAPTION - DESKTOP ONLY */}
+          <div
+            className="
+              hidden lg:block absolute
+              lg:left-[58px] lg:bottom-[65px]
+            "
+          >
+            <p
+              className="
+                font-grift-medium
+                lg:text-[20px]
+                uppercase
+                tracking-[0.19em]
+                leading-[1.2]
+                text-white
+                drop-shadow-md
+              "
+            >
               Digital ideas.
               <br />
               Real-world impact.
             </p>
           </div>
         </div>
-
       </div>
     </section>
   );
 }
 
-
-
 /* ─── Who We Are ─────────────────────────────────────────── */
 function WhoWeAre() {
-  return (
-    <section className="w-full bg-white">
-      <div className="max-w-[1640px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 py-14 sm:py-18 lg:py-20 xl:py-24">
+  const [count, setCount] = useState(1);
+  const sectionRef = useRef(null);
+  const animatedRef = useRef(false);
 
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting && !animatedRef.current) {
+          animatedRef.current = true;
+          const start = 1;
+          const end = 20;
+          const duration = 1100;
+          const stepTime = Math.floor(duration / (end - start));
+
+          let current = start;
+          setCount(start);
+
+          const timer = setInterval(() => {
+            current += 1;
+            setCount(current);
+            if (current >= end) {
+              clearInterval(timer);
+            }
+          }, stepTime);
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  return (
+    <section ref={sectionRef} className="w-full bg-white">
+      <div className="max-w-[1640px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 py-14 sm:py-18 lg:py-20 xl:py-24">
         {/* ── Top row: stat (left) + divider + heading (right) ── */}
         <div className="flex flex-row items-start gap-0 sm:gap-0 mb-8 sm:mb-0">
-
           {/* LEFT — stat + label */}
           <div className="w-[45%] sm:w-[300px] lg:w-[340px] xl:w-[480px] shrink-0 pr-5 sm:pr-10 lg:pr-14 xl:pr-16">
             {/* Eyebrow */}
@@ -113,7 +255,7 @@ function WhoWeAre() {
 
             {/* Big stat */}
             <p className="font-grift-semibold text-[90px] sm:text-[90px] lg:text-[100px] xl:text-[225px] leading-[0.9] text-[#0F9E11] tracking-[-0.02em] mb-3">
-              20+
+              {count}+
             </p>
 
             {/* Label */}
@@ -134,8 +276,8 @@ function WhoWeAre() {
             {/* Paragraphs — hidden on mobile (shown below) */}
             <div className="hidden sm:block space-y-4 max-w-[680px]">
               <p className="text-[14px] sm:text-[15px] lg:text-[22px] leading-[1.65] text-[#818282]">
-                Based in Dallas, Texas, Number9 Media &amp; Creative Inc. is a full-service
-                digital and brand activation agency.
+                Based in Dallas, Texas, Number9 Media &amp; Creative Inc. is a
+                full-service digital and brand activation agency.
               </p>
               <p className="text-[14px] sm:text-[15px] lg:text-[22px] leading-[1.65] text-[#818282]">
                 We work with business, marketing, and technology teams to create
@@ -143,26 +285,23 @@ function WhoWeAre() {
               </p>
             </div>
           </div>
-
         </div>
 
         {/* Paragraphs — mobile only, full width below the top row */}
         <div className="sm:hidden space-y-4 mt-6">
           <p className="font-grift-medium text-[22.99px] leading-[1.65] text-[#818282]">
-            Based in Dallas, Texas, Number9 Media &amp; Creative Inc. is a full-service
-            digital and brand activation agency.
+            Based in Dallas, Texas, Number9 Media &amp; Creative Inc. is a
+            full-service digital and brand activation agency.
           </p>
           <p className="font-grift-medium text-[22.99px] leading-[1.65] text-[#818282]">
             We work with business, marketing, and technology teams to create
             integrated experiences across digital and physical touchpoints.
           </p>
         </div>
-
       </div>
     </section>
   );
 }
-
 
 /* ─── Thinking Behind Number9 ────────────────────────────── */
 
@@ -170,14 +309,11 @@ function ThinkingSection() {
   return (
     <section className="w-full bg-white">
       <div className="max-w-[1640px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 py-10 sm:py-14 lg:py-12">
-
         <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-10 xl:gap-12">
-
           {/* LEFT — Image + Caption */}
 
           {/* LEFT — Image + Caption */}
           <div className="w-full lg:w-[53%] shrink-0">
-
             {/* Image with subtle border effect */}
             <div
               className="
@@ -208,15 +344,13 @@ function ThinkingSection() {
             <p className="mt-4 font-grift-medium text-[13px] sm:text-[15px] lg:text-[17px] text-[#858585]">
               Strategy. Design. Technology. Execution.
             </p>
-
           </div>
-
 
           {/* RIGHT — Content */}
           <div className="w-full  lg:flex-1 min-w-0 lg:pt-5 ">
-
             {/* Main Heading */}
-            <h2 className="
+            <h2
+              className="
               font-grift-semibold
               text-[34px]
               sm:text-[44px]
@@ -228,18 +362,17 @@ function ThinkingSection() {
               tracking-[-0.035em]
               text-black
               mb-6 lg:mb-7
-            ">
+            "
+            >
               The thinking
               <br />
-              <span className="text-[#159E00]">
-                behind Number9.
-              </span>
+              <span className="text-[#159E00]">behind Number9.</span>
             </h2>
 
             {/* Description */}
             <div className="space-y-5 lg:space-y-6 mb-10 lg:mb-12 xl:mb-14">
-
-              <p className="
+              <p
+                className="
                 font-grift-medium
                 text-[22.99px]
                 sm:text-[17px]
@@ -247,13 +380,14 @@ function ThinkingSection() {
                 xl:text-[25px]
                 leading-[1.4]
                 text-[#818282]
-              ">
-                Great brand experiences bring strategy,
-                creativity, and technology together.
-                That belief sits at the heart of Number9.
+              "
+              >
+                Great brand experiences bring strategy, creativity, and
+                technology together. That belief sits at the heart of Number9.
               </p>
 
-              <p className="
+              <p
+                className="
                 font-grift-medium
                 text-[22.99px]
                 sm:text-[17px]
@@ -261,16 +395,14 @@ function ThinkingSection() {
                 xl:text-[25px]
                 leading-[1.4]
                 text-[#818282]
-              ">
-                Based in Dallas, Texas, we bring over 20
-                years of industry experience to digital
-                platforms and real-world activations.
-                We collaborate with business, marketing,
-                and technology teams to turn ideas into
-                clear, engaging experiences—from
-                concept to completion.
+              "
+              >
+                Based in Dallas, Texas, we bring over 20 years of industry
+                experience to digital platforms and real-world activations. We
+                collaborate with business, marketing, and technology teams to
+                turn ideas into clear, engaging experiences—from concept to
+                completion.
               </p>
-
             </div>
 
             {/* Horizontal Separator */}
@@ -278,11 +410,10 @@ function ThinkingSection() {
 
             {/* Bottom Feature Columns */}
             <div className="grid grid-cols-2 gap-5 sm:gap-8">
-
               {/* Digital Experiences */}
               <div className="min-w-0 pr-3 sm:pr-5 lg:pr-6 border-r border-[#444]">
-
-                <h3 className="
+                <h3
+                  className="
                   font-grift-semibold
                   text-[12px]
                   sm:text-[17px]
@@ -291,11 +422,13 @@ function ThinkingSection() {
                   leading-[1.3]
                   text-[#111]
                   mb-3
-                ">
+                "
+                >
                   Digital experiences
                 </h3>
 
-                <p className="
+                <p
+                  className="
                   font-grift-medium
                   text-[11px]
                   sm:text-[15px]
@@ -303,17 +436,16 @@ function ThinkingSection() {
                   xl:text-[22px]
                   leading-[1.4]
                   text-[#858585]
-                ">
-                  Websites, applications,
-                  dashboards, and e-commerce.
+                "
+                >
+                  Websites, applications, dashboards, and e-commerce.
                 </p>
-
               </div>
 
               {/* Real-world Connections */}
               <div className="min-w-0 pl-1 sm:pl-2">
-
-                <h3 className="
+                <h3
+                  className="
                   font-grift-semibold
                   text-[12px]
                   sm:text-[17px]
@@ -322,11 +454,13 @@ function ThinkingSection() {
                   leading-[1.3]
                   text-[#111]
                   mb-3
-                ">
+                "
+                >
                   Real-world connections
                 </h3>
 
-                <p className="
+                <p
+                  className="
                   font-grift-medium
                   text-[11px]
                   sm:text-[15px]
@@ -334,14 +468,12 @@ function ThinkingSection() {
                   xl:text-[22px]
                   leading-[1.4]
                   text-[#858585]
-                ">
-                  Retail activations, campaigns,
-                  and coordinated delivery.
+                "
+                >
+                  Retail activations, campaigns, and coordinated delivery.
                 </p>
-
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -349,28 +481,25 @@ function ThinkingSection() {
   );
 }
 
-
-
 /* ─── Brand Partnerships ─────────────────────────────────── */
 const brandLogos = [
-  { src: pepsicoLogo,   alt: 'PepsiCo',   cls: 'h-7 sm:h-8 lg:h-11'   },
-  { src: lexusLogo,     alt: 'Lexus',     cls: 'h-7 sm:h-8 lg:h-15'   },
-  { src: citibankLogo,  alt: 'Citibank',  cls: 'h-6 sm:h-7 lg:h-11'   },
-  { src: emiratesLogo,  alt: 'Emirates',  cls: 'h-10 sm:h-12 lg:h-25' },
-  { src: microsoftLogo, alt: 'Microsoft', cls: 'h-6 sm:h-7 lg:h-8'   },
-  { src: safewayLogo,   alt: 'Safeway',   cls: 'h-6 sm:h-7 lg:h-8'   },
-  { src: magellanLogo,  alt: 'Magellan Health', cls: 'h-8 sm:h-9 lg:h-22' },
-  { src: argoLogo,      alt: 'Argo',      cls: 'h-7 sm:h-8 lg:h-16'   },
-  { src: nutrienLogo,   alt: 'Nutrien',   cls: 'h-6 sm:h-7 lg:h-19'   },
+  { src: pepsicoLogo, alt: "PepsiCo", cls: "h-7 sm:h-8 lg:h-11" },
+  { src: lexusLogo, alt: "Lexus", cls: "h-7 sm:h-8 lg:h-15" },
+  { src: citibankLogo, alt: "Citibank", cls: "h-6 sm:h-7 lg:h-11" },
+  { src: emiratesLogo, alt: "Emirates", cls: "h-10 sm:h-12 lg:h-25" },
+  { src: microsoftLogo, alt: "Microsoft", cls: "h-6 sm:h-7 lg:h-8" },
+  { src: safewayLogo, alt: "Safeway", cls: "h-6 sm:h-7 lg:h-8" },
+  { src: magellanLogo, alt: "Magellan Health", cls: "h-8 sm:h-9 lg:h-22" },
+  { src: argoLogo, alt: "Argo", cls: "h-7 sm:h-8 lg:h-16" },
+  { src: nutrienLogo, alt: "Nutrien", cls: "h-6 sm:h-7 lg:h-19" },
 ];
-
 
 function BrandPartnerships({ onNavigate }) {
   // Display order matching the reference image.
   // Existing brandLogos array should contain the same brand images.
   const findBrand = (name) =>
     brandLogos.find((brand) =>
-      brand.alt.toLowerCase().includes(name.toLowerCase())
+      brand.alt.toLowerCase().includes(name.toLowerCase()),
     );
 
   const logoColumns = [
@@ -382,12 +511,9 @@ function BrandPartnerships({ onNavigate }) {
   return (
     <section className="w-full bg-white">
       <div className="max-w-[1640px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 lg:py-20 xl:py-24">
-
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-12 xl:gap-16">
-
           {/* LEFT — Text Content */}
           <div className="w-full lg:w-[42%] xl:w-[43%] shrink-0 flex items-center gap-6 sm:gap-10 lg:gap-12 xl:gap-16">
-
             {/* Thin vertical line — desktop only */}
             <div
               className="
@@ -399,9 +525,9 @@ function BrandPartnerships({ onNavigate }) {
             />
 
             <div className="min-w-0">
-
               {/* Eyebrow */}
-              <p className="
+              <p
+                className="
                 font-grift-semibold
                 text-[11.62px] sm:text-[13px]
                 lg:text-[14px] xl:text-[16px]
@@ -409,12 +535,14 @@ function BrandPartnerships({ onNavigate }) {
                 uppercase text-[#666]
                 mb-6 lg:mb-8
                 whitespace-nowrap
-              ">
+              "
+              >
                 Brands we have worked with
               </p>
 
               {/* Main Heading */}
-              <h2 className="
+              <h2
+                className="
                 font-grift-semibold
                 text-[38px]
                 sm:text-[50px]
@@ -426,7 +554,8 @@ function BrandPartnerships({ onNavigate }) {
                 tracking-[-0.035em]
                 text-black
                 mb-7 lg:mb-8
-              ">
+              "
+              >
                 Big brands.
                 <br />
                 <span className="text-[#159E00]">
@@ -437,7 +566,8 @@ function BrandPartnerships({ onNavigate }) {
               </h2>
 
               {/* Description */}
-              <p className="
+              <p
+                className="
                 font-grift-medium
                 text-[22.99px]
                 sm:text-[18px]
@@ -447,10 +577,10 @@ function BrandPartnerships({ onNavigate }) {
                 text-[#858585]
                 max-w-[510px]
                 mb-9 lg:mb-10
-              ">
-                Our portfolio includes projects for pepsiCo,
-                Lexus, Citibank, Safeway, Shaan Foods,
-                and ZEE5.
+              "
+              >
+                Our portfolio includes projects for pepsiCo, Lexus, Citibank,
+                Safeway, Shaan Foods, and ZEE5.
               </p>
 
               {/* CTA */}
@@ -497,9 +627,7 @@ function BrandPartnerships({ onNavigate }) {
 
           {/* RIGHT — Staggered Logo Grid */}
           <div className="w-full lg:flex-1 min-w-0">
-
             <div className="grid grid-cols-3 gap-3 sm:gap-5 lg:gap-6 xl:gap-8 items-start">
-
               {logoColumns.map((column, colIndex) => (
                 <div
                   key={colIndex}
@@ -507,11 +635,7 @@ function BrandPartnerships({ onNavigate }) {
                     flex flex-col
                     gap-3 sm:gap-5
                     lg:gap-5
-                    ${
-                      colIndex === 1
-                        ? "pt-6 sm:pt-10 lg:pt-12"
-                        : ""
-                    }
+                    ${colIndex === 1 ? "pt-6 sm:pt-10 lg:pt-12" : ""}
                   `}
                 >
                   {column.map((brandName) => {
@@ -553,40 +677,35 @@ function BrandPartnerships({ onNavigate }) {
                   })}
                 </div>
               ))}
-
             </div>
           </div>
-
         </div>
       </div>
     </section>
   );
 }
 
-
 /* ─── Connected Capabilities ─────────────────────────────── */
 const capabilities = [
   {
-    num: '01',
-    title: 'Strategy & Research',
-    desc: 'Uncover opportunities through audience insights, market research, and brand strategy.',
-    tags: ['AUDIENCE RESEARCH', 'DIGITAL STRATEGY'],
+    num: "01",
+    title: "Strategy & Research",
+    desc: "Uncover opportunities through audience insights, market research, and brand strategy.",
+    tags: ["AUDIENCE RESEARCH", "DIGITAL STRATEGY"],
   },
   {
-    num: '02',
-    title: 'Design & Technology',
-    desc: 'Create beautiful, intuitive experiences powered by modern technology.',
-    tags: ['UI/UX', 'WEBSITES & WEB APPS', 'E-COMMERCE', 'DASHBOARDS'],
+    num: "02",
+    title: "Design & Technology",
+    desc: "Create beautiful, intuitive experiences powered by modern technology.",
+    tags: ["UI/UX", "WEBSITES & WEB APPS", "E-COMMERCE", "DASHBOARDS"],
   },
   {
-    num: '03',
-    title: 'Marketing & Activation',
-    desc: 'Bring ideas to life through integrated campaigns, digital products, and real-world experiences.',
-    tags: ['INFLUENCER CAMPAIGNS', 'RETAIL ACTIVATIONS', 'LOGISTICS'],
+    num: "03",
+    title: "Marketing & Activation",
+    desc: "Bring ideas to life through integrated campaigns, digital products, and real-world experiences.",
+    tags: ["INFLUENCER CAMPAIGNS", "RETAIL ACTIVATIONS", "LOGISTICS"],
   },
 ];
-
-
 
 function ConnectedCapabilities() {
   return (
@@ -602,7 +721,6 @@ function ConnectedCapabilities() {
       >
         {/* SECTION HEADER */}
         <div className="mb-6 sm:mb-14 lg:mb-16 xl:mb-20">
-
           {/* Eyebrow */}
           <div className="flex items-center gap-3 sm:gap-5 mb-3 sm:mb-5">
             <span
@@ -645,9 +763,7 @@ function ConnectedCapabilities() {
               sm:font-grift-semibold
             "
           >
-            <span className="block sm:inline">
-              Connected capabilities.
-            </span>{" "}
+            <span className="block sm:inline">Connected capabilities.</span>{" "}
             <span className="block sm:inline text-[#159E00]">
               A shared direction.
             </span>
@@ -656,7 +772,6 @@ function ConnectedCapabilities() {
 
         {/* CAPABILITY ROWS */}
         <div className="w-full">
-
           {capabilities.map((cap, index) => (
             <div
               key={cap.num}
@@ -682,13 +797,10 @@ function ConnectedCapabilities() {
                 }
               `}
             >
-
               {/* MOBILE/TABLET LEFT CONTENT */}
               <div className="min-w-0 lg:contents">
-
                 {/* NUMBER + TITLE */}
                 <div className="flex items-start gap-4 sm:gap-5 lg:block">
-
                   {/* Number */}
                   <span
                     className="
@@ -792,7 +904,7 @@ function ConnectedCapabilities() {
                   <span
                     key={tag}
                     className="
-                      font-grift-medium
+                      font-grift-semibold
                       text-[8px]
                       sm:text-[13px]
                       lg:text-[13px]
@@ -809,18 +921,13 @@ function ConnectedCapabilities() {
                   </span>
                 ))}
               </div>
-
             </div>
           ))}
-
         </div>
       </div>
     </section>
   );
 }
-
-
-
 
 /* ─── Process Section ────────────────────────────────────── */
 
@@ -847,7 +954,6 @@ const processSteps = [
   },
 ];
 
-
 function ProcessSection() {
   return (
     <section className="w-full bg-[#1A1A1A]">
@@ -872,14 +978,11 @@ function ProcessSection() {
           "
         >
           How ideas become{" "}
-          <span className="text-[#2FC625]">
-            meaningful experiences.
-          </span>
+          <span className="text-[#2FC625]">meaningful experiences.</span>
         </h2>
 
         {/* PROCESS TIMELINE */}
         <div className="relative">
-
           {/* MOBILE VERTICAL CONNECTING LINE */}
           <div
             className="
@@ -962,7 +1065,6 @@ function ProcessSection() {
 
                 {/* STEP CONTENT */}
                 <div className="flex flex-col min-w-0">
-
                   {/* STEP NUMBER */}
                   <span
                     className="
@@ -1038,15 +1140,14 @@ function ProcessSection() {
   );
 }
 
-
-
-
-
-
 /* ─── Page ────────────────────────────────────────────────── */
-export default function AboutPage({ onNavigate, activeDropdown, setActiveDropdown }) {
+export default function AboutPage({
+  onNavigate,
+  activeDropdown,
+  setActiveDropdown,
+}) {
   return (
-    <div className="bg-white min-h-screen text-[#141414] font-outfit antialiased">
+    <div className="bg-white min-h-screen text-[#141414] font-grift antialiased">
       <AppNav
         activeDropdown={activeDropdown}
         setActiveDropdown={setActiveDropdown}
@@ -1058,8 +1159,8 @@ export default function AboutPage({ onNavigate, activeDropdown, setActiveDropdow
       <BrandPartnerships onNavigate={onNavigate} />
       <ConnectedCapabilities />
       <ProcessSection />
-      <AccelerateBusinessSection />
-      <Footer />
+      <AccelerateBusinessSection onScheduleClick={() => onNavigate && onNavigate('contact')} />
+      <Footer onNavigate={onNavigate} />
     </div>
   );
 }

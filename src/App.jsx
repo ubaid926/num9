@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import AppNav from './components/nav'
 import HeroSectionFullWidth from './components/heroSection'
 import CaseStudies from './components/caseStudies'
@@ -12,15 +12,7 @@ import ServicesPage from './pages/ServicesPage'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import OurWorkPage from './pages/OurWorkPage'
-import MicrosoftCaseStudy  from './pages/case-studies/MicrosoftCaseStudy'
-import PepsiCoCaseStudy    from './pages/case-studies/PepsiCoCaseStudy'
-import NutrienCaseStudy    from './pages/case-studies/NutrienCaseStudy'
-import CitibankCaseStudy   from './pages/case-studies/CitibankCaseStudy'
-import LexusCaseStudy      from './pages/case-studies/LexusCaseStudy'
-import ArgoCaseStudy       from './pages/case-studies/ArgoCaseStudy'
-import MedImpactCaseStudy  from './pages/case-studies/MedImpactCaseStudy'
-import JCPenneyCaseStudy   from './pages/case-studies/JCPenneyCaseStudy'
-import EmiratesCaseStudy   from './pages/case-studies/EmiratesCaseStudy'
+import CaseStudyTemplate from './pages/CaseStudyTemplate'
 
 export default function App() {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -34,14 +26,55 @@ export default function App() {
     return 'home';
   });
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      if ('scrollRestoration' in window.history) {
+        window.history.scrollRestoration = 'manual';
+      }
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }
+  }, [page]);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      if (typeof window !== 'undefined') {
+        const params = new URLSearchParams(window.location.search);
+        const urlPage = params.get('page');
+        setPage(urlPage || 'home');
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const handleNavigate = (newPage) => {
+    setPage(newPage);
+    if (typeof window !== 'undefined') {
+      try {
+        const url = new URL(window.location.href);
+        if (newPage === 'home') {
+          url.searchParams.delete('page');
+        } else {
+          url.searchParams.set('page', newPage);
+        }
+        const newSearch = url.searchParams.toString();
+        const newUrl = url.pathname + (newSearch ? `?${newSearch}` : '') + url.hash;
+        window.history.pushState({}, '', newUrl);
+      } catch (e) {
+        // Fallback gracefully if url cannot be parsed
+      }
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    }
+  };
+
   const sharedNavProps = {
-    onNavigate: setPage,
+    onNavigate: handleNavigate,
     activeDropdown,
     setActiveDropdown,
   };
 
   return (
-    <div className="bg-white font-outfit text-slate-900 relative min-h-screen overflow-x-hidden">
+    <div className="bg-white font-grift text-slate-900 relative min-h-screen overflow-x-hidden">
       {page === 'services' && <ServicesPage {...sharedNavProps} />}
 
       {page === 'about' && <AboutPage {...sharedNavProps} />}
@@ -50,34 +83,35 @@ export default function App() {
 
       {page === 'our-work' && <OurWorkPage {...sharedNavProps} />}
 
-      {page === 'case-study/microsoft'  && <MicrosoftCaseStudy  {...sharedNavProps} />}
-      {page === 'case-study/pepsico'    && <PepsiCoCaseStudy    {...sharedNavProps} />}
-      {page === 'case-study/nutrien'    && <NutrienCaseStudy    {...sharedNavProps} />}
-      {page === 'case-study/citibank'   && <CitibankCaseStudy   {...sharedNavProps} />}
-      {page === 'case-study/lexus'      && <LexusCaseStudy      {...sharedNavProps} />}
-      {page === 'case-study/argo'       && <ArgoCaseStudy       {...sharedNavProps} />}
-      {page === 'case-study/medimpact'  && <MedImpactCaseStudy  {...sharedNavProps} />}
-      {page === 'case-study/jcpenney'   && <JCPenneyCaseStudy   {...sharedNavProps} />}
-      {page === 'case-study/emirates'   && <EmiratesCaseStudy   {...sharedNavProps} />}
+      {page.startsWith('case-study/') && (
+        <CaseStudyTemplate
+          key={page}
+          slug={page.replace('case-study/', '')}
+          {...sharedNavProps}
+        />
+      )}
 
       {page === 'home' && (
         <>
           {/* Navbar */}
-          <AppNav activeDropdown={activeDropdown} setActiveDropdown={setActiveDropdown} onNavigate={setPage} />
+          <AppNav activeDropdown={activeDropdown} setActiveDropdown={setActiveDropdown} onNavigate={handleNavigate} />
           {/* Hero */}
           <div className={`bg-white transition-all duration-300 ${activeDropdown ? 'brightness-50 pointer-events-none blur-[1px]' : ''}`}>
-            <HeroSectionFullWidth isDarkened={!!activeDropdown} />
+            <HeroSectionFullWidth
+              isDarkened={!!activeDropdown}
+              onNavigate={handleNavigate}
+            />
           </div>
           {/* Case Studies */}
           <CaseStudies />
           {/* What We Do */}
           <WhatWeDo />
           {/* Fifth Section — testimonials + awards */}
-          <FifthSection />
+          <FifthSection onNavigate={handleNavigate} />
           <WhyWorkWithUs />
-          <AccelerateBusinessSection />
+          <AccelerateBusinessSection onScheduleClick={() => handleNavigate('contact')} />
           {/* Footer */}
-          <Footer />
+          <Footer onNavigate={handleNavigate} />
         </>
       )}
     </div>

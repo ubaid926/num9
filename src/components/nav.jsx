@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+
+import React, { useState, useEffect, useRef } from "react";
 import { ArrowRight, X, Menu } from "lucide-react";
 import logo from "../assets/logoGreen.webp";
 import whiteLogo from "../assets/logoWhite.webp";
@@ -10,6 +11,11 @@ export default function AppNav({
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+
+  const lastScrollY = useRef(0);
+  const scrollDirectionDistance = useRef(0);
+  const ticking = useRef(false);
 
   // Close menu on Escape key
   useEffect(() => {
@@ -18,7 +24,9 @@ export default function AppNav({
         setIsMenuOpen(false);
       }
     };
+
     window.addEventListener("keydown", handleKeyDown);
+
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
@@ -26,15 +34,74 @@ export default function AppNav({
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
+      setIsNavbarVisible(true);
+
       if (setActiveDropdown) setActiveDropdown("menu-open");
     } else {
       document.body.style.overflow = "unset";
+
       if (setActiveDropdown) setActiveDropdown(null);
     }
+
     return () => {
       document.body.style.overflow = "unset";
     };
   }, [isMenuOpen, setActiveDropdown]);
+
+  // Show navbar on scroll up, hide on scroll down
+  useEffect(() => {
+    lastScrollY.current = Math.max(0, window.scrollY);
+
+    const handleScroll = () => {
+      if (ticking.current) return;
+
+      ticking.current = true;
+
+      window.requestAnimationFrame(() => {
+        const currentScrollY = Math.max(0, window.scrollY);
+        const difference = currentScrollY - lastScrollY.current;
+
+        if (isMenuOpen) {
+          setIsNavbarVisible(true);
+          scrollDirectionDistance.current = 0;
+        } else if (currentScrollY <= 20) {
+          setIsNavbarVisible(true);
+          scrollDirectionDistance.current = 0;
+        } else if (Math.abs(difference) > 0) {
+          const previousDistance = scrollDirectionDistance.current;
+
+          if (
+            (difference > 0 && previousDistance < 0) ||
+            (difference < 0 && previousDistance > 0)
+          ) {
+            scrollDirectionDistance.current = 0;
+          }
+
+          scrollDirectionDistance.current += difference;
+
+          // Small scroll movements won't cause flickering
+          if (scrollDirectionDistance.current > 8) {
+            setIsNavbarVisible(false);
+            scrollDirectionDistance.current = 0;
+          } else if (scrollDirectionDistance.current < -8) {
+            setIsNavbarVisible(true);
+            scrollDirectionDistance.current = 0;
+          }
+        }
+
+        lastScrollY.current = currentScrollY;
+        ticking.current = false;
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isMenuOpen]);
 
   const menuItems = [
     { label: "Home", href: "#", isPage: "home" },
@@ -46,15 +113,34 @@ export default function AppNav({
 
   return (
     <>
-      {/* ──────────────────────────────────────────────────────────
-          1. CLOSED NAVBAR (Full width across screen corners)
-      ────────────────────────────────────────────────────────── */}
-      <header className="w-full bg-white sticky top-0 z-40 transition-all duration-200">
+      {/* Navbar height spacer to prevent content jumping */}
+      <div
+        className="w-full h-[64px] sm:h-[92px]"
+        aria-hidden="true"
+      />
+
+      {/* CLOSED NAVBAR */}
+      <header
+        className={`fixed top-0 left-0 right-0 w-full bg-white z-40
+          transition-transform duration-300 ease-in-out
+          ${
+            isNavbarVisible || isMenuOpen
+              ? "translate-y-0"
+              : "-translate-y-full"
+          }
+        `}
+      >
         <div className="w-full px-6 sm:px-10 lg:px-18 py-3 sm:py-4 lg:py-4 flex items-center justify-between">
           {/* Left: Brand Logo */}
           <a
             href="#"
-            className="flex items-center group focus:outline-none"
+            onClick={(e) => {
+              e.preventDefault();
+              if (onNavigate) {
+                onNavigate("home");
+              }
+            }}
+            className="flex items-center group focus:outline-none cursor-pointer"
             aria-label="Home"
           >
             <img
@@ -64,30 +150,30 @@ export default function AppNav({
             />
           </a>
 
-          {/* Right: Schedule a Call (pill) + Custom Hamburger Icon */}
+          {/* Right: Schedule a Call + Hamburger */}
           <div className="flex items-center gap-4 sm:gap-6">
             <a
               href="#contact"
-              className="px-5 sm:px-7 py-2 sm:py-3 rounded-full border-3 border-slate-200  text-[14px] sm:text-[17px] font-semibold bg-white hover:border-slate-900 hover:text-black transition-all duration-200 shadow-[0_1px_2px_rgba(0,0,0,0.04)] whitespace-nowrap"
+              className="px-5 sm:px-7 py-2 sm:py-3 rounded-full border-3 border-slate-200 text-[14px] sm:text-[17px] font-semibold bg-white hover:border-slate-900 hover:text-black transition-all duration-200 shadow-[0_1px_2px_rgba(0,0,0,0.04)] whitespace-nowrap"
             >
               Schedule a Call
             </a>
 
-            {/* Hamburger Button */}
             <button
               onClick={() => setIsMenuOpen(true)}
               aria-label="Open menu"
               className="flex items-center justify-center w-10 h-10 hover:opacity-75 transition-opacity focus:outline-none cursor-pointer"
             >
-              <Menu className="w-6 h-6 text-slate-900" strokeWidth={1.8} />
+              <Menu
+                className="w-6 h-6 text-slate-900"
+                strokeWidth={1.8}
+              />
             </button>
           </div>
         </div>
       </header>
 
-      {/* ──────────────────────────────────────────────────────────
-          2. OPENED FULL-SCREEN MENU (Full width across screen corners)
-      ────────────────────────────────────────────────────────── */}
+      {/* OPENED FULL-SCREEN MENU */}
       <div
         className={`fixed inset-0 z-[100] bg-[#0e7428] text-white flex flex-col justify-between transition-all duration-400 ease-in-out overflow-y-auto ${
           isMenuOpen
@@ -108,15 +194,27 @@ export default function AppNav({
             className="w-[85%] sm:w-[70%] lg:w-[60%] max-w-[900px] h-auto object-contain animate-number9-pulse select-none"
           />
         </div>
-        {/* Top Header Row inside Overlay - Full width matching closed navbar */}
+
+        {/* Top Header Row */}
         <div className="relative z-10 w-full px-6 sm:px-10 lg:px-18 py-4 sm:py-7 flex items-center justify-between shrink-0">
-          <div className="flex items-center">
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              setIsMenuOpen(false);
+              if (onNavigate) {
+                onNavigate("home");
+              }
+            }}
+            className="flex items-center group focus:outline-none cursor-pointer"
+            aria-label="Home"
+          >
             <img
               src={whiteLogo}
               alt="Number 9"
-              className="h-9 sm:h-15 w-auto object-contain block brightness-0 invert"
+              className="h-9 sm:h-15 w-auto object-contain block brightness-0 invert transition-transform group-hover:scale-[1.02]"
             />
-          </div>
+          </a>
 
           <button
             onClick={() => setIsMenuOpen(false)}
@@ -163,6 +261,7 @@ export default function AppNav({
               })}
             </nav>
 
+            {/* Existing Contact Us section preserved */}
             {/* <div className="pt-6 sm:pt-8">
               <a
                 href="#contact"

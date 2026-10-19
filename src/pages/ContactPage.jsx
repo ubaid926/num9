@@ -977,7 +977,7 @@ function ProcessMapSection() {
 /* ─── Page ────────────────────────────────────────────────── */
 export default function ContactPage({ onNavigate, activeDropdown, setActiveDropdown }) {
   return (
-    <div className="bg-white min-h-screen text-[#141414] font-outfit antialiased">
+    <div className="bg-white min-h-screen text-[#141414] font-grift antialiased">
       <AppNav
         activeDropdown={activeDropdown}
         setActiveDropdown={setActiveDropdown}
@@ -988,8 +988,8 @@ export default function ContactPage({ onNavigate, activeDropdown, setActiveDropd
       <ContactFormSection />
       <ProcessMapSection />
 
-      <AccelerateBusinessSection />
-      <Footer />
+      <AccelerateBusinessSection onScheduleClick={() => onNavigate && onNavigate('contact')} />
+      <Footer onNavigate={onNavigate} />
     </div>
   );
 }

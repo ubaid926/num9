@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import lexusLogo from "../../assets/lexus/lexus_PNG22 1.jpg";
 import lexusCar from "../../assets/lexus/Blue Lexus Coupe in Architectural Triptych.webp";
@@ -22,14 +21,15 @@ function StatisticCircle({ value, subtext, label }) {
       <div
         className="
           relative
-          w-[125px] h-[125px]
-          sm:w-[175px] sm:h-[175px]
+          w-[130px] h-[130px]
+          sm:w-[170px] sm:h-[170px]
           md:w-[200px] md:h-[200px]
-          lg:w-[250px] lg:h-[250px]
+          lg:w-[230px] lg:h-[230px]
+          xl:w-[245px] xl:h-[245px]
 
           rounded-full
           border-[2px] border-dashed
-          border-[#D8D3D3]
+          border-[#D5D5D5]
 
           flex flex-col items-center justify-center
         "
@@ -38,71 +38,70 @@ function StatisticCircle({ value, subtext, label }) {
         <div
           className="
             absolute
-            inset-[7px]
-            sm:inset-[9px]
-            lg:inset-[12px]
+            inset-[8px]
+            sm:inset-[10px]
+            md:inset-[12px]
+            lg:inset-[14px]
 
             rounded-full
             border-[2px] border-dashed
-            border-[#D8D3D3]
+            border-[#D5D5D5]
 
             pointer-events-none
           "
         />
 
-        {/* NUMBER */}
-        <span
-          className="
-            relative z-10
-            font-grift-semibold
-
-            text-[38px]
-            sm:text-[48px]
-            md:text-[55px]
-            lg:text-[80px]
-
-            leading-none
-            tracking-[-0.04em]
-            text-[#29C812]
-          "
-        >
-          {value}
-        </span>
-
-        {subtext && (
+        {/* NUMBER & SUBTEXT CENTERED AS A UNIT */}
+        <div className="relative z-10 flex flex-col items-center justify-center -mt-0.5 sm:-mt-1">
           <span
             className="
-              relative z-10
-              font-grift-medium
-
-              text-[13px]
-              sm:text-[17px]
-              lg:text-[23px]
-
-              leading-[1.2]
-              text-black
-              mt-[4px]
+              font-grift-semibold
+              text-[40px]
+              sm:text-[50px]
+              md:text-[58px]
+              lg:text-[68px]
+              xl:text-[80px]
+              leading-none
+              tracking-[-0.035em]
+              text-[#25C800]
             "
           >
-            {subtext}
+            {value}
           </span>
-        )}
+
+          {subtext && (
+            <span
+              className="
+                font-grift-light
+                text-[12px]
+                sm:text-[14px]
+                md:text-[16px]
+                lg:text-[30px]
+                leading-none
+                text-[#444444]
+                mt-1.5 sm:mt-2
+                tracking-[-0.01em]
+              "
+            >
+              {subtext}
+            </span>
+          )}
+        </div>
       </div>
 
       {/* LABEL */}
       <h3
         className="
-          mt-[14px] sm:mt-[18px]
-          font-grift-semibold
-
-          text-[13px]
-          sm:text-[19px]
-          md:text-[23px]
-          lg:text-[35px]
-
+          mt-4 sm:mt-5 lg:mt-6
+          font-grift-extrabold
+          text-[15px]
+          sm:text-[18px]
+          md:text-[21px]
+          lg:text-[24px]
+          xl:text-[35px]
           leading-[1.2]
-          tracking-[-0.025em]
-          text-[#414A55]
+          tracking-[-0.02em]
+          text-[#2D343E]
           text-center
           whitespace-nowrap
         "
@@ -118,9 +117,80 @@ function StatisticCircle({ value, subtext, label }) {
 ========================================== */
 
 export default function LexusCaseStudySections() {
+  const [count1, setCount1] = useState(1);
+  const [count2, setCount2] = useState(1);
+  const statsSectionRef = useRef(null);
+  const animatedRef = useRef(false);
+  const hasUserScrolledRef = useRef(false);
+  const isIntersectingRef = useRef(false);
+
+  useEffect(() => {
+    const el = statsSectionRef.current;
+    if (!el) return;
+
+    const startAnimation = () => {
+      if (animatedRef.current) return;
+      animatedRef.current = true;
+
+      const duration = 1200;
+      const startTime = performance.now();
+
+      const animate = (now) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(1, elapsed / duration);
+        const ease = 1 - Math.pow(1 - progress, 3);
+
+        const val1 = Math.round(1 + ease * 9);
+        const val2 = Math.round(1 + ease * 2);
+
+        setCount1(val1);
+        setCount2(val2);
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          setCount1(10);
+          setCount2(3);
+        }
+      };
+
+      requestAnimationFrame(animate);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        isIntersectingRef.current = entry.isIntersecting;
+
+        // Only trigger if user has scrolled down into the page
+        if (entry.isIntersecting && hasUserScrolledRef.current) {
+          startAnimation();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(el);
+
+    const handleScroll = () => {
+      if (window.scrollY > 40) {
+        hasUserScrolledRef.current = true;
+        if (isIntersectingRef.current && !animatedRef.current) {
+          startAnimation();
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className="w-full bg-white">
-
       {/* ======================================
           SECTION 01 — PROJECT SUMMARY
       ====================================== */}
@@ -156,127 +226,165 @@ export default function LexusCaseStudySections() {
           >
             {/* SUMMARY + LOGO */}
 
-
             <div
               className="
-    w-full
-    max-w-[1400px]
-    mx-auto
-    px-5 sm:px-8 lg:px-0
+    w-full max-w-[1400px] mx-auto
+
+    px-[18px] sm:px-8
+    lg:px-8 xl:px-0
 
     grid grid-cols-1
-    md:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]
+    md:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]
 
-    gap-8 md:gap-[45px] lg:gap-[60px]
+    gap-0 md:gap-[45px] lg:gap-[60px]
     items-center
+
+    py-[52px] sm:py-[65px]
+    md:py-[80px] lg:py-[100px]
   "
             >
               {/* LEFT CONTENT */}
               <div className="w-full min-w-0">
+                {/* HEADING */}
                 <h2
                   className="
-        font-grift-semibold
-        text-[32px] sm:text-[42px]
+        font-grift-extrabold
+        text-[50px] sm:text-[42px]
         md:text-[44px] lg:text-[60px]
-        leading-[1.12]
+
+        leading-[1.13]
         tracking-[-0.035em]
         text-[#414A55]
-        mb-[20px] lg:mb-[27px]
+
+        max-w-[210px]
+        sm:max-w-none
+
+        mb-[18px] sm:mb-[22px]
+        lg:mb-[27px]
       "
                 >
-                  The summary
+                  <span className="md:hidden">
+                    The
+                    <br />
+                    summary
+                  </span>
+
+                  <span className="hidden md:inline">The summary</span>
+
                   <span className="text-[#29C812]">.</span>
                 </h2>
 
+                {/* DESCRIPTION */}
                 <p
                   className="
         font-grift-medium
-        text-[16px] sm:text-[20px]
+
+        text-[28px] sm:text-[20px]
         md:text-[22px] lg:text-[30px]
-        leading-[1.37]
+
+        leading-[1.34]
+        sm:leading-[1.4]
+        lg:leading-[1.37]
+
         tracking-[-0.015em]
         text-[#555555]
+
         max-w-[570px]
         m-0
       "
                 >
-                  Lexus partnered with us to develop an
-                  interactive platform that allows
-                  customers to build and customize
-                  their vehicles while accessing
-                  premium multimedia content. By
-                  combining intuitive navigation, high
-                  readability, and luxury-focused design,
-                  we created a seamless digital
-                  experience that enhances dealership
-                  engagement and strengthens the
-                  Lexus customer journey.
+                  Lexus partnered with us to develop an interactive platform
+                  that allows customers to build and customize their vehicles
+                  while accessing premium multimedia content. By combining
+                  intuitive navigation, high readability, and luxury-focused
+                  design, we created a seamless digital experience that enhances
+                  dealership engagement and strengthens the Lexus customer
+                  journey.
                 </p>
               </div>
 
-              {/* RIGHT LOGO CARD */}
-              {/* RIGHT LOGO CARD */}
-              <div
-                className="
-    w-full
-    min-w-0
+              {/* RIGHT LOGO */}
+         
+{/* RIGHT LOGO */}
+<div
+  className="
+    w-full min-w-0
+    flex items-center justify-center
+    bg-white overflow-hidden
 
-    h-[280px]
-    sm:h-[350px]
-    md:h-[420px]
+    mt-[34px]
+    h-[210px]
+    border-y border-[#D0D0D0]
+    border-x-0
+    rounded-none
+
+    sm:mt-[40px]
+    sm:h-[250px]
+
+    md:mt-0
+    md:h-[350px]
     lg:h-[380px]
 
-    border border-[#BDBDBD]
-    rounded-[24px] lg:rounded-[35px]
-
-    overflow-hidden
-    bg-white
-
-    flex items-center justify-center
+    md:border
+    md:border-[#BDBDBD]
+    md:rounded-[24px]
+    lg:rounded-[35px]
   "
-              >
-                <img
-                  src={lexusLogo}
-                  alt="Lexus logo"
-                  className="
+>
+  <img
+    src={lexusLogo}
+    alt="Lexus logo"
+    loading="lazy"
+    className="
       block
-      w-[55%]
-      max-h-[60%]
-      object-contain
-    "
-                  loading="lazy"
-                />
-              </div>
-            </div>
+      w-[90%]
+      h-auto
+      max-w-none
+      max-h-[175px]
 
+      sm:w-[75%]
+      sm:max-h-[210px]
+
+      md:w-[55%]
+      md:max-h-[60%]
+
+      object-contain
+      object-center
+    "
+  />
+</div>
+
+            </div>
 
             {/* ==================================
                 STATISTICS
             ================================== */}
 
             <div
+              ref={statsSectionRef}
               className="
                 flex flex-row
                 items-start
                 justify-center
 
-                gap-7
+                gap-8
                 sm:gap-14
-                md:gap-[90px]
-                lg:gap-[175px]
+                md:gap-20
+                lg:gap-[130px]
+                xl:gap-[150px]
 
-                mt-[65px]
-                sm:mt-[80px]
-                lg:mt-[90px]
+                mt-[60px]
+                sm:mt-[75px]
+                lg:mt-[85px]
               "
             >
               <StatisticCircle
-                value="10+"
+                value={count1 >= 10 ? `${count1}+` : count1}
                 label="Team size"
               />
 
               <StatisticCircle
-                value="3"
+                value={count2}
                 subtext="months"
                 label="Engagement length"
               />
@@ -292,14 +400,15 @@ export default function LexusCaseStudySections() {
                 justify-center
                 items-center
 
-                gap-x-4
-                sm:gap-x-6
-                lg:gap-x-[28px]
+                gap-x-7
+                sm:gap-x-10
+                lg:gap-x-12
+                xl:gap-x-14
                 gap-y-3
 
-                mt-[75px]
-                sm:mt-[95px]
-                lg:mt-[135px]
+                mt-12
+                sm:mt-16
+                lg:mt-[75px]
               "
             >
               {projectTags.map((tag) => (
@@ -308,13 +417,14 @@ export default function LexusCaseStudySections() {
                   className="
                     font-grift-medium
 
-                    text-[11px]
-                    sm:text-[13px]
+                    text-[12px]
+                    sm:text-[14px]
                     lg:text-[20px]
 
                     leading-[1.4]
-                    text-[#414A55]
+                    text-[#4A5568]
                     whitespace-nowrap
+                    tracking-[-0.01em]
                   "
                 >
                   {tag}
@@ -414,7 +524,7 @@ export default function LexusCaseStudySections() {
             >
               <blockquote
                 className="
-                  font-grift-medium
+                  font-grift-regular
 
                   text-[15px]
                   sm:text-[18px]
@@ -428,15 +538,12 @@ export default function LexusCaseStudySections() {
                   m-0
                 "
               >
-                "Luxury is defined by every interaction a
-                customer has with a brand. Our objective
-                was to create experiences that reflected
-                Lexus's commitment to craftsmanship,
-                innovation, and exceptional service.
-                By combining strategic activations with
-                customer-centric engagement, we helped
-                strengthen brand loyalty and elevate the
-                ownership journey."
+                "Luxury is defined by every interaction a customer has with a
+                brand. Our objective was to create experiences that reflected
+                Lexus's commitment to craftsmanship, innovation, and exceptional
+                service. By combining strategic activations with
+                customer-centric engagement, we helped strengthen brand loyalty
+                and elevate the ownership journey."
               </blockquote>
 
               {/* ATTRIBUTION */}

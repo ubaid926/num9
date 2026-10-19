@@ -9,10 +9,7 @@ export default function LexusHeroSection({ onNavigate, onSubmit }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!email || isSent) return;
-
-    // Only show success after an actual submission succeeds.
-    if (!onSubmit) return;
+    if (!email || isSent || !onSubmit) return;
 
     try {
       await onSubmit(email);
@@ -24,26 +21,39 @@ export default function LexusHeroSection({ onNavigate, onSubmit }) {
     }
   };
 
+  const tags = [
+    "UI/UX Design",
+    "Interactive Experience",
+    "Vehicle Customization",
+    "Digital Experience",
+    "Multimedia Experience",
+  ];
+
   return (
     <section className="relative w-full overflow-hidden bg-[#080808] text-white">
-      {/* BACKGROUND */}
+      {/* BACKGROUND IMAGE */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <img
           src={lexusHeroBg}
           alt="Lexus Luxury Automotive"
           className="
             h-full w-full object-cover
-            object-center lg:object-[center_35%]
+            object-[58%_center]
+            sm:object-center
+            lg:object-[center_35%]
           "
         />
 
+        {/* Background overlay */}
         <div
           className="
             absolute inset-0
             bg-gradient-to-b
-            from-black/65 via-black/55 to-black/75
+            from-black/75 via-black/60 to-black/75
             lg:bg-gradient-to-r
-            lg:from-black/80 lg:via-black/35 lg:to-transparent
+            lg:from-black/80
+            lg:via-black/50
+            lg:to-black/45
           "
         />
       </div>
@@ -52,33 +62,48 @@ export default function LexusHeroSection({ onNavigate, onSubmit }) {
       <div
         className="
           relative z-10 mx-auto
-          max-w-[1680px]
-          px-[18px] sm:px-8 lg:px-14 xl:px-20
-          pt-[52px] sm:pt-10 lg:pt-12
-          pb-[46px] sm:pb-16 lg:pb-20
+          w-full max-w-[1680px]
+          px-[26px] sm:px-8
+          lg:px-14 xl:px-20
+          pt-[48px] sm:pt-[52px] lg:pt-[46px]
+          pb-[44px] sm:pb-[60px] lg:pb-[95px]
         "
       >
         {/* BREADCRUMB */}
         <nav
+          aria-label="Breadcrumb"
           className="
-            flex items-center gap-[16px]
+            flex items-center
+            gap-[16px] sm:gap-5
             font-grift-semibold
-            text-[16px]
+            text-[14px] sm:text-[16px]
             text-white
-            mb-[42px] sm:mb-14 lg:mb-16
+            mb-[43px] sm:mb-[52px] lg:mb-[65px]
           "
         >
-          <ChevronRight className="h-[18px] w-[18px] shrink-0 stroke-[3]" />
+          <ChevronRight
+            size={19}
+            strokeWidth={3}
+            className="shrink-0"
+          />
 
           <button
             type="button"
             onClick={() => onNavigate?.("our-work")}
-            className="cursor-pointer transition-colors hover:text-white/75"
+            className="
+              cursor-pointer
+              hover:text-white/75
+              transition-colors
+            "
           >
             Our Clients
           </button>
 
-          <ChevronRight className="h-[18px] w-[18px] shrink-0 stroke-[3]" />
+          <ChevronRight
+            size={19}
+            strokeWidth={3}
+            className="shrink-0"
+          />
 
           <span>Lexus</span>
         </nav>
@@ -87,53 +112,51 @@ export default function LexusHeroSection({ onNavigate, onSubmit }) {
         <div
           className="
             flex flex-col
-            lg:flex-row lg:items-center lg:justify-between
-            gap-0 lg:gap-12 xl:gap-16
+            lg:flex-row
+            lg:items-center
+            lg:justify-between
+            gap-0 lg:gap-10 xl:gap-14
           "
         >
           {/* LEFT CONTENT */}
-          <div className="w-full min-w-0 lg:max-w-[720px] xl:max-w-[820px]">
+          <div
+            className="
+              w-full min-w-0
+              lg:flex-1
+              lg:max-w-[760px]
+            "
+          >
             {/* SUBHEADING */}
             <p
               className="
                 font-grift-bold
-                text-[18px] lg:text-[13px]
-                leading-[1.25]
-                tracking-[0.23em] lg:tracking-[0.16em]
-                text-[#B9B9B9]
                 uppercase
-                mb-[26px] lg:mb-5
+                text-[15px] sm:text-[17px]
+                lg:text-[13px]
+                tracking-[0.24em]
+                lg:tracking-[0.2em]
+                leading-[1.35]
+                text-[#B9B9B9]
                 max-w-[390px] lg:max-w-none
+                mb-[23px] lg:mb-[18px]
               "
             >
               LEXUS CASE STUDY - LUXURY AUTOMOTIVE
             </p>
 
-            {/* MOBILE HEADING */}
+            {/* SAME HEADING ON ALL SCREENS */}
             <h1
               className="
-                lg:hidden
-                font-grift-extrabold
-                text-[45px]
-                leading-[1.09]
+                font-grift-semibold
+                text-[clamp(38px,9vw,56px)]
+                sm:text-[58px]
+                md:text-[64px]
+                lg:text-[64px]
+                xl:text-[70px]
+                leading-[1.06]
                 tracking-[-0.035em]
                 text-white
                 m-0
-              "
-            >
-              Elevating Luxury Customer Experiences Across North America
-            </h1>
-
-            {/* DESKTOP HEADING */}
-            <h1
-              className="
-                hidden lg:block
-                font-grift-semibold
-                lg:text-[70px] xl:text-[80px]
-                leading-[1.04]
-                tracking-[-0.03em]
-                text-white
-                mb-7
               "
             >
               Digital Experience
@@ -141,96 +164,77 @@ export default function LexusHeroSection({ onNavigate, onSubmit }) {
               Redefined
             </h1>
 
-            {/* DESKTOP ACCENT */}
+            {/* DESKTOP ACCENT LINE */}
             <div
               className="
                 hidden lg:block
-                w-[48px] h-[3.5px]
-                bg-[#3fc000]
-                rounded-[1px]
-                mb-9
+                w-[55px] h-[3px]
+                bg-[#3FC000]
+                mt-[34px] mb-[39px]
               "
             />
 
             {/* DESKTOP TAGS */}
-            <div className="hidden lg:flex flex-col gap-3.5">
-              <div className="flex flex-wrap gap-3.5">
-                {[
-                  "UI/UX Design",
-                  "Interactive Experience",
-                  "Vehicle Customization",
-                ].map((tag) => (
-                  <span
-                    key={tag}
-                    className="
-                      inline-flex items-center
-                      rounded-full
-                      border border-white/70
-                      bg-black/25
-                      px-5 py-2
-                      font-grift-medium
-                      text-[20px]
-                      text-white
-                    "
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap gap-3.5">
-                {[
-                  "Digital Experience",
-                  "Multimedia Experience",
-                ].map((tag) => (
-                  <span
-                    key={tag}
-                    className="
-                      inline-flex items-center
-                      rounded-full
-                      border border-white/70
-                      bg-black/25
-                      px-5 py-2
-                      font-grift-medium
-                      text-[20px]
-                      text-white
-                    "
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+            <div
+              className="
+                hidden lg:flex
+                flex-wrap gap-[13px]
+                max-w-[760px]
+              "
+            >
+              {tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="
+                    inline-flex items-center
+                    rounded-full
+                    border border-white/80
+                    bg-black/20
+                    px-[24px] py-[12px]
+                    font-grift-medium
+                    text-[17px] xl:text-[19px]
+                    leading-[1.2]
+                    whitespace-nowrap
+                    text-white
+                  "
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
           </div>
 
-          {/* PDF CARD */}
+          {/* PDF FORM CARD */}
           <div
             className="
               w-full flex justify-start
-              mt-[51px]
+              mt-[52px] sm:mt-[60px]
               lg:mt-0
-              lg:w-auto lg:justify-end
-              lg:pr-4 xl:pr-10
+              lg:w-auto lg:shrink-0
+              lg:justify-end
             "
           >
             <div
               className="
                 w-full
-                lg:w-[390px] xl:w-[410px]
+                lg:w-[400px] xl:w-[440px]
+                rounded-[26px]
                 bg-white
                 text-[#222222]
-                rounded-[28px] lg:rounded-[26px]
-                px-[34px] py-[28px]
-                lg:p-7
-                shadow-[0_22px_60px_rgba(0,0,0,0.35)]
+                px-[32px] py-[27px]
+                sm:p-[32px]
+                lg:px-[29px] lg:py-[25px]
+                shadow-[0_20px_55px_rgba(0,0,0,0.22)]
               "
             >
               <p
                 className="
                   font-grift-medium
-                  text-[20px] lg:text-[16px]
-                  leading-[1.32]
-                  mb-[17px] lg:mb-4
+                  text-[18px] sm:text-[20px]
+                  lg:text-[18px] xl:text-[19px]
+                  leading-[1.35]
+                  text-[#343434]
+                  mb-[18px]
                 "
               >
                 Get this case study in PDF to your inbox.
@@ -238,7 +242,11 @@ export default function LexusHeroSection({ onNavigate, onSubmit }) {
 
               <form
                 onSubmit={handleSubmit}
-                className="flex items-center gap-[20px] lg:gap-2.5"
+                className="
+                  flex items-center
+                  gap-[16px] lg:gap-[17px]
+                  w-full
+                "
               >
                 <input
                   type="email"
@@ -248,18 +256,20 @@ export default function LexusHeroSection({ onNavigate, onSubmit }) {
                   required
                   className="
                     w-full min-w-0 flex-1
-                    h-[61px] lg:h-[46px]
-                    px-[15px]
-                    rounded-[11px]
-                    border border-[#999999]
+                    h-[58px]
+                    rounded-[10px]
+                    border border-[#999]
                     bg-white
+                    px-[15px]
                     font-grift-medium
-                    text-[20px] lg:text-[15px]
-                    text-[#222222]
+                    text-[17px] sm:text-[18px]
+                    lg:text-[16px]
+                    text-[#222]
                     placeholder:text-[#929292]
                     outline-none
                     focus:border-[#35C900]
-                    focus:ring-1 focus:ring-[#35C900]
+                    focus:ring-1
+                    focus:ring-[#35C900]
                     transition-colors
                   "
                 />
@@ -268,23 +278,26 @@ export default function LexusHeroSection({ onNavigate, onSubmit }) {
                   type="submit"
                   disabled={isSent || !onSubmit}
                   className="
-                    h-[61px] lg:h-[46px]
-                    px-[21px] lg:px-7
+                    flex items-center justify-center
+                    gap-[6px]
                     shrink-0
-                    rounded-[11px]
+                    h-[58px]
+                    px-[22px] lg:px-[21px]
+                    rounded-[10px]
                     bg-[#35C900]
-                    font-grift-medium
-                    text-[20px] lg:text-[15px]
                     text-white
-                    flex items-center justify-center gap-1.5
-                    transition-colors
+                    font-grift-medium
+                    text-[17px] sm:text-[18px]
+                    lg:text-[17px]
                     hover:bg-[#2DB500]
+                    transition-colors
                     disabled:opacity-60
+                    disabled:cursor-not-allowed
                   "
                 >
                   {isSent ? (
                     <>
-                      <Check className="h-4 w-4" />
+                      <Check size={17} />
                       Sent
                     </>
                   ) : (

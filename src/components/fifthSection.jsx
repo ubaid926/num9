@@ -404,163 +404,62 @@ const impactStats = [
 
 
 const testimonials = [
-
-
-
-  {
-
-
-
-    logo: layer4,
-
-
-
-    logoAlt: 'PepsiCo',
+  {
+    logo: layer4,
+    logoAlt: 'PepsiCo',
     logoWidth: 145,
     logoHeight: 60,
-
-
-
-    text: 'Number9 consistently delivered impactful activations that strengthened consumer engagement and elevated our brand presence across multiple markets.',
-
-
-
-  },
-
-
-
-  {
-
-
-
-    logo: layer7,
-
-
-
-    logoAlt: 'Lexus',
+    text: 'Number9 consistently delivered impactful activations that strengthened consumer engagement and elevated our brand presence across multiple markets.',
+    route: 'case-study/pepsico',
+  },
+  {
+    logo: layer7,
+    logoAlt: 'Lexus',
     logoWidth: 125,
     logoHeight: 55,
-
-
-
-    text: 'From concept to execution, the team brought creativity, precision, and measurable results that exceeded expectations.',
-
-
-
-  },
-
-
-
-  {
-
-
-
-    logo: layer6,
-
-
-
-    logoAlt: 'Citibank',
+    text: 'From concept to execution, the team brought creativity, precision, and measurable results that exceeded expectations.',
+    route: 'case-study/lexus',
+  },
+  {
+    logo: layer6,
+    logoAlt: 'Citibank',
     logoWidth: 140,
     logoHeight: 55,
-
-
-
-    text: 'Their ability to combine strategy, technology, and customer experience helped us deliver meaningful outcomes at scale.',
-
-
-
-  },
-
-
-
-  {
-
-
-
-    logo: layer11,
-
-
-
-    logoAlt: 'Safeway',
+    text: 'Their ability to combine strategy, technology, and customer experience helped us deliver meaningful outcomes at scale.',
+    route: 'case-study/citibank',
+  },
+  {
+    logo: layer11,
+    logoAlt: 'Safeway',
     logoWidth: 132,
     logoHeight: 78,
-
-
-
-    text: 'Number9 became an extension of our team, providing reliable execution and innovative solutions across retail initiatives.',
-
-
-
-  },
-
-
-
-  {
-
-
-
-    logo: layer12,
-
-
-
-    logoAlt: 'Emirates',
+    text: 'Number9 became an extension of our team, providing reliable execution and innovative solutions across retail initiatives.',
+    route: 'case-study/safeway',
+  },
+  {
+    logo: layer12,
+    logoAlt: 'Emirates',
     logoWidth: 145,
     logoHeight: 65,
-
-
-
-    text: 'Professional, responsive, and highly collaborative. Their campaigns consistently delivered strong brand impact and customer engagement.',
-
-
-
-  },
-
-
-
-  {
-
-
-
-    logo: microsoftLogo,
-
-
-
-    logoAlt: 'Microsoft',
+    text: 'Professional, responsive, and highly collaborative. Their campaigns consistently delivered strong brand impact and customer engagement.',
+    route: 'case-study/emirates',
+  },
+  {
+    logo: microsoftLogo,
+    logoAlt: 'Microsoft',
     logoWidth: 165,
     logoHeight: 55,
-
-
-
-    text: 'Their digital strategy and execution helped us accelerate enterprise adoption and expand reach across key markets globally.',
-
-
-
-  },
-
-
-
-  {
-
-
-
-    logo: layer6,
-
-
-
-    logoAlt: 'Nutrien',
+    text: 'Their digital strategy and execution helped us accelerate enterprise adoption and expand reach across key markets globally.',
+    route: 'case-study/microsoft',
+  },
+  {
+    logo: layer6,
+    logoAlt: 'Nutrien',
     logoWidth: 140,
     logoHeight: 57,
-
-
-
-    text: 'Number9 delivered a comprehensive brand activation strategy that resonated deeply with our agricultural and retail audiences.',
-
-
-
-  },
-
-
-
+    text: 'Number9 delivered a comprehensive brand activation strategy that resonated deeply with our agricultural and retail audiences.',
+    route: 'case-study/nutrien',
+  },
 ];
 
 
@@ -893,11 +792,24 @@ function useIsUltraWide() {
 
 
 
-export default function FifthSection() {
+export default function FifthSection({ onNavigate }) {
 
+  const handleNavigateClick = (targetPage) => {
+    if (!targetPage) return;
+    if (onNavigate) {
+      onNavigate(targetPage);
+    } else if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      if (targetPage === 'home') {
+        url.searchParams.delete('page');
+      } else {
+        url.searchParams.set('page', targetPage);
+      }
+      window.location.href = url.toString();
+    }
+  };
 
-
-  const [offset, setOffset] = useState(testimonials.length);
+  const [offset, setOffset] = useState(testimonials.length);
   const [isLoopResetting, setIsLoopResetting] = useState(false);
   const isSliding = useRef(false);
   const loopingCards = [...testimonials, ...testimonials, ...testimonials];
@@ -1081,7 +993,7 @@ const desktopTrackWidth =
 
 
 
-    <section className="w-full bg-white font-outfit overflow-hidden">
+    <section className="w-full bg-white font-grift overflow-hidden">
 
 
 
@@ -1189,19 +1101,14 @@ const desktopTrackWidth =
 
 
 
-            <button className="group flex items-center gap-12 font-medium text-[14px] sm:text-[20px] text-slate-900 border-b-2  pb-1 w-fit hover:text-[#11C911] hover:border-[#11C911] transition-colors duration-300 mt-6">
-
-
-
-              View Our Work
-
-
-
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-
-
-
-            </button>
+            <button
+              type="button"
+              onClick={() => handleNavigateClick('our-work')}
+              className="group flex items-center gap-12 font-medium text-[14px] sm:text-[20px] text-slate-900 border-b-2 pb-1 w-fit hover:text-[#11C911] hover:border-[#11C911] transition-colors duration-300 mt-6 cursor-pointer"
+            >
+              View Our Work
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
 
 
 
@@ -1286,7 +1193,8 @@ const desktopTrackWidth =
 
 
 
-                  className="shrink-0 bg-white border border-slate-100 rounded-2xl flex flex-col justify-between cursor-pointer transition-all duration-300 hover:-translate-z-2 shadow-md hover:shadow-xl"
+                  onClick={() => handleNavigateClick(t.route)}
+                  className="shrink-0 bg-white border border-slate-100 rounded-2xl flex flex-col justify-between cursor-pointer transition-all duration-300 hover:-translate-z-2 shadow-md hover:shadow-xl"
 
 
 
@@ -1403,22 +1311,15 @@ const desktopTrackWidth =
 
 
                   <button
-
-
-
-                    className="sm:block text-left hover:underline w-fit mt-4 text-[20px]"
-
-
-
-                  >
-
-
-
-                    Learn More
-
-
-
-                  </button>
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleNavigateClick(t.route);
+                    }}
+                    className="sm:block text-left hover:underline w-fit mt-4 text-[20px] cursor-pointer"
+                  >
+                    Learn More
+                  </button>
 
 
 
@@ -1457,41 +1358,21 @@ const desktopTrackWidth =
               onClick={prev}
 
 
-
-              
-
-
-
               className={`w-[44px] h-[44px] rounded-full border flex items-center justify-center transition-colors
 
 
 
                 border-[#11C911] text-[#11C911] hover:bg-[#11C911] hover:text-white cursor-pointer`}
 
-
-
             >
-
-
 
               <ChevronLeft size={22} />
 
-
-
             </button>
-
-
 
             <button
 
-
-
               onClick={next}
-
-
-
-              
-
 
 
               className={`w-[44px] h-[44px] rounded-full border flex items-center justify-center transition-colors
@@ -1535,7 +1416,7 @@ const desktopTrackWidth =
 <div
   className="
     relative z-10 mx-auto w-full
-    max-w-[1364px]
+    max-w-[1600px]
     px-0 sm:px-6 lg:px-8
     mt-8 sm:mt-10 lg:-mt-[80px]
   "
@@ -1547,120 +1428,142 @@ const desktopTrackWidth =
       px-5 py-8
       sm:px-8 sm:py-12
       lg:px-10 lg:py-14
-      xl:px-[65px] xl:py-[55px] xl:min-h-[810px]
+      xl:px-[75px]
+      xl:py-[65px]
+      xl:min-h-[900px]
     "
   >
-    <div
+   <div
+  className="
+    grid grid-cols-1
+    lg:grid-cols-2
+    xl:grid-cols-[minmax(0,1.35fr)_minmax(245px,0.95fr)_minmax(0,1.85fr)]
+    gap-8 sm:gap-10 lg:gap-8
+    xl:gap-8
+    min-h-0
+    xl:min-h-[770px]
+    xl:items-stretch
+  "
+>
+    
+
+{/* LEFT — BUSINESS IMPACT */}
+<div
+  className="
+    flex flex-col
+    min-w-0
+    lg:pr-4
+    xl:pr-0
+    xl:pt-[48px]
+    xl:pb-[90px]
+    xl:h-full
+  "
+>
+  {/* LABEL */}
+  <p
+    className="
+      text-white/70 uppercase
+      text-[11px] sm:text-[12px]
+      tracking-[0.28em]
+      mb-5 sm:mb-8
+      xl:mb-[34px]
+    "
+  >
+    Business Impact
+  </p>
+
+  {/* HEADING */}
+  <h2
+    className="
+      text-white font-semibold
+      text-[40px]
+      sm:text-[clamp(40px,7vw,64px)]
+      xl:text-[65px]
+      leading-[1.08]
+      sm:leading-[1.02]
+      max-w-[280px]
+      sm:max-w-none
+      xl:max-w-[440px]
+    "
+  >
+    <span className="text-[#8DEB28]">
+      Designed to
+    </span>
+    <br />
+    perform.
+    <br />
+    Built to deliver
+    <br />
+    results.
+  </h2>
+
+  {/* DESCRIPTION */}
+  <p
+    className="
+      mt-6 sm:mt-8 lg:mt-12
+      xl:mt-[75px]
+      max-w-[400px]
+      text-white/70
+      text-[18px]
+      sm:text-[17px]
+      md:text-[19px]
+      xl:text-[23px]
+      leading-[1.55]
+    "
+  >
+    Strategy, design, development, and
+    marketing working together to improve
+    every step of the customer journey.
+  </p>
+
+  {/* CTA */}
+  <a
+    href="#contact"
+    onClick={(e) => {
+      e.preventDefault();
+      handleNavigateClick("contact");
+    }}
+    className="
+      group
+      mt-8 lg:mt-10
+      xl:mt-auto
+      flex items-center justify-between
+      w-full max-w-[260px]
+      pb-3
+      border-b border-[#22B8F3]
+      text-white
+      text-[16px] sm:text-[18px] xl:text-[22px]
+      cursor-pointer
+    "
+  >
+    <span>Let’s Talk Results</span>
+    <ArrowRight
       className="
-        grid grid-cols-1
-        lg:grid-cols-2
-        xl:grid-cols-[minmax(0,1.4fr)_minmax(240px,0.9fr)_minmax(0,1.85fr)]
-        gap-8
-        sm:gap-10
-        lg:gap-8
-        xl:gap-8
-        min-h-0
-        xl:min-h-[700px] xl:items-stretch
+        w-5 h-5 sm:w-6 sm:h-6
+        text-[#22B8F3]
+        transition-transform duration-300
+        group-hover:translate-x-1
       "
-    >
-      {/* LEFT — BUSINESS IMPACT */}
-      <div
-        className="
-          flex flex-col justify-between
-          min-w-0 lg:pr-4 xl:pr-2 xl:py-6
-        "
-      >
-        <div>
-          <p
-            className="
-              text-white/70 uppercase
-              text-[11px] sm:text-[12px]
-              tracking-[0.28em]
-              mb-5 sm:mb-8 lg:mb-10
-            "
-          >
-            Business Impact
-          </p>
-          <h2
-            className="
-              text-white font-semibold
-              text-[40px]
-              sm:text-[clamp(40px,7vw,64px)]
-              xl:text-[56px]
-              leading-[1.08]
-              sm:leading-[1.02]
-              tracking-[-0.04em]
-              max-w-[280px]
-              sm:max-w-none
-            "
-          >
-            <span className="text-[#8DEB28]">
-              Designed to
-            </span>
-            <br />
-            perform.
-            <br />
-            Built to deliver
-            <br />
-            results.
-          </h2>
-          <p
-            className="
-              mt-5 sm:mt-8 lg:mt-14
-              max-w-[400px]
-              text-white/70
-              text-[18px]
-              sm:text-[17px]
-              md:text-[19px]
-              xl:text-[19px]
-              leading-[1.55]
-            "
-          >
-            Strategy, design, development, and
-            marketing working together to improve
-            every step of the customer journey.
-          </p>
-        </div>
-        <a
-          href="#"
-          className="
-            group
-            mt-8 lg:mt-10 xl:mt-15
-            flex items-center justify-between
-            w-full max-w-[260px]
-            pb-3
-            border-b border-[#22B8F3]
-            text-white
-            text-[16px] sm:text-[18px] xl:text-[19px]
-          "
-        >
-          <span>Let’s Talk Results</span>
-          <ArrowRight
-            className="
-              w-5 h-5 sm:w-6 sm:h-6
-              text-[#22B8F3]
-              transition-transform duration-300
-              group-hover:translate-x-1
-            "
-          />
-        </a>
-      </div>
+    />
+  </a>
+</div>
+
       {/* CENTER — KPI CIRCLES */}
-      <div
-        className="
-          flex flex-row lg:flex-col
-          flex-wrap
-          items-center justify-center
-          gap-4
-          sm:gap-8
-          lg:gap-16
-          xl:gap-[82px] xl:justify-center xl:py-0 xl:h-full
-          lg:px-1
-          xl:pl-0
-          xl:pr-0
-          min-w-0
-        "
-      >
+     <div
+  className="
+    flex flex-row lg:flex-col
+    flex-wrap lg:flex-nowrap
+    items-center justify-center
+    gap-4 sm:gap-8 lg:gap-16
+    xl:gap-[115px]
+    xl:justify-center
+    xl:h-full
+    xl:py-0
+    lg:px-1
+    xl:px-0
+    min-w-0
+  "
+>
         {impactStats.map((item, index) => (
           <div
             key={index}
@@ -1687,151 +1590,178 @@ const desktopTrackWidth =
               />
             </div>
             {/* CENTER KPI CONTENT */}
-            <div
-              className="
-                relative z-10
-                text-center px-2
-                max-w-[78%]
-                sm:max-w-[180px]
-              "
-            >
-              <h3
-                className="
-                  text-white
-                  text-[18px]
-                  sm:text-[20px]
-                  md:text-[22px]
-                  xl:text-[25px]
-                  font-semibold
-                  leading-[1.08]
-                  tracking-[-0.025em]
-                "
-              >
-                {item.title}
-              </h3>
-              <p
-                className="
-                  mt-1.5
-                  sm:mt-4
-                  xl:mt-5
-                  text-white/90
-                  text-[13px]
-                  sm:text-[13px]
-                  xl:text-[15px]
-                  leading-[1.4]
-                "
-              >
-                {item.desc}
-              </p>
-            </div>
+     
+{/* CENTER KPI CONTENT */}
+<div
+  className="
+    relative z-10
+    flex flex-col
+    items-center justify-center
+    text-center
+    w-full
+    max-w-[90%]
+    px-1
+    sm:px-2
+  "
+>
+  <h3
+    className="
+      text-white
+      font-grift-semibold
+      text-[18px]
+      sm:text-[20px]
+      md:text-[22px]
+      xl:text-[29px]
+      leading-[1.08]
+      tracking-[-0.035em]
+      text-center
+      w-full
+      whitespace-normal
+    "
+  >
+    {item.title}
+  </h3>
+
+  <p
+    className="
+      mt-1.5
+      sm:mt-4
+      xl:mt-5
+      text-white/90
+      text-[13px]
+      xl:text-[15px]
+      leading-[1.4]
+      text-center
+      max-w-[200px]
+    "
+  >
+    {item.desc}
+  </p>
+</div>
+
           </div>
         ))}
       </div>
       {/* RIGHT — SERVICES */}
-      <div
-        className="
-          relative
-          flex items-center
-          min-w-0
-          pt-6 sm:pt-8
-          border-t border-white/20
-          lg:col-span-2
-          xl:col-span-1
-          xl:border-t-0
-          xl:pt-0
-          xl:border-l
-          xl:border-white/20
-          xl:pl-9 xl:self-stretch
-        "
-      >
-        <div
-          className="
-            grid
-            grid-cols-1
-            sm:grid-cols-2
-            gap-3
-            sm:gap-5
-            xl:gap-x-10
-            xl:gap-y-[54px]
-            w-full
-          "
-        >
-          {impactCards.map((card, index) => {
-            const mobileBorder =
-              index % 2 === 0 ? "#7BCB24" : "#1C9CD8";
-            return (
-              <div
-                key={index}
-                className="
-                  min-h-0
-                  sm:min-h-[170px]
-                  xl:min-h-[180px]
-                  rounded-[18px]
-                  sm:rounded-[24px]
-                  px-4 py-4
-                  sm:px-5 sm:py-6
-                  xl:px-4 xl:py-5
-                  flex flex-col
-                  justify-center
-                  transition-transform
-                  duration-300
-                  hover:-translate-y-1
-                  impact-card
-                "
-              
-style={{
-  border: `1px solid ${mobileBorder}`,
-  "--desktop-border": card.border,
-}}
+   
+{/* RIGHT — SERVICES */}
+<div
+  className="
+    relative
+    flex items-center
+    min-w-0
+    pt-6 sm:pt-8
+    border-t border-white/20
+    lg:col-span-2
+    xl:col-span-1
+    xl:border-t-0
+    xl:pt-0
+    xl:border-l
+    xl:border-white/20
+    xl:pl-[54px]
+    xl:self-stretch
+  "
+>
+  <div
+    className="
+      grid
+      grid-cols-1
+      sm:grid-cols-2
+      gap-3 sm:gap-5
+      xl:gap-x-[55px]
+      xl:gap-y-[62px]
+      xl:grid-rows-3
+      w-full
+      xl:h-full
+      xl:items-stretch
+    "
+  >
+    {impactCards.map((card, index) => {
+      const cardBorder =
+        index % 2 === 0 ? "#6B9F25" : "#167CA8";
 
-              >
-                {/* ICON */}
-                <img
-                  src={card.icon}
-                  alt=""
-                  className="
-                    w-8 h-8
-                    sm:w-[47px]
-                    sm:h-[47px]
-                    mb-3 sm:mb-5
-                    object-contain
-                    brightness-0 invert
-                  "
-                />
-                {/* TITLE */}
-                <h3
-                  className="
-                    text-white
-                    font-semibold
-                    text-[15px]
-                    sm:text-[19px]
-                    xl:text-[19px]
-                    leading-tight
-                  "
-                >
-                  {card.title}
-                </h3>
-                {/* DESCRIPTION */}
-                <p
-                  className="
-                    mt-1
-                    text-white/65
-                    text-[13px]
-                    sm:text-[15px]
-                    xl:text-[15px]
-                    leading-[1.3]
-                    sm:leading-[1.15]
-                    max-w-none
-                    xl:max-w-[180px]
-                  "
-                >
-                  {card.desc}
-                </p>
-              </div>
-            );
-          })}
+      return (
+        <div
+          key={index}
+          className="
+            min-w-0
+            min-h-[180px]
+            sm:min-h-[190px]
+            xl:min-h-0
+            xl:h-full
+            rounded-[22px]
+            bg-black
+            px-4 py-5
+            sm:px-5 sm:py-6
+            xl:px-[20px]
+            xl:py-[24px]
+            flex flex-col
+            justify-center
+            transition-transform
+            duration-300
+            hover:-translate-y-1
+            impact-card
+          "
+          style={{
+            border: `1px solid ${cardBorder}`,
+            borderRadius: "22px",
+            "--desktop-border": card.border,
+          }}
+        >
+          {/* ICON */}
+          <img
+            src={card.icon}
+            alt=""
+            className="
+              w-8 h-8
+              sm:w-[47px]
+              sm:h-[47px]
+              xl:w-[50px]
+              xl:h-[50px]
+              mb-3
+              sm:mb-5
+              xl:mb-[20px]
+              object-contain
+              brightness-0 invert
+            "
+          />
+
+          {/* TITLE */}
+          <h3
+            className="
+              text-white
+              font-semibold
+              text-[15px]
+              sm:text-[19px]
+              xl:text-[22px]
+              leading-tight
+            "
+          >
+            {card.title}
+          </h3>
+
+          {/* DESCRIPTION */}
+          <p
+            className="
+              mt-1
+              text-white/65
+              text-[13px]
+              sm:text-[15px]
+              xl:text-[18px]
+              leading-[1.3]
+              sm:leading-[1.15]
+              max-w-none
+              xl:max-w-[180px]
+            "
+          >
+            {card.desc}
+          </p>
         </div>
-      </div>
+      );
+    })}
+  </div>
+</div>
+
     </div>
   </div>
 </div>

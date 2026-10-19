@@ -5,10 +5,62 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Number9</title>
-    <!-- Preload Home Page Hero Section Images -->
-    <link rel="preload" as="image" href="/src/assets/Fintech Dashboard at Sunset 1 (1).webp" type="image/webp" fetchpriority="high" />
-    <link rel="preload" as="image" href="/src/assets/Fintech Dashboard at Sunset 1.webp" type="image/webp" fetchpriority="high" />
-    <link rel="preload" as="image" href="/src/assets/Metallic Blue Lexus in a Warehouse 1.webp" type="image/webp" fetchpriority="high" />
+
+    <!-- ═══════════════════════════════════════════════════════
+         FONT PRELOADS — Grift (all weights used on the site)
+         Preloading fonts eliminates FOUT (flash of unstyled text)
+         and prevents layout shifts during initial render.
+    ═══════════════════════════════════════════════════════ -->
+    <link rel="preload" as="font" href="/src/fonts/grift-medium.ttf"   type="font/ttf" crossorigin="anonymous" />
+    <link rel="preload" as="font" href="/src/fonts/grift-semibold.ttf" type="font/ttf" crossorigin="anonymous" />
+    <link rel="preload" as="font" href="/src/fonts/grift-light.ttf"    type="font/ttf" crossorigin="anonymous" />
+    <link rel="preload" as="font" href="/src/fonts/grift-regular.ttf"  type="font/ttf" crossorigin="anonymous" />
+    <link rel="preload" as="font" href="/src/fonts/grift-black.ttf"    type="font/ttf" crossorigin="anonymous" />
+    <link rel="preload" as="font" href="/src/fonts/grift-extrabold.ttf" type="font/ttf" crossorigin="anonymous" />
+
+    <!-- ═══════════════════════════════════════════════════════
+         HERO IMAGE PRELOADS — Above-the-fold LCP images
+         Slides 1–3 are immediately visible on load (fetchpriority=high).
+         Slides 4–11 are adjacent/upcoming slides (no fetchpriority).
+         Logos are small PNGs and load fast enough without preloading.
+    ═══════════════════════════════════════════════════════ -->
+
+    <!-- Slide 1 — Lexus (active on load, highest priority) -->
+    <link rel="preload" as="image" href="/src/assets/Metallic Blue Lexus in a Warehouse 1.webp"                                          type="image/webp" fetchpriority="high" />
+
+    <!-- Slide 2 — CitiBank -->
+    <link rel="preload" as="image" href="/src/assets/Fintech Dashboard at Sunset 1.webp"                                                  type="image/webp" fetchpriority="high" />
+
+    <!-- Slide 3 — Safeway -->
+    <link rel="preload" as="image" href="/src/assets/Fintech Dashboard at Sunset 1 (1).webp"                                             type="image/webp" fetchpriority="high" />
+
+    <!-- Slide 4 — Empire Cinemas -->
+    <link rel="preload" as="image" href="/src/assets/homeHeroSectionImages/Empire Cinemas Grand Lobby 1 (1).webp"                         type="image/webp" />
+
+    <!-- Slide 5 — LifeGive -->
+    <link rel="preload" as="image" href="/src/assets/homeHeroSectionImages/LifeGive Mediterranean Supplement Showcase 1.webp"             type="image/webp" />
+
+    <!-- Slide 6 — PwC -->
+    <link rel="preload" as="image" href="/src/assets/homeHeroSectionImages/PwC_Enterprise_Dashboard_in_Executive_Office 1.webp"           type="image/webp" />
+
+    <!-- Slide 7 — Sentral Education -->
+    <link rel="preload" as="image" href="/src/assets/homeHeroSectionImages/Sunlit Sentral Education Workspace 1.webp"                     type="image/webp" />
+
+    <!-- Slide 8 — ZEE5 -->
+    <link rel="preload" as="image" href="/src/assets/homeHeroSectionImages/composite (50)0 1.webp"                                        type="image/webp" />
+
+    <!-- Slide 9 — Fairview -->
+    <link rel="preload" as="image" href="/src/assets/homeHeroSectionImages/hf_20261016_161338_d8b119f9-4b93-4517-95ad-49bb6319981e 1.webp" type="image/webp" />
+
+    <!-- Slide 10 — Shan -->
+    <link rel="preload" as="image" href="/src/assets/homeHeroSectionImages/hf_20261016_161454_e8b7b674-bce5-43a9-a4be-c7776fa74607 1.webp" type="image/webp" />
+
+    <!-- Slide 11 — Snacks.com -->
+    <link rel="preload" as="image" href="/src/assets/homeHeroSectionImages/hf_20261016_162448_549b8ec4-b231-4ab6-8341-ad5a5b8ffe63 1.webp" type="image/webp" />
+
+    <!-- Slide 12 — Almaza -->
+    <link rel="preload" as="image" href="/src/assets/homeHeroSectionImages/PwC_Enterprise_Dashboard_in_Executive_Office 1 (1).webp"       type="image/webp" />
+
   </head>
   <body>
     <div id="root"></div>

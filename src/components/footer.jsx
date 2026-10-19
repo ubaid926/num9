@@ -1,480 +1,303 @@
-import React from 'react';
-import { ArrowRight, Phone } from 'lucide-react';
-import logo from '../assets/Green 9 with Blue NO Badge.webp';
+import React from "react";
+import { ArrowRight, Phone } from "lucide-react";
+import logo from "../assets/Green 9 with Blue NO Badge.webp";
 
-const Footer = () => {
+// Matched to the supplied 1920px reference with routing integrated to existing routes.
+const Footer = ({ onNavigate }) => {
+  const handleNavigateClick = (e, targetPage) => {
+    e?.preventDefault?.();
+    if (!targetPage) return;
+    if (onNavigate) {
+      onNavigate(targetPage);
+    } else if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      if (targetPage === "home") {
+        url.searchParams.delete("page");
+      } else {
+        url.searchParams.set("page", targetPage);
+      }
+      window.location.href = url.toString();
+    }
+  };
+
+  const getHref = (route) => (route === "home" ? "/" : `?page=${route}`);
+
   const discoverLinks = [
-    'About Us',
-    'Our Approach',
-    'Services',
-    'Case Studies',
-    'Technologies',
-    'Industries',
-    'Careers',
-    'Life at Number 9',
-    'Blog',
-    'Press',
-    'Contact Us',
+    { label: "About Us", route: "about" },
+    { label: "Our Approach", route: "about" },
+    { label: "Services", route: "services" },
+    { label: "Case Studies", route: "our-work" },
+    { label: "Technologies", route: "services" },
+    { label: "Industries", route: "services" },
+    { label: "Careers", route: "contact" },
+    { label: "Life at Number 9", route: "about" },
+    { label: "Blog", route: "our-work" },
+    { label: "Press", route: "about" },
+    { label: "Contact Us", route: "contact" },
   ];
 
   const resourceLinks = [
-    'All Resources',
-    'Blog',
-    'Case Studies',
-    'Whitepapers & eBooks',
-    'Webinars',
-    'Industry Insights',
-    'Technology Hub',
-    'Newsletter',
-    'Glossary',
+    { label: "All Resources", route: "our-work" },
+    { label: "Blog", route: "our-work" },
+    { label: "Case Studies", route: "our-work" },
+    { label: "Whitepapers & eBooks", route: "our-work" },
+    { label: "Webinars", route: "services" },
+    { label: "Industry Insights", route: "services" },
+    { label: "Technology Hub", route: "services" },
+    { label: "Newsletter", route: "contact" },
+    { label: "Glossary", route: "about" },
   ];
 
   const careerLinks = [
-    'Job Opportunities',
-    'Internships',
-    'Referral Program',
-    'Associate Program',
+    { label: "Job Opportunities", route: "contact" },
+    { label: "Internships", route: "contact" },
+    { label: "Referral Program", route: "contact" },
+    { label: "Associate Program", route: "contact" },
   ];
 
+  const linkClass = "block text-[13px] leading-[1.4] text-black hover:opacity-60 transition-opacity cursor-pointer";
+  const headingClass = "mb-[25px] text-[19px] font-semibold leading-[1.25] tracking-[-0.025em] text-black whitespace-nowrap";
+
   return (
-    <footer className="w-full bg-white">
-      <div className="w-full grid grid-cols-1 xl:grid-cols-[1.72fr_1fr]">
-
-        {/* =====================================================
-            LEFT WHITE SIDE
-        ====================================================== */}
-        <div
-          className="
-            bg-white
-
-            px-6
-            sm:px-10
-            md:px-14
-            lg:px-20
-            xl:px-[90px]
-            2xl:px-[130px]
-
-            pt-10
-            sm:pt-12
-            xl:pt-10
-
-            pb-8
-            xl:pb-8
-
-            min-h-[670px]
-
-            flex
-            flex-col
-            justify-between
-          "
-        >
-          {/* TOP COLUMNS */}
-          <div
-            className="
-              grid
-              grid-cols-1
-              sm:grid-cols-2
-              lg:grid-cols-[110px_1fr_1fr_1fr]
-
-              gap-y-10
-              gap-x-10
-              xl:gap-x-16
-            "
-          >
+    <footer className="w-full bg-white text-black">
+      <div className="grid w-full min-w-0 grid-cols-1 xl:grid-cols-[minmax(0,63.4fr)_minmax(0,36.6fr)]">
+        {/* LEFT: White navigation and legal */}
+        <div className="flex min-h-[684px] flex-col justify-between bg-white px-6 pt-10 pb-11 sm:px-10 lg:px-16 xl:pl-[clamp(40px,14.32vw,275px)] xl:pr-[28px] xl:pt-[63px] xl:pb-[45px]">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-[130px_repeat(3,minmax(0,1fr))] xl:gap-x-[54px]">
             {/* LOGO */}
-            <div className="flex justify-end items-start">
-              <a href="#" className="flex items-center" aria-label="Home">
+            <div className="flex items-start justify-center lg:justify-end lg:pr-0">
+              <a
+                href="/"
+                onClick={(e) => handleNavigateClick(e, "home")}
+                className="relative flex items-start justify-center
+                           w-[100px] h-[110px]
+                           sm:w-[110px] sm:h-[115px]
+                           lg:w-[100px] lg:h-[110px]
+                           shrink-0 overflow-visible cursor-pointer"
+                aria-label="Home"
+              >
                 <img
                   src={logo}
                   alt="Number 9"
-                  className="h-10 sm:h-18 w-auto object-contain block"
+                  className="absolute top-0 left-1/2 -translate-x-1/2
+                             w-[100px] h-[100px]
+                             sm:w-[110px] sm:h-[110px]
+                             lg:w-[100px] lg:h-[90px]
+                             object-contain max-w-none"
                 />
               </a>
             </div>
 
-            {/* DISCOVER */}
             <div>
-              <h3 className="text-[20px] font-semibold text-black mb-7">
-                Discover Number 9
-                <span className="text-[#15B83E]">.</span>
+              <h3 className={headingClass}>
+                Discover Number9<span className="text-[#F15B40]">.</span>
               </h3>
-
               <ul className="space-y-[14px]">
                 {discoverLinks.map((item) => (
-                  <li key={item}>
+                  <li key={item.label}>
                     <a
-                      href="#"
-                      className="
-                        text-[14px]
-                        text-black/80
-
-                        transition-colors
-                        hover:text-black
-                      "
+                      href={getHref(item.route)}
+                      onClick={(e) => handleNavigateClick(e, item.route)}
+                      className={linkClass}
                     >
-                      {item}
+                      {item.label}
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
-
-            {/* RESOURCES */}
             <div>
-              <h3 className="text-[20px] font-semibold text-black mb-7">
-                Resources
-                <span className="text-[#15B83E]">.</span>
+              <h3 className={headingClass}>
+                Resources<span className="text-[#F15B40]">.</span>
               </h3>
-
               <ul className="space-y-[14px]">
                 {resourceLinks.map((item) => (
-                  <li key={item}>
+                  <li key={item.label}>
                     <a
-                      href="#"
-                      className="
-                        text-[14px]
-                        text-black/80
-
-                        transition-colors
-                        hover:text-black
-                      "
+                      href={getHref(item.route)}
+                      onClick={(e) => handleNavigateClick(e, item.route)}
+                      className={linkClass}
                     >
-                      {item}
+                      {item.label}
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
-
-            {/* CAREERS */}
             <div>
-              <h3 className="text-[20px] font-semibold text-black mb-7">
-                Careers
-                <span className="text-[#15B83E]">.</span>
+              <h3 className={headingClass}>
+                Careers<span className="text-[#F15B40]">.</span>
               </h3>
-
-              <ul className="space-y-[28px]">
+              <ul className="space-y-[17px]">
                 {careerLinks.map((item) => (
-                  <li key={item}>
+                  <li key={item.label}>
                     <a
-                      href="#"
-                      className="
-                        text-[14px]
-                        text-black/80
-
-                        transition-colors
-                        hover:text-black
-                      "
+                      href={getHref(item.route)}
+                      onClick={(e) => handleNavigateClick(e, item.route)}
+                      className={linkClass}
                     >
-                      {item}
+                      {item.label}
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-
-          {/* BOTTOM LEGAL */}
-          <div className="mt-16">
-            <div
-              className="
-                flex
-                flex-wrap
-
-                gap-x-12
-                gap-y-3
-              "
-            >
+          <div className="mt-16 text-[13px] leading-[1.4]">
+            <div className="flex flex-wrap items-center gap-x-[44px] gap-y-3">
               <a
-                href="#"
-                className="text-[12px] text-black/80 hover:text-black"
+                href={getHref("about")}
+                onClick={(e) => handleNavigateClick(e, "about")}
+                className="hover:underline cursor-pointer"
               >
                 Privacy Policy
               </a>
-
               <a
-                href="#"
-                className="text-[12px] text-black/80 hover:text-black"
+                href={getHref("about")}
+                onClick={(e) => handleNavigateClick(e, "about")}
+                className="hover:underline cursor-pointer"
               >
                 Terms of Service
               </a>
-
               <a
-                href="#"
-                className="text-[12px] text-black/80 hover:text-black"
+                href={getHref("about")}
+                onClick={(e) => handleNavigateClick(e, "about")}
+                className="hover:underline cursor-pointer"
               >
                 Do Not Sell My Personal Information
               </a>
             </div>
-
-            <p className="mt-6 text-[12px] text-black/80">
-              ©Elipse Studio 2026. All rights reserved.
-            </p>
+            <p className="mt-[20px]">©Number9 2024 2025. All rights reserved.</p>
           </div>
         </div>
 
-        {/* =====================================================
-            RIGHT GRAY SIDE
-        ====================================================== */}
+        {/* RIGHT: Gray contact, newsletter and social panel */}
         <div
           className="
             bg-[#D9DDE0]
-
+            min-w-0
+            w-full
             px-6
             sm:px-10
             lg:px-14
             xl:px-[50px]
             2xl:px-[65px]
-
             pt-10
             sm:pt-12
-
             pb-10
-
             min-h-[670px]
-
             flex
             flex-col
           "
         >
-          {/* GET IN TOUCH */}
-          <div>
-            <h3 className="text-[20px] font-semibold text-black">
-              Get in touch
-              <span className="text-[#ff5e45]">.</span>
+          <section>
+            <h3 className="text-[19px] font-semibold leading-[1.25] tracking-[-0.025em]">
+              Get in touch<span className="text-[#F15B40]">.</span>
             </h3>
-
-            <div
-              className="
-                flex
-                flex-wrap
-                gap-3
-
-                mt-6
-              "
-            >
-              <button
-                type="button"
-                className="
-                  h-[40px]
-                  px-6
-
-                  border
-                  border-black
-
-                  rounded-[5px]
-
-                  text-[14px]
-                  text-black
-
-                  transition-all
-
-                  hover:bg-black
-                  hover:text-white
-                "
+            <div className="mt-[22px] flex flex-wrap gap-[8px]">
+              <a
+                href="#contact"
+                onClick={(e) => handleNavigateClick(e, "contact")}
+                className="flex h-[40px] items-center justify-center rounded-[5px] border-2 border-black px-[20px] text-[16px] transition-colors hover:bg-black hover:text-white cursor-pointer"
               >
                 Contact Us
-              </button>
-
-              <button
-                type="button"
-                className="
-                  h-[40px]
-                  px-6
-
-                  rounded-[5px]
-
-                  bg-[#32CA00]
-                  text-white
-
-                  text-[14px]
-
-                  flex
-                  items-center
-                  gap-3
-
-                  transition-colors
-
-                  hover:bg-[#2bb400]
-                "
-              >
-                Schedule a Call
-
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-
-            <div className="flex items-center gap-4 mt-7">
-              <Phone className="w-[17px] h-[17px] text-black fill-black" />
-
+              </a>
               <a
-                href="tel:+14084782739"
-                className="text-[13px] text-black/85"
+                href="#contact"
+                onClick={(e) => handleNavigateClick(e, "contact")}
+                className="flex h-[40px] items-center justify-center gap-[13px] rounded-[5px] bg-[#31C900] px-[22px] text-[16px] text-white transition-colors hover:bg-[#29aa00] cursor-pointer"
               >
-                +1 (408) 478-2739
+                Schedule a Call <ArrowRight className="h-[18px] w-[18px]" />
               </a>
             </div>
-          </div>
+            <a
+              href="tel:+14084782739"
+              className="mt-[32px] inline-flex items-center gap-[14px] text-[14px] hover:underline"
+            >
+              <Phone className="h-[17px] w-[17px] fill-black" />+1 (408) 478-2739
+            </a>
+          </section>
 
-          {/* LINE */}
-          <div className="h-px bg-black/20 my-10" />
+          <div className="my-[38px] h-px w-full bg-black/20" />
 
-          {/* NEWSLETTER */}
-          <div>
-            <h3 className="text-[19px] font-semibold text-black">
+          <section className="w-full min-w-0">
+            <h3 className="text-[19px] font-semibold leading-[1.25] tracking-[-0.025em]">
               Stay ahead with insights.
             </h3>
-
-            <p
-              className="
-                mt-5
-
-                max-w-[350px]
-
-                text-[13px]
-                leading-[1.5]
-
-                text-black/80
-              "
-            >
-              Get insights from the experts on building
-              <br className="hidden sm:block" />
-              and scaling technology teams.
+            <p className="mt-[16px] max-w-[350px] text-[15px] leading-[1.45]">
+              Get insights from the experts on building and scaling technology teams.
             </p>
 
+            {/* Newsletter: reference-sized row, never overflows grey panel */}
             <div
-              className="
-                mt-8
-
-                flex
-                items-end
-
-                gap-5
-              "
+              className="mt-8 grid w-full max-w-[327px] min-w-0 items-center gap-3"
+              style={{ gridTemplateColumns: "minmax(0, 1fr) 123px" }}
             >
               <input
                 type="email"
                 placeholder="Your e-mail address"
-                className="
-                  w-full
-                  max-w-[220px]
-
-                  bg-transparent
-
-                  border-none
-                  outline-none
-
-                  text-[13px]
-                  text-black
-
-                  placeholder:text-black/45
-                "
+                className="block box-border h-[40px] w-full min-w-0 bg-transparent border-0 outline-none px-3 text-[13px] text-black placeholder:text-black/45"
               />
-
               <button
                 type="button"
-                className="
-                  h-[40px]
-                  px-6
-
-                  border
-                  border-black
-
-                  rounded-[5px]
-
-                  text-[14px]
-                  text-black
-
-                  transition-all
-
-                  hover:bg-black
-                  hover:text-white
-                "
+                className="box-border h-[40px] w-[123px] min-w-0 whitespace-nowrap rounded-[5px] border-2 border-black bg-transparent px-3 text-[14px] text-black transition-colors hover:bg-black hover:text-white cursor-pointer"
               >
                 Subscribe
               </button>
             </div>
 
-            <label
-              className="
-                mt-7
-
-                flex
-                items-center
-                gap-4
-
-                cursor-pointer
-              "
-            >
+            <label className="mt-[32px] flex cursor-pointer items-start gap-[14px] text-[14px] leading-[1.45]">
               <input
                 type="checkbox"
-                className="
-                  w-[18px]
-                  h-[18px]
-
-                  border
-                  border-black/40
-
-                  accent-black
-                "
+                className="mt-[1px] h-[18px] w-[18px] shrink-0 accent-black"
               />
-
-              <span className="text-[12px] text-black/80">
-                By subscribing I accept the{' '}
+              <span>
+                By subscribing I accept the{" "}
                 <a
-                  href="#"
-                  className="
-                    underline
-                    underline-offset-2
-                    text-black
-                  "
+                  href={getHref("about")}
+                  onClick={(e) => handleNavigateClick(e, "about")}
+                  className="underline underline-offset-2"
                 >
                   Privacy Policy
                 </a>
                 .
               </span>
             </label>
+          </section>
+
+          <div className="mt-auto mb-[39px] pt-[48px]">
+            <div className="h-px w-full bg-black/20" />
           </div>
 
-          {/* LINE */}
-          <div className="h-px bg-black/20 my-12" />
-
-          {/* SOCIAL */}
-          <div>
-            <h3 className="text-[19px] font-semibold text-black">
-              Follow us
-              <span className="text-[#ff5e45]">.</span>
+          <section>
+            <h3 className="text-[19px] font-semibold leading-[1.25] tracking-[-0.025em]">
+              Follow us<span className="text-[#F15B40]">.</span>
             </h3>
-
-            <div className="flex items-center gap-5 mt-7">
+            <div className="mt-[26px] flex flex-wrap items-center gap-[24px]">
               <SocialIcon label="Instagram">
                 <InstagramIcon />
               </SocialIcon>
-
               <SocialIcon label="Facebook">
                 <FacebookIcon />
               </SocialIcon>
-
               <SocialIcon label="X">
                 <XIcon />
               </SocialIcon>
-
               <SocialIcon label="YouTube">
                 <YouTubeIcon />
               </SocialIcon>
-
               <SocialIcon label="LinkedIn">
                 <LinkedInIcon />
               </SocialIcon>
             </div>
-          </div>
+          </section>
         </div>
       </div>
     </footer>
   );
 };
 
-const iconClass = 'w-[15px] h-[15px] fill-current';
+const iconClass = "w-[15px] h-[15px] fill-current";
 
 const InstagramIcon = () => (
   <svg viewBox="0 0 24 24" className={iconClass} aria-hidden="true">
@@ -510,6 +333,7 @@ const SocialIcon = ({ children, label }) => {
   return (
     <a
       href="#"
+      onClick={(e) => e.preventDefault()}
       aria-label={label}
       className="
         w-[30px]

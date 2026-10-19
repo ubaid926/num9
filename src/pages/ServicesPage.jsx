@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { ChevronDown, Menu, X, ArrowRight } from 'lucide-react';
 import logo from '../assets/Black Logo.png';
 import heroImage from '../assets/Overlapping Circles Office Collaboration Cutout.webp';
@@ -171,7 +171,7 @@ function ServiceCard({ title, text }) {
       "
       style={{ width: '100%', height: 'auto' }}
     >
-      <h3 className="font-semibold text-[18.75px] sm:text-[25px] text-[#181818] tracking-[-0.02em] mb-2 leading-[1.3] group-hover:text-black transition-colors">
+      <h3 className="font-grift-semibold text-[18.75px] sm:text-[25px] text-[#181818] tracking-[-0.02em] mb-2 leading-[1.3] group-hover:text-black transition-colors">
         {title}
       </h3>
       <p className="font-grift-medium text-[15.84px] sm:text-[21px] leading-[1.58] text-[#6B7280]">
@@ -337,8 +337,7 @@ function HeroSection() {
           {/* Eyebrow Label */}
           <div className="flex items-center gap-2 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#15B83E] shrink-0" />
-            <span className=" text-[14.78px] sm:text-[13px] lg:text-[21px] tracking-[0.18em] uppercase"
-            style={{fontWeight:'600'}}>
+            <span className="  text-[14.78px] font-grift-semibold sm:text-[13px] lg:text-[21px] tracking-[0.28em] uppercase">
               NUMBER 9 SERVICES
             </span>
           </div>
@@ -458,7 +457,7 @@ function MarqueeAndSummary() {
 
 export default function ServicesPage({ onNavigate, activeDropdown, setActiveDropdown }) {
   return (
-    <div className="bg-white min-h-screen text-[#141414] font-outfit antialiased selection:bg-[#15B83E]/20 selection:text-black">
+    <div className="bg-white min-h-screen text-[#141414] font-grift antialiased selection:bg-[#15B83E]/20 selection:text-black">
       {/* 1. Header Navigation â€” same AppNav as Home page */}
       <AppNav
         activeDropdown={activeDropdown}
@@ -491,10 +490,10 @@ export default function ServicesPage({ onNavigate, activeDropdown, setActiveDrop
       <MarqueeSection />
 
       {/* 5. Accelerate Business Section (Black Banner) */}
-      <AccelerateBusinessSection />
+      <AccelerateBusinessSection onScheduleClick={() => onNavigate && onNavigate('contact')} />
 
       {/* 6. Footer */}
-      <Footer />
+      <Footer onNavigate={onNavigate} />
     </div>
   );
 }

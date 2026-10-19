@@ -445,7 +445,7 @@ const CircleDecoration = ({ image }) => {
 /* =========================================================
    SERVICE CARD
 ========================================================= */
-const ServiceCard = ({ service }) => {
+const ServiceCard = ({ service, onNavigate }) => {
   const { dark, decoration, accentLine2 } = service;
   const isCross = decoration === "cross";
 
@@ -588,7 +588,11 @@ const ServiceCard = ({ service }) => {
         {/* Learn More button */}
 
         <a
-          href="#"
+          href="?page=services"
+          onClick={(e) => {
+            e.preventDefault();
+            if (onNavigate) onNavigate("services");
+          }}
           className={`
     mt-6 sm:mt-8 md:mt-9
     inline-flex
@@ -611,6 +615,7 @@ const ServiceCard = ({ service }) => {
     transition-all
     duration-300
     group
+    cursor-pointer
     ${
       dark || service.lightBtn
         ? "bg-white text-black hover:bg-gray-100"
@@ -773,7 +778,22 @@ const ServiceCard = ({ service }) => {
 /* =========================================================
    SECTION
 ========================================================= */
-const WhatWeDo = () => {
+const WhatWeDo = ({ onNavigate }) => {
+  const handleNavigateClick = (e, targetPage) => {
+    e?.preventDefault?.();
+    if (!targetPage) return;
+    if (onNavigate) {
+      onNavigate(targetPage);
+    } else if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      if (targetPage === "home") {
+        url.searchParams.delete("page");
+      } else {
+        url.searchParams.set("page", targetPage);
+      }
+      window.location.href = url.toString();
+    }
+  };
   return (
     <section className="w-full bg-white py-12 sm:py-16 lg:py-20 xl:py-24 xl:pb-40 ">
       <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-16 2xl:px-20">
@@ -784,8 +804,9 @@ const WhatWeDo = () => {
           </h2>
 
           <a
-            href="#"
-            className="hidden md:flex items-center justify-between shrink-0 pb-3 border-b-2 border-black text-[16px] lg:text-[22px] text-black group gap-14"
+            href="?page=services"
+            onClick={(e) => handleNavigateClick(e, "services")}
+            className="hidden md:flex items-center justify-between shrink-0 pb-3 border-b-2 border-black text-[16px] lg:text-[22px] text-black group gap-14 cursor-pointer"
           >
             <span>Explore All Services</span>
 
@@ -812,14 +833,15 @@ const WhatWeDo = () => {
         {/* Service Cards */}
         <div className="flex flex-col gap-[110px] sm:gap-12 lg:gap-23">
           {services.map((service) => (
-            <ServiceCard key={service.id} service={service} />
+            <ServiceCard key={service.id} service={service} onNavigate={onNavigate || handleNavigateClick} />
           ))}
         </div>
 
         {/* Mobile / tablet explore button */}
         <a
-          href="#"
-          className="md:hidden mt-8 inline-flex items-center gap-3 pb-1 border-b border-black text-[14px] sm:text-[16px] text-black"
+          href="?page=services"
+          onClick={(e) => handleNavigateClick(e, "services")}
+          className="md:hidden mt-8 inline-flex items-center gap-3 pb-1 border-b border-black text-[14px] sm:text-[16px] text-black cursor-pointer"
         >
           Explore All Services
           <ArrowRight className="w-4 h-4" />

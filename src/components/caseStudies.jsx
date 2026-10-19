@@ -73,6 +73,7 @@ const originalCaseStudies = [
     logoClass:
 
       '-ml-[15px] h-[70px] sm:h-[80px] w-[180px] sm:w-[210px]',
+    route: 'case-study/lexus',
 
   },
 
@@ -113,6 +114,7 @@ const originalCaseStudies = [
     logoClass:
 
       'h-[70px] sm:h-[80px] w-[180px] sm:w-[210px]',
+    route: 'case-study/microsoft',
 
   },
 
@@ -153,6 +155,7 @@ const originalCaseStudies = [
     logoClass:
 
       'w-[180px] sm:w-[210px] h-[75px] sm:h-[90px]',
+    route: 'case-study/emirates',
 
   },
 
@@ -230,7 +233,23 @@ const caseStudies = [
 
 
 
-const CaseStudies = () => {
+const CaseStudies = ({ onNavigate }) => {
+  const handleNavigateClick = (e, targetPage) => {
+    e?.preventDefault?.();
+    e?.stopPropagation?.();
+    if (!targetPage) return;
+    if (onNavigate) {
+      onNavigate(targetPage);
+    } else if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      if (targetPage === 'home') {
+        url.searchParams.delete('page');
+      } else {
+        url.searchParams.set('page', targetPage);
+      }
+      window.location.href = url.toString();
+    }
+  };
 
   /*
 
@@ -653,13 +672,11 @@ const CaseStudies = () => {
               key={`${study.id}-${index}`}
 
               onClick={() => {
-
-                if (isVisible) {
-
+                if (!isActive && isVisible) {
                   setActiveIndex(index);
-
+                } else if (isActive && study.route) {
+                  handleNavigateClick(null, study.route);
                 }
-
               }}
 
               className={`
@@ -1045,91 +1062,14 @@ ${isActive
 
 
 
-                  <div
-
-                    className={`
-
-                      absolute
-
-
-
-                      bottom-4
-
-                      right-4
-
-
-
-                      w-[44px]
-
-                      h-[44px]
-
-
-
-                      rounded-full
-
-
-
-                      bg-white
-
-
-
-                      flex
-
-                      items-center
-
-                      justify-center
-
-
-
-                      shadow-lg
-
-
-
-                      transition-all
-
-                      duration-500
-
-
-
-                      ${isActive
-
-                        ? `
-
-                            opacity-100
-
-                            translate-y-0
-
-                          `
-
-                        : `
-
-                            opacity-100
-
-                            translate-y-0
-
-                          `
-
-                      }
-
-                    `}
-
+                  <button
+                    type="button"
+                    aria-label={`View ${study.titleLine1} Case Study`}
+                    onClick={(e) => handleNavigateClick(e, study.route)}
+                    className="absolute bottom-4 right-4 w-[44px] h-[44px] rounded-full bg-white flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer z-20 opacity-100 translate-y-0"
                   >
-
-                    <ArrowRight
-
-                      className="
-
-                        text-[#17A229]
-
-                        w-5
-
-                        h-5
-
-                      "
-
-                    />
-
-                  </div>
+                    <ArrowRight className="text-[#17A229] w-5 h-5" />
+                  </button>
 
                 </div>
 
@@ -1528,10 +1468,8 @@ ${isActive
                   >
 
                     <a
-
-                      href="#"
-
-                      onClick={(event) => event.stopPropagation()}
+                      href={study.route ? `?page=${study.route}` : '#'}
+                      onClick={(e) => handleNavigateClick(e, study.route)}
 
                       className="
 

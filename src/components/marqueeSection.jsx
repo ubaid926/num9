@@ -63,12 +63,12 @@ export default function MarqueeSection() {
       </div>
 
       {/* Explore All Services */}
-      <div className="flex justify-center mt-8 sm:mt-10 pb-10 sm:pb-20">
+      {/* <div className="flex justify-center mt-8 sm:mt-10 pb-10 sm:pb-20">
         <button className="group flex items-center gap-2 sm:gap-3 font-medium text-[14px] sm:text-[17px] md:text-[22px]    border-b border-slate-400 pb-1 hover:text-[#11C911] hover:border-[#11C911] transition-colors duration-300">
           Explore All Services
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </button>
-      </div>
+      </div> */}
 
     </section>
   );

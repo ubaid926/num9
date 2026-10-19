@@ -277,63 +277,64 @@ export default function LexusStorySections({
 
  
 useEffect(() => {
-  const root = sectionRef.current;
-  const cta = ctaRef.current;
+    const root = sectionRef.current;
+    const challenge = challengeRef.current;
+    const cta = ctaRef.current;
 
-  if (!root || !cta) return;
+    if (!root || !challenge || !cta) return;
 
-  let frame;
-  let currentProgress = 0;
-  let targetProgress = 0;
+    let rafId = null;
+    let lastProgress = -1;
 
-  const updateTarget = () => {
-    const rootRect = root.getBoundingClientRect();
-    const ctaRect = cta.getBoundingClientRect();
-    const viewportHeight = window.innerHeight;
+    const updateProgress = () => {
+      const challengeRect = challenge.getBoundingClientRect();
+      const ctaRect = cta.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
 
-    const start = viewportHeight * 0.65;
+      const mobile = window.innerWidth < 768;
+      const startOffset = mobile ? 42 : 48;
 
-    const finishPosition =
-      ctaRect.top - rootRect.top +
-      ctaRect.height * 0.5;
+      const lineStartTop = challengeRect.top + startOffset;
+      const lineEndTop = ctaRect.top + ctaRect.height * 0.5;
 
-    const distance = Math.max(1, finishPosition - start);
-    const traveled = start - rootRect.top;
+      const focalY = viewportHeight * 0.6;
+      const totalDistance = lineEndTop - lineStartTop;
 
-    targetProgress = Math.min(
-      1,
-      Math.max(0, traveled / distance)
-    );
-  };
+      if (totalDistance <= 0) return;
 
-  const animate = () => {
-    const smoothness = 0.045;
+      const scrollDistance = focalY - lineStartTop;
+      const rawProgress = scrollDistance / totalDistance;
+      const target = Math.min(1, Math.max(0, rawProgress));
 
-    currentProgress +=
-      (targetProgress - currentProgress) * smoothness;
+      if (Math.abs(target - lastProgress) > 0.0001) {
+        lastProgress = target;
+        setProgress(target);
+      }
+    };
 
-    if (Math.abs(targetProgress - currentProgress) < 0.0001) {
-      currentProgress = targetProgress;
-    }
+    const handleScrollOrResize = () => {
+      if (rafId !== null) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        updateProgress();
+      });
+    };
 
-    setProgress(currentProgress);
-    frame = requestAnimationFrame(animate);
-  };
+    updateProgress();
 
-  updateTarget();
-  animate();
+    window.addEventListener("scroll", handleScrollOrResize, {
+      passive: true,
+    });
+    window.addEventListener("resize", handleScrollOrResize);
 
-  window.addEventListener("scroll", updateTarget, {
-    passive: true,
-  });
-  window.addEventListener("resize", updateTarget);
-
-  return () => {
-    window.removeEventListener("scroll", updateTarget);
-    window.removeEventListener("resize", updateTarget);
-    cancelAnimationFrame(frame);
-  };
-}, []);
+    return () => {
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+      }
+      window.removeEventListener("scroll", handleScrollOrResize);
+      window.removeEventListener("resize", handleScrollOrResize);
+    };
+  }, [geometry.path]);
 
   /* =========================================
      SVG PATH LENGTH
@@ -346,7 +347,7 @@ useEffect(() => {
   }, [geometry.path]);
 
   const showLine = progress > 0 && pathLength > 0;
-  const showDot = progress >= 0.999 && pathLength > 0;
+  const showDot = progress >= 0.995 && pathLength > 0;
 
   const handleSubmit = (e) => {
     e.preventDefault();

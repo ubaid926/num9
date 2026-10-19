@@ -70,7 +70,7 @@ function ServicesHero() {
         {/* LEFT — "OUR SERVICES" */}
         <div className="flex-1 flex items-center justify-end pr-4 sm:pr-8 md:pr-10 lg:pr-14 pt-12 md:pt-0">
           <h1
-            className="font-outfit font-black text-slate-900 text-right leading-[0.88] select-none"
+            className="font-grift font-black text-slate-900 text-right leading-[0.88] select-none"
             style={{ fontSize: 'clamp(2.4rem, 8vw, 7rem)', letterSpacing: '-0.04em' }}
           >
             OUR<br />SERVICES
@@ -101,13 +101,13 @@ function ServicesHero() {
         <div className="flex-1 flex items-center justify-start pl-4 sm:pl-8 md:pl-10 lg:pl-12 pb-10 md:pb-0">
           <div style={{ maxWidth: 360 }}>
             <p
-              className="font-outfit font-bold text-slate-900 leading-[1.18] mb-3 tracking-tight"
+              className="font-grift font-bold text-slate-900 leading-[1.18] mb-3 tracking-tight"
               style={{ fontSize: 'clamp(0.9rem, 1.9vw, 1.35rem)' }}
             >
               Building the physical, crafting the digital, creating unforgettable experiences.
             </p>
             <p
-              className="font-outfit text-slate-500 leading-relaxed"
+              className="font-grift text-slate-500 leading-relaxed"
               style={{ fontSize: 'clamp(0.7rem, 1vw, 0.88rem)' }}
             >
               We bring human-centered design thinking and exceptional client service to solve complex challenges. No one is built like us.
@@ -208,7 +208,7 @@ function ServicesList() {
               {/* LEFT — service title */}
               <div className="flex-1 flex items-center justify-end px-5 sm:px-8 md:px-10 lg:px-16 py-8 md:py-10">
                 <h2
-                  className="font-outfit font-black text-white text-right leading-[0.95] tracking-tight"
+                  className="font-grift font-black text-white text-right leading-[0.95] tracking-tight"
                   style={{ fontSize: 'clamp(1.5rem, 3.4vw, 3rem)' }}
                 >
                   {service.title.map((line, i) => (
@@ -243,7 +243,7 @@ function ServicesList() {
               <div className="flex-1 flex items-center px-5 sm:px-8 md:px-10 lg:px-14 py-8 md:py-10">
                 <div style={{ maxWidth: 520 }}>
                   <p
-                    className="font-outfit leading-relaxed mb-5 transition-colors duration-500"
+                    className="font-grift leading-relaxed mb-5 transition-colors duration-500"
                     style={{
                       fontSize: 'clamp(0.78rem, 1.1vw, 0.95rem)',
                       color: isActive ? 'rgba(255,255,255,0.88)' : 'rgba(255,255,255,0.62)',
@@ -277,7 +277,7 @@ function ServicesList() {
 ═══════════════════════════════════════════════════════════ */
 export default function ServicesPage() {
   return (
-    <div className="w-full font-outfit">
+    <div className="w-full font-grift">
       <ServicesHero />
       <ServicesList />
       <AccelerateBusinessSection />
