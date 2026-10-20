@@ -30,7 +30,7 @@ const Footer = ({ onNavigate }) => {
     { label: "Technologies", route: "services" },
     { label: "Industries", route: "services" },
     { label: "Careers", route: "contact" },
-    { label: "Life at Number 9", route: "about" },
+    { label: "Life at Number9", route: "about" },
     { label: "Blog", route: "our-work" },
     { label: "Press", route: "about" },
     { label: "Contact Us", route: "contact" },
@@ -55,38 +55,31 @@ const Footer = ({ onNavigate }) => {
     { label: "Associate Program", route: "contact" },
   ];
 
-  const linkClass = "block text-[13px] leading-[1.4] text-black hover:opacity-60 transition-opacity cursor-pointer";
-  const headingClass = "mb-[25px] text-[19px] font-semibold leading-[1.25] tracking-[-0.025em] text-black whitespace-nowrap";
+  const linkClass = "block text-[14px] leading-[1.4] text-black hover:opacity-60 transition-opacity cursor-pointer";
+  const headingClass = "mb-[25px] text-[18px] xl:text-[19px] 2xl:text-[20px] font-semibold leading-[1.25] tracking-[-0.025em] text-black whitespace-nowrap";
 
   return (
     <footer className="w-full bg-white text-black">
       <div className="grid w-full min-w-0 grid-cols-1 xl:grid-cols-[minmax(0,63.4fr)_minmax(0,36.6fr)]">
         {/* LEFT: White navigation and legal */}
-        <div className="flex min-h-[684px] flex-col justify-between bg-white px-6 pt-10 pb-11 sm:px-10 lg:px-16 xl:pl-[clamp(40px,14.32vw,275px)] xl:pr-[28px] xl:pt-[63px] xl:pb-[45px]">
-          <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-[130px_repeat(3,minmax(0,1fr))] xl:gap-x-[54px]">
+        <div className="flex min-h-[640px] flex-col justify-between bg-white px-6 pt-10 pb-11 sm:px-10 lg:px-12 xl:pl-[max(56px,calc((100vw-1400px)/2+64px))] xl:pr-6 2xl:pr-[40px] xl:pt-[60px] xl:pb-[45px]">
+          <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 lg:grid-cols-[72px_minmax(185px,1.3fr)_minmax(130px,1fr)_minmax(110px,1fr)] gap-x-6 xl:gap-x-7 2xl:gap-x-12 items-start">
             {/* LOGO */}
-            <div className="flex items-start justify-center lg:justify-end lg:pr-0">
+            <div className="flex items-start justify-start pt-1 sm:col-span-2 lg:col-span-1">
               <a
                 href="/"
                 onClick={(e) => handleNavigateClick(e, "home")}
-                className="relative flex items-start justify-center
-                           w-[100px] h-[110px]
-                           sm:w-[110px] sm:h-[115px]
-                           lg:w-[100px] lg:h-[110px]
-                           shrink-0 overflow-visible cursor-pointer"
+                className="inline-block shrink-0 cursor-pointer"
                 aria-label="Home"
               >
                 <img
                   src={logo}
                   alt="Number 9"
-                  className="absolute top-0 left-1/2 -translate-x-1/2
-                             w-[100px] h-[100px]
-                             sm:w-[110px] sm:h-[110px]
-                             lg:w-[100px] lg:h-[90px]
-                             object-contain max-w-none"
+                  className="w-[72px] sm:w-[76px] lg:w-[72px] h-auto object-contain block"
                 />
               </a>
             </div>
+
 
             <div>
               <h3 className={headingClass}>
@@ -143,7 +136,7 @@ const Footer = ({ onNavigate }) => {
               </ul>
             </div>
           </div>
-          <div className="mt-16 text-[13px] leading-[1.4]">
+          <div className="mt-16 text-[14px] leading-[1.4]">
             <div className="flex flex-wrap items-center gap-x-[44px] gap-y-3">
               <a
                 href={getHref("about")}
@@ -191,7 +184,7 @@ const Footer = ({ onNavigate }) => {
           "
         >
           <section>
-            <h3 className="text-[19px] font-semibold leading-[1.25] tracking-[-0.025em]">
+            <h3 className="text-[20px] font-semibold leading-[1.25] tracking-[-0.025em]">
               Get in touch<span className="text-[#F15B40]">.</span>
             </h3>
             <div className="mt-[22px] flex flex-wrap gap-[8px]">
@@ -221,10 +214,10 @@ const Footer = ({ onNavigate }) => {
           <div className="my-[38px] h-px w-full bg-black/20" />
 
           <section className="w-full min-w-0">
-            <h3 className="text-[19px] font-semibold leading-[1.25] tracking-[-0.025em]">
+            <h3 className="text-[20px] font-semibold leading-[1.25] tracking-[-0.025em]">
               Stay ahead with insights.
             </h3>
-            <p className="mt-[16px] max-w-[350px] text-[15px] leading-[1.45]">
+            <p className="mt-[16px] max-w-[350px] text-[14px] leading-[1.45]">
               Get insights from the experts on building and scaling technology teams.
             </p>
 
@@ -270,7 +263,7 @@ const Footer = ({ onNavigate }) => {
           </div>
 
           <section>
-            <h3 className="text-[19px] font-semibold leading-[1.25] tracking-[-0.025em]">
+            <h3 className="text-[20px] font-semibold leading-[1.25] tracking-[-0.025em]">
               Follow us<span className="text-[#F15B40]">.</span>
             </h3>
             <div className="mt-[26px] flex flex-wrap items-center gap-[24px]">

@@ -29,7 +29,7 @@ const WhyWorkWithUs = () => {
   return (
     <section className="w-full bg-white overflow-x-hidden">
       {/* Benefits — centered, matching reference desktop composition */}
-      <div className="mx-auto w-full max-w-[1920px] px-5 sm:px-8 lg:px-10 pt-16 sm:pt-24 lg:pt-[145px] pb-16 sm:pb-20 lg:pb-[126px]">
+      {/* <div className="mx-auto w-full max-w-[1920px] px-5 sm:px-8 lg:px-10 pt-16 sm:pt-24 lg:pt-[145px] pb-16 sm:pb-20 lg:pb-[126px]">
         <h2 className="mx-auto text-center text-[29px] sm:text-[34px] lg:text-[38px] xl:text-[40px] font-semibold leading-[1.55] sm:leading-[1.48] tracking-[-0.035em] text-black">
           No need to wonder.
           <br />
@@ -59,14 +59,14 @@ const WhyWorkWithUs = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
 
-      {/* Contact section — kept as supplied */}
-      <div className="mx-auto w-full max-w-[1180px] min-[1300px]:max-w-[1520px] px-4 sm:px-8 lg:px-10 pb-16 sm:pb-24 lg:pb-35">
-       
+      {/* Contact section — kept as supplied (pt added to maintain proper breathing room from black section above when benefits is commented) */}
+      <div className="mx-auto w-full max-w-[1180px] min-[1300px]:max-w-[1520px] px-4 sm:px-8 lg:px-10 pt-14 sm:pt-20 lg:pt-28 pb-16 sm:pb-24 lg:pb-28">
 
-<div
-  className="
+
+        <div
+          className="
     relative
     overflow-hidden
     rounded-[20px]
@@ -91,13 +91,13 @@ const WhyWorkWithUs = () => {
     sm:p-8
     lg:p-10
   "
-  style={{
-    '--contact-bg': `url("${contactBg}")`,
-  }}
->
+          style={{
+            '--contact-bg': `url("${contactBg}")`,
+          }}
+        >
 
 
-        
+
 
           <div className="relative z-10 flex flex-col justify-between items-center text-center xl:items-stretch xl:text-left pr-0 xl:pr-10">
             <div>

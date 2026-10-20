@@ -5,7 +5,7 @@ import CaseStudies from "../components/caseStudies";
 import AccelerateBusinessSection from "../components/AccelerateBusinessSection";
 import Footer from "../components/footer";
 
-import workCar from "../assets/workCar.webp";
+import workCar from "../assets/workCar.png";
 import workLaptop from "../assets/workLaptop.webp";
 import workEmirates from "../assets/workEmirates.webp";
 import lexusLogo from "../assets/Logos/ClientsGrid_Logos/lexus.png";
@@ -42,7 +42,18 @@ import clientGenesisLogo          from "../assets/Logos/Updated_Logos/GENESIS.Lo
 import clientStandardCharteredLogo from "../assets/Logos/Updated_Logos/Standard_Chartered__282021_29.webp";
 
 /* ─── ImageCard ─────────────────────────────────────────── */
-function ImageCard({ img, logo, logoClass = "", label, tag, className = "", route, onNavigate }) {
+
+function ImageCard({
+  img,
+  logo,
+  logoClass = "",
+  imageClass = "object-cover",
+  label,
+  tag,
+  className = "",
+  route,
+  onNavigate,
+}) {
   return (
     <div
       className={`relative overflow-hidden rounded-[16px] group cursor-pointer ${className}`}
@@ -50,9 +61,11 @@ function ImageCard({ img, logo, logoClass = "", label, tag, className = "", rout
       <img
         src={img}
         alt={label}
-        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        className={`block w-full h-full ${imageClass} object-center transition-transform duration-500`}
       />
+
       <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
+
       <div className="absolute bottom-0 left-0 right-0 px-5 pb-5 sm:px-6 sm:pb-6">
         {logo && (
           <img
@@ -61,9 +74,15 @@ function ImageCard({ img, logo, logoClass = "", label, tag, className = "", rout
             className={`object-contain object-left drop-shadow-lg mb-2 ${logoClass}`}
           />
         )}
+
         <a
           href="#"
-          onClick={(e) => { if (route && onNavigate) { e.preventDefault(); onNavigate(route); } }}
+          onClick={(e) => {
+            e.preventDefault();
+            if (route && onNavigate) {
+              onNavigate(route);
+            }
+          }}
           className="inline-flex items-center gap-1.5 text-white text-[14px] sm:text-[18px] lg:text-[20px] font-medium hover:underline"
         >
           {tag}
@@ -73,6 +92,7 @@ function ImageCard({ img, logo, logoClass = "", label, tag, className = "", rout
     </div>
   );
 }
+
 
 /* Categories used by both dropdowns and the client-card filter. */
 const INDUSTRY_OPTIONS = [
@@ -212,14 +232,14 @@ const clients = [
   },
   {
     logo: clientZee5Logo,
-    logoClass: "h-[52px] sm:h-[58px] w-auto",
+    logoClass: "h-[52px] sm:h-[68px] w-auto",
     name: "ZEE5",
     desc: "Next-generation OTT streaming platform and high-performance digital entertainment discovery architecture.",
     route: "case-study/zee5",
   },
   {
     logo: clientSentralLogo,
-    logoClass: "h-[50px] sm:h-[56px] w-auto",
+    logoClass: "h-[50px] sm:h-[66px] w-auto",
     name: "Sentral Education",
     desc: "Integrated K-12 education management platform streamlining school administration and community engagement.",
     route: "case-study/sentral",
@@ -233,7 +253,7 @@ const clients = [
   },
   {
     logo: clientEmpireLogo,
-    logoClass: "h-[50px] sm:h-[56px] w-auto",
+    logoClass: "h-[50px] sm:h-[66px] w-auto",
     name: "Empire Cinemas",
     desc: "Next-generation cinema ticketing systems and interactive entertainment booking experiences.",
     route: "case-study/empire",
@@ -247,7 +267,7 @@ const clients = [
   },
   {
     logo: clientFairviewLogo,
-    logoClass: "h-[46px] sm:h-[52px] w-auto max-w-[200px]",
+    logoClass: "h-[46px] sm:h-[58px] w-auto max-w-[200px]",
     name: "Fairview",
     desc: "Architectural cladding and facade technology platforms showcasing global building innovation.",
     route: "case-study/fairview",
@@ -289,23 +309,31 @@ function ClientsGrid({ onNavigate, industry }) {
 
   return (
     <section className="w-full bg-white">
-      <div
-        className="
-          max-w-[1680px] mx-auto
-          px-5 sm:px-8 lg:px-12 xl:px-[24px]
-          pt-10 sm:pt-12 lg:pt-[40px]
-          pb-12 sm:pb-16 lg:pb-[70px]
-        "
-      >
-        <div
-          className="
-            grid grid-cols-1
-            md:grid-cols-2 lg:grid-cols-3
-            gap-8 md:gap-8
-            lg:gap-x-[48px] lg:gap-y-[72px]
-            xl:gap-x-[76px]
-          "
-        >
+     
+<div
+  className="
+    max-w-[1680px] mx-auto
+    px-5 sm:px-8
+    lg:px-7 xl:px-9
+    min-[1500px]:px-[72px]
+    pt-10 sm:pt-12 lg:pt-[40px] min-[1500px]:pt-[48px]
+    pb-12 sm:pb-16 lg:pb-[70px]
+  "
+>
+
+       
+<div
+  className="
+    grid grid-cols-1
+    md:grid-cols-2 lg:grid-cols-3
+    gap-6 md:gap-7
+    lg:gap-x-5 lg:gap-y-9
+    xl:gap-x-6 2xl:gap-x-20 xl:gap-y-10 2xl:gap-y-18
+    min-[1500px]:gap-x-[76px]
+    min-[1500px]:gap-y-[72px]
+  "
+>
+
           {filteredClients.length === 0 && (
             <p className="col-span-full py-12 text-center text-[#414141]">
               No client projects found for this industry.
@@ -314,26 +342,35 @@ function ClientsGrid({ onNavigate, industry }) {
           {filteredClients.map((client) => (
             <div
               key={client.name}
-              className="
-                group
-                flex flex-col
-                w-full
-                min-h-[320px]
-                lg:min-h-[340px]
-                border border-[#39B529]
-                rounded-[22px]
-                bg-white
-                px-[28px] sm:px-[32px] lg:px-[38px]
-                pt-[30px] lg:pt-[32px]
-                pb-[20px]
-              "
+           
+className="
+  group
+  flex flex-col
+  w-full
+  min-w-0
+  min-h-[300px]
+  lg:min-h-[310px]
+  min-[1500px]:min-h-[340px]
+  border border-[#39B529]
+  rounded-[22px]
+  bg-white
+  px-[26px] lg:px-[24px]
+  xl:px-[26px]
+  min-[1500px]:px-[38px]
+  pt-[26px] lg:pt-[28px]
+  min-[1500px]:pt-[32px]
+  pb-[20px]
+  transition-shadow duration-300
+  hover:shadow-[0_8px_30px_rgba(57,181,41,0.12)]
+"
+
             >
               {/* Logo */}
               <div
                 className="
                   flex items-center justify-start
-                  w-full h-[60px] sm:h-[66px]
-                  mb-[20px] sm:mb-[24px]
+                  w-full h-[58px] sm:h-[62px] xl:h-[66px]
+                  mb-[18px] sm:mb-[20px] xl:mb-[24px]
                 "
               >
                 <img
@@ -352,7 +389,7 @@ function ClientsGrid({ onNavigate, industry }) {
               <p
                 className="
                   font-grift-medium
-                  text-[18px] lg:text-[22px]
+                  text-[16px] sm:text-[18px] xl:text-[22px]
                   leading-[1.48]
                   tracking-[-0.02em]
                   text-[#414141]
@@ -364,7 +401,7 @@ function ClientsGrid({ onNavigate, industry }) {
               </p>
 
               {/* Bottom divider and case study */}
-              <div className="mt-auto pt-[28px]">
+              <div className="mt-auto pt-[24px] xl:pt-[28px]">
                 <div
                   className="
                     w-full h-px
@@ -384,10 +421,10 @@ function ClientsGrid({ onNavigate, industry }) {
                   className="
                     flex items-center justify-between
                     w-full
-                    pt-[19px]
+                    pt-[16px] sm:pt-[18px] xl:pt-[19px]
                     text-[#414141]
                     font-grift-medium
-                    text-[16px] lg:text-[20px]
+                    text-[16px] xl:text-[20px]
                     no-underline
                     cursor-pointer
                   "
@@ -397,7 +434,7 @@ function ClientsGrid({ onNavigate, industry }) {
                   <span
                     className="
                       flex items-center justify-center
-                      w-[46px] h-[46px]
+                      w-[42px] h-[42px] xl:w-[46px] xl:h-[46px]
                       shrink-0
                       rounded-full
                       border border-[#AFAFAF]
@@ -412,7 +449,6 @@ function ClientsGrid({ onNavigate, industry }) {
                       strokeWidth={1.5}
                       className="
                         transition-transform duration-300
-                        group-hover:translate-x-[2px]
                       "
                     />
                   </span>
@@ -431,7 +467,7 @@ function OurWorkHero({ onNavigate, industry, setIndustry }) {
 
   return (
     <section className="w-full bg-white overflow-hidden">
-      <div className="max-w-[1680px] mx-auto px-5 sm:px-8 lg:px-12 min-[1500px]:px-[72px] pt-7 sm:pt-8 lg:pt-7 pb-12 sm:pb-16 lg:pb-18">
+      <div className="max-w-[1680px] mx-auto px-5 sm:px-8 lg:px-12 min-[1500px]:px-[72px] pt-7 sm:pt-8 lg:pt-7 pb-12 sm:pb-16 lg:pb-16 min-[1500px]:pb-[16px]">
 
         {/* Breadcrumb */}
         <div className="flex items-center gap-4 mb-10 lg:mb-[44px]">
@@ -447,7 +483,7 @@ function OurWorkHero({ onNavigate, industry, setIndustry }) {
         {/* Desktop 1500px+ */}
         <div className="hidden min-[1500px]:grid min-[1500px]:grid-cols-[45%_55%] items-start">
           <div className="relative z-10">
-            <p className="font-grift-semibold text-[21.12px] tracking-[0.31em] text-[#5f5f5f] mb-[7px]">Our clients</p>
+            <p className="font-grift-semibold text-[21.12px] tracking-[0.31em] text-[#5f5f5f] mb-[7px]">Our work</p>
             <h1 className="font-grift-semibold text-[70px] leading-[1.12] tracking-[-0.035em] text-black max-w-[620px] mb-[34px]">
               Over 10 Years of<br />Over Delivering<span className="text-[#32c400]">.</span>
             </h1>
@@ -456,7 +492,7 @@ function OurWorkHero({ onNavigate, industry, setIndustry }) {
               earned through AI-augmented delivery that<br />
               compounds value across every engagement.
             </p>
-            <div className="relative mt-70 w-full max-w-[460px]">
+            <div className="relative mt-[100px] w-full max-w-[460px]">
               <select value={industry} onChange={(e) => setIndustry(e.target.value)} className="w-full h-[43px] appearance-none border border-[#bfc0c2] bg-white rounded-none px-4 pr-12 text-[18px] text-[#3f3f3f] outline-none cursor-pointer focus:border-[#777]">
                 {INDUSTRY_OPTIONS.map((option) => (
                   <option key={option} value={option}>{option}</option>
@@ -465,9 +501,19 @@ function OurWorkHero({ onNavigate, industry, setIndustry }) {
               <ChevronDown strokeWidth={1.5} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-[#202020]" />
             </div>
           </div>
-          <div className="relative mt-[-49px] min-h-[720px]">
+          <div className="relative mt-[-49px] min-h-[775px]">
             <div className="absolute left-[7%] top-0 w-[356.4px] h-[457.2px] overflow-hidden rounded-[17px]">
-              <ImageCard img={workCar} logo={lexusLogo} logoClass="h-[46px] w-auto" label="Lexus" tag="Case study" className="w-full h-full" route="case-study/lexus" onNavigate={onNavigate} />
+          <ImageCard
+  img={workCar}
+  logo={lexusLogo}
+  logoClass="h-[46px] w-auto"
+  imageClass=""
+  label="Lexus"
+  tag="Case study"
+  className="w-full h-full bg-[#101820]"
+  route="case-study/lexus"
+  onNavigate={onNavigate}
+/>
             </div>
             <div className="absolute right-8 top-[185px] w-[378px] h-[272.7px] overflow-hidden rounded-[17px]">
               <ImageCard img={workEmirates} logo={emiratesLogo} logoClass="h-[62px] w-auto" label="Emirates" tag="Case study" className="w-full h-full" route="case-study/emirates" onNavigate={onNavigate} />
@@ -480,7 +526,7 @@ function OurWorkHero({ onNavigate, industry, setIndustry }) {
 
         {/* Mobile / Tablet / Laptop <1500px */}
         <div className="min-[1500px]:hidden">
-          <p className="font-grift-semibold text-[14px] lg:text-[12px] tracking-[0.31em] text-[#5f5f5f] mb-3">Our clients</p>
+          <p className="font-grift-semibold text-[14px] lg:text-[12px] tracking-[0.31em] text-[#5f5f5f] mb-3">Our work</p>
           <h1 className="font-grift-semibold text-[42px] sm:text-[50px] lg:text-[43px] xl:text-[52px] leading-[1.15] tracking-[-0.035em] text-black mb-5 lg:mb-4">
             Over 10 Years of<br />Over Delivering<span className="text-[#32c400]">.</span>
           </h1>
@@ -492,7 +538,17 @@ function OurWorkHero({ onNavigate, industry, setIndustry }) {
           {/* Laptop 3-col image row */}
           <div className="hidden lg:grid min-[1500px]:hidden grid-cols-3 gap-[16px] mt-[18px]">
             <div className="w-full h-[228px] xl:h-[260px] overflow-hidden rounded-[11px]">
-              <ImageCard img={workCar} logo={lexusLogo} logoClass="h-[38px] xl:h-[44px] w-auto" label="Lexus" tag="Case study" className="w-full h-full" route="case-study/lexus" onNavigate={onNavigate} />
+              <ImageCard
+  img={workCar}
+  logo={lexusLogo}
+  logoClass="h-[38px] xl:h-[44px] w-auto"
+  imageClass="object-cover"
+  label="Lexus"
+  tag="Case study"
+  className="w-full h-full"
+  route="case-study/lexus"
+  onNavigate={onNavigate}
+/>
             </div>
             <div className="w-full h-[228px] xl:h-[260px] overflow-hidden rounded-[11px]">
               <ImageCard img={workEmirates} logo={emiratesLogo} logoClass="h-[50px] xl:h-[58px] w-auto" label="Emirates" tag="Case study" className="w-full h-full" route="case-study/emirates" onNavigate={onNavigate} />

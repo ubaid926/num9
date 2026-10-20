@@ -153,8 +153,12 @@ export default function AppNav({
           {/* Right: Schedule a Call + Hamburger */}
           <div className="flex items-center gap-4 sm:gap-6">
             <a
-              href="#contact"
-              className="px-5 sm:px-7 py-2 sm:py-3 rounded-full border-3 border-slate-200 text-[14px] sm:text-[17px] font-semibold bg-white hover:border-slate-900 hover:text-black transition-all duration-200 shadow-[0_1px_2px_rgba(0,0,0,0.04)] whitespace-nowrap"
+              href="?page=contact"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onNavigate) onNavigate("contact");
+              }}
+              className="px-5 sm:px-7 py-2 sm:py-3 rounded-full border-3 border-slate-200 text-[14px] sm:text-[17px] font-semibold bg-white hover:border-slate-900 hover:text-black text-black transition-all duration-200 shadow-[0_1px_2px_rgba(0,0,0,0.04)] whitespace-nowrap"
             >
               Schedule a Call
             </a>

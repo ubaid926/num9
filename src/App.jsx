@@ -8,6 +8,7 @@ import FifthSection from './components/fifthSection'
 import WhyWorkWithUs from './components/contact'
 import AccelerateBusinessSection from './components/AccelerateBusinessSection'
 import Footer from './components/footer'
+import MarqueeSection from './components/marqueeSection'
 import ServicesPage from './pages/ServicesPage'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
@@ -15,17 +16,21 @@ import OurWorkPage from './pages/OurWorkPage'
 import CaseStudyTemplate from './pages/CaseStudyTemplate'
 import ServiceDetailPage from './pages/ServiceDetailPage'
 
+const KNOWN_PAGES = new Set(['home', 'services', 'about', 'contact', 'our-work']);
+
+function resolvePageFromLocation() {
+  if (typeof window === 'undefined') return 'home';
+  const params = new URLSearchParams(window.location.search);
+  const urlPage = params.get('page');
+  if (!urlPage || urlPage === 'home') return 'home';
+  if (KNOWN_PAGES.has(urlPage)) return urlPage;
+  if (urlPage.startsWith('case-study/') || urlPage.startsWith('service/')) return urlPage;
+  return 'home';
+}
+
 export default function App() {
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [page, setPage] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const params = new URLSearchParams(window.location.search);
-      const urlPage = params.get('page');
-      if (urlPage) return urlPage;
-      if (window.location.hash) return window.location.hash.replace('#', '');
-    }
-    return 'home';
-  });
+  const [page, setPage] = useState(() => resolvePageFromLocation());
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -38,11 +43,7 @@ export default function App() {
 
   useEffect(() => {
     const handlePopState = () => {
-      if (typeof window !== 'undefined') {
-        const params = new URLSearchParams(window.location.search);
-        const urlPage = params.get('page');
-        setPage(urlPage || 'home');
-      }
+      setPage(resolvePageFromLocation());
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
@@ -115,6 +116,7 @@ export default function App() {
           <CaseStudies onNavigate={handleNavigate} />
           {/* What We Do */}
           <WhatWeDo />
+          <MarqueeSection />
           {/* Fifth Section — testimonials + awards */}
           <FifthSection onNavigate={handleNavigate} />
           <WhyWorkWithUs />

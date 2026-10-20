@@ -1,32 +1,7 @@
 import React, { useState } from "react";
 import { ChevronRight, Check } from "lucide-react";
 import { caseStudiesData } from "../data/caseStudiesData";
-
-// Map tag label → service/ route slug
-const TAG_ROUTE_MAP = {
-  "UI/UX Design":            "service/ui-ux-design",
-  "Interactive Experience":  "service/interactive-experience",
-  "Vehicle Customization":   "service/vehicle-customization",
-  "Digital Experience":      "service/digital-experience",
-  "Multimedia Experience":   "service/multimedia-experience",
-  "Cloud Architecture":      "service/cloud-architecture",
-  "Design Systems":          "service/design-systems",
-  "Enterprise Workflows":    "service/enterprise-workflows",
-  "Retail Strategy":         "service/retail-strategy",
-  "Brand Activation":        "service/brand-activation",
-  "Omnichannel Marketing":   "service/omnichannel-marketing",
-  "Shopper Experience":      "service/retail-strategy",
-  "Interactive Campaigns":   "service/brand-activation",
-  "Aviation Technology":     "service/digital-experience",
-  "Digital Hospitality":     "service/digital-experience",
-  "Mobile Experience":       "service/digital-experience",
-  "Developer Velocity":      "service/enterprise-workflows",
-  "AI Tooling":              "service/cloud-architecture",
-  "Data Visualization":      "service/digital-experience",
-  "Mobile App":              "service/digital-experience",
-  "Web Development":         "service/ui-ux-design",
-  "E-Commerce":              "service/retail-strategy",
-};
+import { slugify } from "../data/serviceDetailData";
 
 export default function CaseStudyHeroSection({
   caseStudy = caseStudiesData.lexus,
@@ -222,7 +197,7 @@ export default function CaseStudyHeroSection({
                   key={tag}
                   type="button"
                   onClick={() => {
-                    const route = TAG_ROUTE_MAP[tag] || `service/ui-ux-design`;
+                    const route = `service/${slugify(tag)}`;
                     onNavigate?.(route);
                   }}
                   className="
@@ -261,7 +236,7 @@ export default function CaseStudyHeroSection({
                   key={tag}
                   type="button"
                   onClick={() => {
-                    const route = TAG_ROUTE_MAP[tag] || `service/ui-ux-design`;
+                    const route = `service/${slugify(tag)}`;
                     onNavigate?.(route);
                   }}
                   className="

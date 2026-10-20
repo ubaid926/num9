@@ -1,11 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 import { ArrowLeft, ChevronDown } from "lucide-react";
 import AppNav from "../components/nav";
 import AccelerateBusinessSection from "../components/AccelerateBusinessSection";
 import Footer from "../components/footer";
 import { getServiceDetail } from "../data/serviceDetailData";
 
+/* ─── Auto-fit Heading Word for Mobile (prevents clipping without altering font size) ─── */
+function FitHeadingWord({ text, isLastWord }) {
+  const ref = useRef(null);
+  const [scale, setScale] = useState(1);
+
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const measureAndFit = () => {
+      if (window.innerWidth >= 1024) {
+        setScale(1);
+        return;
+      }
+      el.style.transform = "none";
+      const parent = el.parentElement;
+      const parentWidth = parent ? parent.clientWidth : window.innerWidth;
+      const textWidth = el.scrollWidth;
+
+      if (parentWidth > 0 && textWidth > parentWidth) {
+        const s = Math.max(0.65, (parentWidth - 4) / textWidth);
+        setScale(s);
+      } else {
+        setScale(1);
+      }
+    };
+
+    measureAndFit();
+    window.addEventListener("resize", measureAndFit);
+    return () => window.removeEventListener("resize", measureAndFit);
+  }, [text]);
+
+  return (
+    <span
+      ref={ref}
+      style={
+        scale < 1
+          ? {
+              transform: `scale(${scale})`,
+              transformOrigin: "left center",
+              display: "inline-block",
+            }
+          : undefined
+      }
+      className={`block lg:inline ${
+        isLastWord ? "text-[#299F00]" : "text-black"
+      }`}
+    >
+      {text}
+      {!isLastWord && " "}
+    </span>
+  );
+}
+
 /* ─── Work Image Card ────────────────────────────────────── */
+
 
 
 
@@ -25,26 +80,23 @@ const WorkCard = ({ title, image, category, index = 1 }) => {
         group
         relative
         flex flex-col
-        w-full
+        w-full min-w-0
         h-auto
-        min-h-0
         bg-[#161616]
-        rounded-[30px] sm:rounded-[42px] lg:rounded-[50px]
-        p-4 sm:p-5 lg:p-6
-        overflow-hidden
+        rounded-[22px] sm:rounded-[36px] lg:rounded-[50px]
+        p-3 sm:p-5 lg:p-6
         box-border
         transition-transform duration-300
         hover:-translate-y-1
       "
     >
-      {/* Project Image */}
+      {/* Image */}
       <div
         className="
           relative
           w-full
-          shrink-0
           aspect-[2.02/1]
-          rounded-[24px] sm:rounded-[30px] lg:rounded-[32px]
+          rounded-[16px] sm:rounded-[26px] lg:rounded-[32px]
           overflow-hidden
           bg-[#f4f4f4]
         "
@@ -64,23 +116,28 @@ const WorkCard = ({ title, image, category, index = 1 }) => {
         />
       </div>
 
-      {/* Card Content - inside black container */}
-      <div className="relative z-10 w-full flex flex-col px-2 sm:px-4 lg:px-5 pt-5 pb-1">
-
-        {/* Category and Number */}
-        <div className="flex items-center justify-between gap-3 mb-2">
-
-          {/* Category Pill */}
+      {/* Content */}
+      <div
+        className="
+          relative
+          w-full
+          min-w-0
+          px-1.5 sm:px-4 lg:px-5
+          pt-3 sm:pt-5
+          pb-1.5 sm:pb-2
+        "
+      >
+        {/* Category + Number */}
+        <div className="flex items-center justify-between gap-3 mb-1.5 sm:mb-2">
           <span
             className="
-              inline-flex
-              items-center justify-center
+              inline-flex items-center
               max-w-[85%]
               rounded-full
               bg-[#f7f8fa]
-              px-3 py-[7px]
+              px-2.5 sm:px-3 py-[5px] sm:py-[7px]
               font-grift-medium
-              text-[11px] sm:text-[12px]
+              text-[10px] sm:text-[12px]
               tracking-[0.025em]
               text-[#717889]
               leading-[1.2]
@@ -89,45 +146,46 @@ const WorkCard = ({ title, image, category, index = 1 }) => {
             {displayCategory}
           </span>
 
-          {/* Number Badge */}
           <span
             className="
-              inline-flex
-              items-center justify-center
-              w-[36px] h-[32px]
+              inline-flex items-center justify-center
+              w-[28px] h-[26px] sm:w-[36px] sm:h-[32px]
               shrink-0
               rounded-full
               bg-[#373737]
               font-grift-semibold
-              text-[12px]
+              text-[11px] sm:text-[12px]
               text-[#299F00]
             "
           >
             {String(index).padStart(2, "0")}
           </span>
-
         </div>
 
-        {/* Project Title */}
+        {/* Title */}
         <h3
           className="
+            relative
             block
             w-full
+            h-auto
             m-0
             font-grift-semibold
-            text-[30px] sm:text-[36px] lg:text-[40px]
+            text-[22px] sm:text-[30px] lg:text-[40px]
             leading-[1.2]
             tracking-[-0.035em]
             text-[#38D900]
+            whitespace-normal
+            break-words
           "
         >
           {title}
         </h3>
-
       </div>
     </article>
   );
 };
+
 
 
 
@@ -152,7 +210,11 @@ export default function ServiceDetailPage({
   activeDropdown,
   setActiveDropdown,
 }) {
-  const data = getServiceDetail(slug);
+  const titleParam =
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search).get("title")
+      : null;
+  const data = getServiceDetail(slug, titleParam);
   const [filterOpen, setFilterOpen] = useState(false);
   const [filter, setFilter] = useState("All");
 
@@ -165,6 +227,7 @@ export default function ServiceDetailPage({
           setActiveDropdown={setActiveDropdown}
           onNavigate={onNavigate}
         />
+        
         <div className="flex-1 flex flex-col items-center justify-center text-white gap-4 px-6">
           <h1 className="font-grift-semibold text-[32px] text-[#3FC000]">Page not found</h1>
           <button
@@ -194,181 +257,214 @@ export default function ServiceDetailPage({
       />
 
       {/* ── HERO ─────────────────────────────────────────── */}
-   
-<section className="w-full bg-white">
-  <div className="w-full max-w-[1920px] mx-auto px-6 sm:px-10 lg:px-[5%] pt-9 lg:pt-10 pb-14 lg:pb-[58px]">
+      <section className="w-full bg-white">
+        <div className="w-full max-w-[1920px] mx-auto px-5 sm:px-10 lg:px-[5%] pt-6 sm:pt-9 lg:pt-10 pb-8 sm:pb-14 lg:pb-[58px]">
 
-    {/* Back to Case Studies */}
-    <button
-      onClick={() => onNavigate?.("our-work")}
-      className="inline-flex items-center gap-4 font-grift-medium text-[15px] lg:text-[17px] text-[#171717] hover:text-[#299F00] transition-colors group"
-    >
-      <ArrowLeft
-        size={25}
-        strokeWidth={2}
-        className="transition-transform duration-200 group-hover:-translate-x-1"
-      />
-      Back to Case Studies
-    </button>
-
-    {/* Main Content */}
-    <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(380px,36%)] gap-12 lg:gap-14 xl:gap-20 mt-16 sm:mt-20 lg:mt-[88px]">
-
-      {/* LEFT SECTION */}
-      <div className="min-w-0">
-
-        {/* Main Heading */}
-        <h1 className="font-grift-semibold text-[54px] sm:text-[76px] lg:text-[80px] xl:text-[100px] 2xl:text-[116px] leading-[1.05] tracking-[-0.045em] mb-5 text-black">
-          {data.heading === "UI/UX Design" ? (
-            <>
-              <span className="text-black">UI/UX </span>
-              <span className="text-[#299F00]">Design</span>
-            </>
-          ) : (
-            <span className="text-[#299F00]">
-              {data.heading}
-            </span>
-          )}
-        </h1>
-
-        {/* Subtitle */}
-        <p className="font-grift-semibold text-[17px] sm:text-[19px] lg:text-[21px] text-[#1b1b1b] leading-[1.5] mb-7 lg:mb-8">
-          Thoughtful design, Seamless experiences.
-        </p>
-
-        {/* Description */}
-        <p className="font-grift-medium text-[17px] sm:text-[20px] lg:text-[22px] xl:text-[24px] leading-[1.5] text-[#555555] max-w-[730px]">
-          {data.description}
-        </p>
-
-        {/* Filter Dropdown */}
-        <div className="relative mt-12 lg:mt-[65px] w-full max-w-[277px]">
-
-          <button
-            onClick={() => setFilterOpen(!filterOpen)}
-            className="w-full h-[64px] flex items-center justify-between gap-4 border-[1.5px] border-[#299F00] rounded-[14px] bg-white px-5 text-left hover:bg-[#fafff8] transition-colors"
-          >
-            <div className="flex flex-col gap-[2px]">
-              <span className="font-grift-medium text-[14px] leading-[18px] text-[#171717]">
-                by Capability
-              </span>
-              <span className="font-grift-semibold text-[17px] leading-[21px] text-[#171717]">
-                {filter === "All" ? data.heading : filter}
-              </span>
-            </div>
-
-            <ChevronDown
-              size={23}
-              strokeWidth={2}
-              className={`text-[#171717] shrink-0 transition-transform duration-200 ${
-                filterOpen ? "rotate-180" : ""
-              }`}
-            />
-          </button>
-
-          {filterOpen && (
-            <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-[#dedede] rounded-[12px] overflow-hidden z-20 shadow-[0_12px_35px_rgba(0,0,0,0.1)]">
-              {["All", ...data.works.map((w) => w.title)].map(
-                (opt) => (
-                  <button
-                    key={opt}
-                    onClick={() => {
-                      setFilter(opt);
-                      setFilterOpen(false);
-                    }}
-                    className={`w-full text-left px-5 py-3 font-grift-medium text-[14px] transition-colors ${
-                      filter === opt
-                        ? "text-[#299F00] bg-[#f3faef]"
-                        : "text-[#333333] hover:bg-[#f5f5f5]"
-                    }`}
-                  >
-                    {opt === "All" ? "All projects" : opt}
-                  </button>
-                )
-              )}
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* RIGHT SECTION */}
-      <div className="min-w-0 lg:pt-[35px] flex flex-col gap-11 lg:gap-[42px]">
-
-        {/* Industries */}
-        <div>
-          <h2 className="font-grift-semibold text-[25px] sm:text-[28px] lg:text-[32px] leading-[1.2] tracking-[-0.035em] text-black mb-7">
-            INDUSTRIES
-          </h2>
-
-          <div className="flex flex-wrap gap-x-3 gap-y-2">
-            {data.industries.map((ind) => (
-              <span
-                key={ind}
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-full border border-[#555555] px-6 py-3 min-h-[52px] font-grift-medium text-[16px] lg:text-[18px] text-[#494949] leading-[1.2]"
-              >
-                {ind}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Locations */}
-        <div>
-          <h2 className="font-grift-semibold text-[25px] sm:text-[28px] lg:text-[32px] leading-[1.2] tracking-[-0.035em] text-black mb-7">
-            LOCATIONS
-          </h2>
-
-          <div className="flex flex-wrap gap-x-3 gap-y-2">
-            {data.locations.map((loc) => (
-              <span
-                key={loc}
-                className="inline-flex items-center justify-center whitespace-nowrap rounded-full border border-[#555555] px-6 py-3 min-h-[52px] font-grift-medium text-[16px] lg:text-[18px] text-[#494949] leading-[1.2]"
-              >
-                {loc}
-              </span>
-            ))}
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-      {/* ── THE WORK grid ────────────────────────────────── */}
-      
-<section className="w-full bg-white">
-  <div className="w-full max-w-[1920px] mx-auto px-6 sm:px-10 lg:px-[5%] pt-8 sm:pt-10 lg:pt-12 pb-12 lg:pb-16">
-
-    {/* Section Heading */}
-    <h2 className="font-grift-semibold text-[32px] sm:text-[38px] lg:text-[44px] xl:text-[46px] leading-[1.1] tracking-[-0.035em] uppercase mb-8 lg:mb-[36px]">
-      <span className="text-[#299F00]">THE </span>
-      <span className="text-black">WORK</span>
-    </h2>
-
-    {/* Projects Grid */}
-    {filteredWorks.length > 0 ? (
-    
-<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 xl:gap-[5.3%] items-stretch">
-  {filteredWorks.map((work, index) => (
-    <WorkCard
-      key={work.title}
-      title={work.title}
-      image={work.image}
-      category={work.category}
-      index={index + 1}
+          {/* Eyebrow Breadcrumb: "01 / THIS IS OUR PROCESS" on mobile, Back to Case Studies on desktop */}
+       
+{/* Back to Case Studies - Mobile & Desktop */}
+<div className="flex items-center mb-4 sm:mb-6 lg:mb-0">
+  <button
+    type="button"
+    onClick={() => onNavigate?.("our-work")}
+    className="
+      inline-flex
+      items-center
+      gap-3 lg:gap-4
+      font-grift-medium
+      text-[14px] sm:text-[15px] lg:text-[17px]
+      text-[#171717]
+      hover:text-[#299F00]
+      transition-colors
+      group
+      cursor-pointer
+    "
+  >
+    <ArrowLeft
+      size={21}
+      strokeWidth={2}
+      className="
+        shrink-0
+        lg:w-[25px] lg:h-[25px]
+        transition-transform duration-200
+        group-hover:-translate-x-1
+      "
     />
-  ))}
+
+    <span>Back to Case Studies</span>
+  </button>
 </div>
 
-    ) : (
-      <p className="font-grift-medium text-[16px] text-[#777777] mt-5">
-        No projects found.
-      </p>
-    )}
 
-  </div>
-</section>
+          {/* Main Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(380px,36%)] gap-8 sm:gap-12 lg:gap-14 xl:gap-20 mt-4 sm:mt-16 lg:mt-[88px]">
+
+            {/* LEFT SECTION */}
+            <div className="min-w-0">
+
+              {/* Main Heading: two-tone styling for all services (first part black, last word green) */}
+              <h1 className="font-grift-semibold text-[88px] sm:text-[68px] lg:text-[80px] xl:text-[100px] 2xl:text-[116px] leading-[1.0] sm:leading-[1.05] tracking-[-0.045em] mb-4 sm:mb-5 text-black">
+                {(() => {
+                  const heading = data.heading || "";
+                  const words = heading.trim().split(/\s+/);
+                  if (words.length <= 1) {
+                    return <FitHeadingWord text={heading} isLastWord={true} />;
+                  }
+                  const lastWord = words.pop();
+                  const firstPart = words.join(" ");
+                  return (
+                    <>
+                      <FitHeadingWord text={firstPart} isLastWord={false} />
+                      <FitHeadingWord text={lastWord} isLastWord={true} />
+                    </>
+                  );
+                })()}
+              </h1>
+
+              {/* Subtitle */}
+              <p className="font-grift-semibold text-[17px] sm:text-[18px] lg:text-[21px] text-[#1b1b1b] leading-[1.4] mb-3.5 sm:mb-7 lg:mb-8">
+                Thoughtful design, Seamless experiences.
+              </p>
+
+              {/* Description */}
+              <p className="font-grift-medium text-[20px] sm:text-[18px] lg:text-[22px] xl:text-[24px] leading-[1.5] text-[#555555] max-w-[730px]">
+                {data.description}
+              </p>
+
+              {/* Filter Dropdown */}
+              <div className="relative mt-7 sm:mt-10 lg:mt-[65px] w-full max-w-full lg:max-w-[277px]">
+
+                <button
+                  onClick={() => setFilterOpen(!filterOpen)}
+                  className="w-full h-[58px] sm:h-[64px] flex items-center justify-between gap-4 border-[1.5px] border-[#299F00] rounded-[14px] bg-white px-5 text-left hover:bg-[#fafff8] transition-colors cursor-pointer"
+                >
+                  <div className="flex flex-col gap-[1px] min-w-0 flex-1">
+                    <span className="font-grift-medium text-[16px] sm:text-[14px] leading-tight text-[#444444]">
+                      by Capability
+                    </span>
+                    <span className="font-grift-semibold text-[20px] sm:text-[17px] leading-tight text-[#171717] truncate">
+                      {filter === "All" ? data.heading : filter}
+                    </span>
+                  </div>
+
+                  <ChevronDown
+                    size={20}
+                    strokeWidth={2}
+                    className={`text-[#171717] shrink-0 transition-transform duration-200 ${
+                      filterOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {filterOpen && (
+                  <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-[#dedede] rounded-[12px] overflow-hidden z-20 shadow-[0_12px_35px_rgba(0,0,0,0.1)]">
+                    {["All", ...data.works.map((w) => w.title)].map(
+                      (opt) => (
+                        <button
+                          key={opt}
+                          onClick={() => {
+                            setFilter(opt);
+                            setFilterOpen(false);
+                          }}
+                          className={`w-full text-left px-5 py-3 font-grift-medium text-[14px] transition-colors cursor-pointer ${
+                            filter === opt
+                              ? "text-[#299F00] bg-[#f3faef]"
+                              : "text-[#333333] hover:bg-[#f5f5f5]"
+                          }`}
+                        >
+                          {opt === "All" ? "All projects" : opt}
+                        </button>
+                      )
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {/* RIGHT SECTION */}
+            <div className="min-w-0 mt-8 sm:mt-10 lg:mt-0 lg:pt-[35px] flex flex-col gap-6 sm:gap-9 lg:gap-[42px]">
+
+              {/* Industries */}
+              <div>
+                <h2 className="font-grift-semibold text-[22px] sm:text-[22px] lg:text-[32px] leading-[1.2] tracking-[-0.03em] text-black mb-3 sm:mb-5 uppercase">
+                  INDUSTRIES
+                </h2>
+
+                <div className="flex flex-wrap gap-2 sm:gap-2.5">
+                  {data.industries.map((ind) => (
+                    <span
+                      key={ind}
+                      className="inline-flex items-center justify-center text-center whitespace-nowrap rounded-full border border-[#b8b8b8] px-3.5 sm:px-5 py-1.5 sm:py-2.5 min-h-[34px] sm:min-h-[44px] lg:min-h-[52px] font-grift-medium text-[13px] sm:text-[15px] lg:text-[18px] text-[#333333] leading-none"
+                    >
+                      {ind}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Locations */}
+              <div>
+                <h2 className="font-grift-semibold text-[22px] sm:text-[22px] lg:text-[32px] leading-[1.2] tracking-[-0.03em] text-black mb-3 sm:mb-5 uppercase">
+                  LOCATIONS
+                </h2>
+
+                <div className="flex flex-wrap gap-2 sm:gap-2.5">
+                  {data.locations.map((loc) => (
+                    <span
+                      key={loc}
+                      className="inline-flex items-center justify-center text-center whitespace-nowrap rounded-full border border-[#b8b8b8] px-3.5 sm:px-5 py-1.5 sm:py-2.5 min-h-[34px] sm:min-h-[44px] lg:min-h-[52px] font-grift-medium text-[13px] sm:text-[15px] lg:text-[18px] text-[#333333] leading-none"
+                    >
+                      {loc}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── THE WORK grid ────────────────────────────────── */}
+      <section className="w-full bg-white">
+        <div className="w-full max-w-[1920px] mx-auto px-5 sm:px-10 lg:px-[5%] pt-2 sm:pt-6 lg:pt-12 pb-12 lg:pb-16">
+
+          {/* Section Heading */}
+          <h2 className="font-grift-semibold text-[49px] sm:text-[34px] lg:text-[46px] leading-[1.1] tracking-[-0.035em] uppercase mb-5 sm:mb-8 lg:mb-[36px]">
+            <span className="text-[#299F00]">THE </span>
+            <span className="text-black">WORK</span>
+          </h2>
+
+          {/* Projects Grid */}
+          {filteredWorks.length > 0 ? (
+            <div
+              className="
+                grid
+                grid-cols-1 lg:grid-cols-2
+                gap-y-4 sm:gap-y-6 lg:gap-y-[52px]
+                gap-x-6 lg:gap-x-10 xl:gap-x-[100px]
+                items-stretch
+                w-full
+              "
+            >
+              {filteredWorks.map((work, index) => (
+                <WorkCard
+                  key={work.title}
+                  title={work.title}
+                  image={work.image}
+                  category={work.category}
+                  index={index + 1}
+                />
+              ))}
+            </div>
+          ) : (
+            <p className="font-grift-medium text-[16px] text-[#777777] mt-5">
+              No projects found.
+            </p>
+          )}
+
+        </div>
+      </section>
 
 
       {/* ── CTA + Footer ─────────────────────────────────── */}

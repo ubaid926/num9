@@ -656,7 +656,7 @@ function BrandPartnerships({ onNavigate }) {
                           xl:rounded-[20px]
                           flex items-center justify-center
                           p-3 sm:p-5 lg:p-6
-                          shadow-[0_12px_38px_rgba(0,0,0,0.13)]
+                          shadow-[0_12px_38px_rgba(0,0,0,0.18)]
                           hover:shadow-[0_18px_45px_rgba(0,0,0,0.17)]
                           hover:-translate-y-1
                           transition-all duration-300

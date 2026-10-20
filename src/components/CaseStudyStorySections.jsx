@@ -5,6 +5,7 @@ import React, {
   useState,
 } from "react";
 import { caseStudiesData } from "../data/caseStudiesData";
+import { slugify } from "../data/serviceDetailData";
 
 /* =========================================
    CUSTOMER INTERACTIONS CARD
@@ -94,6 +95,7 @@ function CustomerInteractions({ stat = "125K+ Customers", label = "Customer Inte
 
 export default function CaseStudyStorySections({
   caseStudy = caseStudiesData.lexus,
+  onNavigate,
   onSubmit,
 }) {
   const story = caseStudy?.storySection || caseStudiesData.lexus.storySection;
@@ -662,8 +664,10 @@ export default function CaseStudyStorySections({
             "
           >
             {services.items?.map((service) => (
-              <span
+              <button
                 key={service}
+                type="button"
+                onClick={() => onNavigate?.(`service/${slugify(service)}`)}
                 className="
                   inline-flex items-center justify-center
                   rounded-full
@@ -676,10 +680,15 @@ export default function CaseStudyStorySections({
                   leading-[1.25]
                   text-white
                   whitespace-nowrap
+                  cursor-pointer
+                  hover:bg-white/10
+                  hover:border-white
+                  active:scale-95
+                  transition-all duration-200
                 "
               >
                 {service}
-              </span>
+              </button>
             ))}
           </div>
         </div>

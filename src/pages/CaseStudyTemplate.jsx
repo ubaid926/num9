@@ -48,6 +48,7 @@ export default function CaseStudyTemplate({
       {/* Story Sections (Synchronized SVG Timeline + About + Challenge + Solution + Key Services + Outcome) */}
       <CaseStudyStorySections
         caseStudy={caseStudy}
+        onNavigate={onNavigate}
       />
 
       {/* Pre-footer Call to Action */}
