@@ -13,6 +13,7 @@ import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import OurWorkPage from './pages/OurWorkPage'
 import CaseStudyTemplate from './pages/CaseStudyTemplate'
+import ServiceDetailPage from './pages/ServiceDetailPage'
 
 export default function App() {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -91,6 +92,14 @@ export default function App() {
         />
       )}
 
+      {page.startsWith('service/') && (
+        <ServiceDetailPage
+          key={page}
+          slug={page.replace('service/', '')}
+          {...sharedNavProps}
+        />
+      )}
+
       {page === 'home' && (
         <>
           {/* Navbar */}
@@ -103,7 +112,7 @@ export default function App() {
             />
           </div>
           {/* Case Studies */}
-          <CaseStudies />
+          <CaseStudies onNavigate={handleNavigate} />
           {/* What We Do */}
           <WhatWeDo />
           {/* Fifth Section — testimonials + awards */}

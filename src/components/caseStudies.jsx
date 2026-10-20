@@ -16,7 +16,7 @@ import lexuslogo from '../assets/Logo (2).png';
 
 import msLogo from '../assets/mlogo 1.png';
 
-import emiratesLogo from '../assets/Group 132.png';
+import emiratesLogo from '../assets/Logos/ClientsGrid_Logos/emirates.png';
 
 
 
@@ -221,13 +221,13 @@ const caseStudies = [
 
   },
 
-  {
+  // {
 
-    ...originalCaseStudies[0],
+  //   ...originalCaseStudies[0],
 
-    id: '07',
+  //   id: '07',
 
-  },
+  // },
 
 ];
 

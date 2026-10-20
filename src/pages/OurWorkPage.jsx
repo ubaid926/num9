@@ -8,9 +8,9 @@ import Footer from "../components/footer";
 import workCar from "../assets/workCar.webp";
 import workLaptop from "../assets/workLaptop.webp";
 import workEmirates from "../assets/workEmirates.webp";
-import lexusLogo from "../assets/Logos/Updated_Logos/lexus_PNG22.png";
-import emiratesLogo from "../assets/Logos/Updated_Logos/Emirates-Logo.png";
-import microsoftLogo from "../assets/Logos/Updated_Logos/Microsoft_logo__282012_29.png";
+import lexusLogo from "../assets/Logos/ClientsGrid_Logos/lexus.png";
+import emiratesLogo from "../assets/Logos/ClientsGrid_Logos/emirates.png";
+import microsoftLogo from "../assets/Logos/ClientsGrid_Logos/microsoft.png";
 
 /* ─── extra logos for clients grid ──────────────────────── */
 import clientMicrosoftLogo from "../assets/Logos/ClientsGrid_Logos/microsoft.png";
@@ -36,6 +36,11 @@ import clientAlmazaLogo from "../assets/Logos/ClientsGrid_Logos/Logos/Almaza Gem
 import clientFairviewLogo from "../assets/Logos/ClientsGrid_Logos/Logos/Fairview Geometric Architecture Logo_trimmed.png";
 import clientLifegiftLogo from "../assets/Logos/ClientsGrid_Logos/Logos/LifeGive Oval Leaf Logo_trimmed.png";
 
+/* ─── new logos from Updated_Logos ─────────────────────── */
+import clientIcomLogo             from "../assets/Logos/Updated_Logos/Clean restored ICOM network logo.webp";
+import clientGenesisLogo          from "../assets/Logos/Updated_Logos/GENESIS.Logo.032218_Site_PNG_RevB.webp";
+import clientStandardCharteredLogo from "../assets/Logos/Updated_Logos/Standard_Chartered__282021_29.webp";
+
 /* ─── ImageCard ─────────────────────────────────────────── */
 function ImageCard({ img, logo, logoClass = "", label, tag, className = "", route, onNavigate }) {
   return (
@@ -48,21 +53,21 @@ function ImageCard({ img, logo, logoClass = "", label, tag, className = "", rout
         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 px-4 pb-4">
+      <div className="absolute bottom-0 left-0 right-0 px-5 pb-5 sm:px-6 sm:pb-6">
         {logo && (
           <img
             src={logo}
             alt={label}
-            className={`object-contain object-left drop-shadow brightness-0 invert mb-1.5 ${logoClass}`}
+            className={`object-contain object-left drop-shadow-lg mb-2 ${logoClass}`}
           />
         )}
         <a
           href="#"
           onClick={(e) => { if (route && onNavigate) { e.preventDefault(); onNavigate(route); } }}
-          className="inline-flex items-center gap-1 text-white text-[13px] sm:text-[20px] font-medium hover:underline"
+          className="inline-flex items-center gap-1.5 text-white text-[14px] sm:text-[18px] lg:text-[20px] font-medium hover:underline"
         >
           {tag}
-          <ArrowRight className="w-3.5 h-3.5" />
+          <ArrowRight className="w-4 h-4" />
         </a>
       </div>
     </div>
@@ -106,6 +111,9 @@ const CLIENT_INDUSTRIES = {
   Almaza: ["Food & Beverage"],
   Fairview: ["Architecture"],
   LifeGive: ["Healthcare", "Retail"],
+  ICOM: ["Community & Non-Profit", "Media & Entertainment"],
+  "GENESIS Exhibits": ["Media & Entertainment", "Architecture"],
+  "Standard Chartered": ["Financial Services", "Enterprise"],
 };
 
 /* ─── ClientsGrid ────────────────────────────────────────── */
@@ -250,6 +258,27 @@ const clients = [
     name: "LifeGive",
     desc: "Health and wellness digital platform empowering lifestyle transformation with organic nutritional systems.",
     route: "case-study/lifegive",
+  },
+  {
+    logo: clientIcomLogo,
+    logoClass: "h-[44px] sm:h-[50px] w-auto max-w-[200px]",
+    name: "ICOM",
+    desc: "Global network platform connecting museums and cultural institutions through innovative digital experiences.",
+    route: "case-study/icom",
+  },
+  {
+    logo: clientGenesisLogo,
+    logoClass: "h-[40px] sm:h-[46px] w-auto max-w-[200px]",
+    name: "GENESIS Exhibits",
+    desc: "Award-winning trade show and exhibit design firm delivering immersive brand environments and experiences.",
+    route: "case-study/genesis",
+  },
+  {
+    logo: clientStandardCharteredLogo,
+    logoClass: "h-[42px] sm:h-[48px] w-auto max-w-[210px]",
+    name: "Standard Chartered",
+    desc: "Global banking digital transformation delivering intuitive financial platforms and customer-first innovation.",
+    route: "case-study/standard-chartered",
   },
 ];
 
@@ -438,13 +467,13 @@ function OurWorkHero({ onNavigate, industry, setIndustry }) {
           </div>
           <div className="relative mt-[-49px] min-h-[720px]">
             <div className="absolute left-[7%] top-0 w-[356.4px] h-[457.2px] overflow-hidden rounded-[17px]">
-              <ImageCard img={workCar} logo={lexusLogo} logoClass="h-23 w-auto" label="Lexus" tag="Case study" className="w-full h-full" route="case-study/lexus" onNavigate={onNavigate} />
+              <ImageCard img={workCar} logo={lexusLogo} logoClass="h-[46px] w-auto" label="Lexus" tag="Case study" className="w-full h-full" route="case-study/lexus" onNavigate={onNavigate} />
             </div>
             <div className="absolute right-8 top-[185px] w-[378px] h-[272.7px] overflow-hidden rounded-[17px]">
-              <ImageCard img={workEmirates} logo={emiratesLogo} logoClass="h-40 w-auto" label="Emirates" tag="Case study" className="w-full h-full" route="case-study/emirates" onNavigate={onNavigate} />
+              <ImageCard img={workEmirates} logo={emiratesLogo} logoClass="h-[62px] w-auto" label="Emirates" tag="Case study" className="w-full h-full" route="case-study/emirates" onNavigate={onNavigate} />
             </div>
             <div className="absolute left-[18%] top-[500px] w-[511.2px] h-[272.7px] overflow-hidden rounded-[17px]">
-              <ImageCard img={workLaptop} logo={microsoftLogo} logoClass="h-12 w-auto" label="Microsoft" tag="Case study" className="w-full h-full" route="case-study/microsoft" onNavigate={onNavigate} />
+              <ImageCard img={workLaptop} logo={microsoftLogo} logoClass="h-[38px] w-auto" label="Microsoft" tag="Case study" className="w-full h-full" route="case-study/microsoft" onNavigate={onNavigate} />
             </div>
           </div>
         </div>
@@ -463,13 +492,13 @@ function OurWorkHero({ onNavigate, industry, setIndustry }) {
           {/* Laptop 3-col image row */}
           <div className="hidden lg:grid min-[1500px]:hidden grid-cols-3 gap-[16px] mt-[18px]">
             <div className="w-full h-[228px] xl:h-[260px] overflow-hidden rounded-[11px]">
-              <ImageCard img={workCar} logo={lexusLogo} logoClass="h-[40px] xl:h-[48px] w-auto" label="Lexus" tag="Case study" className="w-full h-full" route="case-study/lexus" onNavigate={onNavigate} />
+              <ImageCard img={workCar} logo={lexusLogo} logoClass="h-[38px] xl:h-[44px] w-auto" label="Lexus" tag="Case study" className="w-full h-full" route="case-study/lexus" onNavigate={onNavigate} />
             </div>
             <div className="w-full h-[228px] xl:h-[260px] overflow-hidden rounded-[11px]">
-              <ImageCard img={workEmirates} logo={emiratesLogo} logoClass="h-[55px] xl:h-[65px] w-auto" label="Emirates" tag="Case study" className="w-full h-full" route="case-study/emirates" onNavigate={onNavigate} />
+              <ImageCard img={workEmirates} logo={emiratesLogo} logoClass="h-[50px] xl:h-[58px] w-auto" label="Emirates" tag="Case study" className="w-full h-full" route="case-study/emirates" onNavigate={onNavigate} />
             </div>
             <div className="w-full h-[228px] xl:h-[260px] overflow-hidden rounded-[11px]">
-              <ImageCard img={workLaptop} logo={microsoftLogo} logoClass="h-[35px] xl:h-[42px] w-auto" label="Microsoft" tag="Case study" className="w-full h-full" route="case-study/microsoft" onNavigate={onNavigate} />
+              <ImageCard img={workLaptop} logo={microsoftLogo} logoClass="h-[30px] xl:h-[35px] w-auto" label="Microsoft" tag="Case study" className="w-full h-full" route="case-study/microsoft" onNavigate={onNavigate} />
             </div>
           </div>
 

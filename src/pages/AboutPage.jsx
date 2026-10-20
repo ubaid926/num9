@@ -5,16 +5,16 @@ import Footer from "../components/footer";
 import aboutHeroImage from "../assets/aboutHeroImage.webp";
 import aboutus3rdSect from "../assets/aboutus3rdSect.webp";
 
-/* ─── Brand logos ─────────────────────────────────────────── */
-import pepsicoLogo from "../assets/pepsicoLogo.png";
-import lexusLogo from "../assets/lexusLogo.png";
-import citibankLogo from "../assets/citibankLogo.png";
-import emiratesLogo from "../assets/emiratesLogo.png";
-import microsoftLogo from "../assets/microsoftLogo.png";
-import safewayLogo from "../assets/safewayLogo.png";
-import magellanLogo from "../assets/magellanLogo.jpg";
-import argoLogo from "../assets/argoLogo.jpg";
-import nutrienLogo from "../assets/nutrienLogo.png";
+/* ─── Brand logos — colored versions from ClientsGrid_Logos (same as Services page) ── */
+import pepsicoLogo   from "../assets/Logos/ClientsGrid_Logos/pepsico.png";
+import lexusLogo     from "../assets/Logos/ClientsGrid_Logos/lexus.png";
+import citibankLogo  from "../assets/Logos/ClientsGrid_Logos/citibank.png";
+import emiratesLogo  from "../assets/Logos/ClientsGrid_Logos/emirates.png";
+import microsoftLogo from "../assets/Logos/ClientsGrid_Logos/microsoft.png";
+import safewayLogo   from "../assets/Logos/ClientsGrid_Logos/safeway.png";
+import magellanLogo  from "../assets/Logos/ClientsGrid_Logos/magellan.png";
+import argoLogo      from "../assets/Logos/ClientsGrid_Logos/argo.png";
+import nutrienLogo   from "../assets/Logos/ClientsGrid_Logos/nutrien.png";
 
 /* ─── About Hero ─────────────────────────────────────────── */
 
@@ -483,15 +483,15 @@ function ThinkingSection() {
 
 /* ─── Brand Partnerships ─────────────────────────────────── */
 const brandLogos = [
-  { src: pepsicoLogo, alt: "PepsiCo", cls: "h-7 sm:h-8 lg:h-11" },
-  { src: lexusLogo, alt: "Lexus", cls: "h-7 sm:h-8 lg:h-15" },
-  { src: citibankLogo, alt: "Citibank", cls: "h-6 sm:h-7 lg:h-11" },
-  { src: emiratesLogo, alt: "Emirates", cls: "h-10 sm:h-12 lg:h-25" },
-  { src: microsoftLogo, alt: "Microsoft", cls: "h-6 sm:h-7 lg:h-8" },
-  { src: safewayLogo, alt: "Safeway", cls: "h-6 sm:h-7 lg:h-8" },
-  { src: magellanLogo, alt: "Magellan Health", cls: "h-8 sm:h-9 lg:h-22" },
-  { src: argoLogo, alt: "Argo", cls: "h-7 sm:h-8 lg:h-16" },
-  { src: nutrienLogo, alt: "Nutrien", cls: "h-6 sm:h-7 lg:h-19" },
+  { src: pepsicoLogo, alt: "PepsiCo", cls: "h-[23px] sm:h-[28px] lg:h-[34px] xl:h-[38px] max-w-[82%] w-auto" },
+  { src: lexusLogo, alt: "Lexus", cls: "h-[36px] sm:h-[44px] lg:h-[52px] xl:h-[58px] max-w-[80%] w-auto" },
+  { src: citibankLogo, alt: "Citibank", cls: "h-[24px] sm:h-[30px] lg:h-[36px] xl:h-[40px] max-w-[80%] w-auto" },
+  { src: emiratesLogo, alt: "Emirates", cls: "h-[48px] sm:h-[58px] lg:h-[68px] xl:h-[76px] max-w-[72%] w-auto" },
+  { src: microsoftLogo, alt: "Microsoft", cls: "h-[22px] sm:h-[28px] lg:h-[34px] xl:h-[38px] max-w-[84%] w-auto" },
+  { src: safewayLogo, alt: "Safeway", cls: "h-[20px] sm:h-[24px] lg:h-[30px] xl:h-[34px] max-w-[88%] w-auto" },
+  { src: magellanLogo, alt: "Magellan Health", cls: "h-[28px] sm:h-[34px] lg:h-[40px] xl:h-[44px] max-w-[80%] w-auto" },
+  { src: argoLogo, alt: "Argo", cls: "h-[17px] sm:h-[21px] lg:h-[25px] xl:h-[28px] max-w-[65%] w-auto" },
+  { src: nutrienLogo, alt: "Nutrien", cls: "h-[22px] sm:h-[27px] lg:h-[32px] xl:h-[36px] max-w-[80%] w-auto" },
 ];
 
 function BrandPartnerships({ onNavigate }) {

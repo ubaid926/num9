@@ -14,7 +14,7 @@ import emiratesLogo from '../assets/Group 132.png';
 
 
 
-import microsoftLogo from '../assets/microsoftLogo.png';
+import microsoftLogo from '../assets/Logos/Updated_Logos/Microsoft_logo__282012_29.png';
 
 
 
@@ -70,28 +70,13 @@ import retailMarketingIcon from '../assets/speaker 1 (2).png';
 
 
 
-// Layer logo assets (W:110 H:49 as per Figma)
+// Layer logo assets — swapped to colored versions from ClientsGrid_Logos
 
-
-
-import layer4 from '../assets/Logos/Layer 4.png';
-// import microsoftLogo from '../assets/microsoftLogo.png';
-
-
-
-import layer6 from '../assets/Logos/Layer 6.png';
-
-
-
-import layer7 from '../assets/Logos/Layer 7.png';
-
-
-
-import layer11 from '../assets/Logos/Layer 11.png';
-
-
-
-import layer12 from '../assets/Logos/Layer 12.png';
+import layer4  from '../assets/Logos/ClientsGrid_Logos/pepsico.png';
+import layer6  from '../assets/Logos/ClientsGrid_Logos/citibank.png';
+import layer7  from '../assets/Logos/ClientsGrid_Logos/lexus.png';
+import layer11 from '../assets/Logos/ClientsGrid_Logos/safeway.png';
+import layer12 from '../assets/Logos/ClientsGrid_Logos/emirates.png';
 
 
 

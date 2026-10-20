@@ -22,11 +22,11 @@ export default function LexusHeroSection({ onNavigate, onSubmit }) {
   };
 
   const tags = [
-    "UI/UX Design",
-    "Interactive Experience",
-    "Vehicle Customization",
-    "Digital Experience",
-    "Multimedia Experience",
+    { label: "UI/UX Design",           route: "service/ui-ux-design"           },
+    { label: "Interactive Experience",  route: "service/interactive-experience" },
+    { label: "Vehicle Customization",   route: "service/vehicle-customization"  },
+    { label: "Digital Experience",      route: "service/digital-experience"     },
+    { label: "Multimedia Experience",   route: "service/multimedia-experience"  },
   ];
 
   return (
@@ -174,7 +174,7 @@ export default function LexusHeroSection({ onNavigate, onSubmit }) {
               "
             />
 
-            {/* DESKTOP TAGS */}
+            {/* DESKTOP TAGS — clickable, navigate to service detail page */}
             <div
               className="
                 hidden lg:flex
@@ -183,8 +183,10 @@ export default function LexusHeroSection({ onNavigate, onSubmit }) {
               "
             >
               {tags.map((tag) => (
-                <span
-                  key={tag}
+                <button
+                  key={tag.label}
+                  type="button"
+                  onClick={() => onNavigate?.(tag.route)}
                   className="
                     inline-flex items-center
                     rounded-full
@@ -196,10 +198,49 @@ export default function LexusHeroSection({ onNavigate, onSubmit }) {
                     leading-[1.2]
                     whitespace-nowrap
                     text-white
+                    cursor-pointer
+                    hover:bg-white/10
+                    hover:border-white
+                    transition-all duration-200
                   "
                 >
-                  {tag}
-                </span>
+                  {tag.label}
+                </button>
+              ))}
+            </div>
+
+            {/* MOBILE TAGS */}
+            <div
+              className="
+                flex lg:hidden
+                flex-wrap gap-[10px]
+                mt-[28px]
+                max-w-full
+              "
+            >
+              {tags.map((tag) => (
+                <button
+                  key={tag.label}
+                  type="button"
+                  onClick={() => onNavigate?.(tag.route)}
+                  className="
+                    inline-flex items-center
+                    rounded-full
+                    border border-white/70
+                    bg-black/20
+                    px-[18px] py-[9px]
+                    font-grift-medium
+                    text-[13px] sm:text-[15px]
+                    leading-[1.2]
+                    whitespace-nowrap
+                    text-white
+                    cursor-pointer
+                    hover:bg-white/10
+                    transition-all duration-200
+                  "
+                >
+                  {tag.label}
+                </button>
               ))}
             </div>
           </div>

@@ -1,11 +1,11 @@
-import lexusHeroBg from "../assets/lexus/lexusHeroImg.webp";
+﻿import lexusHeroBg from "../assets/lexus/lexusHeroImg.webp";
 import lexusLogo from "../assets/lexus/lexus_PNG22 1.jpg";
 import lexusCar from "../assets/lexus/Blue Lexus Coupe in Architectural Triptych.webp";
 import lexusImg1 from "../assets/lexus/1stimg.webp";
 import lexusImg2 from "../assets/lexus/2ndimg.webp";
 import lexusImg3 from "../assets/lexus/3rdimg.webp";
 
-import microsoftLogo from "../assets/microsoftLogo.png";
+import microsoftLogo from "../assets/Logos/Updated_Logos/Microsoft_logo__282012_29.png";
 import workLaptop from "../assets/workLaptop.webp";
 import paperCutWorkspace from "../assets/Paper-Cut Web Design Workspace.png";
 import digitalExperience from "../assets/digital-experience.jpg";
@@ -65,6 +65,11 @@ import lifeGiveBg from "../assets/homeHeroSectionImages/LifeGive Mediterranean S
 import fairviewBg from "../assets/homeHeroSectionImages/hf_20261016_161338_d8b119f9-4b93-4517-95ad-49bb6319981e 1.webp";
 import snacksBg from "../assets/homeHeroSectionImages/hf_20261016_162448_549b8ec4-b231-4ab6-8341-ad5a5b8ffe63 1.webp";
 import almazaBg from "../assets/homeHeroSectionImages/PwC_Enterprise_Dashboard_in_Executive_Office 1 (1).webp";
+
+import icomLogo from "../assets/Logos/Updated_Logos/Clean restored ICOM network logo.webp";
+import genesisLogo from "../assets/Logos/Updated_Logos/GENESIS.Logo.032218_Site_PNG_RevB.webp";
+import standardCharteredLogo from "../assets/Logos/Updated_Logos/Standard_Chartered__282021_29.webp";
+
 
 export const caseStudiesData = {
   lexus: {
@@ -177,12 +182,12 @@ export const caseStudiesData = {
           },
           {
             src: lexusImg2,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
         ],
@@ -292,7 +297,7 @@ export const caseStudiesData = {
           "Improved platform performance scores and cross-browser consistency.",
           "Empowered hundreds of developers with unified tooling and comprehensive documentation.",
         ],
-      galleryImages: [
+        galleryImages: [
           {
             src: lexusImg1,
             // title: "This is a video title",
@@ -300,12 +305,12 @@ export const caseStudiesData = {
           },
           {
             src: lexusImg2,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
         ],
@@ -415,7 +420,7 @@ export const caseStudiesData = {
           "Drove a 31% lift in retail engagement and verified coupon redemptions.",
           "Established reusable activation playbooks for ongoing product launches.",
         ],
-         galleryImages: [
+        galleryImages: [
           {
             src: lexusImg1,
             // title: "This is a video title",
@@ -423,12 +428,12 @@ export const caseStudiesData = {
           },
           {
             src: lexusImg2,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
         ],
@@ -546,12 +551,12 @@ export const caseStudiesData = {
           },
           {
             src: lexusImg2,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
         ],
@@ -679,7 +684,7 @@ export const caseStudiesData = {
           "Integrated complex financial data streams to create a seamless operational journey.",
         ],
 
-         galleryImages: [
+        galleryImages: [
           {
             src: lexusImg1,
             // title: "This is a video title",
@@ -687,12 +692,12 @@ export const caseStudiesData = {
           },
           {
             src: lexusImg2,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
         ],
@@ -802,7 +807,7 @@ export const caseStudiesData = {
           "Achieved a 28% reduction in operational logistics overhead.",
           "Delivered responsive web interfaces optimized for field tablets.",
         ],
-         galleryImages: [
+        galleryImages: [
           {
             src: lexusImg1,
             // title: "This is a video title",
@@ -810,12 +815,12 @@ export const caseStudiesData = {
           },
           {
             src: lexusImg2,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
         ],
@@ -933,12 +938,12 @@ export const caseStudiesData = {
           },
           {
             src: lexusImg2,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
         ],
@@ -1048,7 +1053,7 @@ export const caseStudiesData = {
           "Maintained 100% HIPAA and SOC2 compliance across all deployed interfaces.",
           "Reduced member phone support inquiries through intuitive self-service tools.",
         ],
-       galleryImages: [
+        galleryImages: [
           {
             src: lexusImg1,
             // title: "This is a video title",
@@ -1056,12 +1061,12 @@ export const caseStudiesData = {
           },
           {
             src: lexusImg2,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
         ],
@@ -1174,17 +1179,17 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-               // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
         ],
@@ -1315,17 +1320,17 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-               // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
         ],
@@ -1454,20 +1459,20 @@ export const caseStudiesData = {
           "Integrated mobile verification with reception workflows to create a seamless entry journey.",
         ],
 
-     galleryImages: [
+        galleryImages: [
           {
             src: lexusImg1,
-               // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
         ],
@@ -1577,20 +1582,20 @@ export const caseStudiesData = {
           "Enhanced care coordination follow-up adherence by 52%.",
           "Seamlessly integrated with dozens of health plan EHR and billing systems.",
         ],
-         galleryImages: [
+        galleryImages: [
           {
             src: lexusImg1,
-               // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
         ],
@@ -1721,17 +1726,17 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-               // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
         ],
@@ -1863,17 +1868,17 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-               // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
         ],
@@ -2001,20 +2006,20 @@ export const caseStudiesData = {
           "Integrated digital web experiences with 3PL logistics to create a seamless home delivery journey.",
         ],
 
-       galleryImages: [
+        galleryImages: [
           {
             src: lexusImg1,
-               // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
         ],
@@ -2078,7 +2083,7 @@ export const caseStudiesData = {
       ],
 
       quoteSection: {
-      graphicImage: lexusCar,
+        graphicImage: lexusCar,
         graphicAlt: "Sentral Education parent communication platform",
         quote:
           `"School communication is defined by every interaction a parent has with a classroom update. Our objective was to create educational platforms that reflected Sentral's commitment to transparency, collaboration, and student success. By combining strategic app design with real-time messaging, we helped strengthen school communities and elevate the parent engagement journey."`,
@@ -2141,20 +2146,20 @@ export const caseStudiesData = {
 
           "Integrated digital payments and attendance tracking to create a seamless administrative journey.",
         ],
-  galleryImages: [
+        galleryImages: [
           {
             src: lexusImg1,
-               // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
         ],
@@ -2217,7 +2222,7 @@ export const caseStudiesData = {
       ],
 
       quoteSection: {
-       graphicImage: lexusCar,
+        graphicImage: lexusCar,
         graphicAlt: "PwC enterprise tax and engagement dashboard",
         quote:
           `"Professional efficiency is defined by every interaction an advisor has with an internal workflow. Our objective was to create enterprise dashboards that reflected PwC's commitment to precision, data security, and collaborative excellence. By combining strategic UI design with automated task tracking, we helped strengthen operational visibility and elevate the corporate advisory journey."`,
@@ -2284,17 +2289,17 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-               // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
         ],
@@ -2359,7 +2364,7 @@ export const caseStudiesData = {
       ],
 
       quoteSection: {
-       graphicImage: lexusCar,
+        graphicImage: lexusCar,
         graphicAlt: "Empire Cinemas immersive digital booking experience",
         quote:
           `"Cinematic excitement is defined by every interaction a moviegoer has with a booking platform. Our objective was to create digital experiences that reflected Empire's commitment to blockbuster entertainment, immersive design, and booking ease. By combining strategic e-commerce design with bold multimedia touchpoints, we helped strengthen brand engagement and elevate the ticket reservation journey."`,
@@ -2426,17 +2431,17 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-               // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
         ],
@@ -2565,20 +2570,20 @@ export const caseStudiesData = {
           "Integrated transparent craft education with community sharing to create a seamless digital discovery journey.",
         ],
 
-          galleryImages: [
+        galleryImages: [
           {
             src: lexusImg1,
-               // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
         ],
@@ -2643,7 +2648,7 @@ export const caseStudiesData = {
       ],
 
       quoteSection: {
-       graphicImage: lexusCar,
+        graphicImage: lexusCar,
         graphicAlt: "Fairview architectural materials digital experience",
         quote:
           `"Architectural excellence is defined by every interaction a designer has with material specifications. Our objective was to create digital experiences that reflected Fairview's commitment to innovation, structural quality, and professional convenience. By combining strategic catalog architecture with seamless sample requests, we helped strengthen builder connections and elevate the material selection journey."`,
@@ -2710,17 +2715,17 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-               // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
         ],
@@ -2784,7 +2789,7 @@ export const caseStudiesData = {
       ],
 
       quoteSection: {
-         graphicImage: lexusCar,
+        graphicImage: lexusCar,
         graphicAlt: "LifeGive plant-derived wellness e-commerce experience",
         quote:
           `"Natural wellness is defined by every interaction a customer has with a health supplement. Our objective was to create e-commerce experiences that reflected LifeGive's commitment to purity, plant-derived nutrition, and direct consumer care. By combining strategic product categorization with seamless checkout flows, we helped strengthen brand loyalty and elevate the healthy living journey."`,
@@ -2856,20 +2861,126 @@ export const caseStudiesData = {
           },
           {
             src: lexusImg2,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-                // title: "This is a video title",
+            // title: "This is a video title",
             // subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
     },
-  }
+  },
+  icom: {
+    id: "icom",
+    slug: "icom",
+    name: "ICOM",
+    breadcrumbName: "ICOM",
+    category: "Non-Profit and Culture",
+    hero: {
+      subheading: "ICOM CASE STUDY - GLOBAL MUSEUM NETWORK",
+      titleLine1: "Connecting Museums",
+      titleLine2: "Globally",
+      bgImage: businessStrategy,
+      accentColor: "#3FC000",
+      tags: ["Digital Platform", "Network Design", "Cultural Innovation", "UX/UI Design", "Community"],
+      pdfCardText: "Get this case study in PDF to your inbox.",
+    },
+    overviewSection: {
+      summaryHeading: "The summary",
+      summaryAccentDot: ".",
+      summaryText: "ICOM partnered with Number9 to reimagine their global digital presence, connecting over 40,000 museum professionals worldwide through an intuitive platform that fosters collaboration, knowledge sharing, and cultural exchange.",
+      logo: icomLogo,
+      logoAlt: "ICOM logo",
+      stats: [{ targetValue: 10, suffix: "+", label: "Team size", subtext: null }, { targetValue: 5, suffix: "", label: "Engagement length", subtext: "months" }],
+      projectTags: ["Global Network", "Museum Platform", "Community Hub", "Digital Strategy", "Content Architecture"],
+      quoteSection: { graphicImage: businessStrategy, graphicAlt: "ICOM digital network", quote: '"Our digital presence needed to reflect the global reach and cultural depth of ICOM. Number9 delivered a platform that truly connects our community."', attributionTitle: "Digital Director", attributionCompany: "ICOM" },
+    },
+    storySection: {
+      about: { title: "About", clientName: "ICOM", description: "The International Council of Museums is the leading global organisation for museums and museum professionals, representing over 40,000 members across 141 countries." },
+      challenge: { heading: "The challenge", leftParagraphs: ["ICOM needed a unified digital platform to serve a diverse global community of museum professionals across 141 countries.", "The platform required multilingual support, accessible design, and seamless content management.", "Engaging a vast community of cultural leaders required thoughtful UX that balanced depth of information with ease of navigation."], rightParagraph: "Creating a single digital hub for one of the world's most culturally diverse professional networks required balancing global standards with local nuance." },
+      solution: { heading: "The solution.", description: "We designed and built a scalable, multilingual digital platform that connects ICOM members worldwide, enabling collaboration, event management, and knowledge sharing across 141 countries.", customerInteractions: { stat: "40K+ Members", label: "Global Professionals Connected" } },
+      services: { heading: "Key Services Delivered.", items: ["Digital Strategy", "UX/UI Design", "Platform Development", "Content Architecture"] },
+      outcome: { heading: "The outcome", intro: "Our teams:", bullets: ["Launched a unified global platform serving 40,000+ museum professionals.", "Implemented multilingual UX across 6 languages.", "Increased member engagement by 45% in the first year.", "Delivered accessible, WCAG-compliant interfaces."], galleryImages: [{ src: businessStrategy }, { src: overlappingCircles }, { src: officeCollab }] },
+    },
+  },
+  genesis: {
+    id: "genesis",
+    slug: "genesis",
+    name: "GENESIS Exhibits",
+    breadcrumbName: "GENESIS Exhibits",
+    category: "Experiential Design",
+    hero: {
+      subheading: "GENESIS EXHIBITS CASE STUDY - TRADE SHOW DESIGN",
+      titleLine1: "Immersive Brand",
+      titleLine2: "Environments",
+      bgImage: aboutus3rdSect,
+      accentColor: "#3FC000",
+      tags: ["Exhibit Design", "Brand Experience", "Trade Show", "Experiential Marketing", "3D Visualization"],
+      pdfCardText: "Get this case study in PDF to your inbox.",
+    },
+    overviewSection: {
+      summaryHeading: "The summary",
+      summaryAccentDot: ".",
+      summaryText: "GENESIS Exhibits collaborated with Number9 to elevate their digital presence and showcase capabilities, helping them win more enterprise clients through compelling digital storytelling and interactive portfolio experiences.",
+      logo: genesisLogo,
+      logoAlt: "GENESIS Exhibits logo",
+      stats: [{ targetValue: 8, suffix: "+", label: "Team size", subtext: null }, { targetValue: 4, suffix: "", label: "Engagement length", subtext: "months" }],
+      projectTags: ["Portfolio Platform", "3D Showcase", "Client Acquisition", "Digital Storytelling", "Interactive Experience"],
+      quoteSection: { graphicImage: aboutus3rdSect, graphicAlt: "GENESIS Exhibits brand environment", quote: '"Number9 helped us tell our story in a way that resonates with enterprise clients. Our new digital presence has directly contributed to significant new business wins."', attributionTitle: "Chief Creative Officer", attributionCompany: "GENESIS Exhibits" },
+    },
+    storySection: {
+      about: { title: "About", clientName: "GENESIS Exhibits", description: "GENESIS Exhibits is an award-winning trade show and exhibit design firm creating immersive brand environments for Fortune 500 companies at events worldwide." },
+      challenge: { heading: "The challenge", leftParagraphs: ["GENESIS needed a digital platform that could showcase the immersive scale and detail of physical exhibit environments through digital media.", "Winning enterprise clients required a portfolio experience that conveyed craftsmanship and innovation at first glance.", "Translating the tactile quality of bespoke exhibit builds into compelling digital content required a new creative approach."], rightParagraph: "Translating the impact of physical brand environments into a compelling digital portfolio required innovative interactive design and high-fidelity visual storytelling." },
+      solution: { heading: "The solution.", description: "We built an interactive portfolio platform featuring immersive 3D visualizations, case study galleries, and a client acquisition funnel that converted prospects into qualified leads.", customerInteractions: { stat: "3x ROI", label: "New Business Conversion" } },
+      services: { heading: "Key Services Delivered.", items: ["Digital Portfolio Design", "Interactive 3D Showcase", "Lead Generation Funnel", "Brand Storytelling"] },
+      outcome: { heading: "The outcome", intro: "Our teams:", bullets: ["Delivered an interactive portfolio platform that tripled inbound enterprise leads.", "Created immersive 3D project showcases for 12 flagship installations.", "Improved average prospect engagement time by 4 minutes.", "Supported successful pitches to 5 new Fortune 500 clients."], galleryImages: [{ src: aboutus3rdSect }, { src: interactiveTech }, { src: tradeShowActivation }] },
+    },
+  },
+  "standard-chartered": {
+    id: "standard-chartered",
+    slug: "standard-chartered",
+    name: "Standard Chartered",
+    breadcrumbName: "Standard Chartered",
+    category: "Financial Services",
+    hero: {
+      subheading: "STANDARD CHARTERED CASE STUDY - GLOBAL BANKING",
+      titleLine1: "Banking Reimagined",
+      titleLine2: "Globally",
+      bgImage: fintechSunset2,
+      accentColor: "#3FC000",
+      tags: ["FinTech", "Digital Banking", "UX/UI Design", "Mobile Platform", "Enterprise"],
+      pdfCardText: "Get this case study in PDF to your inbox.",
+    },
+    overviewSection: {
+      summaryHeading: "The summary",
+      summaryAccentDot: ".",
+      summaryText: "Standard Chartered partnered with Number9 to transform their digital banking experiences across Asia, Africa and the Middle East, delivering intuitive mobile and web platforms that serve millions of customers with speed, security and elegance.",
+      logo: standardCharteredLogo,
+      logoAlt: "Standard Chartered logo",
+      stats: [{ targetValue: 16, suffix: "+", label: "Team size", subtext: null }, { targetValue: 7, suffix: "", label: "Engagement length", subtext: "months" }],
+      projectTags: ["Mobile Banking", "Digital Onboarding", "Wealth Management", "Payment Platform", "Security UX"],
+      quoteSection: { graphicImage: fintechSunset2, graphicAlt: "Standard Chartered digital banking", quote: '"Number9 brought the design precision and technical depth needed to transform how our customers experience banking. The results speak for themselves."', attributionTitle: "Head of Digital Transformation", attributionCompany: "Standard Chartered" },
+    },
+    storySection: {
+      about: { title: "About", clientName: "Standard Chartered", description: "Standard Chartered is a leading international banking group with a presence in 59 markets, serving customers across Asia, Africa and the Middle East for over 160 years." },
+      challenge: { heading: "The challenge", leftParagraphs: ["Standard Chartered needed to unify digital banking experiences across 59 markets with vastly different regulatory requirements and user behaviours.", "The mobile platform required a balance of security rigour and intuitive UX to compete with regional fintech challengers.", "Onboarding new customers digitally while maintaining compliance across multiple jurisdictions was a core bottleneck."], rightParagraph: "Delivering world-class digital banking across 59 markets required a flexible design system that could adapt to local contexts without sacrificing the premium, unified brand experience Standard Chartered is known for." },
+      solution: { heading: "The solution.", description: "We designed a scalable, modular digital banking platform with a unified design system, region-adaptive UX flows, and a streamlined digital onboarding journey that reduced drop-off by 38%.", customerInteractions: { stat: "5M+ Customers", label: "Served Across 59 Markets" } },
+      services: { heading: "Key Services Delivered.", items: ["Digital Banking UX", "Mobile Platform Design", "Design System Architecture", "Digital Onboarding"] },
+      outcome: { heading: "The outcome", intro: "Our teams:", bullets: ["Reduced digital onboarding time by 38% across all markets.", "Launched unified mobile banking across 12 priority markets simultaneously.", "Improved customer satisfaction scores by 29 points NPS.", "Delivered a design system with 80+ accessible components used by 6 regional teams."], galleryImages: [{ src: fintechSunset2 }, { src: fintechSunset1 }, { src: businessStrategy }] },
+    },
+  },
+
 
 };
+
+
+
+
+
+
 
 export function getCaseStudy(slug) {
   if (!slug) return caseStudiesData.lexus;
@@ -2878,5 +2989,6 @@ export function getCaseStudy(slug) {
   if (key === "sentral-education") return caseStudiesData.sentral;
   if (key === "empire-cinemas") return caseStudiesData.empire;
   if (key === "lifegift") return caseStudiesData.lifegive;
+  if (key === "standard-chartered") return caseStudiesData["standard-chartered"];
   return caseStudiesData[key] || caseStudiesData.lexus;
 }

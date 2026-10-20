@@ -2,6 +2,32 @@ import React, { useState } from "react";
 import { ChevronRight, Check } from "lucide-react";
 import { caseStudiesData } from "../data/caseStudiesData";
 
+// Map tag label → service/ route slug
+const TAG_ROUTE_MAP = {
+  "UI/UX Design":            "service/ui-ux-design",
+  "Interactive Experience":  "service/interactive-experience",
+  "Vehicle Customization":   "service/vehicle-customization",
+  "Digital Experience":      "service/digital-experience",
+  "Multimedia Experience":   "service/multimedia-experience",
+  "Cloud Architecture":      "service/cloud-architecture",
+  "Design Systems":          "service/design-systems",
+  "Enterprise Workflows":    "service/enterprise-workflows",
+  "Retail Strategy":         "service/retail-strategy",
+  "Brand Activation":        "service/brand-activation",
+  "Omnichannel Marketing":   "service/omnichannel-marketing",
+  "Shopper Experience":      "service/retail-strategy",
+  "Interactive Campaigns":   "service/brand-activation",
+  "Aviation Technology":     "service/digital-experience",
+  "Digital Hospitality":     "service/digital-experience",
+  "Mobile Experience":       "service/digital-experience",
+  "Developer Velocity":      "service/enterprise-workflows",
+  "AI Tooling":              "service/cloud-architecture",
+  "Data Visualization":      "service/digital-experience",
+  "Mobile App":              "service/digital-experience",
+  "Web Development":         "service/ui-ux-design",
+  "E-Commerce":              "service/retail-strategy",
+};
+
 export default function CaseStudyHeroSection({
   caseStudy = caseStudiesData.lexus,
   onNavigate,
@@ -183,7 +209,7 @@ export default function CaseStudyHeroSection({
               style={hero.accentColor ? { backgroundColor: hero.accentColor } : undefined}
             />
 
-            {/* DESKTOP TAGS */}
+            {/* DESKTOP TAGS — clickable buttons navigating to service detail page */}
             <div
               className="
                 hidden lg:flex
@@ -192,8 +218,13 @@ export default function CaseStudyHeroSection({
               "
             >
               {tags.map((tag) => (
-                <span
+                <button
                   key={tag}
+                  type="button"
+                  onClick={() => {
+                    const route = TAG_ROUTE_MAP[tag] || `service/ui-ux-design`;
+                    onNavigate?.(route);
+                  }}
                   className="
                     inline-flex items-center
                     rounded-full
@@ -205,10 +236,52 @@ export default function CaseStudyHeroSection({
                     leading-[1.2]
                     whitespace-nowrap
                     text-white
+                    cursor-pointer
+                    hover:bg-white/10
+                    hover:border-white
+                    transition-all duration-200
                   "
                 >
                   {tag}
-                </span>
+                </button>
+              ))}
+            </div>
+
+            {/* MOBILE TAGS */}
+            <div
+              className="
+                flex lg:hidden
+                flex-wrap gap-[10px]
+                mt-[28px]
+                max-w-full
+              "
+            >
+              {tags.map((tag) => (
+                <button
+                  key={tag}
+                  type="button"
+                  onClick={() => {
+                    const route = TAG_ROUTE_MAP[tag] || `service/ui-ux-design`;
+                    onNavigate?.(route);
+                  }}
+                  className="
+                    inline-flex items-center
+                    rounded-full
+                    border border-white/70
+                    bg-black/20
+                    px-[18px] py-[9px]
+                    font-grift-medium
+                    text-[13px] sm:text-[15px]
+                    leading-[1.2]
+                    whitespace-nowrap
+                    text-white
+                    cursor-pointer
+                    hover:bg-white/10
+                    transition-all duration-200
+                  "
+                >
+                  {tag}
+                </button>
               ))}
             </div>
           </div>
