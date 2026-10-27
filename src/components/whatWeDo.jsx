@@ -132,8 +132,12 @@ const services = [
   {
     id: "02",
     titleLine1: "INTERACTIVE",
+    titleLine1Gradient:
+  "linear-gradient(90deg, #000000 0%, #3D3D3D 49%, #000000 100%)",
     titleLine2: "DIGITAL EXPERIENCES",
     accentLine2: true,
+    headingLine2Gradient:
+  "linear-gradient(90deg, #3967FA 0%, #287CFC 45%, #1FD4FF 100%)",
     description:
       "Engaging, intuitive, and seamless experiences that bring your brand to life online.",
 
@@ -413,33 +417,48 @@ const CrossDecoration = ({ topImage, mainImage, bottomImage, serviceId }) => {
   );
 };
 /* =========================================================
-   CIRCLE DECORATION — four overlapping circles (card 03 only)
+   CIRCLE DECORATION — overlapping circles (card 03 only)
 ========================================================= */
 const CircleDecoration = ({ image }) => {
   return (
-    <img
-      src={image}
-      alt=""
-      draggable={false}
+    <div
       className="
         absolute
         z-10
         pointer-events-none
         select-none
-        -right-10
-        bottom-[-70px]
-        top-auto
-        h-[320px]
+        right-2
+        sm:right-4
+        md:right-5
+        lg:right-7
+        xl:right-9
+        2xl:right-11
+        bottom-3
+        sm:bottom-4
+        md:bottom-5
+        lg:bottom-6
+        h-[290px]
+        sm:h-[330px]
+        md:h-[calc(100%+16px)]
+        lg:h-[calc(100%+20px)]
+        xl:h-[calc(100%+24px)]
         w-auto
         max-w-[85%]
-        md:top-[-40px]
-        md:bottom-0
-        md:h-full
-        md:max-w-none
-        object-contain
-        object-right
+        md:max-w-[48%]
+        lg:max-w-[46%]
+        xl:max-w-[45%]
+        flex
+        items-end
+        justify-end
       "
-    />
+    >
+      <img
+        src={image}
+        alt=""
+        draggable={false}
+        className="h-full w-auto max-w-none object-contain object-bottom-right"
+      />
+    </div>
   );
 };
 /* =========================================================
@@ -468,11 +487,23 @@ const ServiceCard = ({ service, onNavigate }) => {
         ${decoration === "circles" ? "pb-[220px] sm:pb-[240px] md:pb-0" : ""}
         ${decoration === "laptop" ? "pb-[180px] sm:pb-[200px] md:pb-0" : ""}
       `}
-      style={{
-        background: service.background,
-        borderColor: decoration === "cross" ? "#76A9FF" : "transparent",
-        borderWidth: decoration === "cross" ? "1px" : "0px",
-      }}
+     
+style={{
+  background: service.background,
+  borderColor:
+    service.id === "04"
+      ? "#686565"
+      : decoration === "cross"
+        ? "#76A9FF"
+        : "transparent",
+  borderWidth:
+    service.id === "04" || decoration === "cross"
+      ? "1px"
+      : "0px",
+  borderStyle: "solid",
+  borderRadius: "18px",
+}}
+
     >
       {/* ── Text Content ── */}
       <div
@@ -500,6 +531,7 @@ const ServiceCard = ({ service, onNavigate }) => {
           flex-col
           justify-start
           md:justify-center
+          xl:gap-10
           items-start
         "
       >
@@ -521,7 +553,7 @@ const ServiceCard = ({ service, onNavigate }) => {
             2xl:text-[93px]
             font-bold
             leading-[1.02]
-            md:leading-[0.95]
+            md:leading-[0.75]
             tracking-[-0.04em]
             ${service.headingGradient ? "bg-clip-text text-transparent inline-block" : ""}
           `}
@@ -535,30 +567,54 @@ const ServiceCard = ({ service, onNavigate }) => {
               : undefined
           }
         >
-          <span
-            className={`block ${
-              service.headingGradient
-                ? ""
-                : dark
-                  ? "text-white"
-                  : "text-gray-900"
-            }`}
-          >
-            {service.titleLine1}
-          </span>
-          <span
-            className={`block ${
-              service.headingGradient
-                ? ""
-                : dark
-                  ? "text-white"
-                  : accentLine2
-                    ? "text-[#2563EB]"
-                    : "text-gray-900"
-            }`}
-          >
-            {service.titleLine2}
-          </span>
+       
+<span
+  className={`block ${
+    service.headingGradient
+      ? ""
+      : service.titleLine1Gradient
+        ? "bg-clip-text text-transparent"
+        : dark
+          ? "text-white"
+          : "text-gray-900"
+  }`}
+  style={
+    service.titleLine1Gradient
+      ? {
+          backgroundImage: service.titleLine1Gradient,
+          backgroundClip: "text",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        }
+      : undefined
+  }
+>
+  {service.titleLine1}
+</span>
+
+        <span
+ className={`block whitespace-nowrap ${
+    service.headingGradient
+      ? ""
+      : dark
+        ? "text-white"
+        : accentLine2
+          ? "bg-clip-text text-transparent"
+          : "text-gray-900"
+  }`}
+  style={
+    service.headingLine2Gradient
+      ? {
+          backgroundImage: service.headingLine2Gradient,
+          WebkitBackgroundClip: "text",
+          backgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        }
+      : undefined
+  }
+>
+  {service.titleLine2}
+</span>
         </h3>
 
         {/* Description */}
@@ -576,10 +632,10 @@ const ServiceCard = ({ service, onNavigate }) => {
             xl:text-[28px]
             2xl:text-[33px]
             leading-[1.45]
-            md:leading-[1.35]
+            md:leading-[1.05]
             max-w-[42rem]
             2xl:max-w-[880px]
-            ${dark ? "text-white/85" : "text-gray-600"}
+            ${dark ? "text-white" : "text-black"}
           `}
         >
           {service.description}
@@ -746,6 +802,7 @@ const ServiceCard = ({ service, onNavigate }) => {
             sm:bottom-[-100px]
             md:bottom-auto
             md:-top-12
+            
             lg:-top-14
             xl:top-33
             w-[95%]
@@ -795,7 +852,7 @@ const WhatWeDo = ({ onNavigate }) => {
     }
   };
   return (
-    <section className="w-full bg-white py-12 sm:py-16 lg:py-20 xl:py-24 xl:pb-40 ">
+    <section className="w-full bg-white pt-[52px] sm:pt-[54px] lg:pt-[58px] xl:pt-[60px] pb-12 sm:pb-16 lg:pb-20 xl:pb-24 xl:pb-40 ">
       <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-16 2xl:px-20">
         {/* Section header */}
         <div className="flex items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12 md:mb-16 lg:mb-20">
@@ -831,7 +888,7 @@ const WhatWeDo = ({ onNavigate }) => {
         </div>
 
         {/* Service Cards */}
-        <div className="flex flex-col gap-[110px] sm:gap-12 lg:gap-23">
+        <div className="flex flex-col gap-[90px] sm:gap-16 md:gap-20 lg:gap-24 xl:gap-28">
           {services.map((service) => (
             <ServiceCard key={service.id} service={service} onNavigate={onNavigate || handleNavigateClick} />
           ))}

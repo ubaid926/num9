@@ -3,13 +3,44 @@ import React, { useState, useEffect, useRef } from "react";
 import { ArrowRight, X, Menu } from "lucide-react";
 import logo from "../assets/logoGreen.webp";
 import whiteLogo from "../assets/logoWhite.webp";
-
+import menuIcon from "../assets/navMenu.png";
 export default function AppNav({
   activeDropdown,
   setActiveDropdown,
   onNavigate,
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+const menuButtonRef = useRef(null);
+const [menuOrigin, setMenuOrigin] = useState({
+  x: window.innerWidth - 40,
+  y: 40,
+});
+
+const [menuRadius, setMenuRadius] = useState(150);
+
+const openMenu = () => {
+  const rect = menuButtonRef.current?.getBoundingClientRect();
+
+  if (rect) {
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+
+    setMenuOrigin({ x, y });
+
+    const radius = Math.max(
+      Math.hypot(x, y),
+      Math.hypot(window.innerWidth - x, y),
+      Math.hypot(x, window.innerHeight - y),
+      Math.hypot(window.innerWidth - x, window.innerHeight - y)
+    );
+
+    setMenuRadius(radius + 50);
+  }
+
+  setIsMenuOpen(true);
+};
+
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
 
@@ -115,7 +146,7 @@ export default function AppNav({
     <>
       {/* Navbar height spacer to prevent content jumping */}
       <div
-        className="w-full h-[64px] sm:h-[92px]"
+        className="w-full h-[64px] sm:h-[92px] lg:h-[84px]"
         aria-hidden="true"
       />
 
@@ -130,7 +161,7 @@ export default function AppNav({
           }
         `}
       >
-        <div className="w-full px-6 sm:px-10 lg:px-18 py-3 sm:py-4 lg:py-4 flex items-center justify-between">
+        <div className="navbar-desktop-container py-3 sm:py-4 lg:py-2.5 flex items-center justify-between">
           {/* Left: Brand Logo */}
           <a
             href="#"
@@ -146,49 +177,69 @@ export default function AppNav({
             <img
               src={logo}
               alt="Number 9"
-              className="h-10 sm:h-15 w-auto object-contain block transition-transform group-hover:scale-[1.02]"
+              className="h-12 sm:h-14 lg:h-16 w-auto object-contain block transition-transform group-hover:scale-[1.02]"
             />
           </a>
 
           {/* Right: Schedule a Call + Hamburger */}
-          <div className="flex items-center gap-4 sm:gap-6">
+          <div className="flex items-center">
             <a
               href="?page=contact"
               onClick={(e) => {
                 e.preventDefault();
                 if (onNavigate) onNavigate("contact");
               }}
-              className="px-5 sm:px-7 py-2 sm:py-3 rounded-full border-3 border-slate-200 text-[14px] sm:text-[17px] font-semibold bg-white hover:border-slate-900 hover:text-black text-black transition-all duration-200 shadow-[0_1px_2px_rgba(0,0,0,0.04)] whitespace-nowrap"
+              className="nav-schedule-call-btn px-5 sm:px-6 py-2 sm:py-2.5 rounded-full border-[1.5px] border-slate-300 text-[13px] sm:text-[15px] font-semibold bg-white hover:border-slate-900 hover:text-black text-black transition-all duration-200 shadow-[0_1px_2px_rgba(0,0,0,0.04)] whitespace-nowrap mr-4 sm:mr-6"
             >
               Schedule a Call
             </a>
 
-            <button
-              onClick={() => setIsMenuOpen(true)}
-              aria-label="Open menu"
-              className="flex items-center justify-center w-10 h-10 hover:opacity-75 transition-opacity focus:outline-none cursor-pointer"
-            >
-              <Menu
-                className="w-6 h-6 text-slate-900"
-                strokeWidth={1.8}
-              />
-            </button>
+           
+<button
+  ref={menuButtonRef}
+  onClick={openMenu}
+  aria-label="Open menu"
+  aria-expanded={isMenuOpen}
+  className="w-6 h-6 flex items-center justify-center hover:opacity-75 transition-opacity focus:outline-none cursor-pointer shrink-0"
+>
+  <img
+    src={menuIcon}
+    alt=""
+    className="w-6 h-6 object-contain"
+  />
+</button>
+
           </div>
         </div>
       </header>
 
       {/* OPENED FULL-SCREEN MENU */}
-      <div
-        className={`fixed inset-0 z-[100] bg-[#0e7428] text-white flex flex-col justify-between transition-all duration-400 ease-in-out overflow-y-auto ${
-          isMenuOpen
-            ? "opacity-100 pointer-events-auto visible"
-            : "opacity-0 pointer-events-none invisible"
-        }`}
-        style={{
-          backgroundImage:
-            "linear-gradient(135deg, #0d6b24 0%, #0e7428 50%, #11842e 100%)",
-        }}
-      >
+     
+{/* OPENED FULL-SCREEN MENU */}
+<div
+  className="
+    fixed inset-0 z-[100]
+    bg-[#0e7428]
+    text-white
+    flex flex-col
+    justify-between
+    overflow-y-auto
+    transition-[clip-path]
+    duration-[850ms]
+    ease-[cubic-bezier(0.76,0,0.24,1)]
+  "
+  style={{
+    clipPath: isMenuOpen
+      ? `circle(${menuRadius}px at ${menuOrigin.x}px ${menuOrigin.y}px)`
+      : `circle(0px at ${menuOrigin.x}px ${menuOrigin.y}px)`,
+
+    pointerEvents: isMenuOpen ? "auto" : "none",
+
+    backgroundImage:
+      "linear-gradient(135deg, #0d6b24 0%, #0e7428 50%, #11842e 100%)",
+  }}
+>
+
         {/* Animated Number9 Background Logo */}
         <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none overflow-hidden">
           <img
@@ -200,7 +251,7 @@ export default function AppNav({
         </div>
 
         {/* Top Header Row */}
-        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-18 py-4 sm:py-7 flex items-center justify-between shrink-0">
+        <div className="relative z-10 navbar-desktop-container py-4 sm:py-7 flex items-center justify-between shrink-0">
           <a
             href="#"
             onClick={(e) => {
@@ -214,10 +265,18 @@ export default function AppNav({
             aria-label="Home"
           >
             <img
-              src={whiteLogo}
-              alt="Number 9"
-              className="h-9 sm:h-15 w-auto object-contain block brightness-0 invert transition-transform group-hover:scale-[1.02]"
-            />
+  src={whiteLogo}
+  alt="Number 9"
+  className="
+    h-12 sm:h-14 lg:h-16
+    w-auto
+    object-contain
+    block
+    brightness-0 invert
+    transition-transform
+    group-hover:scale-[1.02]
+  "
+/>
           </a>
 
           <button
@@ -230,9 +289,24 @@ export default function AppNav({
         </div>
 
         {/* Content Container */}
-        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-16 flex-1 flex flex-col justify-center py-6 sm:py-10">
-          <div className="w-full max-w-xl lg:max-w-2xl">
-            <div className="w-full h-[1px] bg-white/40" />
+        <div 
+className={`
+  relative z-10 w-full
+  px-6 sm:px-10 lg:px-16
+  flex-1 flex flex-col justify-center
+  py-6 sm:py-10
+
+  transition-all duration-500 ease-out
+
+  ${
+    isMenuOpen
+      ? "opacity-100 translate-y-0 delay-[450ms]"
+      : "opacity-0 translate-y-[30px] delay-0"
+  }
+`}
+>
+          <div className="w-full max-w-[700px] lg:max-w-[900px]">
+        <div className="hidden w-full h-[1px] bg-white/40" />
 
             <nav className="flex flex-col">
               {menuItems.map((item, idx) => {
@@ -250,16 +324,37 @@ export default function AppNav({
                         setIsMenuOpen(false);
                       }}
                       onMouseEnter={() => setHoveredIndex(idx)}
-                      className={`block w-full py-2.5 sm:py-3 transition-all duration-150 text-[18px] sm:text-[22px] lg:text-[24px] tracking-tight ${
-                        isHovered
-                          ? "bg-white text-[#0e7428] font-bold px-4 -mx-0 shadow-sm"
-                          : "text-white font-bold px-1 hover:text-white/90"
-                      }`}
+                    
+className={`
+  block w-full
+
+  py-[8px]
+  sm:py-[10px]
+  lg:py-[12px]
+
+  text-[48px]
+  sm:text-[58px]
+  lg:text-[68px]
+  xl:text-[76px]
+
+  leading-[0.95]
+  tracking-[-0.045em]
+  font-grift-black
+
+  transition-all duration-200
+
+  ${
+    isHovered
+      ? "bg-white text-[#0e7428] px-4 shadow-sm"
+      : "text-white px-1 hover:text-white/90"
+  }
+`}
+
                     >
                       {item.label}
                     </a>
 
-                    <div className="w-full h-[1px] bg-white/40" />
+                  <div className="hidden w-full h-[1px] bg-white/40" />
                   </div>
                 );
               })}

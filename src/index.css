@@ -270,11 +270,11 @@ textarea {
 }
 
 .animate-marquee-rtl {
-  animation: marquee-rtl 22s linear infinite;
+  animation: marquee-rtl 95s linear infinite;
 }
 
 .animate-marquee-ltr {
-  animation: marquee-ltr 22s linear infinite;
+  animation: marquee-ltr 95s linear infinite;
 }
 
 /* Pause on hover over the track container */
@@ -323,3 +323,82 @@ body {
     opacity: 0.1;
   }
 }
+
+/* ─── Hero Section Responsive Fit & Containment ────────────────────────────── */
+.hero-slider-container {
+  height: calc(71.2vw + 8px);
+  min-height: 260px;
+  max-height: 520px;
+}
+
+.hero-slide-card {
+  width: 84%;
+  aspect-ratio: 1.18;
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .hero-slider-container {
+    min-height: 380px;
+    height: min(calc(44.3vw + 16px), calc(100dvh - 148px));
+    max-height: 680px;
+  }
+
+  .hero-slide-card {
+    width: min(81.5%, calc((100dvh - 168px) * 1.84));
+    max-width: 1200px;
+    aspect-ratio: 1.84;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-slider-container {
+    height: calc(min(82.13vw, 1577px) / 1.98);
+    min-height: 440px;
+    max-height: 840px;
+  }
+
+  .hero-slide-card {
+    width: min(82.13vw, 1577px);
+    aspect-ratio: 1.98;
+    border-radius: 26px;
+  }
+}
+
+/* ─── Navbar & Hero Desktop Alignment ────────────────────────────────────────── */
+.navbar-desktop-container {
+  width: 100%;
+  max-width: 1920px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .navbar-desktop-container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .navbar-desktop-container {
+    padding-left: min(5.48vw, 105.2px);
+    padding-right: min(5.48vw, 105.2px);
+  }
+
+  .nav-schedule-call-btn {
+    margin-right: calc(min(3.455vw, 66.3px) - 24px) !important;
+  }
+}
+
+/* ─── Laptop & Short Viewports Responsive Adaptations ────────────────────────── */
+@media (max-height: 850px) and (min-width: 1024px) {
+  .case-studies-carousel-container {
+    height: 535px !important;
+  }
+  .case-studies-card-img {
+    height: 225px !important;
+  }
+}
+

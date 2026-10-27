@@ -116,7 +116,7 @@ export default function App() {
           <CaseStudies onNavigate={handleNavigate} />
           {/* What We Do */}
           <WhatWeDo />
-          <MarqueeSection />
+          {/* <MarqueeSection /> */}
           {/* Fifth Section — testimonials + awards */}
           <FifthSection onNavigate={handleNavigate} />
           <WhyWorkWithUs />

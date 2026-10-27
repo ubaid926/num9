@@ -26,8 +26,8 @@ function AboutHero() {
           w-full max-w-[1814px] mx-auto
           px-[6.4%] sm:px-8 md:px-10
           lg:px-[60px] xl:px-[100px]
-          pt-[70px] sm:pt-10 lg:pt-[30px]
-          pb-[70px] sm:pb-12 lg:pb-[60px]
+       pt-[70px] sm:pt-10 lg:pt-[30px]
+pb-[15px] sm:pb-12 lg:pb-[60px]
         "
       >
         {/* TOP CONTENT */}
@@ -47,7 +47,9 @@ function AboutHero() {
               className="
                 flex items-center
                 gap-[20px] lg:gap-[24px]
-                mb-[26px] lg:mb-[34px]
+          
+mb-[12px] sm:mb-[20px] lg:mb-[34px]
+
               "
             >
               <span
@@ -132,7 +134,7 @@ function AboutHero() {
                 border border-[#222]
                 rounded-[7px]
                 font-grift-semibold
-                text-[18px] text-black
+                text-[20px] text-black
                 no-underline
                 transition-all duration-300
                 hover:bg-black hover:text-white
@@ -144,8 +146,10 @@ function AboutHero() {
         </div>
 
         {/* HERO IMAGE */}
-        <div
-          className="
+     
+{/* HERO IMAGE */}
+<div
+  className="
     relative w-full overflow-hidden
     aspect-[2.25/1]
     sm:aspect-auto
@@ -154,7 +158,8 @@ function AboutHero() {
     border border-[#B8C2C4]
     shadow-[0_1px_2px_rgba(0,0,0,0.08)]
   "
-        >
+>
+
           <img
             src={aboutHeroImage}
             alt="Number9 team collaborating"
@@ -162,7 +167,7 @@ function AboutHero() {
             className="
               block w-full h-full
               sm:h-[350px] md:h-[410px]
-              lg:h-[440px] xl:h-[500px]
+              lg:h-[440px] xl:h-[515px]
               object-cover object-center
             "
           />
@@ -176,14 +181,19 @@ function AboutHero() {
           >
             <p
               className="
-                font-grift-medium
-                lg:text-[20px]
+                lg:text-[25px]
                 uppercase
                 tracking-[0.19em]
                 leading-[1.2]
                 text-white
                 drop-shadow-md
               "
+                style={{
+    fontFamily: "GriftRegular, Grift, sans-serif",
+    fontWeight: 200,
+    fontStyle: "normal",
+    fontSynthesis: "none",
+  }}
             >
               Digital ideas.
               <br />
@@ -240,13 +250,15 @@ function WhoWeAre() {
 
   return (
     <section ref={sectionRef} className="w-full bg-white">
-      <div className="max-w-[1640px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 py-14 sm:py-18 lg:py-20 xl:py-24">
+   
+<div className="max-w-[1640px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 pt-[15px] pb-[15px] sm:py-18 lg:py-20 xl:py-24">
+
         {/* ── Top row: stat (left) + divider + heading (right) ── */}
         <div className="flex flex-row items-start gap-0 sm:gap-0 mb-8 sm:mb-0">
           {/* LEFT — stat + label */}
           <div className="w-[45%] sm:w-[300px] lg:w-[340px] xl:w-[480px] shrink-0 pr-5 sm:pr-10 lg:pr-14 xl:pr-16">
             {/* Eyebrow */}
-            <div className="flex items-center gap-2 mb-4 sm:mb-5 sm:mb-6">
+            <div className="flex items-center gap-2 mb-4 sm:mb-0 ">
               <span className="w-[7px] h-[7px] rounded-full bg-[#15B83E] shrink-0" />
               <span className="font-grift-semibold text-[11.62px] sm:text-[12px] lg:text-[19px] tracking-[0.26em] uppercase text-[#555]">
                 Who we are
@@ -254,7 +266,7 @@ function WhoWeAre() {
             </div>
 
             {/* Big stat */}
-            <p className="font-grift-semibold text-[90px] sm:text-[90px] lg:text-[100px] xl:text-[225px] leading-[0.9] text-[#0F9E11] tracking-[-0.02em] mb-3">
+            <p className="font-grift-semibold text-[90px] sm:text-[90px] lg:text-[100px] xl:text-[225px] leading-[0.9] text-[#0F9E11] tracking-[-0.02em] mb-0">
               {count}+
             </p>
 
@@ -269,17 +281,17 @@ function WhoWeAre() {
 
           {/* RIGHT — heading */}
           <div className="flex-1 pl-5 sm:pl-10 lg:pl-14 xl:pl-16">
-            <h2 className="font-grift-semibold text-[22.99px] sm:text-[30px] lg:text-[36px] xl:text-[48px] leading-[1.18] tracking-[-0.02em] text-[#111] mt-7 sm:mb-6 lg:mb-8 max-w-[560px]">
+            <h2 className="font-grift-semibold text-[22.99px] sm:text-[30px] lg:text-[36px] xl:text-[48px] leading-[0.85] tracking-[-0.02em] text-[#111] mt-7 sm:mb-6 lg:mb-8 max-w-[560px]">
               A creative partner from concept to completion.
             </h2>
 
             {/* Paragraphs — hidden on mobile (shown below) */}
             <div className="hidden sm:block space-y-4 max-w-[680px]">
-              <p className="text-[14px] sm:text-[15px] lg:text-[22px] leading-[1.65] text-[#818282]">
+              <p className="text-[14px] sm:text-[15px] lg:text-[22px] leading-[1.4] text-[#818282]">
                 Based in Dallas, Texas, Number9 Media &amp; Creative Inc. is a
                 full-service digital and brand activation agency.
               </p>
-              <p className="text-[14px] sm:text-[15px] lg:text-[22px] leading-[1.65] text-[#818282]">
+              <p className="text-[14px] sm:text-[15px] lg:text-[22px] leading-[1.4] text-[#818282]">
                 We work with business, marketing, and technology teams to create
                 integrated experiences across digital and physical touchpoints.
               </p>
@@ -289,11 +301,11 @@ function WhoWeAre() {
 
         {/* Paragraphs — mobile only, full width below the top row */}
         <div className="sm:hidden space-y-4 mt-6">
-          <p className="font-grift-medium text-[22.99px] leading-[1.65] text-[#818282]">
+          <p className="font-grift-medium text-[22.99px] leading-[1.25] text-[#818282]">
             Based in Dallas, Texas, Number9 Media &amp; Creative Inc. is a
             full-service digital and brand activation agency.
           </p>
-          <p className="font-grift-medium text-[22.99px] leading-[1.65] text-[#818282]">
+          <p className="font-grift-medium text-[22.99px] leading-[1.25] text-[#818282]">
             We work with business, marketing, and technology teams to create
             integrated experiences across digital and physical touchpoints.
           </p>
@@ -329,21 +341,23 @@ function ThinkingSection() {
                 src={aboutus3rdSect}
                 alt="Strategy, Design, Technology, Execution"
                 className="
-        block w-full
-        h-[280px]
-        sm:h-[420px]
-        md:h-[500px]
-        lg:h-[560px]
-        xl:h-[725px]
-        object-cover object-center
+       block w-full
+      h-[182px]
+      sm:h-[420px]
+      md:h-[500px]
+      lg:h-[560px]
+      xl:h-[725px]
+      object-cover object-center
       "
               />
             </div>
 
             {/* Image caption */}
-            <p className="mt-4 font-grift-medium text-[13px] sm:text-[15px] lg:text-[17px] text-[#858585]">
-              Strategy. Design. Technology. Execution.
-            </p>
+            
+<p className="hidden sm:block mt-4 font-grift-medium text-[13px] sm:text-[15px] lg:text-[22px] text-[#858585]">
+  Strategy. Design. Technology. Execution.
+</p>
+
           </div>
 
           {/* RIGHT — Content */}
@@ -371,38 +385,42 @@ function ThinkingSection() {
 
             {/* Description */}
             <div className="space-y-5 lg:space-y-6 mb-10 lg:mb-12 xl:mb-14">
-              <p
-                className="
-                font-grift-medium
-                text-[22.99px]
-                sm:text-[17px]
-                lg:text-[17px]
-                xl:text-[25px]
-                leading-[1.4]
-                text-[#818282]
-              "
-              >
-                Great brand experiences bring strategy, creativity, and
-                technology together. That belief sits at the heart of Number9.
-              </p>
+            
+<p
+  className="
+    font-grift-medium
+    text-[22.99px]
+    sm:text-[17px]
+    lg:text-[17px]
+    xl:text-[25px]
+    leading-[1.15]
+    sm:leading-[1.4]
+    text-[#818282]
+  "
+>
+  Great brand experiences bring strategy, creativity, and
+  technology together. That belief sits at the heart of Number9.
+</p>
 
-              <p
-                className="
-                font-grift-medium
-                text-[22.99px]
-                sm:text-[17px]
-                lg:text-[17px]
-                xl:text-[25px]
-                leading-[1.4]
-                text-[#818282]
-              "
-              >
-                Based in Dallas, Texas, we bring over 20 years of industry
-                experience to digital platforms and real-world activations. We
-                collaborate with business, marketing, and technology teams to
-                turn ideas into clear, engaging experiences—from concept to
-                completion.
-              </p>
+<p
+  className="
+    font-grift-medium
+    text-[22.99px]
+    sm:text-[17px]
+    lg:text-[17px]
+    xl:text-[25px]
+    leading-[1.15]
+    sm:leading-[1.4]
+    text-[#818282]
+  "
+>
+  Based in Dallas, Texas, we bring over 20 years of industry
+  experience to digital platforms and real-world activations. We
+  collaborate with business, marketing, and technology teams to
+  turn ideas into clear, engaging experiences—from concept to
+  completion.
+</p>
+
             </div>
 
             {/* Horizontal Separator */}
@@ -510,7 +528,7 @@ function BrandPartnerships({ onNavigate }) {
 
   return (
     <section className="w-full bg-white">
-      <div className="max-w-[1640px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 lg:py-20 xl:py-24">
+      <div className="max-w-[1640px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 lg:py-20 xl:py-18">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-12 xl:gap-16">
           {/* LEFT — Text Content */}
           <div className="w-full lg:w-[42%] xl:w-[43%] shrink-0 flex items-center gap-6 sm:gap-10 lg:gap-12 xl:gap-16">
@@ -566,22 +584,25 @@ function BrandPartnerships({ onNavigate }) {
               </h2>
 
               {/* Description */}
-              <p
-                className="
-                font-grift-medium
-                text-[22.99px]
-                sm:text-[18px]
-                lg:text-[18px]
-                xl:text-[23px]
-                leading-[1.5]
-                text-[#858585]
-                max-w-[510px]
-                mb-9 lg:mb-10
-              "
-              >
-                Our portfolio includes projects for pepsiCo, Lexus, Citibank,
-                Safeway, Shaan Foods, and ZEE5.
-              </p>
+             
+<p
+  className="
+    font-grift-medium
+    text-[22.99px]
+    sm:text-[18px]
+    lg:text-[18px]
+    xl:text-[23px]
+    leading-[1.15]
+    sm:leading-[1.5]
+    text-[#858585]
+    max-w-[510px]
+    mb-9 lg:mb-10
+  "
+>
+  Our portfolio includes projects for pepsiCo, Lexus, Citibank,
+  Safeway, Shaan Foods, and ZEE5.
+</p>
+
 
               {/* CTA */}
               <a
@@ -598,7 +619,7 @@ function BrandPartnerships({ onNavigate }) {
                   pb-2
                   border-b-2 border-[#111]
                   font-grift-medium
-                  text-[16px] sm:text-[18px] xl:text-[20px]
+                  text-[16px] sm:text-[18px] xl:text-[22px]
                   text-[#111]
                   hover:text-[#159E00]
                   hover:border-[#159E00]
@@ -1099,11 +1120,11 @@ function ProcessSection() {
                   <p
                     className="
                       font-grift-medium
-                      text-[13px] sm:text-[18px]
-                      lg:text-[18px] xl:text-[20px]
-                      leading-[1.5] lg:leading-[1.55]
+                      text-[17px] sm:text-[18px]
+                      lg:text-[18px] xl:text-[22px]
+                      leading-[1.5] lg:leading-[1.35]
                       tracking-[-0.01em]
-                      text-[#E0E0E0]
+                      text-[#E3E3E3]
                       max-w-[380px]
                     "
                   >

@@ -257,6 +257,9 @@ export default function HeroSection({
   const [isMobile, setIsMobile] = useState(() =>
     typeof window !== "undefined" ? window.innerWidth < 640 : false,
   );
+  const [isDesktop, setIsDesktop] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth >= 1024 : true,
+  );
 
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
@@ -264,6 +267,7 @@ export default function HeroSection({
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 640);
+      setIsDesktop(window.innerWidth >= 1024);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -329,7 +333,7 @@ export default function HeroSection({
     <>
       <section
         aria-label="Featured projects"
-        className={`relative w-full overflow-hidden bg-white pt-2 sm:pt-3.5 pb-6 sm:pb-18 transition-all duration-300 ${
+        className={`relative w-full overflow-hidden bg-white pt-2 sm:pt-2.5 lg:pt-0 pb-6 sm:pb-8 lg:pb-10 transition-all duration-300 ${
           isDarkened ? "brightness-50 pointer-events-none blur-[1px]" : ""
         }`}
       >
@@ -337,7 +341,7 @@ export default function HeroSection({
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
-          className="relative mx-auto w-full max-w-[1920px] overflow-hidden h-[calc(71.2vw+8px)] min-h-[260px] max-h-[520px] sm:min-h-0 sm:h-[calc(44.3vw+16px)] sm:max-h-[855px]"
+          className="hero-slider-container relative mx-auto w-full max-w-[1920px] overflow-hidden"
         >
           {slides.map((slide, index) => {
             let offset = index - currentIndex;
@@ -365,17 +369,29 @@ export default function HeroSection({
                 scale = 0.82;
                 opacity = 0.95;
                 brightness = 0.55;
+              } else if (isDesktop) {
+                shiftPercent = offset < 0 ? -14.2 : 14.2;
+                scale = 0.80;
+                opacity = 0.95;
+                brightness = 0.62;
               } else {
-                shiftPercent = offset < 0 ? -11.2 : 11.2;
-                scale = 0.88;
+                shiftPercent = offset < 0 ? -11.8 : 11.8;
+                scale = 0.86;
                 opacity = 0.95;
                 brightness = 0.7;
               }
             } else if (distance === 2) {
-              shiftPercent = offset < 0 ? -20.8 : 20.8;
-              scale = 0.77;
-              opacity = 0.65;
-              brightness = 0.52;
+              if (isDesktop) {
+                shiftPercent = offset < 0 ? -23.5 : 23.5;
+                scale = 0.68;
+                opacity = 0.72;
+                brightness = 0.45;
+              } else {
+                shiftPercent = offset < 0 ? -20.8 : 20.8;
+                scale = 0.77;
+                opacity = 0.65;
+                brightness = 0.52;
+              }
             }
 
             return (
@@ -385,7 +401,7 @@ export default function HeroSection({
                 onClick={() => {
                   if (!isActive) setCurrentIndex(index);
                 }}
-                className={`absolute left-1/2 top-1/2 w-[84%] sm:w-[81.5%] max-w-[1520px] overflow-hidden rounded-[26px] sm:rounded-[22px] border border-white/40 sm:border-white/50  transition-[transform,opacity,filter] duration-700 ease-[cubic-bezier(.22,1,.36,1)] aspect-[1.18] sm:aspect-[1.84] select-none ${
+                className={`hero-slide-card absolute left-1/2 top-1/2 overflow-hidden rounded-[26px] sm:rounded-[22px] border border-white/40 sm:border-white/50 transition-[transform,opacity,filter] duration-700 ease-[cubic-bezier(.22,1,.36,1)] select-none ${
                   isActive
                     ? "z-30"
                     : distance === 1

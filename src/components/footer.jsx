@@ -55,8 +55,11 @@ const Footer = ({ onNavigate }) => {
     { label: "Associate Program", route: "contact" },
   ];
 
-  const linkClass = "block text-[14px] leading-[1.4] text-black hover:opacity-60 transition-opacity cursor-pointer";
-  const headingClass = "mb-[25px] text-[18px] xl:text-[19px] 2xl:text-[20px] font-semibold leading-[1.25] tracking-[-0.025em] text-black whitespace-nowrap";
+  
+const linkClass =
+  "block font-grift-regular text-[22px] sm:text-[14px] leading-[1.4] text-black hover:opacity-60 transition-opacity cursor-pointer";
+
+  const headingClass = "mb-[25px] text-[30px] xl:text-[19px] 2xl:text-[20px] font-semibold leading-[1.25] tracking-[-0.025em] text-black whitespace-nowrap";
 
   return (
     <footer className="w-full bg-white text-black">
@@ -217,7 +220,7 @@ const Footer = ({ onNavigate }) => {
             <h3 className="text-[20px] font-semibold leading-[1.25] tracking-[-0.025em]">
               Stay ahead with insights.
             </h3>
-            <p className="mt-[16px] max-w-[350px] text-[14px] leading-[1.45]">
+            <p className="mt-[16px] max-w-[350px] text-[22px] leading-[1.45]">
               Get insights from the experts on building and scaling technology teams.
             </p>
 
@@ -229,17 +232,17 @@ const Footer = ({ onNavigate }) => {
               <input
                 type="email"
                 placeholder="Your e-mail address"
-                className="block box-border h-[40px] w-full min-w-0 bg-transparent border-0 outline-none px-3 text-[13px] text-black placeholder:text-black/45"
+                className="block box-border h-[40px] w-full min-w-0 bg-transparent border-0 outline-none px-3 text-[16px] text-black placeholder:text-black/45"
               />
               <button
                 type="button"
-                className="box-border h-[40px] w-[123px] min-w-0 whitespace-nowrap rounded-[5px] border-2 border-black bg-transparent px-3 text-[14px] text-black transition-colors hover:bg-black hover:text-white cursor-pointer"
+                className="box-border h-[40px] w-[123px] min-w-0 whitespace-nowrap rounded-[5px] border-2 border-black bg-transparent px-3 text-[18px] text-black transition-colors hover:bg-black hover:text-white cursor-pointer"
               >
                 Subscribe
               </button>
             </div>
 
-            <label className="mt-[32px] flex cursor-pointer items-start gap-[14px] text-[14px] leading-[1.45]">
+            <label className="mt-[32px] flex cursor-pointer items-start gap-[14px] text-[16px] leading-[1.45]">
               <input
                 type="checkbox"
                 className="mt-[1px] h-[18px] w-[18px] shrink-0 accent-black"

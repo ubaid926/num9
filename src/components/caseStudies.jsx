@@ -399,15 +399,24 @@ const CaseStudies = ({ onNavigate }) => {
 
         bg-white
 
-        overflow-hidden
+        overflow-x-clip
 
-        py-12
+        pt-8
 
-        sm:py-16
+        sm:pt-12
 
-        lg:py-20
+        lg:pt-12
 
-        xl:py-0
+        xl:pt-12
+
+        2xl:pt-20
+
+        pb-8
+
+        sm:pb-0
+        lg:pb-12
+        xl:pb-14
+        2xl:pb-0
 
       "
 
@@ -539,11 +548,15 @@ const CaseStudies = ({ onNavigate }) => {
 
             gap-6
 
-            mb-8
+            mb-[14px]
 
-            sm:mb-10
+            sm:mb-[16px]
 
-            lg:mb-12
+            lg:mb-[18px]
+
+            xl:mb-[18px]
+
+            2xl:mb-[24px]
 
           "
 
@@ -553,15 +566,17 @@ const CaseStudies = ({ onNavigate }) => {
 
             className="
 
-              text-[40px]
+              text-[36px]
 
-              sm:text-[48px]
+              sm:text-[44px]
 
-              md:text-[58px]
+              md:text-[52px]
 
-              lg:text-[68px]
+              lg:text-[56px]
 
-              xl:text-[clamp(68px,3.7vw,92px)]
+              xl:text-[60px]
+
+              2xl:text-[clamp(68px,3.7vw,92px)]
 
               font-bold
 
@@ -577,7 +592,43 @@ const CaseStudies = ({ onNavigate }) => {
 
           </h2>
 
+          {/* Top-right Navigation Controls: Dots + Prev/Next buttons (as in reference image) */}
+          {/* <div className="hidden sm:flex items-center gap-5 lg:gap-7">
+            <div className="flex items-center gap-2">
+              {[0, 1, 2].map((dotIdx) => (
+                <button
+                  key={dotIdx}
+                  type="button"
+                  onClick={() => setActiveIndex(dotIdx)}
+                  aria-label={`Go to slide ${dotIdx + 1}`}
+                  className={`rounded-full transition-all duration-300 ${
+                    dotIdx === (activeIndex % 3)
+                      ? 'w-2.5 h-2.5 bg-[#17A229]'
+                      : 'w-2.5 h-2.5 bg-gray-300 hover:bg-gray-400'
+                  }`}
+                />
+              ))}
+            </div>
 
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={handlePrev}
+                aria-label="Previous case study"
+                className="w-11 h-11 lg:w-12 lg:h-12 rounded-full border border-[#17A229] flex items-center justify-center text-[#17A229] bg-white hover:bg-[#17A229] hover:text-white transition-all duration-300 active:scale-95 cursor-pointer"
+              >
+                <ArrowLeft className="w-5 h-5" />
+              </button>
+              <button
+                type="button"
+                onClick={handleNext}
+                aria-label="Next case study"
+                className="w-11 h-11 lg:w-12 lg:h-12 rounded-full border border-[#17A229] flex items-center justify-center text-[#17A229] bg-white hover:bg-[#17A229] hover:text-white transition-all duration-300 active:scale-95 cursor-pointer"
+              >
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div> */}
 
         </div>
 
@@ -613,19 +664,14 @@ const CaseStudies = ({ onNavigate }) => {
 
 
 
-          min-h-[580px]
-
-          sm:h-[640px]
-
-          md:h-[670px]
-
-          lg:h-[720px]
-
-          xl:h-[clamp(740px,calc(560px+13vw),900px)]
-
-
-
-      overflow-visible
+          h-[560px]
+          sm:h-[580px]
+          md:h-[600px]
+          lg:h-[530px]
+          xl:h-[535px]
+          2xl:h-[741px]
+          case-studies-carousel-container
+          overflow-visible
 
         "
 
@@ -682,103 +728,53 @@ const CaseStudies = ({ onNavigate }) => {
               className={`
 
                 absolute
-
                 left-1/2
-
-                top-4
-
-                sm:top-5
-
-                lg:top-6
-
-
+                top-1/2
+                h-full
 
                 transition-all
-
                 duration-[700ms]
-
                 ease-[cubic-bezier(0.22,1,0.36,1)]
 
-
-
                 w-[85vw]
-
                 max-w-[420px]
-
-
-
                 sm:w-[380px]
-
                 sm:max-w-none
-
-                md:w-[360px]
-
-                lg:w-[31%]
-
-                lg:max-w-[480px]
-
-                xl:w-[30%]
-
-                xl:max-w-[520px]
-
-                2xl:w-[29%]
-
-                2xl:max-w-[560px]
-
-
+                md:w-[380px]
+                lg:w-[30%]
+                lg:max-w-[340px]
+                xl:w-[28.5%]
+                xl:max-w-[390px]
+                2xl:w-[33%]
+                2xl:max-w-[580px]
 
                 ${isVisible
-
                   ? 'pointer-events-auto cursor-pointer'
-
                   : 'pointer-events-none'
-
                 }
-
-
 
                 ${isActive
-
                   ? 'z-30'
-
                   : 'z-10'
-
                 }
-
               `}
 
               style={{
-
                 /*
-
                  * On desktop:
-
-                 *
-
                  * -1 = left
-
                  *  0 = center
-
                  * +1 = right
-
                  */
-
                 transform: `
-
-                  translateX(
-
+                  translate(
                     calc(
-
                       -50% +
-
-                      ${position * 114}%
-
-                    )
-
+                      ${position * 110}%
+                    ),
+                    -50%
                   )
-
-                  scale(${isActive ? 1 : 0.94})
-
+                  scale(${isActive ? 1 : 0.83})
                 `,
 
 
@@ -797,7 +793,7 @@ const CaseStudies = ({ onNavigate }) => {
 
                     ? 1
 
-                    : 0.36,
+                    : 0.72,
 
 
 
@@ -822,6 +818,8 @@ const CaseStudies = ({ onNavigate }) => {
               <div
 
                 className={`
+
+                  h-full
 
                   rounded-[34px]
 
@@ -853,55 +851,32 @@ const CaseStudies = ({ onNavigate }) => {
 
                 
 ${isActive
-  ? `shadow-[0_10px_14px_-6px_rgba(0,0,0,0.18),0_24px_34px_-12px_rgba(0,0,0,0.16),0_4px_12px_rgba(0,0,0,0.05)]`
-  : `shadow-[0_8px_16px_-8px_rgba(0,0,0,0.10),0_15px_25px_-12px_rgba(0,0,0,0.09)]`
-}
+                    ? `shadow-[0_10px_14px_-6px_rgba(0,0,0,0.18),0_24px_34px_-12px_rgba(0,0,0,0.16),0_4px_12px_rgba(0,0,0,0.05)]`
+                    : `shadow-[0_8px_16px_-8px_rgba(0,0,0,0.10),0_15px_25px_-12px_rgba(0,0,0,0.09)]`
+                  }
 
 
                 `}
 
                 style={{
-
-                  minHeight: isActive
-
-                    ? 'clamp(520px, calc(460px + 13.6vw), 800px)'
-
-                    : 'clamp(490px, calc(440px + 12.8vw), 760px)',
-
+                  height: '100%',
                 }}
-
               >
-
                 {/* =================================================
-
                     IMAGE
-
                 ================================================= */}
-
-
-
                 <div
-
                   className="
-
                     relative
-
                     overflow-hidden
-
                     shrink-0
-
+                    case-studies-card-img
+                    h-[245px]
+                    sm:h-[255px]
+                    lg:h-[220px]
+                    xl:h-[225px]
+                    2xl:h-[375px]
                   "
-
-                  style={{
-
-                    height: isActive
-
-                      ? 'clamp(240px, calc(210px + 8.4vw), 420px)'
-
-                      : 'clamp(220px, calc(195px + 7.8vw), 390px)',
-
-                  }}
-
                 >
 
                   <img
@@ -1062,14 +1037,33 @@ ${isActive
 
 
 
+
                   <button
                     type="button"
                     aria-label={`View ${study.titleLine1} Case Study`}
                     onClick={(e) => handleNavigateClick(e, study.route)}
-                    className="absolute bottom-4 right-4 w-[44px] h-[44px] rounded-full bg-white flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer z-20 opacity-100 translate-y-0"
+                    className="
+    absolute bottom-4 right-4
+    w-[44px] h-[44px]
+    lg:w-[62px] lg:h-[62px]
+    rounded-full bg-white
+    flex items-center justify-center
+    shadow-lg
+    transition-all duration-300
+    hover:scale-110 active:scale-95
+    cursor-pointer z-20
+    opacity-100 translate-y-0
+  "
                   >
-                    <ArrowRight className="text-[#17A229] w-5 h-5" />
+                    <ArrowRight
+                      className="
+      text-[#17A229]
+      w-5 h-5
+      lg:w-8 lg:h-8
+    "
+                    />
                   </button>
+
 
                 </div>
 
@@ -1084,503 +1078,90 @@ ${isActive
 
 
                 <div
-
-                  className="
-
-                    p-5
-
-                    sm:p-6
-
-                    lg:p-7
-
-                    xl:p-[clamp(24px,1.4vw,34px)]
-
-
-
-                    flex
-
-                    flex-col
-
-                    justify-between
-
-                    flex-1
-
-
-
-                    gap-4
-
-                    sm:gap-5
-
-                    xl:gap-[clamp(18px,1.1vw,26px)]
-
-                  "
-
+                  className={`p-5 sm:p-6 ${isActive ? 'lg:p-4.5 xl:p-5 2xl:p-8' : 'lg:p-4 xl:p-4.5 2xl:p-7'
+                    } flex flex-col justify-between flex-1 transition-all duration-300`}
                 >
-
-                  {/* Top content group */}
-
-                  <div
-
-                    className="
-
-                      flex
-
-                      flex-col
-
-                      gap-4
-
-                      sm:gap-5
-
-                      xl:gap-[clamp(16px,1vw,22px)]
-
-                    "
-
+                  {/* 1. CATEGORY BADGE (Top) */}
+                  <span
+                    className={`self-start inline-flex items-center rounded-full border border-[#28B023] text-[#28B023] font-medium transition-all duration-300 text-[12px] sm:text-[13px] ${isActive
+                        ? 'lg:text-[13px] xl:text-[13.5px] 2xl:text-[18px] px-3.5 xl:px-3.5 2xl:px-5 py-0.5 xl:py-1 2xl:py-2'
+                        : 'lg:text-[11.5px] xl:text-[12px] 2xl:text-[14px] px-3 xl:px-3 2xl:px-4 py-[4px] 2xl:py-[6px]'
+                      }`}
                   >
-
-                    {/* =================================================
-
-                        CATEGORY
-
-                    ================================================= */}
-
-
-
-                    <span
-
-                      className="
-
-                        self-start
-
-                        inline-flex
-
-                        items-center
-
-
-
-                        text-[12px]
-
-                        sm:text-[13px]
-
-                        md:text-[14px]
-
-                        xl:text-[clamp(14px,0.76vw,17px)]
-
-
-
-                        px-3.5
-
-                        py-[5px]
-
-                        sm:px-4
-
-                        sm:py-[6px]
-
-
-
-                        rounded-full
-
-
-
-                        border
-
-                        border-[#28B023]
-
-
-
-                        text-[#28B023]
-
-
-
-                        font-medium
-
-
-
-                        transition-colors
-
-                        duration-300
-
-                      "
-
-                    >
-
-                      {study.category}
-
-                    </span>
-
-
-
-                    {/* =================================================
-
-                        TITLE + ICON
-
-                    ================================================= */}
-
-
-
-                    <div
-
-                      className="
-
-                        flex
-
-                        justify-between
-
-                        items-start
-
-                        gap-4
-
-                      "
-
-                    >
-
-                      <h3
-
-                        className="
-
-                          leading-[1.18]
-
-                          flex-1
-
-                        "
-
-                      >
-
+                    {study.category}
+                  </span>
+
+                  {/* 2. MIDDLE GROUP: TITLE + ICON + DESCRIPTION (Centered) */}
+                  <div
+                    className={`flex flex-col ${isActive ? 'gap-1.5 sm:gap-2.5 lg:gap-2 xl:gap-2 2xl:gap-3.5' : 'gap-1.5 sm:gap-2.5 lg:gap-2 xl:gap-2 2xl:gap-4'
+                      } my-auto py-1 sm:py-1.5 xl:py-1.5 2xl:py-3`}
+                  >
+                    {/* TITLE + ICON */}
+                    <div className="flex justify-between items-start gap-3 xl:gap-4">
+                      <h3 className="leading-[1.12] flex-1">
                         <span
-
-                          className="
-
-                            block
-
-
-
-                            text-[22px]
-
-                            sm:text-[24px]
-
-                            lg:text-[26px]
-
-                            xl:text-[clamp(26px,1.72vw,40px)]
-
-
-
-                            font-semibold
-
-
-
-                            tracking-[-0.02em]
-
-
-
-                            text-gray-900
-
-
-
-                            transition-colors
-
-                            duration-300
-
-                          "
-
+                          className={`block whitespace-nowrap text-[22px] sm:text-[24px] ${isActive ? 'lg:text-[24px] xl:text-[26px] 2xl:text-[42px]' : 'lg:text-[20px] xl:text-[22px] 2xl:text-[34px]'
+                            } font-semibold tracking-[-0.02em] text-gray-900 transition-all duration-300`}
                         >
-
                           {study.titleLine1}
-
                         </span>
-
-
 
                         <span
-
-                          className="
-
-                            block
-
-
-
-                            text-[22px]
-
-                            sm:text-[24px]
-
-                            lg:text-[26px]
-
-                            xl:text-[clamp(26px,1.72vw,40px)]
-
-
-
-                            font-semibold
-
-
-
-                            tracking-[-0.02em]
-
-
-
-                            text-[#1DC16A]
-
-
-
-                            transition-colors
-
-                            duration-300
-
-                          "
-
+                          className={`block text-[22px] sm:text-[24px] ${isActive ? 'lg:text-[24px] xl:text-[26px] 2xl:text-[42px]' : 'lg:text-[20px] xl:text-[22px] 2xl:text-[34px]'
+                            } font-semibold tracking-[-0.02em] text-[#1DC16A] transition-all duration-300`}
                         >
-
                           {study.titleLine2}
-
                         </span>
-
                       </h3>
 
-
-
                       {/* Icon */}
-
-
-
                       <div
-
-                        className="
-
-                          flex-shrink-0
-
-
-
-                          w-[50px]
-
-                          h-[50px]
-
-                          p-3
-
-
-
-                          sm:w-[58px]
-
-                          sm:h-[58px]
-
-                          sm:p-3.5
-
-
-
-                          xl:w-[clamp(60px,3.1vw,76px)]
-
-                          xl:h-[clamp(60px,3.1vw,76px)]
-
-                          xl:p-[clamp(14px,0.85vw,20px)]
-
-
-
-                          rounded-full
-
-
-
-                          flex
-
-                          items-center
-
-                          justify-center
-
-
-
-                          bg-[#E1F5ED]
-
-                        "
-
+                        className={`flex-shrink-0 ${isActive
+                            ? 'w-[44px] h-[44px] sm:w-[52px] sm:h-[52px] lg:w-[44px] lg:h-[44px] xl:w-[46px] xl:h-[46px] 2xl:w-[68px] 2xl:h-[68px] p-2 xl:p-2.5 2xl:p-3.5'
+                            : 'w-[36px] h-[36px] sm:w-[44px] sm:h-[44px] lg:w-[38px] lg:h-[38px] xl:w-[40px] xl:h-[40px] 2xl:w-[52px] 2xl:h-[52px] p-2 xl:p-2 2xl:p-3'
+                          } rounded-full flex items-center justify-center bg-[#E1F5ED] transition-all duration-300`}
                       >
-
                         {study.icon}
-
                       </div>
-
                     </div>
 
-
-
-                    {/* =================================================
-
-                        DESCRIPTION
-
-                    ================================================= */}
-
-
-
+                    {/* DESCRIPTION */}
                     <p
-
-                      className="
-
-                        text-[14px]
-
-                        sm:text-[15px]
-
-                        lg:text-[16px]
-
-                        xl:text-[clamp(16px,0.92vw,21px)]
-
-
-
-                        leading-[1.65]
-
-
-
-                        text-gray-600
-
-                      "
-
+                      className={`text-[14px] sm:text-[15px] ${isActive
+                          ? 'lg:text-[13px] xl:text-[13.5px] 2xl:text-[20px] leading-[1.38] 2xl:leading-[1.45] text-gray-800'
+                          : 'lg:text-[12px] xl:text-[12.5px] 2xl:text-[16px] leading-[1.38] 2xl:leading-[1.55] text-gray-600'
+                        } transition-all duration-300`}
                     >
-
                       {study.description}
-
                     </p>
-
                   </div>
 
-
-
-                  {/* =================================================
-
-                      VIEW CASE STUDY
-
-                  ================================================= */}
-
-
-
-                  <div
-
-                    className="
-
-                      pt-4
-
-                      sm:pt-5
-
-
-
-                      border-t
-
-                      border-gray-100
-
-
-
-                      mt-auto
-
-                    "
-
-                  >
-
+                  {/* 3. VIEW CASE STUDY (Bottom) */}
+                  <div className="pt-1.5 sm:pt-2 xl:pt-2 2xl:pt-3">
                     <a
                       href={study.route ? `?page=${study.route}` : '#'}
                       onClick={(e) => handleNavigateClick(e, study.route)}
-
-                      className="
-
-                        flex
-
-                        items-center
-
-                        justify-between
-
-
-
-                        group/link
-
-                      "
-
+                      className="flex items-center justify-between group/link"
                     >
-
                       <span
-
-                        className="
-
-                          text-[15px]
-
-                          sm:text-[16px]
-
-                          lg:text-[17px]
-
-                          xl:text-[clamp(17px,0.88vw,21px)]
-
-
-
-                          font-semibold
-
-
-
-                          text-gray-900
-
-                        "
-
+                        className={`text-[15px] sm:text-[16px] ${isActive
+                            ? 'lg:text-[15px] xl:text-[16px] 2xl:text-[21px] font-semibold text-gray-900'
+                            : 'lg:text-[13px] xl:text-[14px] 2xl:text-[17px] font-medium text-gray-600'
+                          } transition-all duration-300`}
                       >
-
                         View Case Study
-
                       </span>
 
-
-
                       <div
-
-                        className="
-
-                          border
-
-                          border-[#1DC16A]
-
-
-
-                          rounded-full
-
-
-
-                          w-[44px]
-
-                          h-[44px]
-
-                          sm:w-[48px]
-
-                          sm:h-[48px]
-
-                          xl:w-[clamp(48px,2.2vw,54px)]
-
-                          xl:h-[clamp(48px,2.2vw,54px)]
-
-
-
-                          flex
-
-                          items-center
-
-                          justify-center
-
-
-
-                          shrink-0
-
-
-
-                          text-[#17A229]
-
-
-
-                          transition-transform
-
-                          duration-300
-
-
-
-                          group-hover/link:translate-x-1
-
-                        "
-
+                        className={`border border-[#1DC16A] rounded-full ${isActive
+                            ? 'w-[40px] h-[40px] sm:w-[46px] sm:h-[46px] lg:w-[40px] lg:h-[40px] xl:w-[42px] xl:h-[42px] 2xl:w-[58px] 2xl:h-[58px]'
+                            : 'w-[34px] h-[34px] sm:w-[38px] sm:h-[38px] lg:w-[34px] lg:h-[34px] xl:w-[36px] xl:h-[36px] 2xl:w-[44px] 2xl:h-[44px]'
+                          } flex items-center justify-center shrink-0 text-[#17A229] transition-all duration-300 group-hover/link:translate-x-1`}
                       >
-
-                        <ArrowRight className="w-5 h-5 xl:w-6 xl:h-6" />
-
+                        <ArrowRight className={`${isActive ? 'w-4.5 h-4.5 sm:w-5 sm:h-5 lg:w-4.5 lg:h-4.5 xl:w-5 xl:h-5 2xl:w-7 2xl:h-7' : 'w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-4 lg:h-4 2xl:w-5 2xl:h-5'} transition-all duration-300`} />
                       </div>
-
                     </a>
-
                   </div>
-
                 </div>
 
               </div>
@@ -1781,7 +1362,7 @@ ${isActive
 
       ================================================= */}
 
-      <div className="flex items-center justify-center gap-[7px] mt-8">
+      <div className="flex sm:hidden items-center justify-center gap-[7px] mt-8">
 
         {[0, 1, 2].map((index) => {
 

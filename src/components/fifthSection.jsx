@@ -72,9 +72,9 @@ import retailMarketingIcon from '../assets/speaker 1 (2).png';
 
 // Layer logo assets — swapped to colored versions from ClientsGrid_Logos
 
-import layer4  from '../assets/Logos/ClientsGrid_Logos/pepsico.png';
-import layer6  from '../assets/Logos/ClientsGrid_Logos/citibank.png';
-import layer7  from '../assets/Logos/ClientsGrid_Logos/lexus.png';
+import layer4 from '../assets/Logos/ClientsGrid_Logos/pepsico.png';
+import layer6 from '../assets/Logos/ClientsGrid_Logos/citibank.png';
+import layer7 from '../assets/Logos/ClientsGrid_Logos/lexus.png';
 import layer11 from '../assets/Logos/ClientsGrid_Logos/safeway.png';
 import layer12 from '../assets/Logos/ClientsGrid_Logos/emirates.png';
 
@@ -92,147 +92,147 @@ const impactCards = [
 
 
 
-  {
+  {
 
 
 
-    title: 'Brand Activation',
+    title: 'Brand Activation',
 
 
 
-    desc: 'Turn attention into action',
+    desc: 'Turn attention into action',
 
 
 
-    icon: brandActivationIcon,
+    icon: brandActivationIcon,
 
 
 
-    border: '#7BCB24',
+    border: '#7BCB24',
 
 
 
-  },
+  },
 
 
 
-  {
+  {
 
 
 
-    title: 'Digital Strategy',
+    title: 'Digital Strategy',
 
 
 
-    desc: 'Invest where it matters',
+    desc: 'Invest where it matters',
 
 
 
-    icon: digitalStrategyIcon,
+    icon: digitalStrategyIcon,
 
 
 
-    border: '#1C9CD8',
+    border: '#1C9CD8',
 
 
 
-  },
+  },
 
 
 
-  {
+  {
 
 
 
-    title: 'UI/UX Design',
+    title: 'UI/UX Design',
 
 
 
-    desc: 'Reduce friction, lift conversions',
+    desc: 'Reduce friction, lift conversions',
 
 
 
-    icon: uiUxDesignIcon,
+    icon: uiUxDesignIcon,
 
 
 
-    border: '#1C9CD8',
+    border: '#1C9CD8',
 
 
 
-  },
+  },
 
 
 
-  {
+  {
 
 
 
-    title: 'Website & Web Apps',
+    title: 'Website & Web Apps',
 
 
 
-    desc: 'Move visitors toward enquiry',
+    desc: 'Move visitors toward enquiry',
 
 
 
-    icon: websiteAppsIcon,
+    icon: websiteAppsIcon,
 
 
 
-    border: '#7BCB24',
+    border: '#7BCB24',
 
 
 
-  },
+  },
 
 
 
-  {
+  {
 
 
 
-    title: 'Digital Marketing',
+    title: 'Digital Marketing',
 
 
 
-    desc: 'Reach qualified customers',
+    desc: 'Reach qualified customers',
 
 
 
-    icon: digitalMarketingIcon,
+    icon: digitalMarketingIcon,
 
 
 
-    border: '#7BCB24',
+    border: '#7BCB24',
 
 
 
-  },
+  },
 
 
 
-  {
+  {
 
 
 
-    title: 'Retail Marketing',
+    title: 'Retail Marketing',
 
 
 
-    desc: 'Influence purchase decisions',
+    desc: 'Influence purchase decisions',
 
 
 
-    icon: retailMarketingIcon,
+    icon: retailMarketingIcon,
 
 
 
-    border: '#1C9CD8',
+    border: '#1C9CD8',
 
 
 
-  },
+  },
 
 
 
@@ -248,131 +248,131 @@ const impactStats = [
 
 
 
-  {
+  {
 
 
 
-    title: (
+    title: (
 
 
 
-      <>
+      <>
 
 
 
-        MORE
+        MORE
 
 
 
-        <br />
+        <br />
 
 
 
-        CONVERSIONS
+        CONVERSIONS
 
 
 
-      </>
+      </>
 
 
 
-    ),
+    ),
 
 
 
-    desc: (
+    desc: (
 
 
 
-      <>
+      <>
 
 
 
-        Better UI/UX and faster
+        Better UI/UX and faster
 
 
 
-        <br />
+        <br />
 
 
 
-        web experiences
+        web experiences
 
 
 
-      </>
+      </>
 
 
 
-    ),
+    ),
 
 
 
-  },
+  },
 
 
 
-  {
+  {
 
 
 
-    title: (
+    title: (
 
 
 
-      <>
+      <>
 
 
 
-        STRONGER
+        STRONGER
 
 
 
-        <br />
+        <br />
 
 
 
-        ENGAGEMENT
+        ENGAGEMENT
 
 
 
-      </>
+      </>
 
 
 
-    ),
+    ),
 
 
 
-    desc: (
+    desc: (
 
 
 
-      <>
+      <>
 
 
 
-        Connected digital and
+        Connected digital and
 
 
 
-        <br />
+        <br />
 
 
 
-        Retail Campaigns
+        Retail Campaigns
 
 
 
-      </>
+      </>
 
 
 
-    ),
+    ),
 
 
 
-  },
+  },
 
 
 
@@ -392,56 +392,56 @@ const testimonials = [
   {
     logo: layer4,
     logoAlt: 'PepsiCo',
-    logoWidth: 145,
-    logoHeight: 60,
+    logoWidth: 180,
+    logoHeight: 42,
     text: 'Number9 consistently delivered impactful activations that strengthened consumer engagement and elevated our brand presence across multiple markets.',
     route: 'case-study/pepsico',
   },
   {
     logo: layer7,
     logoAlt: 'Lexus',
-    logoWidth: 125,
-    logoHeight: 55,
+    logoWidth: 120,
+    logoHeight: 50,
     text: 'From concept to execution, the team brought creativity, precision, and measurable results that exceeded expectations.',
     route: 'case-study/lexus',
   },
   {
     logo: layer6,
     logoAlt: 'Citibank',
-    logoWidth: 140,
-    logoHeight: 55,
+    logoWidth: 160,
+    logoHeight: 42,
     text: 'Their ability to combine strategy, technology, and customer experience helped us deliver meaningful outcomes at scale.',
     route: 'case-study/citibank',
   },
   {
     logo: layer11,
     logoAlt: 'Safeway',
-    logoWidth: 132,
-    logoHeight: 78,
+    logoWidth: 190,
+    logoHeight: 35,
     text: 'Number9 became an extension of our team, providing reliable execution and innovative solutions across retail initiatives.',
     route: 'case-study/safeway',
   },
   {
     logo: layer12,
     logoAlt: 'Emirates',
-    logoWidth: 145,
-    logoHeight: 65,
+    logoWidth: 82,
+    logoHeight: 56,
     text: 'Professional, responsive, and highly collaborative. Their campaigns consistently delivered strong brand impact and customer engagement.',
     route: 'case-study/emirates',
   },
   {
     logo: microsoftLogo,
     logoAlt: 'Microsoft',
-    logoWidth: 165,
-    logoHeight: 55,
+    logoWidth: 178,
+    logoHeight: 38,
     text: 'Their digital strategy and execution helped us accelerate enterprise adoption and expand reach across key markets globally.',
     route: 'case-study/microsoft',
   },
   {
     logo: layer6,
     logoAlt: 'Nutrien',
-    logoWidth: 140,
-    logoHeight: 57,
+    logoWidth: 160,
+    logoHeight: 42,
     text: 'Number9 delivered a comprehensive brand activation strategy that resonated deeply with our agricultural and retail audiences.',
     route: 'case-study/nutrien',
   },
@@ -517,123 +517,123 @@ function CircularText({ text, radius, fontSize, color }) {
 
 
 
-  const chars = text.split('');
+  const chars = text.split('');
 
 
 
-  const angleStep = 360 / chars.length;
+  const angleStep = 360 / chars.length;
 
 
 
-  return (
+  return (
 
 
 
-    <div className="relative w-full h-full animate-spin-slow">
+    <div className="relative w-full h-full animate-spin-slow">
 
 
 
-      {chars.map((char, i) => {
+      {chars.map((char, i) => {
 
 
 
-        const angle = i * angleStep;
+        const angle = i * angleStep;
 
 
 
-        const rad = (angle * Math.PI) / 180;
+        const rad = (angle * Math.PI) / 180;
 
 
 
-        const x = 50 + radius * Math.sin(rad);
+        const x = 50 + radius * Math.sin(rad);
 
 
 
-        const y = 50 - radius * Math.cos(rad);
+        const y = 50 - radius * Math.cos(rad);
 
 
 
-        return (
+        return (
 
 
 
-          <span
+          <span
 
 
 
-            key={i}
+            key={i}
 
 
 
-            className="absolute"
+            className="absolute"
 
 
 
-            style={{
+            style={{
 
 
 
-              left: `${x}%`,
+              left: `${x}%`,
 
 
 
-              top: `${y}%`,
+              top: `${y}%`,
 
 
 
-              transform: `translate(-50%, -50%) rotate(${angle}deg)`,
+              transform: `translate(-50%, -50%) rotate(${angle}deg)`,
 
 
 
-              fontSize: fontSize || 'clamp(13px, 2.2vw, 17.95px)',
+              fontSize: fontSize || 'clamp(13px, 2.2vw, 17.95px)',
 
 
 
-              color,
+              color,
 
 
 
-              fontWeight: 500,
+              fontWeight: 500,
 
 
 
-              letterSpacing: '0.04em',
+              letterSpacing: '0.04em',
 
 
 
-              lineHeight: 1,
+              lineHeight: 1,
 
 
 
-            }}
+            }}
 
 
 
-          >
+          >
 
 
 
-            {char}
+            {char}
 
 
 
-          </span>
+          </span>
 
 
 
-        );
+        );
 
 
 
-      })}
+      })}
 
 
 
-    </div>
+    </div>
 
 
 
-  );
+  );
 
 
 
@@ -649,27 +649,27 @@ const clientGrid = [
 
 
 
-  { logo: microsoftLogo, logoAlt: 'Microsoft', logoClass: 'h-6', title: 'Global Technology Leader', desc: 'Cloud, AI & Enterprise Solutions' },
+  { logo: microsoftLogo, logoAlt: 'Microsoft', logoClass: 'h-6', title: 'Global Technology Leader', desc: 'Cloud, AI & Enterprise Solutions' },
 
 
 
-  { logo: emiratesLogo, logoAlt: 'Emirates', logoClass: 'h-9', title: 'World-Class Airline Brand', desc: 'Premium Travel & Customer Experience' },
+  { logo: emiratesLogo, logoAlt: 'Emirates', logoClass: 'h-9', title: 'World-Class Airline Brand', desc: 'Premium Travel & Customer Experience' },
 
 
 
-  { logo: lexusLogo, logoAlt: 'Lexus', logoClass: 'h-5', title: 'Luxury Automotive Excellence', desc: 'Premium Customer Experience & Innovation' },
+  { logo: lexusLogo, logoAlt: 'Lexus', logoClass: 'h-5', title: 'Luxury Automotive Excellence', desc: 'Premium Customer Experience & Innovation' },
 
 
 
-  { logo: jcpenneyLogo, logoAlt: 'JCPenney', logoClass: 'h-6', title: 'Leading Retail Brand', desc: 'Omnichannel Commerce & Customer Engagement' },
+  { logo: jcpenneyLogo, logoAlt: 'JCPenney', logoClass: 'h-6', title: 'Leading Retail Brand', desc: 'Omnichannel Commerce & Customer Engagement' },
 
 
 
-  { logo: safewayLogo, logoAlt: 'Safeway', logoClass: 'h-6', title: 'Trusted Grocery Retailer', desc: 'Retail Marketing & Consumer Activation' },
+  { logo: safewayLogo, logoAlt: 'Safeway', logoClass: 'h-6', title: 'Trusted Grocery Retailer', desc: 'Retail Marketing & Consumer Activation' },
 
 
 
-  { logo: pepsicoLogo, logoAlt: 'PepsiCo', logoClass: 'h-6', title: 'Global Consumer Goods Leader', desc: 'Brand Activation & Shopper Marketing' },
+  { logo: pepsicoLogo, logoAlt: 'PepsiCo', logoClass: 'h-6', title: 'Global Consumer Goods Leader', desc: 'Brand Activation & Shopper Marketing' },
 
 
 
@@ -697,11 +697,11 @@ function getVisibleCount(cardW, gap) {
 
 
 
-  if (typeof window === 'undefined') return 3;
+  if (typeof window === 'undefined') return 3;
 
 
 
-  return Math.max(1, Math.floor(window.innerWidth / (cardW + gap)));
+  return Math.max(1, Math.floor(window.innerWidth / (cardW + gap)));
 
 
 
@@ -717,47 +717,15 @@ function useIsUltraWide() {
 
 
 
-  const [isUltra, setIsUltra] = useState(
+  const [isUltra, setIsUltra] = useState(
 
 
 
-    () => typeof window !== 'undefined' && window.innerWidth >= ULTRA_MIN
+    () => typeof window !== 'undefined' && window.innerWidth >= ULTRA_MIN
 
 
 
-  );
-
-
-
-
-
-
-
-  useEffect(() => {
-
-
-
-    const mq = window.matchMedia(`(min-width: ${ULTRA_MIN}px)`);
-
-
-
-    const onChange = (event) => setIsUltra(event.matches);
-
-
-
-    setIsUltra(mq.matches);
-
-
-
-    mq.addEventListener('change', onChange);
-
-
-
-    return () => mq.removeEventListener('change', onChange);
-
-
-
-  }, []);
+  );
 
 
 
@@ -765,7 +733,39 @@ function useIsUltraWide() {
 
 
 
-  return isUltra;
+  useEffect(() => {
+
+
+
+    const mq = window.matchMedia(`(min-width: ${ULTRA_MIN}px)`);
+
+
+
+    const onChange = (event) => setIsUltra(event.matches);
+
+
+
+    setIsUltra(mq.matches);
+
+
+
+    mq.addEventListener('change', onChange);
+
+
+
+    return () => mq.removeEventListener('change', onChange);
+
+
+
+  }, []);
+
+
+
+
+
+
+
+  return isUltra;
 
 
 
@@ -801,7 +801,7 @@ export default function FifthSection({ onNavigate }) {
 
 
 
-  const isUltra = useIsUltraWide();
+  const isUltra = useIsUltraWide();
   const [viewportWidth, setViewportWidth] = useState(() =>
     typeof window !== 'undefined' ? window.innerWidth : 1440
   );
@@ -818,15 +818,15 @@ export default function FifthSection({ onNavigate }) {
 
 
 
-  // Touch swipe tracking
+  // Touch swipe tracking
 
 
 
-  const touchStartX = useRef(null);
+  const touchStartX = useRef(null);
 
 
 
-  const touchStartY = useRef(null);
+  const touchStartY = useRef(null);
 
 
 
@@ -834,19 +834,19 @@ export default function FifthSection({ onNavigate }) {
 
 
 
-  const handleTouchStart = (e) => {
+  const handleTouchStart = (e) => {
 
 
 
-    touchStartX.current = e.touches[0].clientX;
+    touchStartX.current = e.touches[0].clientX;
 
 
 
-    touchStartY.current = e.touches[0].clientY;
+    touchStartY.current = e.touches[0].clientY;
 
 
 
-  };
+  };
 
 
 
@@ -854,47 +854,47 @@ export default function FifthSection({ onNavigate }) {
 
 
 
-  const handleTouchEnd = (e) => {
+  const handleTouchEnd = (e) => {
 
 
 
-    if (touchStartX.current === null) return;
+    if (touchStartX.current === null) return;
 
 
 
-    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
 
 
 
-    const dy = e.changedTouches[0].clientY - touchStartY.current;
+    const dy = e.changedTouches[0].clientY - touchStartY.current;
 
 
 
-    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
 
 
 
-      if (dx < 0) next();
+      if (dx < 0) next();
 
 
 
-      else prev();
+      else prev();
 
 
 
-    }
+    }
 
 
 
-    touchStartX.current = null;
+    touchStartX.current = null;
 
 
 
-    touchStartY.current = null;
+    touchStartY.current = null;
 
 
 
-  };
+  };
 
 
 
@@ -902,19 +902,19 @@ export default function FifthSection({ onNavigate }) {
 
 
 
-  const cardW = isUltra ? ULTRA_CARD_W : CARD_W;
+  const cardW = isUltra ? ULTRA_CARD_W : CARD_W;
 
 
 
-  const cardH = isUltra ? ULTRA_CARD_H : CARD_H;
+  const cardH = isUltra ? ULTRA_CARD_H : CARD_H;
 
 
 
-  const strideGap = isUltra ? ULTRA_GAP : CARD_GAP;
+  const strideGap = isUltra ? ULTRA_GAP : CARD_GAP;
 
 
 
-  const rowGap = isUltra ? ULTRA_GAP : CARD_VISUAL_GAP;
+  const rowGap = isUltra ? ULTRA_GAP : CARD_VISUAL_GAP;
 
 
 
@@ -922,15 +922,15 @@ export default function FifthSection({ onNavigate }) {
 
 
 
-  // Use the actual rendered gap
+  // Use the actual rendered gap
 
 
 
-  const visibleCount = Math.min(4, Math.max(1, Math.floor(viewportWidth / (cardW + rowGap))));
+  const visibleCount = Math.min(4, Math.max(1, Math.floor(viewportWidth / (cardW + rowGap))));
 
 
 
-    // Three copies keep the next and previous cards available at both ends.
+  // Three copies keep the next and previous cards available at both ends.
   const prev = () => {
     if (isSliding.current || isLoopResetting) return;
     isSliding.current = true;
@@ -962,19 +962,19 @@ export default function FifthSection({ onNavigate }) {
     }
   };
 
-const desktopTrackWidth =
+  const desktopTrackWidth =
 
 
 
-    visibleCount * cardW +
+    visibleCount * cardW +
 
 
 
-    Math.max(0, visibleCount - 1) * rowGap;
+    Math.max(0, visibleCount - 1) * rowGap;
 
 
 
-  return (
+  return (
 
 
 
@@ -986,11 +986,11 @@ const desktopTrackWidth =
 
 
 
-      {/* ══ TOP AREA ══ */}
+      {/* ══ TOP AREA ══ */}
 
 
 
-      <div className="relative w-full">
+      <div className="relative w-full">
 
 
 
@@ -998,7 +998,7 @@ const desktopTrackWidth =
 
 
 
-        <div className="flex flex-col lg:flex-row">
+        <div className="flex flex-col lg:flex-row">
 
 
 
@@ -1006,39 +1006,39 @@ const desktopTrackWidth =
 
 
 
-          {/* LEFT — Photo: user-set w-[627px] h-[1271px], border-radius */}
+          {/* LEFT — Photo: user-set w-[627px] h-[1271px], border-radius */}
 
 
 
-          <div className="hidden lg:block shrink-0 w-full lg:w-[32.65%]">
+          <div className="hidden lg:block shrink-0 w-full lg:w-[32.65%]">
 
 
 
-            <img
+            <img
 
 
 
-              src={personPhoto}
+              src={personPhoto}
 
 
 
-              alt="Team"
+              alt="Team"
 
 
 
-              className="w-full h-full object-cover object-top rounded-2xl"
+              className="w-full h-full object-cover object-top rounded-2xl"
 
 
 
-              style={{ height: '1271px' }}
+              style={{ height: '1271px' }}
 
 
 
-            />
+            />
 
 
 
-          </div>
+          </div>
 
 
 
@@ -1046,74 +1046,62 @@ const desktopTrackWidth =
 
 
 
-          {/* RIGHT — Heading + desc + button */}
+          {/* RIGHT — Heading + desc + button */}
 
 
 
-          <div className="flex-1 min-w-0 flex flex-col gap-8 justify-start pt-10 sm:pt-14 lg:pt-[clamp(115px,10vw,220px)] px-6 sm:px-10 lg:pl-12 xl:pl-16 pb-6">
+          <div className="flex-1 min-w-0 flex flex-col gap-8 justify-start pt-10 sm:pt-14 lg:pt-[clamp(115px,10vw,220px)] px-6 sm:px-10 lg:pl-12 xl:pl-16 pb-6">
 
 
 
-            <h2 className="text-[26px] sm:text-[26px] md:text-[30px] lg:text-[34px] xl:text-[40px] font-bold  leading-[1.3] max-w-[900px]">
+            <h2 className="text-[26px] sm:text-[26px] md:text-[30px] lg:text-[34px] xl:text-[40px] font-bold  leading-[1.3] max-w-[900px]">
 
 
 
-              We've helped brands connect, engage, and grow.{' '}
+              We've helped brands connect, engage, and grow.{' '}
 
 
 
-              Trusted by industry leaders across America.
+              Trusted by industry leaders across America.
 
 
 
-            </h2>
+            </h2>
 
 
 
-            <p className="text-slate-500 text-[18px] sm:text-[20px] leading-relaxed mt-5 max-w-[800px]">
+            <p className="text-black font-grift-light text-[18px] sm:text-[20px] leading-relaxed mt-0 max-w-[800px]">
 
 
 
-              20+ years of experience delivering brand activation, digital strategy, creative campaigns,
+              20+ years of experience delivering brand activation, digital strategy, creative campaigns,
 
 
 
-              and technology solutions for leading organizations.
+              and technology solutions for leading organizations.
 
 
 
-            </p>
+            </p>
 
 
 
-            <button
+            <button
               type="button"
               onClick={() => handleNavigateClick('our-work')}
-              className="group flex items-center gap-12 font-medium text-[14px] sm:text-[20px] text-slate-900 border-b-2 pb-1 w-fit hover:text-[#11C911] hover:border-[#11C911] transition-colors duration-300 mt-6 cursor-pointer"
+              className="group flex items-center gap-18 font-medium text-[14px] sm:text-[22px] text-black border-b-2 pb-2 w-fit hover:text-[#11C911] hover:border-[#11C911] transition-colors duration-300 mt-6 cursor-pointer"
             >
               View Our Work
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 xl:w-8 xl:h-8 group-hover:translate-x-1 transition-transform" />
             </button>
 
 
 
-          </div>
+          </div>
 
 
 
-        </div>
-
-
-
-
-
-
-
-        {/* ══ CARDS ROW — absolute, overlaps photo bottom ══ */}
-
-
-
-        <div className="w-full py-2 lg:absolute lg:top-[47%] lg:left-0 lg:z-20">
+        </div>
 
 
 
@@ -1121,181 +1109,166 @@ const desktopTrackWidth =
 
 
 
-        <div className="w-full max-w-[1920px] mx-auto lg:flex lg:justify-start lg:pl-[2.2%]">
+        {/* ══ CARDS ROW — absolute, overlaps photo bottom ══ */}
 
 
 
-  <div
+    
+{/* ══ CARDS ROW ══ */}
+
+<div className="w-full py-2 lg:absolute lg:top-[45%] lg:left-0 lg:z-20">
 
 
 
-    className={`flex w-max ease-in-out px-4 lg:px-0 ${isLoopResetting ? 'transition-none' : 'transition-transform duration-500'}`}
 
 
 
-    onTouchStart={handleTouchStart}
+
+
+          <div className="w-full max-w-[1920px] mx-auto lg:flex lg:justify-start lg:pl-[2.2%]">
 
 
 
-    onTouchEnd={handleTouchEnd}
-    onTransitionEnd={handleCarouselTransitionEnd}
+            <div
 
 
 
-    style={{
+              className={`flex w-max ease-in-out px-4 lg:px-0 ${isLoopResetting ? 'transition-none' : 'transition-transform duration-500'}`}
 
 
 
-      gap: `${rowGap}px`,
+              onTouchStart={handleTouchStart}
 
 
 
-      transform: `translateX(calc(-${offset * (cardW + rowGap)}px))`,
+              onTouchEnd={handleTouchEnd}
+              onTransitionEnd={handleCarouselTransitionEnd}
 
 
 
-      width: 'max-content',
+              style={{
 
 
 
-    }}
+                gap: `${rowGap}px`,
 
 
 
-  >
+                transform: `translateX(calc(-${offset * (cardW + rowGap)}px))`,
 
 
 
-              {loopingCards.map((t, i) => (
+                width: 'max-content',
 
 
 
-                <div
+              }}
 
 
 
-                  key={i}
+            >
 
 
 
-                  onClick={() => handleNavigateClick(t.route)}
+              {loopingCards.map((t, i) => (
+
+
+
+                <div
+
+
+
+                  key={i}
+
+
+
+                  onClick={() => handleNavigateClick(t.route)}
                   className="shrink-0 bg-white border border-slate-100 rounded-2xl flex flex-col justify-between cursor-pointer transition-all duration-300 hover:-translate-z-2 shadow-md hover:shadow-xl"
 
 
 
-                  style={{
+                  style={{
 
 
 
-                    width: `${cardW}px`,
+                    width: `${cardW}px`,
 
 
 
-                    height: `${cardH}px`,
+                    height: `${cardH}px`,
 
 
 
-                    padding: isUltra
+                    padding: isUltra
 
 
 
-                      ? ULTRA_PAD
+                      ? ULTRA_PAD
 
 
 
-                      : '28px 28px 24px 28px',
+                      : '28px 28px 24px 28px',
 
 
 
-                  }}
+                  }}
 
 
 
-                >
+                >
 
 
 
-                  <div>
+                  <div>
+                    {/* Fixed-height logo container: bottom-aligns logos and guarantees uniform start line for text */}
+                    <div className="h-[62px] flex items-end justify-start mb-6 shrink-0">
+                      <img
+                        src={t.logo}
+                        alt={t.logoAlt}
+                        style={{
+                          width: `${t.logoWidth}px`,
+                          height: `${t.logoHeight}px`,
+                          objectFit: 'contain',
+                          objectPosition: 'left bottom',
+                        }}
+                      />
+                    </div>
 
 
 
-                    <img
 
 
 
-                      src={t.logo}
 
+                    <p
 
 
-                      alt={t.logoAlt}
 
+                      className="leading-[1.5] text-[20px]"
 
 
-                      style={{
 
+                    >
 
 
-                        width: `${t.logoWidth}px`,
 
+                      {t.text}
 
 
-                        height: `${t.logoHeight}px`,
 
+                    </p>
 
 
-                        objectFit: 'contain',
 
+                  </div>
 
 
-                        objectPosition: 'left center',
 
 
 
-                      }}
 
 
-
-                      className="mb-5"
-
-
-
-                    />
-
-
-
-
-
-
-
-                    <p
-
-
-
-                      className="leading-[1.5] text-[20px]"
-
-
-
-                    >
-
-
-
-                      {t.text}
-
-
-
-                    </p>
-
-
-
-                  </div>
-
-
-
-
-
-
-
-                  <button
+                  <button
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
@@ -1308,19 +1281,19 @@ const desktopTrackWidth =
 
 
 
-                </div>
+                </div>
 
 
 
-              ))}
+              ))}
 
 
 
-            </div>
+            </div>
 
 
 
-          </div>
+          </div>
 
 
 
@@ -1328,67 +1301,67 @@ const desktopTrackWidth =
 
 
 
-          {/* Arrows — centered, both green, desktop only */}
+          {/* Arrows — centered, both green, desktop only */}
 
 
 
-          <div className="hidden sm:flex items-center justify-center gap-4 mt-5 pb-5">
+          <div className="hidden sm:flex items-center justify-center gap-4 mt-12 pb-5">
 
 
 
-            <button
+            <button
 
 
 
-              onClick={prev}
+              onClick={prev}
 
 
-              className={`w-[44px] h-[44px] rounded-full border flex items-center justify-center transition-colors
-
-
-
-                border-[#11C911] text-[#11C911] hover:bg-[#11C911] hover:text-white cursor-pointer`}
-
-            >
-
-              <ChevronLeft size={22} />
-
-            </button>
-
-            <button
-
-              onClick={next}
-
-
-              className={`w-[44px] h-[44px] rounded-full border flex items-center justify-center transition-colors
+              className={`w-[44px] h-[44px] rounded-full border flex items-center justify-center transition-colors
 
 
 
                 border-[#11C911] text-[#11C911] hover:bg-[#11C911] hover:text-white cursor-pointer`}
 
+            >
+
+              <ChevronLeft size={22} />
+
+            </button>
+
+            <button
+
+              onClick={next}
 
 
-            >
-
-
-
-              <ChevronRight size={22} />
-
-
-
-            </button>
-
-
-
-          </div>
+              className={`w-[44px] h-[44px] rounded-full border flex items-center justify-center transition-colors
 
 
 
-        </div>
+                border-[#11C911] text-[#11C911] hover:bg-[#11C911] hover:text-white cursor-pointer`}
 
 
 
-      </div>
+            >
+
+
+
+              <ChevronRight size={22} />
+
+
+
+            </button>
+
+
+
+          </div>
+
+
+
+        </div>
+
+
+
+      </div>
 
 
 
@@ -1398,16 +1371,16 @@ const desktopTrackWidth =
 
       {/* ══ BLACK BOX ══ */}
 
-<div
-  className="
+      <div
+        className="
     relative z-10 mx-auto w-full
     max-w-[1600px]
     px-0 sm:px-6 lg:px-8
     mt-8 sm:mt-10 lg:-mt-[80px]
   "
->
-  <div
-    className="
+      >
+        <div
+          className="
       relative overflow-hidden bg-black
       rounded-none sm:rounded-[24px]
       px-5 py-8
@@ -1417,9 +1390,9 @@ const desktopTrackWidth =
       xl:py-[65px]
       xl:min-h-[900px]
     "
-  >
-   <div
-  className="
+        >
+          <div
+            className="
     grid grid-cols-1
     lg:grid-cols-2
     xl:grid-cols-[minmax(0,1.35fr)_minmax(245px,0.95fr)_minmax(0,1.85fr)]
@@ -1429,12 +1402,12 @@ const desktopTrackWidth =
     xl:min-h-[770px]
     xl:items-stretch
   "
->
-    
+          >
 
-{/* LEFT — BUSINESS IMPACT */}
-<div
-  className="
+
+            {/* LEFT — BUSINESS IMPACT */}
+            <div
+              className="
     flex flex-col
     min-w-0
     lg:pr-4
@@ -1443,23 +1416,23 @@ const desktopTrackWidth =
     xl:pb-[90px]
     xl:h-full
   "
->
-  {/* LABEL */}
-  <p
-    className="
+            >
+              {/* LABEL */}
+              <p
+                className="
       text-white/70 uppercase
       text-[11px] sm:text-[12px]
       tracking-[0.28em]
       mb-5 sm:mb-8
       xl:mb-[34px]
     "
-  >
-    Business Impact
-  </p>
+              >
+                Business Impact
+              </p>
 
-  {/* HEADING */}
-  <h2
-    className="
+              {/* HEADING */}
+              <h2
+                className="
       text-white font-semibold
       text-[40px]
       sm:text-[clamp(40px,7vw,64px)]
@@ -1470,21 +1443,21 @@ const desktopTrackWidth =
       sm:max-w-none
       xl:max-w-[440px]
     "
-  >
-    <span className="text-[#8DEB28]">
-      Designed to
-    </span>
-    <br />
-    perform.
-    <br />
-    Built to deliver
-    <br />
-    results.
-  </h2>
+              >
+                <span className="text-[#8DEB28]">
+                  Designed to
+                </span>
+                <br />
+                perform.
+                <br />
+                Built to deliver
+                <br />
+                results.
+              </h2>
 
-  {/* DESCRIPTION */}
-  <p
-    className="
+              {/* DESCRIPTION */}
+              <p
+                className="
       mt-6 sm:mt-8 lg:mt-12
       xl:mt-[75px]
       max-w-[400px]
@@ -1495,20 +1468,20 @@ const desktopTrackWidth =
       xl:text-[23px]
       leading-[1.55]
     "
-  >
-    Strategy, design, development, and
-    marketing working together to improve
-    every step of the customer journey.
-  </p>
+              >
+                Strategy, design, development, and
+                marketing working together to improve
+                every step of the customer journey.
+              </p>
 
-  {/* CTA */}
-  <a
-    href="#contact"
-    onClick={(e) => {
-      e.preventDefault();
-      handleNavigateClick("contact");
-    }}
-    className="
+              {/* CTA */}
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavigateClick("contact");
+                }}
+                className="
       group
       mt-8 lg:mt-10
       xl:mt-auto
@@ -1520,22 +1493,22 @@ const desktopTrackWidth =
       text-[16px] sm:text-[18px] xl:text-[22px]
       cursor-pointer
     "
-  >
-    <span>Let’s Talk Results</span>
-    <ArrowRight
-      className="
+              >
+                <span>Let’s Talk Results</span>
+                <ArrowRight
+                  className="
         w-5 h-5 sm:w-6 sm:h-6
         text-[#22B8F3]
         transition-transform duration-300
         group-hover:translate-x-1
       "
-    />
-  </a>
-</div>
+                />
+              </a>
+            </div>
 
-      {/* CENTER — KPI CIRCLES */}
-     <div
-  className="
+            {/* CENTER — KPI CIRCLES */}
+            <div
+              className="
     flex flex-row lg:flex-col
     flex-wrap lg:flex-nowrap
     items-center justify-center
@@ -1548,11 +1521,11 @@ const desktopTrackWidth =
     xl:px-0
     min-w-0
   "
->
-        {impactStats.map((item, index) => (
-          <div
-            key={index}
-            className="
+            >
+              {impactStats.map((item, index) => (
+                <div
+                  key={index}
+                  className="
               relative
               flex items-center justify-center
               shrink-0
@@ -1565,20 +1538,20 @@ const desktopTrackWidth =
               xl:w-[245px]
               xl:h-[245px]
             "
-          >
-            {/* ROTATING CIRCULAR TEXT */}
-            <div className="absolute inset-0 opacity-[0.52]">
-              <CircularText
-                text="Successfully executed projects · "
-                radius={52}
-                color="#FFFFFF"
-              />
-            </div>
-            {/* CENTER KPI CONTENT */}
-     
-{/* CENTER KPI CONTENT */}
-<div
-  className="
+                >
+                  {/* ROTATING CIRCULAR TEXT */}
+                  <div className="absolute inset-0 opacity-[0.52]">
+                    <CircularText
+                      text="Successfully executed projects · "
+                      radius={52}
+                      color="#FFFFFF"
+                    />
+                  </div>
+                  {/* CENTER KPI CONTENT */}
+
+                  {/* CENTER KPI CONTENT */}
+                  <div
+                    className="
     relative z-10
     flex flex-col
     items-center justify-center
@@ -1588,9 +1561,9 @@ const desktopTrackWidth =
     px-1
     sm:px-2
   "
->
-  <h3
-    className="
+                  >
+                    <h3
+                      className="
       text-white
       font-grift-semibold
       text-[18px]
@@ -1603,12 +1576,12 @@ const desktopTrackWidth =
       w-full
       whitespace-normal
     "
-  >
-    {item.title}
-  </h3>
+                    >
+                      {item.title}
+                    </h3>
 
-  <p
-    className="
+                    <p
+                      className="
       mt-1.5
       sm:mt-4
       xl:mt-5
@@ -1619,19 +1592,19 @@ const desktopTrackWidth =
       text-center
       max-w-[200px]
     "
-  >
-    {item.desc}
-  </p>
-</div>
+                    >
+                      {item.desc}
+                    </p>
+                  </div>
 
-          </div>
-        ))}
-      </div>
-      {/* RIGHT — SERVICES */}
-   
-{/* RIGHT — SERVICES */}
-<div
-  className="
+                </div>
+              ))}
+            </div>
+            {/* RIGHT — SERVICES */}
+
+            {/* RIGHT — SERVICES */}
+            <div
+              className="
     relative
     flex items-center
     min-w-0
@@ -1646,9 +1619,9 @@ const desktopTrackWidth =
     xl:pl-[54px]
     xl:self-stretch
   "
->
-  <div
-    className="
+            >
+              <div
+                className="
       grid
       grid-cols-1
       sm:grid-cols-2
@@ -1660,15 +1633,15 @@ const desktopTrackWidth =
       xl:h-full
       xl:items-stretch
     "
-  >
-    {impactCards.map((card, index) => {
-      const cardBorder =
-        index % 2 === 0 ? "#6B9F25" : "#167CA8";
+              >
+                {impactCards.map((card, index) => {
+                  const cardBorder =
+                    index % 2 === 0 ? "#6B9F25" : "#167CA8";
 
-      return (
-        <div
-          key={index}
-          className="
+                  return (
+                    <div
+                      key={index}
+                      className="
             min-w-0
             min-h-[180px]
             sm:min-h-[190px]
@@ -1687,17 +1660,17 @@ const desktopTrackWidth =
             hover:-translate-y-1
             impact-card
           "
-          style={{
-            border: `1px solid ${cardBorder}`,
-            borderRadius: "22px",
-            "--desktop-border": card.border,
-          }}
-        >
-          {/* ICON */}
-          <img
-            src={card.icon}
-            alt=""
-            className="
+                      style={{
+                        border: `1px solid ${cardBorder}`,
+                        borderRadius: "22px",
+                        "--desktop-border": card.border,
+                      }}
+                    >
+                      {/* ICON */}
+                      <img
+                        src={card.icon}
+                        alt=""
+                        className="
               w-8 h-8
               sm:w-[47px]
               sm:h-[47px]
@@ -1709,11 +1682,11 @@ const desktopTrackWidth =
               object-contain
               brightness-0 invert
             "
-          />
+                      />
 
-          {/* TITLE */}
-          <h3
-            className="
+                      {/* TITLE */}
+                      <h3
+                        className="
               text-white
               font-semibold
               text-[15px]
@@ -1721,13 +1694,13 @@ const desktopTrackWidth =
               xl:text-[22px]
               leading-tight
             "
-          >
-            {card.title}
-          </h3>
+                      >
+                        {card.title}
+                      </h3>
 
-          {/* DESCRIPTION */}
-          <p
-            className="
+                      {/* DESCRIPTION */}
+                      <p
+                        className="
               mt-1
               text-white/65
               text-[13px]
@@ -1738,25 +1711,25 @@ const desktopTrackWidth =
               max-w-none
               xl:max-w-[180px]
             "
-          >
-            {card.desc}
-          </p>
+                      >
+                        {card.desc}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+          </div>
         </div>
-      );
-    })}
-  </div>
-</div>
-
-    </div>
-  </div>
-</div>
+      </div>
 
 
-    </section>
+    </section>
 
 
 
-  );
+  );
 
 
 

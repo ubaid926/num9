@@ -9,8 +9,8 @@ import workCar from "../assets/workCar.png";
 import workLaptop from "../assets/workLaptop.webp";
 import workEmirates from "../assets/workEmirates.webp";
 import lexusLogo from "../assets/Logos/ClientsGrid_Logos/lexus.png";
-import emiratesLogo from "../assets/Logos/ClientsGrid_Logos/emirates.png";
-import microsoftLogo from "../assets/Logos/ClientsGrid_Logos/microsoft.png";
+import emiratesLogo from "../assets/Emirates-Logo_White.png";
+import microsoftLogo from "../assets/Microsoft_logo__White.png";
 
 /* ─── extra logos for clients grid ──────────────────────── */
 import clientMicrosoftLogo from "../assets/Logos/ClientsGrid_Logos/microsoft.png";
@@ -141,161 +141,161 @@ const CLIENT_INDUSTRIES = {
 const clients = [
   {
     logo: clientMicrosoftLogo,
-    logoClass: "h-[38px] sm:h-[42px] w-auto",
+    logoClass: "h-[44px] sm:h-[48px] xl:h-[52px] w-auto",
     name: "Microsoft",
     desc: "Enterprise AI and cloud solutions enabling scalable digital transformation and innovation.",
     route: "case-study/microsoft",
   },
   {
     logo: clientPepsicoLogo,
-    logoClass: "h-[42px] sm:h-[47px] w-auto",
+    logoClass: "h-[48px] sm:h-[54px] xl:h-[58px] w-auto",
     name: "PepsiCo",
     desc: "Retail and consumer engagement solutions powered by data driven digital technologies.",
     route: "case-study/pepsico",
   },
   {
     logo: clientNutrienLogo,
-    logoClass: "h-[35px] sm:h-[39px] w-auto",
+    logoClass: "h-[48px] sm:h-[54px] xl:h-[58px] w-auto",
     name: "Nutrien",
     desc: "Technology driven enterprise solutions improving operational efficiency and data based decision making.",
     route: "case-study/nutrien",
   },
   {
     logo: clientCitibankLogo,
-    logoClass: "h-[38px] sm:h-[42px] w-auto",
+    logoClass: "h-[46px] sm:h-[52px] xl:h-[56px] w-auto",
     name: "Citibank",
     desc: "Secure financial technology solutions enabling digital banking transformation and customer trust.",
     route: "case-study/citibank",
   },
   {
     logo: clientLexusLogo,
-    logoClass: "h-[48px] sm:h-[54px] w-auto",
+    logoClass: "h-[54px] sm:h-[60px] xl:h-[66px] w-auto",
     name: "Lexus",
     desc: "Premium digital experiences and interactive platforms enhancing automotive customer journeys globally.",
     route: "case-study/lexus",
   },
   {
     logo: clientArgoLogo,
-    logoClass: "h-[30px] sm:h-[34px] w-auto",
+    logoClass: "h-[44px] sm:h-[50px] xl:h-[54px] w-auto",
     name: "Argo",
     desc: "Custom software solutions delivering scalable digital products and enterprise level innovation.",
     route: "case-study/argo",
   },
   {
     logo: clientMedimpactLogo,
-    logoClass: "h-[52px] sm:h-[58px] w-auto",
+    logoClass: "h-[54px] sm:h-[60px] xl:h-[66px] w-auto",
     name: "MedImpact",
     desc: "Healthcare technology solutions enabling secure, scalable digital health transformation and analytics.",
     route: "case-study/medimpact",
   },
   {
     logo: clientJcpenneyLogo,
-    logoClass: "h-[38px] sm:h-[42px] w-auto",
+    logoClass: "h-[46px] sm:h-[52px] xl:h-[56px] w-auto",
     name: "JCPenney",
     desc: "Retail technology and digital commerce solutions enhancing customer engagement and operational efficiency.",
     route: "case-study/jcpenney",
   },
   {
     logo: clientEmiratesLogo,
-    logoClass: "h-[52px] sm:h-[68px] w-auto",
+    logoClass: "h-[58px] sm:h-[66px] xl:h-[82px] w-auto",
     name: "Emirates",
     desc: "Aviation digital systems and customer experience solutions supporting global travel innovation.",
     route: "case-study/emirates",
   },
   {
     logo: clientSafewayLogo,
-    logoClass: "h-[34px] sm:h-[38px] w-auto",
+    logoClass: "h-[42px] sm:h-[48px] xl:h-[52px] w-auto",
     name: "Safeway",
     desc: "Retail infrastructure and data driven solutions improving supply chain and customer experience.",
     route: "case-study/safeway",
   },
   {
     logo: clientYmcaLogo,
-    logoClass: "h-[52px] sm:h-[58px] w-auto",
+    logoClass: "h-[54px] sm:h-[60px] xl:h-[66px] w-auto",
     name: "YMCA",
     desc: "Community focused digital platforms supporting engagement, management, and service accessibility systems.",
     route: "case-study/ymca",
   },
   {
     logo: clientMagellanLogo,
-    logoClass: "h-[44px] sm:h-[49px] w-auto",
+    logoClass: "h-[48px] sm:h-[54px] xl:h-[58px] w-auto",
     name: "Magellan Health",
     desc: "Healthcare and behavioral health technology solutions enabling data driven care and service optimization.",
     route: "case-study/magellan",
   },
   {
     logo: clientSnacksLogo,
-    logoClass: "h-[42px] sm:h-[48px] w-auto max-w-[210px]",
+    logoClass: "h-[46px] sm:h-[52px] xl:h-[56px] w-auto max-w-[240px]",
     name: "Snacks.com",
     desc: "Direct-to-consumer e-commerce platform and custom snack builder delivering personalized retail experiences.",
     route: "case-study/snacks",
   },
   {
     logo: clientZee5Logo,
-    logoClass: "h-[52px] sm:h-[68px] w-auto",
+    logoClass: "h-[56px] sm:h-[64px] xl:h-[70px] w-auto",
     name: "ZEE5",
     desc: "Next-generation OTT streaming platform and high-performance digital entertainment discovery architecture.",
     route: "case-study/zee5",
   },
   {
     logo: clientSentralLogo,
-    logoClass: "h-[50px] sm:h-[66px] w-auto",
+    logoClass: "h-[54px] sm:h-[62px] xl:h-[68px] w-auto",
     name: "Sentral Education",
     desc: "Integrated K-12 education management platform streamlining school administration and community engagement.",
     route: "case-study/sentral",
   },
   {
     logo: clientPwcLogo,
-    logoClass: "h-[50px] sm:h-[56px] w-auto",
+    logoClass: "h-[54px] sm:h-[60px] xl:h-[66px] w-auto",
     name: "PwC",
     desc: "Enterprise workflow dashboards and tax technology solutions accelerating collaborative advisory operations.",
     route: "case-study/pwc",
   },
   {
     logo: clientEmpireLogo,
-    logoClass: "h-[50px] sm:h-[66px] w-auto",
+    logoClass: "h-[54px] sm:h-[62px] xl:h-[68px] w-auto",
     name: "Empire Cinemas",
     desc: "Next-generation cinema ticketing systems and interactive entertainment booking experiences.",
     route: "case-study/empire",
   },
   {
     logo: clientAlmazaLogo,
-    logoClass: "h-[48px] sm:h-[54px] w-auto max-w-[200px]",
+    logoClass: "h-[50px] sm:h-[56px] xl:h-[62px] w-auto max-w-[230px]",
     name: "Almaza",
     desc: "Heritage beverage brand platforms combining interactive digital storytelling and modern customer loyalty.",
     route: "case-study/almaza",
   },
   {
     logo: clientFairviewLogo,
-    logoClass: "h-[46px] sm:h-[58px] w-auto max-w-[200px]",
+    logoClass: "h-[50px] sm:h-[58px] xl:h-[64px] w-auto max-w-[230px]",
     name: "Fairview",
     desc: "Architectural cladding and facade technology platforms showcasing global building innovation.",
     route: "case-study/fairview",
   },
   {
     logo: clientLifegiftLogo,
-    logoClass: "h-[46px] sm:h-[52px] w-auto max-w-[200px]",
+    logoClass: "h-[48px] sm:h-[54px] xl:h-[60px] w-auto max-w-[230px]",
     name: "LifeGive",
     desc: "Health and wellness digital platform empowering lifestyle transformation with organic nutritional systems.",
     route: "case-study/lifegive",
   },
   {
     logo: clientIcomLogo,
-    logoClass: "h-[44px] sm:h-[50px] w-auto max-w-[200px]",
+    logoClass: "h-[48px] sm:h-[54px] xl:h-[60px] w-auto max-w-[230px]",
     name: "ICOM",
     desc: "Global network platform connecting museums and cultural institutions through innovative digital experiences.",
     route: "case-study/icom",
   },
   {
     logo: clientGenesisLogo,
-    logoClass: "h-[40px] sm:h-[46px] w-auto max-w-[200px]",
+    logoClass: "h-[46px] sm:h-[52px] xl:h-[56px] w-auto max-w-[230px]",
     name: "GENESIS Exhibits",
     desc: "Award-winning trade show and exhibit design firm delivering immersive brand environments and experiences.",
     route: "case-study/genesis",
   },
   {
     logo: clientStandardCharteredLogo,
-    logoClass: "h-[42px] sm:h-[48px] w-auto max-w-[210px]",
+    logoClass: "h-[48px] sm:h-[54px] xl:h-[58px] w-auto max-w-[240px]",
     name: "Standard Chartered",
     desc: "Global banking digital transformation delivering intuitive financial platforms and customer-first innovation.",
     route: "case-study/standard-chartered",
@@ -354,9 +354,12 @@ className="
   border border-[#39B529]
   rounded-[22px]
   bg-white
-  px-[26px] lg:px-[24px]
-  xl:px-[26px]
-  min-[1500px]:px-[38px]
+  
+px-[26px]
+lg:px-[36px]
+xl:px-[38px]
+min-[1500px]:px-[42px]
+
   pt-[26px] lg:pt-[28px]
   min-[1500px]:pt-[32px]
   pb-[20px]
@@ -369,8 +372,8 @@ className="
               <div
                 className="
                   flex items-center justify-start
-                  w-full h-[58px] sm:h-[62px] xl:h-[66px]
-                  mb-[18px] sm:mb-[20px] xl:mb-[24px]
+                  w-full h-[64px] sm:h-[70px] xl:h-[76px]
+                  mb-[16px] sm:mb-[18px] xl:mb-[22px]
                 "
               >
                 <img
@@ -467,7 +470,7 @@ function OurWorkHero({ onNavigate, industry, setIndustry }) {
 
   return (
     <section className="w-full bg-white overflow-hidden">
-      <div className="max-w-[1680px] mx-auto px-5 sm:px-8 lg:px-12 min-[1500px]:px-[72px] pt-7 sm:pt-8 lg:pt-7 pb-12 sm:pb-16 lg:pb-16 min-[1500px]:pb-[16px]">
+      <div className="max-w-[1680px] mx-auto px-5 sm:px-8 lg:px-7 xl:px-9 min-[1500px]:px-[72px] pt-7 sm:pt-8 lg:pt-7 pb-12 sm:pb-16 lg:pb-16 min-[1500px]:pb-[16px]">
 
         {/* Breadcrumb */}
         <div className="flex items-center gap-4 mb-10 lg:mb-[44px]">
@@ -487,12 +490,12 @@ function OurWorkHero({ onNavigate, industry, setIndustry }) {
             <h1 className="font-grift-semibold text-[70px] leading-[1.12] tracking-[-0.035em] text-black max-w-[620px] mb-[34px]">
               Over 10 Years of<br />Over Delivering<span className="text-[#32c400]">.</span>
             </h1>
-            <p className="font-grift-medium text-[35px] leading-[1.55] tracking-[-0.01em] text-[#666666] max-w-[680px]">
+            <p className="font-grift-medium text-[35px] leading-[1.45] tracking-[-0.01em] text-[#666666] max-w-[680px]">
               500+ active clients and a 96% retention rate,<br />
               earned through AI-augmented delivery that<br />
               compounds value across every engagement.
             </p>
-            <div className="relative mt-[100px] w-full max-w-[460px]">
+            <div className="relative mt-[220px] w-full max-w-[461.33px]">
               <select value={industry} onChange={(e) => setIndustry(e.target.value)} className="w-full h-[43px] appearance-none border border-[#bfc0c2] bg-white rounded-none px-4 pr-12 text-[18px] text-[#3f3f3f] outline-none cursor-pointer focus:border-[#777]">
                 {INDUSTRY_OPTIONS.map((option) => (
                   <option key={option} value={option}>{option}</option>
@@ -516,7 +519,7 @@ function OurWorkHero({ onNavigate, industry, setIndustry }) {
 />
             </div>
             <div className="absolute right-8 top-[185px] w-[378px] h-[272.7px] overflow-hidden rounded-[17px]">
-              <ImageCard img={workEmirates} logo={emiratesLogo} logoClass="h-[62px] w-auto" label="Emirates" tag="Case study" className="w-full h-full" route="case-study/emirates" onNavigate={onNavigate} />
+              <ImageCard img={workEmirates} logo={emiratesLogo} logoClass="h-[62px] w-auto " label="Emirates" tag="Case study" className="w-full h-full" route="case-study/emirates" onNavigate={onNavigate} />
             </div>
             <div className="absolute left-[18%] top-[500px] w-[511.2px] h-[272.7px] overflow-hidden rounded-[17px]">
               <ImageCard img={workLaptop} logo={microsoftLogo} logoClass="h-[38px] w-auto" label="Microsoft" tag="Case study" className="w-full h-full" route="case-study/microsoft" onNavigate={onNavigate} />
@@ -536,7 +539,7 @@ function OurWorkHero({ onNavigate, industry, setIndustry }) {
           </p>
 
           {/* Laptop 3-col image row */}
-          <div className="hidden lg:grid min-[1500px]:hidden grid-cols-3 gap-[16px] mt-[18px]">
+          <div className="hidden lg:grid min-[1500px]:hidden grid-cols-3 lg:gap-x-5 xl:gap-x-6 mt-[18px]">
             <div className="w-full h-[228px] xl:h-[260px] overflow-hidden rounded-[11px]">
               <ImageCard
   img={workCar}
@@ -559,13 +562,15 @@ function OurWorkHero({ onNavigate, industry, setIndustry }) {
           </div>
 
           {/* Dropdown */}
-          <div className="relative mt-10 lg:mt-12 w-full max-w-[460px]">
-            <select value={industry} onChange={(e) => setIndustry(e.target.value)} className="w-full h-[43px] appearance-none border border-[#bfc0c2] bg-white rounded-none px-4 pr-12 text-[18px] text-[#3f3f3f] outline-none cursor-pointer focus:border-[#777]">
-              {INDUSTRY_OPTIONS.map((option) => (
-                  <option key={option} value={option}>{option}</option>
-                ))}
-            </select>
-            <ChevronDown strokeWidth={1.5} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-[#202020]" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7 lg:gap-x-5 xl:gap-x-6 mt-10 lg:mt-12">
+            <div className="relative w-full">
+              <select value={industry} onChange={(e) => setIndustry(e.target.value)} className="w-full h-[43px] appearance-none border border-[#bfc0c2] bg-white rounded-none px-4 pr-12 text-[18px] text-[#3f3f3f] outline-none cursor-pointer focus:border-[#777]">
+                {INDUSTRY_OPTIONS.map((option) => (
+                    <option key={option} value={option}>{option}</option>
+                  ))}
+              </select>
+              <ChevronDown strokeWidth={1.5} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-[#202020]" />
+            </div>
           </div>
         </div>
 
