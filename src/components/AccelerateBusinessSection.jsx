@@ -203,6 +203,8 @@ const AccelerateBusinessSection = ({ onScheduleClick }) => {
             >
               <img
                 src={business}
+                loading="lazy"
+                decoding="async"
                 alt="Business team collaboration"
                 className="
                   block

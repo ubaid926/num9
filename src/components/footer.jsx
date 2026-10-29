@@ -72,6 +72,8 @@ const Footer = ({ onNavigate }) => {
                 <img
                   src={logo}
                   alt="Number 9"
+                  loading="lazy"
+                  decoding="async"
                   className="w-[72px] sm:w-[76px] lg:w-[72px] h-auto object-contain block"
                 />
               </a>

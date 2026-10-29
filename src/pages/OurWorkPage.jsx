@@ -5,7 +5,7 @@ import CaseStudies from "../components/caseStudies";
 import AccelerateBusinessSection from "../components/AccelerateBusinessSection";
 import Footer from "../components/footer";
 
-import workCar from "../assets/workCar.png";
+import workCar from "../assets/workCar.webp";
 import workLaptop from "../assets/workLaptop.webp";
 import workEmirates from "../assets/workEmirates.webp";
 import lexusLogo from "../assets/Logos/ClientsGrid_Logos/lexus.png";
@@ -61,6 +61,9 @@ function ImageCard({
       <img
         src={img}
         alt={label}
+        loading="eager"
+        fetchPriority="high"
+        decoding="async"
         className={`block w-full h-full ${imageClass} object-center transition-transform duration-500`}
       />
 
@@ -381,6 +384,8 @@ min-[1500px]:px-[42px]
                 <img
                   src={client.logo}
                   alt={client.name}
+                  loading="lazy"
+                  decoding="async"
                   className={`
                     block
                     object-contain

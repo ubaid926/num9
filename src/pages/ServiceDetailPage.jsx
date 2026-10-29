@@ -105,6 +105,7 @@ const WorkCard = ({ title, image, category, index = 1 }) => {
           src={image}
           alt={title}
           loading="lazy"
+          decoding="async"
           className="
             block
             w-full

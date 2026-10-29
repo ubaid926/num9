@@ -144,6 +144,8 @@ mb-[12px] sm:mb-12 lg:mb-[35px]
       object-center
     "
     loading="eager"
+    fetchPriority="high"
+    decoding="async"
   />
 </div>
 

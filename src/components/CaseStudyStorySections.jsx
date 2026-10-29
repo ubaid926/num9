@@ -748,6 +748,8 @@ className="
                   <img
                     src={item.src}
                     alt={item.subtitle || `${caseStudy.name || "Project"} outcome visual`}
+                    loading="lazy"
+                    decoding="async"
                     className="
                       absolute inset-0
                       w-full h-full

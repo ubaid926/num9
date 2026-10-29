@@ -36,6 +36,9 @@ export default function LexusHeroSection({ onNavigate, onSubmit }) {
         <img
           src={lexusHeroBg}
           alt="Lexus Luxury Automotive"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
           className="
             h-full w-full object-cover
             object-[58%_center]

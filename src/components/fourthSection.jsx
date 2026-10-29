@@ -112,6 +112,8 @@ export default function FourthSection() {
           <div className="flex sm:hidden flex-col items-center px-6 pt-8 pb-8 gap-6">
             <img
               src={blackLogo}
+              loading="lazy"
+              decoding="async"
               alt="Number9"
               className="object-contain"
               style={{ width: '150px', height: 'auto' }}
@@ -133,6 +135,8 @@ export default function FourthSection() {
             <div className="shrink-0 flex items-center justify-center" style={{ width: 'clamp(110px, 18vw, 220px)' }}>
               <img
                 src={blackLogo}
+              loading="lazy"
+              decoding="async"
                 alt="Number9"
                 className="object-contain  "
                 style={{ width: 'clamp(90px, 15vw, 185px)', height: 'auto' }}

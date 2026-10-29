@@ -1019,6 +1019,8 @@ export default function FifthSection({ onNavigate }) {
 
 
               src={personPhoto}
+              loading="lazy"
+              decoding="async"
 
 
 
@@ -1224,6 +1226,8 @@ export default function FifthSection({ onNavigate }) {
                     <div className="h-[62px] flex items-end justify-start mb-6 shrink-0">
                       <img
                         src={t.logo}
+                        loading="lazy"
+                        decoding="async"
                         alt={t.logoAlt}
                         style={{
                           width: `${t.logoWidth}px`,
@@ -1669,6 +1673,8 @@ export default function FifthSection({ onNavigate }) {
                       {/* ICON */}
                       <img
                         src={card.icon}
+                        loading="lazy"
+                        decoding="async"
                         alt=""
                         className="
               w-8 h-8

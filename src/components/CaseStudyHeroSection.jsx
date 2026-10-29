@@ -40,6 +40,9 @@ export default function CaseStudyHeroSection({
           <img
             src={hero.bgImage}
             alt={`${caseStudy.name || "Case study"} Hero`}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="
               h-full w-full object-cover
               object-[58%_center]

@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import logo from '../assets/Black Logo.png';
 import heroImage from '../assets/Overlapping Circles Office Collaboration Cutout.webp';
@@ -408,6 +408,8 @@ return (
         origin-center
       "
       loading="eager"
+      fetchPriority="high"
+      decoding="async"
     />
   </div>
 </div>

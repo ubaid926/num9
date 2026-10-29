@@ -782,6 +782,8 @@ useEffect(() => {
                 {item.src ? (
                   <img
                     src={item.src}
+                    loading="lazy"
+                    decoding="async"
                     alt={item.subtitle || "Lexus experience"}
                     className="
                       absolute inset-0

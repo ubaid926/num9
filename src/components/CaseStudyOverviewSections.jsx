@@ -336,6 +336,7 @@ export default function CaseStudyOverviewSections({
                     src={overview.logo}
                     alt={overview.logoAlt || `${caseStudy.name || "Brand"} logo`}
                     loading="lazy"
+                    decoding="async"
                     className="
                       block
                       w-[90%]
@@ -500,6 +501,8 @@ lg:mt-[85px]
                 <img
                   src={quoteSection.graphicImage}
                   alt={quoteSection.graphicAlt || `${caseStudy.name || "Brand"} experience`}
+                  loading="lazy"
+                  decoding="async"
                   className="
                     block
                     w-full

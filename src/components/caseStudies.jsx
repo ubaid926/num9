@@ -876,6 +876,8 @@ ${isActive
                   <img
 
                     src={study.image}
+                    loading="lazy"
+                    decoding="async"
 
                     alt={`${study.titleLine1} ${study.titleLine2}`}
 
@@ -1002,6 +1004,8 @@ ${isActive
                     <img
 
                       src={study.logo}
+                      loading="lazy"
+                      decoding="async"
 
                       alt="Brand Logo"
 

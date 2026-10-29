@@ -15,6 +15,11 @@ import ContactPage from './pages/ContactPage'
 import OurWorkPage from './pages/OurWorkPage'
 import CaseStudyTemplate from './pages/CaseStudyTemplate'
 import ServiceDetailPage from './pages/ServiceDetailPage'
+import aboutHeroImg from './assets/aboutHeroImage.webp'
+import servicesHeroImg from './assets/Overlapping Circles Office Collaboration Cutout.webp'
+import workHeroImg from './assets/workCar.webp'
+import homeHeroImg from './assets/Metallic Blue Lexus in a Warehouse 1.webp'
+import lexusHeroImg from './assets/lexus/lexusHeroImg.webp'
 
 const KNOWN_PAGES = new Set(['home', 'services', 'about', 'contact', 'our-work']);
 
@@ -59,6 +64,47 @@ function resolvePageFromLocation() {
   return 'home';
 }
 
+function preloadHeroForPage(targetPage) {
+  if (typeof window === 'undefined') return;
+  try {
+    let heroSrc = null;
+    if (targetPage === 'home') heroSrc = homeHeroImg;
+    else if (targetPage === 'about' || targetPage === 'contact') heroSrc = aboutHeroImg;
+    else if (targetPage === 'services') heroSrc = servicesHeroImg;
+    else if (targetPage === 'our-work') heroSrc = workHeroImg;
+    else if (targetPage === 'case-study/lexus') heroSrc = lexusHeroImg;
+
+    if (heroSrc) {
+      const existing = document.querySelector(`link[rel="preload"][href="${heroSrc}"]`);
+      if (!existing && document.head) {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = heroSrc;
+        link.fetchPriority = 'high';
+        document.head.appendChild(link);
+      }
+      const img = new Image();
+      img.src = heroSrc;
+      if (img.decode) {
+        img.decode().catch(() => {});
+      }
+    }
+  } catch (e) {
+    // Graceful fallback
+  }
+}
+
+// Safe initial preload after routing resolution is fully initialized
+if (typeof window !== 'undefined') {
+  try {
+    preloadHeroForPage(resolvePageFromLocation());
+  } catch (e) {
+    // Graceful fallback
+  }
+}
+
+
 export default function App() {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [page, setPage] = useState(() => resolvePageFromLocation());
@@ -82,6 +128,7 @@ export default function App() {
 
   const handleNavigate = (newPage) => {
     const target = newPage || 'home';
+    preloadHeroForPage(target);
     setPage(target);
 
     if (typeof window !== 'undefined') {

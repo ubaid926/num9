@@ -164,6 +164,8 @@ mb-[12px] sm:mb-[20px] lg:mb-[34px]
             src={aboutHeroImage}
             alt="Number9 team collaborating"
             loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="
               block w-full h-full
               sm:h-[350px] md:h-[410px]
@@ -340,6 +342,8 @@ function ThinkingSection() {
               <img
                 src={aboutus3rdSect}
                 alt="Strategy, Design, Technology, Execution"
+                loading="lazy"
+                decoding="async"
                 className="
        block w-full
       h-[182px]
@@ -686,6 +690,8 @@ function BrandPartnerships({ onNavigate }) {
                         <img
                           src={brand.src}
                           alt={brand.alt}
+                          loading="lazy"
+                          decoding="async"
                           className={`
                             object-contain
                             max-w-full

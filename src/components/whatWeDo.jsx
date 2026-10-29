@@ -455,6 +455,8 @@ const CircleDecoration = ({ image }) => {
       <img
         src={image}
         alt=""
+        loading="lazy"
+        decoding="async"
         draggable={false}
         className="h-full w-auto max-w-none object-contain object-bottom-right"
       />
@@ -823,6 +825,8 @@ style={{
             <img
               src={service.image}
               alt="Digital Marketing Dashboard"
+              loading="lazy"
+              decoding="async"
               className="w-full h-auto object-contain drop-shadow-xl"
             />
           </div>

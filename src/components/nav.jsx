@@ -175,6 +175,9 @@ export default function AppNav({
           >
             <img
               src={logo}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               alt="Number 9"
               className="h-12 sm:h-14 lg:h-16 w-auto object-contain block transition-transform group-hover:scale-[1.02]"
             />
