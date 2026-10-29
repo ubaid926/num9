@@ -37,8 +37,8 @@ import clientFairviewLogo from "../assets/Logos/ClientsGrid_Logos/Logos/Fairview
 import clientLifegiftLogo from "../assets/Logos/ClientsGrid_Logos/Logos/LifeGive Oval Leaf Logo_trimmed.png";
 
 /* ─── new logos from Updated_Logos ─────────────────────── */
-import clientIcomLogo             from "../assets/Logos/Updated_Logos/Clean restored ICOM network logo.webp";
-import clientGenesisLogo          from "../assets/Logos/Updated_Logos/GENESIS.Logo.032218_Site_PNG_RevB.webp";
+import clientIcomLogo from "../assets/Logos/Updated_Logos/Clean restored ICOM network logo.webp";
+import clientGenesisLogo from "../assets/Logos/Updated_Logos/GENESIS.Logo.032218_Site_PNG_RevB.webp";
 import clientStandardCharteredLogo from "../assets/Logos/Updated_Logos/Standard_Chartered__282021_29.webp";
 
 /* ─── ImageCard ─────────────────────────────────────────── */
@@ -141,161 +141,161 @@ const CLIENT_INDUSTRIES = {
 const clients = [
   {
     logo: clientMicrosoftLogo,
-    logoClass: "h-[44px] sm:h-[48px] xl:h-[52px] w-auto",
+    logoClass: "h-[50px] sm:h-[48px] xl:h-[52px] w-auto",
     name: "Microsoft",
     desc: "Enterprise AI and cloud solutions enabling scalable digital transformation and innovation.",
     route: "case-study/microsoft",
   },
   {
     logo: clientPepsicoLogo,
-    logoClass: "h-[48px] sm:h-[54px] xl:h-[58px] w-auto",
+    logoClass: "h-[50px] sm:h-[54px] xl:h-[58px] w-auto",
     name: "PepsiCo",
     desc: "Retail and consumer engagement solutions powered by data driven digital technologies.",
     route: "case-study/pepsico",
   },
   {
     logo: clientNutrienLogo,
-    logoClass: "h-[48px] sm:h-[54px] xl:h-[58px] w-auto",
+    logoClass: "h-[50px] sm:h-[54px] xl:h-[58px] w-auto",
     name: "Nutrien",
     desc: "Technology driven enterprise solutions improving operational efficiency and data based decision making.",
     route: "case-study/nutrien",
   },
   {
     logo: clientCitibankLogo,
-    logoClass: "h-[46px] sm:h-[52px] xl:h-[56px] w-auto",
+    logoClass: "h-[52px] sm:h-[52px] xl:h-[56px] w-auto",
     name: "Citibank",
     desc: "Secure financial technology solutions enabling digital banking transformation and customer trust.",
     route: "case-study/citibank",
   },
   {
     logo: clientLexusLogo,
-    logoClass: "h-[54px] sm:h-[60px] xl:h-[66px] w-auto",
+    logoClass: "h-[64px] sm:h-[60px] xl:h-[66px] w-auto",
     name: "Lexus",
     desc: "Premium digital experiences and interactive platforms enhancing automotive customer journeys globally.",
     route: "case-study/lexus",
   },
   {
     logo: clientArgoLogo,
-    logoClass: "h-[44px] sm:h-[50px] xl:h-[54px] w-auto",
+    logoClass: "h-[48px] sm:h-[50px] xl:h-[54px] w-auto",
     name: "Argo",
     desc: "Custom software solutions delivering scalable digital products and enterprise level innovation.",
     route: "case-study/argo",
   },
   {
     logo: clientMedimpactLogo,
-    logoClass: "h-[54px] sm:h-[60px] xl:h-[66px] w-auto",
+    logoClass: "h-[58px] sm:h-[60px] xl:h-[66px] w-auto",
     name: "MedImpact",
     desc: "Healthcare technology solutions enabling secure, scalable digital health transformation and analytics.",
     route: "case-study/medimpact",
   },
   {
     logo: clientJcpenneyLogo,
-    logoClass: "h-[46px] sm:h-[52px] xl:h-[56px] w-auto",
+    logoClass: "h-[54px] sm:h-[52px] xl:h-[56px] w-auto",
     name: "JCPenney",
     desc: "Retail technology and digital commerce solutions enhancing customer engagement and operational efficiency.",
     route: "case-study/jcpenney",
   },
   {
     logo: clientEmiratesLogo,
-    logoClass: "h-[58px] sm:h-[66px] xl:h-[82px] w-auto",
+    logoClass: "h-[70px] sm:h-[66px] xl:h-[82px] w-auto",
     name: "Emirates",
     desc: "Aviation digital systems and customer experience solutions supporting global travel innovation.",
     route: "case-study/emirates",
   },
   {
     logo: clientSafewayLogo,
-    logoClass: "h-[42px] sm:h-[48px] xl:h-[52px] w-auto",
+    logoClass: "h-[50px] sm:h-[48px] xl:h-[52px] w-auto",
     name: "Safeway",
     desc: "Retail infrastructure and data driven solutions improving supply chain and customer experience.",
     route: "case-study/safeway",
   },
   {
     logo: clientYmcaLogo,
-    logoClass: "h-[54px] sm:h-[60px] xl:h-[66px] w-auto",
+    logoClass: "h-[68px] sm:h-[60px] xl:h-[66px] w-auto",
     name: "YMCA",
     desc: "Community focused digital platforms supporting engagement, management, and service accessibility systems.",
     route: "case-study/ymca",
   },
   {
     logo: clientMagellanLogo,
-    logoClass: "h-[48px] sm:h-[54px] xl:h-[58px] w-auto",
+    logoClass: "h-[54px] sm:h-[54px] xl:h-[58px] w-auto",
     name: "Magellan Health",
     desc: "Healthcare and behavioral health technology solutions enabling data driven care and service optimization.",
     route: "case-study/magellan",
   },
   {
     logo: clientSnacksLogo,
-    logoClass: "h-[46px] sm:h-[52px] xl:h-[56px] w-auto max-w-[240px]",
+    logoClass: "h-[52px] sm:h-[52px] xl:h-[56px] w-auto max-w-[260px]",
     name: "Snacks.com",
     desc: "Direct-to-consumer e-commerce platform and custom snack builder delivering personalized retail experiences.",
     route: "case-study/snacks",
   },
   {
     logo: clientZee5Logo,
-    logoClass: "h-[56px] sm:h-[64px] xl:h-[70px] w-auto",
+    logoClass: "h-[68px] sm:h-[64px] xl:h-[70px] w-auto",
     name: "ZEE5",
     desc: "Next-generation OTT streaming platform and high-performance digital entertainment discovery architecture.",
     route: "case-study/zee5",
   },
   {
     logo: clientSentralLogo,
-    logoClass: "h-[54px] sm:h-[62px] xl:h-[68px] w-auto",
+    logoClass: "h-[70px] sm:h-[62px] xl:h-[68px] w-auto",
     name: "Sentral Education",
     desc: "Integrated K-12 education management platform streamlining school administration and community engagement.",
     route: "case-study/sentral",
   },
   {
     logo: clientPwcLogo,
-    logoClass: "h-[54px] sm:h-[60px] xl:h-[66px] w-auto",
+    logoClass: "h-[68px] sm:h-[60px] xl:h-[66px] w-auto",
     name: "PwC",
     desc: "Enterprise workflow dashboards and tax technology solutions accelerating collaborative advisory operations.",
     route: "case-study/pwc",
   },
   {
     logo: clientEmpireLogo,
-    logoClass: "h-[54px] sm:h-[62px] xl:h-[68px] w-auto",
+    logoClass: "h-[70px] sm:h-[62px] xl:h-[68px] w-auto",
     name: "Empire Cinemas",
     desc: "Next-generation cinema ticketing systems and interactive entertainment booking experiences.",
     route: "case-study/empire",
   },
   {
     logo: clientAlmazaLogo,
-    logoClass: "h-[50px] sm:h-[56px] xl:h-[62px] w-auto max-w-[230px]",
+    logoClass: "h-[60px] sm:h-[56px] xl:h-[62px] w-auto max-w-[240px]",
     name: "Almaza",
     desc: "Heritage beverage brand platforms combining interactive digital storytelling and modern customer loyalty.",
     route: "case-study/almaza",
   },
   {
     logo: clientFairviewLogo,
-    logoClass: "h-[50px] sm:h-[58px] xl:h-[64px] w-auto max-w-[230px]",
+    logoClass: "h-[66px] sm:h-[58px] xl:h-[64px] w-auto max-w-[240px]",
     name: "Fairview",
     desc: "Architectural cladding and facade technology platforms showcasing global building innovation.",
     route: "case-study/fairview",
   },
   {
     logo: clientLifegiftLogo,
-    logoClass: "h-[48px] sm:h-[54px] xl:h-[60px] w-auto max-w-[230px]",
+    logoClass: "h-[58px] sm:h-[54px] xl:h-[60px] w-auto max-w-[240px]",
     name: "LifeGive",
     desc: "Health and wellness digital platform empowering lifestyle transformation with organic nutritional systems.",
     route: "case-study/lifegive",
   },
   {
     logo: clientIcomLogo,
-    logoClass: "h-[48px] sm:h-[54px] xl:h-[60px] w-auto max-w-[230px]",
+    logoClass: "h-[56px] sm:h-[54px] xl:h-[60px] w-auto max-w-[240px]",
     name: "ICOM",
     desc: "Global network platform connecting museums and cultural institutions through innovative digital experiences.",
     route: "case-study/icom",
   },
   {
     logo: clientGenesisLogo,
-    logoClass: "h-[46px] sm:h-[52px] xl:h-[56px] w-auto max-w-[230px]",
+    logoClass: "h-[54px] sm:h-[52px] xl:h-[56px] w-auto max-w-[240px]",
     name: "GENESIS Exhibits",
     desc: "Award-winning trade show and exhibit design firm delivering immersive brand environments and experiences.",
     route: "case-study/genesis",
   },
   {
     logo: clientStandardCharteredLogo,
-    logoClass: "h-[48px] sm:h-[54px] xl:h-[58px] w-auto max-w-[240px]",
+    logoClass: "h-[60px] sm:h-[54px] xl:h-[58px] w-auto max-w-[260px]",
     name: "Standard Chartered",
     desc: "Global banking digital transformation delivering intuitive financial platforms and customer-first innovation.",
     route: "case-study/standard-chartered",
@@ -309,9 +309,9 @@ function ClientsGrid({ onNavigate, industry }) {
 
   return (
     <section className="w-full bg-white">
-     
-<div
-  className="
+
+      <div
+        className="
     max-w-[1680px] mx-auto
     px-5 sm:px-8
     lg:px-7 xl:px-9
@@ -319,20 +319,22 @@ function ClientsGrid({ onNavigate, industry }) {
     pt-10 sm:pt-12 lg:pt-[40px] min-[1500px]:pt-[48px]
     pb-12 sm:pb-16 lg:pb-[70px]
   "
->
+      >
 
-       
-<div
-  className="
+
+        <div
+          className="
     grid grid-cols-1
     md:grid-cols-2 lg:grid-cols-3
-    gap-6 md:gap-7
+    
+gap-y-[35px] gap-x-6 md:gap-7
+
     lg:gap-x-5 lg:gap-y-9
     xl:gap-x-6 2xl:gap-x-20 xl:gap-y-10 2xl:gap-y-18
     min-[1500px]:gap-x-[76px]
     min-[1500px]:gap-y-[72px]
   "
->
+        >
 
           {filteredClients.length === 0 && (
             <p className="col-span-full py-12 text-center text-[#414141]">
@@ -342,8 +344,8 @@ function ClientsGrid({ onNavigate, industry }) {
           {filteredClients.map((client) => (
             <div
               key={client.name}
-           
-className="
+
+              className="
   group
   flex flex-col
   w-full
@@ -372,8 +374,8 @@ min-[1500px]:px-[42px]
               <div
                 className="
                   flex items-center justify-start
-                  w-full h-[64px] sm:h-[70px] xl:h-[76px]
-                  mb-[16px] sm:mb-[18px] xl:mb-[22px]
+                  w-full h-[72px] sm:h-[70px] xl:h-[76px]
+                  mb-[14px] sm:mb-[18px] xl:mb-[22px]
                 "
               >
                 <img
@@ -470,17 +472,17 @@ function OurWorkHero({ onNavigate, industry, setIndustry }) {
 
   return (
     <section className="w-full bg-white overflow-hidden">
-      <div className="max-w-[1680px] mx-auto px-5 sm:px-8 lg:px-7 xl:px-9 min-[1500px]:px-[72px] pt-7 sm:pt-8 lg:pt-7 pb-12 sm:pb-16 lg:pb-16 min-[1500px]:pb-[16px]">
+      <div className="max-w-[1680px] mx-auto px-5 sm:px-8 lg:px-7 xl:px-9 min-[1500px]:px-[72px] pt-7 sm:pt-8 lg:pt-7 pb-[12px] sm:pb-16 lg:pb-16 min-[1500px]:pb-[16px]">
 
         {/* Breadcrumb */}
-        <div className="flex items-center gap-4 mb-10 lg:mb-[44px]">
+        <div className="flex items-center gap-4 mb-[80px] sm:mb-10 lg:mb-[44px]">
           <svg className="w-[20px] h-[20px] text-black shrink-0" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 11.25 12 3l8.25 8.25M5.25 9.75v10.5h13.5V9.75M9 20.25v-6h6v6" />
           </svg>
           <svg className="w-[13px] h-[13px] text-[#444]" fill="none" stroke="currentColor" strokeWidth="1.6" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="m9 5 7 7-7 7" />
           </svg>
-          <span className="text-[15px] font-semibold text-[#111]">Our Work</span>
+          <span className="text-[21px] font-semibold text-[#111]">Our Work</span>
         </div>
 
         {/* Desktop 1500px+ */}
@@ -490,7 +492,7 @@ function OurWorkHero({ onNavigate, industry, setIndustry }) {
             <h1 className="font-grift-semibold text-[70px] leading-[1.12] tracking-[-0.035em] text-black max-w-[620px] mb-[34px]">
               Over 10 Years of<br />Over Delivering<span className="text-[#32c400]">.</span>
             </h1>
-            <p className="font-grift-medium text-[35px] leading-[1.45] tracking-[-0.01em] text-[#666666] max-w-[680px]">
+            <p className="font-grift-regular text-[35px] leading-[1.45] tracking-[-0.01em] text-[#5E5B5B] max-w-[680px]">
               500+ active clients and a 96% retention rate,<br />
               earned through AI-augmented delivery that<br />
               compounds value across every engagement.
@@ -506,17 +508,17 @@ function OurWorkHero({ onNavigate, industry, setIndustry }) {
           </div>
           <div className="relative mt-[-49px] min-h-[775px]">
             <div className="absolute left-[7%] top-0 w-[356.4px] h-[457.2px] overflow-hidden rounded-[17px]">
-          <ImageCard
-  img={workCar}
-  logo={lexusLogo}
-  logoClass="h-[46px] w-auto"
-  imageClass=""
-  label="Lexus"
-  tag="Case study"
-  className="w-full h-full bg-[#101820]"
-  route="case-study/lexus"
-  onNavigate={onNavigate}
-/>
+              <ImageCard
+                img={workCar}
+                logo={lexusLogo}
+                logoClass="h-[46px] w-auto"
+                imageClass=""
+                label="Lexus"
+                tag="Case study"
+                className="w-full h-full bg-[#101820]"
+                route="case-study/lexus"
+                onNavigate={onNavigate}
+              />
             </div>
             <div className="absolute right-8 top-[185px] w-[378px] h-[272.7px] overflow-hidden rounded-[17px]">
               <ImageCard img={workEmirates} logo={emiratesLogo} logoClass="h-[62px] w-auto " label="Emirates" tag="Case study" className="w-full h-full" route="case-study/emirates" onNavigate={onNavigate} />
@@ -529,11 +531,11 @@ function OurWorkHero({ onNavigate, industry, setIndustry }) {
 
         {/* Mobile / Tablet / Laptop <1500px */}
         <div className="min-[1500px]:hidden">
-          <p className="font-grift-semibold text-[14px] lg:text-[12px] tracking-[0.31em] text-[#5f5f5f] mb-3">Our work</p>
-          <h1 className="font-grift-semibold text-[42px] sm:text-[50px] lg:text-[43px] xl:text-[52px] leading-[1.15] tracking-[-0.035em] text-black mb-5 lg:mb-4">
+          <p className="font-grift-semibold text-[21px] lg:text-[12px] tracking-[0.31em] text-[#5f5f5f] mb-[22px] sm:mb-3">Our work</p>
+          <h1 className="font-grift-semibold text-[50px] sm:text-[50px] lg:text-[43px] xl:text-[52px] leading-[1.15] tracking-[-0.035em] text-black mb-[30px] sm:mb-5 lg:mb-4">
             Over 10 Years of<br />Over Delivering<span className="text-[#32c400]">.</span>
           </h1>
-          <p className="font-grift-medium text-[18px] sm:text-[20px] lg:text-[20px] xl:text-[23px] leading-[1.45] tracking-[-0.01em] text-[#777] max-w-[1100px]">
+          <p className="font-grift-medium text-[30px] sm:text-[20px] lg:text-[20px] xl:text-[23px] leading-[1.45] tracking-[-0.01em] text-[#5E5B5B] max-w-[1100px]">
             500+ active clients and a 96% retention rate, earned through AI-augmented delivery that
             <br className="hidden lg:block" /> compounds value across every engagement.
           </p>
@@ -542,16 +544,16 @@ function OurWorkHero({ onNavigate, industry, setIndustry }) {
           <div className="hidden lg:grid min-[1500px]:hidden grid-cols-3 lg:gap-x-5 xl:gap-x-6 mt-[18px]">
             <div className="w-full h-[228px] xl:h-[260px] overflow-hidden rounded-[11px]">
               <ImageCard
-  img={workCar}
-  logo={lexusLogo}
-  logoClass="h-[38px] xl:h-[44px] w-auto"
-  imageClass="object-cover"
-  label="Lexus"
-  tag="Case study"
-  className="w-full h-full"
-  route="case-study/lexus"
-  onNavigate={onNavigate}
-/>
+                img={workCar}
+                logo={lexusLogo}
+                logoClass="h-[38px] xl:h-[44px] w-auto"
+                imageClass="object-cover"
+                label="Lexus"
+                tag="Case study"
+                className="w-full h-full"
+                route="case-study/lexus"
+                onNavigate={onNavigate}
+              />
             </div>
             <div className="w-full h-[228px] xl:h-[260px] overflow-hidden rounded-[11px]">
               <ImageCard img={workEmirates} logo={emiratesLogo} logoClass="h-[50px] xl:h-[58px] w-auto" label="Emirates" tag="Case study" className="w-full h-full" route="case-study/emirates" onNavigate={onNavigate} />
@@ -562,12 +564,12 @@ function OurWorkHero({ onNavigate, industry, setIndustry }) {
           </div>
 
           {/* Dropdown */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7 lg:gap-x-5 xl:gap-x-6 mt-10 lg:mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7 lg:gap-x-5 xl:gap-x-6 mt-[64px] sm:mt-10 lg:mt-12">
             <div className="relative w-full">
               <select value={industry} onChange={(e) => setIndustry(e.target.value)} className="w-full h-[43px] appearance-none border border-[#bfc0c2] bg-white rounded-none px-4 pr-12 text-[18px] text-[#3f3f3f] outline-none cursor-pointer focus:border-[#777]">
                 {INDUSTRY_OPTIONS.map((option) => (
-                    <option key={option} value={option}>{option}</option>
-                  ))}
+                  <option key={option} value={option}>{option}</option>
+                ))}
               </select>
               <ChevronDown strokeWidth={1.5} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-[#202020]" />
             </div>

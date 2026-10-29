@@ -644,7 +644,7 @@ style={{
         {/* Learn More button */}
 
         <a
-          href="?page=services"
+          href="/services"
           onClick={(e) => {
             e.preventDefault();
             if (onNavigate) onNavigate("services");
@@ -842,13 +842,7 @@ const WhatWeDo = ({ onNavigate }) => {
     if (onNavigate) {
       onNavigate(targetPage);
     } else if (typeof window !== "undefined") {
-      const url = new URL(window.location.href);
-      if (targetPage === "home") {
-        url.searchParams.delete("page");
-      } else {
-        url.searchParams.set("page", targetPage);
-      }
-      window.location.href = url.toString();
+      window.location.href = targetPage === "home" ? "/" : `/${targetPage}`;
     }
   };
   return (
@@ -861,7 +855,7 @@ const WhatWeDo = ({ onNavigate }) => {
           </h2>
 
           <a
-            href="?page=services"
+            href="/services"
             onClick={(e) => handleNavigateClick(e, "services")}
             className="hidden md:flex items-center justify-between shrink-0 pb-3 border-b-2 border-black text-[16px] lg:text-[22px] text-black group gap-14 cursor-pointer"
           >
@@ -896,7 +890,7 @@ const WhatWeDo = ({ onNavigate }) => {
 
         {/* Mobile / tablet explore button */}
         <a
-          href="?page=services"
+          href="/services"
           onClick={(e) => handleNavigateClick(e, "services")}
           className="md:hidden mt-8 inline-flex items-center gap-3 pb-1 border-b border-black text-[14px] sm:text-[16px] text-black cursor-pointer"
         >

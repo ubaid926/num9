@@ -427,33 +427,40 @@ export default function CaseStudyStorySections({
           "
         >
           {/* ABOUT TITLE */}
-          <div>
-            <span
-              className="
-                block
-                font-grift-medium
-                text-[24px] lg:text-[30px]
-                leading-[1.3]
-                tracking-[-0.01em]
-                text-[#4A4A4A]
-              "
-            >
-              {about.title || "About"}
-            </span>
+         
+{/* ABOUT TITLE */}
+<div className="flex items-center gap-[7px] md:block min-w-0">
 
-            <h2
-              className="
-                font-grift-semibold
-                text-[24px] lg:text-[36px]
-                leading-[1.15]
-                tracking-[-0.02em]
-                text-[#4A4A4A]
-                whitespace-normal md:whitespace-nowrap
-              "
-            >
-              {about.clientName || caseStudy.name}
-            </h2>
-          </div>
+  <span
+    className="
+      inline-block md:block
+      font-grift-medium
+      text-[24px] lg:text-[30px]
+      leading-[1.3]
+      tracking-[-0.01em]
+      text-[#4A4A4A]
+      whitespace-nowrap
+    "
+  >
+    {about.title || "About"}
+  </span>
+
+  <h2
+    className="
+      inline-block md:block
+      font-grift-semibold
+      text-[24px] lg:text-[36px]
+      leading-[1.15]
+      tracking-[-0.02em]
+      text-[#4A4A4A]
+      whitespace-nowrap
+    "
+  >
+    {about.clientName || caseStudy.name}
+  </h2>
+
+</div>
+
 
           {/* DESCRIPTION */}
           <p
@@ -518,15 +525,18 @@ export default function CaseStudyStorySections({
           >
             {/* LEFT PARAGRAPHS */}
             <div
-              className="
-                w-full
-                space-y-[30px] lg:space-y-[38px]
-                font-grift-medium
-                text-[16px] sm:text-[16px]
-                lg:text-[18px]
-                leading-[1.35]
-                text-[#626262]
-              "
+           
+className="
+  w-full
+  order-2 md:order-1
+  space-y-[30px] lg:space-y-[38px]
+  font-grift-medium
+  text-[16px] sm:text-[16px]
+  lg:text-[18px]
+  leading-[1.35]
+  text-[#626262]
+"
+
             >
               {challenge.leftParagraphs?.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
@@ -536,17 +546,20 @@ export default function CaseStudyStorySections({
             {/* RIGHT PARAGRAPH */}
             {challenge.rightParagraph && (
               <p
-                className="
-                  w-full
-                  font-grift-medium
-                  text-[20px] sm:text-[25px]
-                  lg:text-[28px]
-                  leading-[1.25]
-                  tracking-[-0.018em]
-                  text-[#4A4A4A]
-                  md:-mt-[75px]
-                  lg:-mt-[80px]
-                "
+              
+className="
+  w-full
+  order-1 md:order-2
+  font-grift-medium
+  text-[20px] sm:text-[25px]
+  lg:text-[28px]
+  leading-[1.25]
+  tracking-[-0.018em]
+  text-[#4A4A4A]
+  md:-mt-[75px]
+  lg:-mt-[80px]
+"
+
               >
                 {challenge.rightParagraph}
               </p>

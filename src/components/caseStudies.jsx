@@ -241,13 +241,7 @@ const CaseStudies = ({ onNavigate }) => {
     if (onNavigate) {
       onNavigate(targetPage);
     } else if (typeof window !== 'undefined') {
-      const url = new URL(window.location.href);
-      if (targetPage === 'home') {
-        url.searchParams.delete('page');
-      } else {
-        url.searchParams.set('page', targetPage);
-      }
-      window.location.href = url.toString();
+      window.location.href = targetPage === 'home' ? '/' : `/${targetPage}`;
     }
   };
 
@@ -411,12 +405,12 @@ const CaseStudies = ({ onNavigate }) => {
 
         2xl:pt-20
 
-        pb-8
-
-        sm:pb-0
-        lg:pb-12
-        xl:pb-14
-        2xl:pb-0
+        pb-16
+        sm:pb-20
+        md:pb-24
+        lg:pb-28
+        xl:pb-32
+        2xl:pb-36
 
       "
 
@@ -1139,7 +1133,7 @@ ${isActive
                   {/* 3. VIEW CASE STUDY (Bottom) */}
                   <div className="pt-1.5 sm:pt-2 xl:pt-2 2xl:pt-3">
                     <a
-                      href={study.route ? `?page=${study.route}` : '#'}
+                      href={study.route ? `/${study.route}` : '#'}
                       onClick={(e) => handleNavigateClick(e, study.route)}
                       className="flex items-center justify-between group/link"
                     >

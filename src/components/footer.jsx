@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight, Phone, Mail } from "lucide-react";
 import logo from "../assets/Green 9 with Blue NO Badge.webp";
 
 // Matched to the supplied 1920px reference with routing integrated to existing routes.
@@ -10,17 +10,11 @@ const Footer = ({ onNavigate }) => {
     if (onNavigate) {
       onNavigate(targetPage);
     } else if (typeof window !== "undefined") {
-      const url = new URL(window.location.href);
-      if (targetPage === "home") {
-        url.searchParams.delete("page");
-      } else {
-        url.searchParams.set("page", targetPage);
-      }
-      window.location.href = url.toString();
+      window.location.href = targetPage === "home" ? "/" : `/${targetPage}`;
     }
   };
 
-  const getHref = (route) => (route === "home" ? "/" : `?page=${route}`);
+  const getHref = (route) => (route === "home" ? "/" : `/${route}`);
 
   const discoverLinks = [
     { label: "About Us", route: "about" },
@@ -55,9 +49,9 @@ const Footer = ({ onNavigate }) => {
     { label: "Associate Program", route: "contact" },
   ];
 
-  
-const linkClass =
-  "block font-grift-regular text-[22px] sm:text-[14px] leading-[1.4] text-black hover:opacity-60 transition-opacity cursor-pointer";
+
+  const linkClass =
+    "block font-grift-regular text-[22px] sm:text-[14px] leading-[1.4] text-black hover:opacity-60 transition-opacity cursor-pointer";
 
   const headingClass = "mb-[25px] text-[30px] xl:text-[19px] 2xl:text-[20px] font-semibold leading-[1.25] tracking-[-0.025em] text-black whitespace-nowrap";
 
@@ -163,7 +157,7 @@ const linkClass =
                 Do Not Sell My Personal Information
               </a>
             </div>
-            <p className="mt-[20px]">©Number9 2024 2025. All rights reserved.</p>
+            <p className="mt-[20px]">©Number9 2026. All rights reserved.</p>
           </div>
         </div>
 
@@ -206,12 +200,22 @@ const linkClass =
                 Schedule a Call <ArrowRight className="h-[18px] w-[18px]" />
               </a>
             </div>
-            <a
-              href="tel:+14084782739"
-              className="mt-[32px] inline-flex items-center gap-[14px] text-[14px] hover:underline"
-            >
-              <Phone className="h-[17px] w-[17px] fill-black" />+1 (408) 478-2739
-            </a>
+            <div className="mt-[28px] flex flex-col gap-[12px]">
+              <a
+                href="tel:+14693597107"
+                className="inline-flex items-center gap-[14px] text-[15px] hover:underline"
+              >
+                <Phone className="h-[17px] w-[17px] fill-black" />
+                +1 469 359 7107
+              </a>
+              <a
+                href="mailto:info@number9.us"
+                className="inline-flex items-center gap-[14px] text-[15px] hover:underline"
+              >
+                <Mail className="h-[17px] w-[17px]" />
+                info@number9.us
+              </a>
+            </div>
           </section>
 
           <div className="my-[38px] h-px w-full bg-black/20" />

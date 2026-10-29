@@ -1,0 +1,29 @@
+# ==============================================================
+# Number9 - Public Backend Security Rules (.htaccess)
+# ==============================================================
+
+# Disable directory browsing
+Options -Indexes
+
+# Only allow public access to contact.php
+<Files "contact.php">
+    <IfModule mod_authz_core.c>
+        Require all granted
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Allow from all
+    </IfModule>
+</Files>
+
+# Deny access to any other files (configs, hidden files, logs, locks)
+<FilesMatch "^(\..*|.*\.log|.*\.lock|.*\.json|.*\.txt)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+

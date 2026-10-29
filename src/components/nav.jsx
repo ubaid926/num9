@@ -10,36 +10,36 @@ export default function AppNav({
   onNavigate,
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
-const menuButtonRef = useRef(null);
-const [menuOrigin, setMenuOrigin] = useState({
-  x: window.innerWidth - 40,
-  y: 40,
-});
 
-const [menuRadius, setMenuRadius] = useState(150);
+  const menuButtonRef = useRef(null);
+  const [menuOrigin, setMenuOrigin] = useState({
+    x: window.innerWidth - 40,
+    y: 40,
+  });
 
-const openMenu = () => {
-  const rect = menuButtonRef.current?.getBoundingClientRect();
+  const [menuRadius, setMenuRadius] = useState(150);
 
-  if (rect) {
-    const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height / 2;
+  const openMenu = () => {
+    const rect = menuButtonRef.current?.getBoundingClientRect();
 
-    setMenuOrigin({ x, y });
+    if (rect) {
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
 
-    const radius = Math.max(
-      Math.hypot(x, y),
-      Math.hypot(window.innerWidth - x, y),
-      Math.hypot(x, window.innerHeight - y),
-      Math.hypot(window.innerWidth - x, window.innerHeight - y)
-    );
+      setMenuOrigin({ x, y });
 
-    setMenuRadius(radius + 50);
-  }
+      const radius = Math.max(
+        Math.hypot(x, y),
+        Math.hypot(window.innerWidth - x, y),
+        Math.hypot(x, window.innerHeight - y),
+        Math.hypot(window.innerWidth - x, window.innerHeight - y)
+      );
 
-  setIsMenuOpen(true);
-};
+      setMenuRadius(radius + 50);
+    }
+
+    setIsMenuOpen(true);
+  };
 
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
@@ -135,11 +135,11 @@ const openMenu = () => {
   }, [isMenuOpen]);
 
   const menuItems = [
-    { label: "Home", href: "#", isPage: "home" },
-    { label: "About Us", href: "#", isPage: "about" },
-    { label: "Services", href: "#", isPage: "services" },
-    { label: "Our Work", href: "#", isPage: "our-work" },
-    { label: "Contact", href: "#", isPage: "contact" },
+    { label: "Home", href: "/", isPage: "home" },
+    { label: "About Us", href: "/about", isPage: "about" },
+    { label: "Services", href: "/services", isPage: "services" },
+    { label: "Our Work", href: "/our-work", isPage: "our-work" },
+    { label: "Contact", href: "/contact", isPage: "contact" },
   ];
 
   return (
@@ -154,17 +154,16 @@ const openMenu = () => {
       <header
         className={`fixed top-0 left-0 right-0 w-full bg-white z-40
           transition-transform duration-300 ease-in-out
-          ${
-            isNavbarVisible || isMenuOpen
-              ? "translate-y-0"
-              : "-translate-y-full"
+          ${isNavbarVisible || isMenuOpen
+            ? "translate-y-0"
+            : "-translate-y-full"
           }
         `}
       >
         <div className="navbar-desktop-container py-3 sm:py-4 lg:py-2.5 flex items-center justify-between">
           {/* Left: Brand Logo */}
           <a
-            href="#"
+            href="/"
             onClick={(e) => {
               e.preventDefault();
               if (onNavigate) {
@@ -184,7 +183,7 @@ const openMenu = () => {
           {/* Right: Schedule a Call + Hamburger */}
           <div className="flex items-center">
             <a
-              href="?page=contact"
+              href="/contact"
               onClick={(e) => {
                 e.preventDefault();
                 if (onNavigate) onNavigate("contact");
@@ -194,66 +193,67 @@ const openMenu = () => {
               Schedule a Call
             </a>
 
-           
-<button
-  ref={menuButtonRef}
-  onClick={openMenu}
-  aria-label="Open menu"
-  aria-expanded={isMenuOpen}
-  className="w-6 h-6 flex items-center justify-center hover:opacity-75 transition-opacity focus:outline-none cursor-pointer shrink-0"
->
-  <img
-    src={menuIcon}
-    alt=""
-    className="w-6 h-6 object-contain"
-  />
-</button>
+
+            <button
+              ref={menuButtonRef}
+              onClick={openMenu}
+              aria-label="Open menu"
+              aria-expanded={isMenuOpen}
+              className="w-6 h-6 flex items-center justify-center hover:opacity-75 transition-opacity focus:outline-none cursor-pointer shrink-0"
+            >
+              <img
+                src={menuIcon}
+                alt=""
+                className="w-6 h-6 object-contain"
+              />
+            </button>
 
           </div>
         </div>
       </header>
 
       {/* OPENED FULL-SCREEN MENU */}
-     
-{/* OPENED FULL-SCREEN MENU */}
-<div
-  className="
+
+      {/* OPENED FULL-SCREEN MENU */}
+      <div
+        className="
     fixed inset-0 z-[100]
     bg-[#0e7428]
     text-white
     flex flex-col
     justify-between
     overflow-y-auto
+    no-scrollbar
     transition-[clip-path]
     duration-[850ms]
     ease-[cubic-bezier(0.76,0,0.24,1)]
   "
-  style={{
-    clipPath: isMenuOpen
-      ? `circle(${menuRadius}px at ${menuOrigin.x}px ${menuOrigin.y}px)`
-      : `circle(0px at ${menuOrigin.x}px ${menuOrigin.y}px)`,
+        style={{
+          clipPath: isMenuOpen
+            ? `circle(${menuRadius}px at ${menuOrigin.x}px ${menuOrigin.y}px)`
+            : `circle(0px at ${menuOrigin.x}px ${menuOrigin.y}px)`,
 
-    pointerEvents: isMenuOpen ? "auto" : "none",
+          pointerEvents: isMenuOpen ? "auto" : "none",
 
-    backgroundImage:
-      "linear-gradient(135deg, #0d6b24 0%, #0e7428 50%, #11842e 100%)",
-  }}
->
+          backgroundImage:
+            "linear-gradient(135deg, #0d6b24 0%, #0e7428 50%, #11842e 100%)",
+        }}
+      >
 
         {/* Animated Number9 Background Logo */}
-        <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none overflow-hidden">
+        {/* <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none overflow-hidden">
           <img
             src={whiteLogo}
             alt=""
             aria-hidden="true"
             className="w-[85%] sm:w-[70%] lg:w-[60%] max-w-[900px] h-auto object-contain animate-number9-pulse select-none"
           />
-        </div>
+        </div> */}
 
         {/* Top Header Row */}
-        <div className="relative z-10 navbar-desktop-container py-4 sm:py-7 flex items-center justify-between shrink-0">
+        <div className="relative z-10 navbar-desktop-container py-3 sm:py-4 lg:py-2.5 flex items-center justify-between shrink-0">
           <a
-            href="#"
+            href="/"
             onClick={(e) => {
               e.preventDefault();
               setIsMenuOpen(false);
@@ -265,48 +265,45 @@ const openMenu = () => {
             aria-label="Home"
           >
             <img
-  src={whiteLogo}
-  alt="Number 9"
-  className="
-    h-12 sm:h-14 lg:h-16
-    w-auto
-    object-contain
-    block
-    brightness-0 invert
-    transition-transform
-    group-hover:scale-[1.02]
-  "
-/>
+              src={whiteLogo}
+              alt="Number 9"
+              className="h-12 sm:h-14 lg:h-16 w-auto object-contain block brightness-0 invert transition-transform group-hover:scale-[1.02]"
+            />
           </a>
+
+
 
           <button
             onClick={() => setIsMenuOpen(false)}
             aria-label="Close menu"
-            className="w-10 h-10 flex items-center justify-center text-white hover:rotate-90 hover:scale-110 transition-all duration-200 focus:outline-none cursor-pointer"
+            className="w-6 h-6 flex items-center justify-center text-white hover:rotate-90 hover:opacity-75 transition-all duration-200 focus:outline-none cursor-pointer shrink-0"
           >
-            <X className="w-8 h-8 stroke-[2.5]" />
+            <X className="w-8 h-8 sm:w-9 sm:h-9 stroke-[2.2] shrink-0" />
           </button>
+
         </div>
 
         {/* Content Container */}
-        <div 
-className={`
-  relative z-10 w-full
-  px-6 sm:px-10 lg:px-16
-  flex-1 flex flex-col justify-center
-  py-6 sm:py-10
+        <div
+          className={`
+ 
+relative z-10 w-full
+px-6 sm:px-10 lg:px-16
+flex-1 flex flex-col justify-center
+lg:items-center
+py-6 sm:py-10
+
 
   transition-all duration-500 ease-out
 
-  ${
-    isMenuOpen
-      ? "opacity-100 translate-y-0 delay-[450ms]"
-      : "opacity-0 translate-y-[30px] delay-0"
-  }
+  ${isMenuOpen
+              ? "opacity-100 translate-y-0 delay-[450ms]"
+              : "opacity-0 translate-y-[30px] delay-0"
+            }
 `}
->
+        >
           <div className="w-full max-w-[700px] lg:max-w-[900px]">
-        <div className="hidden w-full h-[1px] bg-white/40" />
+            <div className="hidden w-full h-[1px] bg-white/40" />
 
             <nav className="flex flex-col">
               {menuItems.map((item, idx) => {
@@ -315,7 +312,7 @@ className={`
                 return (
                   <div key={item.label} className="w-full">
                     <a
-                      href={item.isPage ? "#" : item.href}
+                      href={item.href || (item.isPage === "home" ? "/" : `/${item.isPage}`)}
                       onClick={(e) => {
                         if (item.isPage && onNavigate) {
                           e.preventDefault();
@@ -324,37 +321,45 @@ className={`
                         setIsMenuOpen(false);
                       }}
                       onMouseEnter={() => setHoveredIndex(idx)}
-                    
-className={`
+
+                      className={`
   block w-full
 
   py-[8px]
   sm:py-[10px]
   lg:py-[12px]
 
-  text-[48px]
-  sm:text-[58px]
-  lg:text-[68px]
-  xl:text-[76px]
+ 
+
+
+text-[clamp(60px,17vw,76px)]
+sm:text-[116px]
+lg:text-[clamp(56px,9vh,82px)]
+2xl:text-[136px]
+
+
 
   leading-[0.95]
-  tracking-[-0.045em]
+  
+tracking-[0.01em]
+
   font-grift-black
 
   transition-all duration-200
 
-  ${
-    isHovered
-      ? "bg-white text-[#0e7428] px-4 shadow-sm"
-      : "text-white px-1 hover:text-white/90"
-  }
+
+${isHovered
+                          ? "text-white/50 px-1"
+                          : "text-white px-1"
+                        }
+
 `}
 
                     >
                       {item.label}
                     </a>
 
-                  <div className="hidden w-full h-[1px] bg-white/40" />
+                    <div className="hidden w-full h-[1px] bg-white/40" />
                   </div>
                 );
               })}

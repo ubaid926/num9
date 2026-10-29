@@ -4,10 +4,14 @@ import business from "../assets/bussinesAcltImage.webp";
 
 const AccelerateBusinessSection = ({ onScheduleClick }) => {
   return (
-    <section className="w-full bg-black overflow-hidden">
+    <section className="w-full relative overflow-hidden bg-black">
+      {/* Mobile background: top white area cutting across the exact midpoint of the image */}
+      <div className="absolute inset-x-0 top-0 h-[113px] sm:h-[136px] md:h-[156px] bg-white lg:hidden pointer-events-none" />
+
       <div
         className="
           relative
+          z-10
           mx-auto
           w-full
           max-w-[1400px]
@@ -19,9 +23,9 @@ const AccelerateBusinessSection = ({ onScheduleClick }) => {
           xl:px-14
           2xl:px-16
 
-          pt-10 pb-12
-          sm:pt-12 sm:pb-14
-          md:pt-14 md:pb-16
+          pt-6 pb-12
+          sm:pt-8 sm:pb-14
+          md:pt-10 md:pb-16
           lg:py-16
           xl:py-20
 
@@ -32,7 +36,7 @@ const AccelerateBusinessSection = ({ onScheduleClick }) => {
           lg:items-center
           lg:justify-between
 
-          gap-10
+          gap-8
           md:gap-12
           lg:gap-16
           xl:gap-20
@@ -143,8 +147,7 @@ const AccelerateBusinessSection = ({ onScheduleClick }) => {
             order-1
             lg:order-2
 
-            py-5
-            lg:py-0
+            py-0
           "
         >
           {/* IMAGE WRAPPER */}
@@ -152,7 +155,7 @@ const AccelerateBusinessSection = ({ onScheduleClick }) => {
             className="
               relative
 
-              w-[280px]
+              w-[300px]
               sm:w-[350px]
               md:w-[390px]
               lg:w-[390px]

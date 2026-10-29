@@ -20,11 +20,42 @@ const KNOWN_PAGES = new Set(['home', 'services', 'about', 'contact', 'our-work']
 
 function resolvePageFromLocation() {
   if (typeof window === 'undefined') return 'home';
-  const params = new URLSearchParams(window.location.search);
-  const urlPage = params.get('page');
-  if (!urlPage || urlPage === 'home') return 'home';
-  if (KNOWN_PAGES.has(urlPage)) return urlPage;
-  if (urlPage.startsWith('case-study/') || urlPage.startsWith('service/')) return urlPage;
+
+  // 1. Pathname routing (e.g. /about, /services, /contact, /our-work, /case-study/:slug, /service/:slug)
+  const pathname = window.location.pathname || '/';
+  let cleanPath = pathname.replace(/^\/+|\/+$/g, '').toLowerCase();
+
+  // Strip subpath prefix if present (e.g. num9/)
+  if (cleanPath.startsWith('num9/')) {
+    cleanPath = cleanPath.slice(5);
+  } else if (cleanPath === 'num9') {
+    cleanPath = '';
+  }
+
+  // Aliases
+  if (cleanPath === 'about-us') cleanPath = 'about';
+  if (cleanPath === 'contact-us') cleanPath = 'contact';
+  if (cleanPath === 'work' || cleanPath === 'case-studies') cleanPath = 'our-work';
+
+  if (!cleanPath || cleanPath === 'home') {
+    // 2. Query param fallback (?page=about, etc.)
+    const params = new URLSearchParams(window.location.search);
+    const queryPage = (params.get('page') || '').toLowerCase();
+    if (queryPage && queryPage !== 'home') {
+      let cleanQueryPage = queryPage;
+      if (cleanQueryPage === 'about-us') cleanQueryPage = 'about';
+      if (cleanQueryPage === 'contact-us') cleanQueryPage = 'contact';
+      if (cleanQueryPage === 'work' || cleanQueryPage === 'case-studies') cleanQueryPage = 'our-work';
+
+      if (KNOWN_PAGES.has(cleanQueryPage)) return cleanQueryPage;
+      if (cleanQueryPage.startsWith('case-study/') || cleanQueryPage.startsWith('service/')) return cleanQueryPage;
+    }
+    return 'home';
+  }
+
+  if (KNOWN_PAGES.has(cleanPath)) return cleanPath;
+  if (cleanPath.startsWith('case-study/') || cleanPath.startsWith('service/')) return cleanPath;
+
   return 'home';
 }
 
@@ -50,24 +81,67 @@ export default function App() {
   }, []);
 
   const handleNavigate = (newPage) => {
-    setPage(newPage);
+    const target = newPage || 'home';
+    setPage(target);
+
     if (typeof window !== 'undefined') {
       try {
-        const url = new URL(window.location.href);
-        if (newPage === 'home') {
-          url.searchParams.delete('page');
-        } else {
-          url.searchParams.set('page', newPage);
+        let targetPath = '/';
+        if (target !== 'home') {
+          targetPath = `/${target.replace(/^\/+/, '')}`;
         }
-        const newSearch = url.searchParams.toString();
-        const newUrl = url.pathname + (newSearch ? `?${newSearch}` : '') + url.hash;
-        window.history.pushState({}, '', newUrl);
+        if (window.location.pathname !== targetPath || window.location.search) {
+          window.history.pushState({}, '', targetPath);
+        }
       } catch (e) {
-        // Fallback gracefully if url cannot be parsed
+        // Fallback gracefully
       }
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }
   };
+
+  // Intercept standard internal <a> clicks for seamless client-side SPA routing
+  useEffect(() => {
+    const handleGlobalClick = (e) => {
+      const anchor = e.target.closest('a');
+      if (!anchor) return;
+      const href = anchor.getAttribute('href');
+      if (!href) return;
+
+      if (
+        href.startsWith('http:') ||
+        href.startsWith('https:') ||
+        href.startsWith('//') ||
+        href.startsWith('#') ||
+        href.startsWith('mailto:') ||
+        href.startsWith('tel:') ||
+        href.startsWith('javascript:') ||
+        anchor.target === '_blank' ||
+        e.defaultPrevented ||
+        e.button !== 0 ||
+        e.metaKey || e.ctrlKey || e.shiftKey || e.altKey
+      ) {
+        return;
+      }
+
+      let route = null;
+      if (href === '/') {
+        route = 'home';
+      } else if (href.startsWith('/')) {
+        route = href.replace(/^\/+/, '');
+      } else if (href.startsWith('?page=')) {
+        route = href.replace('?page=', '');
+      }
+
+      if (route !== null) {
+        e.preventDefault();
+        handleNavigate(route);
+      }
+    };
+
+    document.addEventListener('click', handleGlobalClick);
+    return () => document.removeEventListener('click', handleGlobalClick);
+  }, []);
 
   const sharedNavProps = {
     onNavigate: handleNavigate,
@@ -112,10 +186,10 @@ export default function App() {
               onNavigate={handleNavigate}
             />
           </div>
-          {/* Case Studies */}
-          <CaseStudies onNavigate={handleNavigate} />
           {/* What We Do */}
-          <WhatWeDo />
+          <WhatWeDo onNavigate={handleNavigate} />
+          {/* Case Studies (Latest) */}
+          <CaseStudies onNavigate={handleNavigate} />
           {/* <MarqueeSection /> */}
           {/* Fifth Section — testimonials + awards */}
           <FifthSection onNavigate={handleNavigate} />

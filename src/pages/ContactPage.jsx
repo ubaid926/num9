@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Check, AlertCircle } from 'lucide-react';
 import AppNav from '../components/nav';
 import WhyWorkWithUs from '../components/contact';
 import AccelerateBusinessSection from '../components/AccelerateBusinessSection';
@@ -28,7 +29,9 @@ function ContactHero() {
 
             gap-8 sm:gap-10 lg:gap-12 xl:gap-16
 
-            mb-10 sm:mb-12 lg:mb-[35px]
+            
+mb-[12px] sm:mb-12 lg:mb-[35px]
+
           "
         >
           {/* LEFT CONTENT */}
@@ -163,9 +166,11 @@ function ContactHero() {
                 text-[#626262]
               "
             >
-              Have an idea, a challenge, or a project in mind?
-              <br className="hidden sm:block" />
-              Tell us about it.
+            
+Have an idea, a challenge, or a project in mind?
+<br />
+Tell us about it.
+
             </p>
           </div>
         </div>
@@ -192,6 +197,18 @@ const services = [
 function ContactFormSection() {
   const [selected, setSelected] = useState(["UI/UX Design"]);
   const [agreed, setAgreed] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    workEmail: "",
+    companyName: "",
+    contactNumber: "",
+    projectDetails: "",
+    companyHp: "",
+  });
+  const [formTime] = useState(() => Date.now());
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState({ type: null, message: "" });
+  const [errors, setErrors] = useState({});
 
   const toggle = (service) => {
     setSelected((prev) =>
@@ -199,6 +216,129 @@ function ContactFormSection() {
         ? prev.filter((item) => item !== service)
         : [...prev, service]
     );
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors((prev) => {
+        const copy = { ...prev };
+        delete copy[name];
+        return copy;
+      });
+    }
+  };
+
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.fullName.trim()) {
+      newErrors.fullName = "Full name is required.";
+    } else if (formData.fullName.trim().length < 2) {
+      newErrors.fullName = "Full name must be at least 2 characters.";
+    }
+
+    if (!formData.workEmail.trim()) {
+      newErrors.workEmail = "Work email is required.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.workEmail.trim())) {
+      newErrors.workEmail = "Please enter a valid work email address.";
+    }
+
+    if (
+      formData.contactNumber.trim() &&
+      !/^[0-9+\s\-().]{7,30}$/.test(formData.contactNumber.trim())
+    ) {
+      newErrors.contactNumber = "Please enter a valid phone number.";
+    }
+
+    if (!formData.projectDetails.trim()) {
+      newErrors.projectDetails = "Project details are required.";
+    } else if (formData.projectDetails.trim().length < 10) {
+      newErrors.projectDetails = "Please enter at least 10 characters.";
+    }
+
+    if (!agreed) {
+      newErrors.privacy = "Please agree to the Privacy Policy.";
+    }
+
+    return newErrors;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (isSubmitting) return;
+
+    setStatus({ type: null, message: "" });
+
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setErrors({});
+    setIsSubmitting(true);
+
+    const apiUrl = import.meta.env.VITE_CONTACT_API_URL || "/backend/contact.php";
+
+    try {
+      const res = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          fullName: formData.fullName.trim(),
+          workEmail: formData.workEmail.trim(),
+          companyName: formData.companyName.trim(),
+          contactNumber: formData.contactNumber.trim(),
+          services: selected,
+          projectDetails: formData.projectDetails.trim(),
+          companyHp: formData.companyHp,
+          formTime,
+        }),
+      });
+
+      const data = await res.json().catch(() => null);
+
+      if (res.ok && data?.success) {
+        setStatus({
+          type: "success",
+          message:
+            data.message ||
+            "Thank you! Your project inquiry has been sent successfully. We will get back to you shortly.",
+        });
+        setFormData({
+          fullName: "",
+          workEmail: "",
+          companyName: "",
+          contactNumber: "",
+          projectDetails: "",
+          companyHp: "",
+        });
+        setSelected(["UI/UX Design"]);
+        setAgreed(false);
+      } else {
+        setStatus({
+          type: "error",
+          message:
+            data?.message ||
+            "There was an issue sending your inquiry. Please try again or contact us directly at info@number9.us.",
+        });
+        if (data?.errors) {
+          setErrors(data.errors);
+        }
+      }
+    } catch (err) {
+      setStatus({
+        type: "error",
+        message:
+          "Unable to connect to the server. Please check your internet connection or email us at info@number9.us.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputCls = `
@@ -238,28 +378,42 @@ function ContactFormSection() {
       </svg>
 
       <div>
-        <h4 className="font-grift-semibold text-[15.31px] sm:text-[18px] xl:text-[21px] leading-[1.35] text-[#111] mb-[2px]">
+        <h4 className="font-grift-semibold text-[15.31px] sm:text-[18px] xl:text-[25px] leading-[1.35] text-[#111] mb-[2px]">
           McKinney, Texas
         </h4>
-        <p className="font-grift-medium text-[13.31px] sm:text-[16px] xl:text-[19px] leading-[1.35] text-[#606060]">
+        <p className="font-grift-medium text-[13.31px] sm:text-[16px] xl:text-[22px] leading-[1.35] text-[#181817]">
           300 Davis St, STE 220
           <br />
           McKinney, TX 75069
         </p>
+        <div className="mt-3 flex flex-col gap-1 font-grift-medium text-[13.31px] sm:text-[16px] xl:text-[20px]">
+          <a
+            href="tel:+14693597107"
+            className="text-[#181817] hover:text-[#169F09] transition-colors"
+          >
+            +1 469 359 7107
+          </a>
+          <a
+            href="mailto:info@number9.us"
+            className="text-[#181817] hover:text-[#169F09] transition-colors"
+          >
+            info@number9.us
+          </a>
+        </div>
       </div>
     </div>
   );
 
   const ScheduleCTA = () => (
     <a
-      href="#"
+      href="tel:+14693597107"
       className="
         group inline-flex items-center justify-between
         w-[190px] sm:w-[235px] xl:w-[260px]
         pb-[8px] lg:pb-[10px]
         border-b-2 border-black
         font-grift-medium
-        text-[14px] sm:text-[18px] xl:text-[20px]
+        text-[14px] sm:text-[18px] xl:text-[21px]
         text-[#111]
         hover:text-[#159E0D]
         hover:border-[#159E0D]
@@ -299,12 +453,15 @@ function ContactFormSection() {
 
           {/* LEFT COLUMN */}
           <div
-            className="
-              w-full lg:w-[30%] shrink-0
-              lg:pr-[45px] xl:pr-[70px]
-              lg:border-r lg:border-[#BDBDBD]
-              flex flex-col
-            "
+          
+className="
+  w-full lg:w-[30%] shrink-0
+  lg:pr-[45px] xl:pr-[70px]
+  lg:border-r lg:border-[#BDBDBD]
+  flex flex-col
+  lg:min-h-[740px] xl:min-h-[795px]
+"
+
           >
             {/* HEADING */}
             <h2
@@ -312,7 +469,7 @@ function ContactFormSection() {
                 font-grift-semibold
                 text-[22px] sm:text-[36px]
                 lg:text-[43px] xl:text-[56px]
-                2xl:text-[60px]
+                2xl:text-[70px]
                 leading-[1.12] lg:leading-[1.06]
                 tracking-[-0.035em]
                 text-black m-0
@@ -324,13 +481,13 @@ function ContactFormSection() {
             {/* DESCRIPTION */}
             <p
               className="
-                mt-[12px] sm:mt-5 lg:mt-[34px]
+           mt-[12px] sm:mt-5 lg:mt-[36px]
                 mb-0
                 max-w-none lg:max-w-[345px]
                 font-grift-medium
-                text-[14px] sm:text-[16px] xl:text-[20px]
+                text-[14px] sm:text-[16px] xl:text-[23px]
                 leading-[1.4] lg:leading-[1.35]
-                text-[#626262]
+                text-[#181817]
               "
             >
               Share your goals. We’ll explore how strategy,
@@ -338,14 +495,21 @@ function ContactFormSection() {
             </p>
 
             {/* DESKTOP ADDRESS */}
-            <div className="hidden lg:block lg:mt-[100px]">
-              <AddressContent />
-            </div>
+          
+{/* DESKTOP ADDRESS */}
+<div className="hidden lg:block lg:mt-[110px] xl:mt-[120px]">
+  <AddressContent />
+</div>
+
 
             {/* DESKTOP CTA */}
-            <div className="hidden lg:block lg:mt-auto lg:pb-[126px]">
-              <ScheduleCTA />
-            </div>
+      
+
+{/* DESKTOP CTA */}
+<div className="hidden lg:block lg:mt-[150px] lg:pb-0">
+  <ScheduleCTA />
+</div>
+
           </div>
 
           {/* RIGHT COLUMN — FORM */}
@@ -372,8 +536,38 @@ function ContactFormSection() {
 
             <form
               className="w-full"
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleSubmit}
+              noValidate
             >
+              {/* Status Message Alerts */}
+              {status.type === "success" && (
+                <div className="mb-5 p-4 rounded-[10px] bg-[#E8F8E5] border border-[#2E7D27]/30 text-[#1B5E20] text-[14px] leading-relaxed flex items-start gap-3">
+                  <Check className="w-5 h-5 shrink-0 text-[#2E7D27] mt-0.5" />
+                  <span>{status.message}</span>
+                </div>
+              )}
+
+              {status.type === "error" && (
+                <div className="mb-5 p-4 rounded-[10px] bg-[#FDEDED] border border-[#D32F2F]/30 text-[#C62828] text-[14px] leading-relaxed flex items-start gap-3">
+                  <AlertCircle className="w-5 h-5 shrink-0 text-[#D32F2F] mt-0.5" />
+                  <span>{status.message}</span>
+                </div>
+              )}
+
+              {/* Honeypot field for bot protection (invisible to humans) */}
+              <div className="hidden" aria-hidden="true" style={{ display: "none" }}>
+                <label htmlFor="contact-companyHp">Company</label>
+                <input
+                  id="contact-companyHp"
+                  type="text"
+                  name="companyHp"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formData.companyHp}
+                  onChange={handleChange}
+                />
+              </div>
+
               {/* ROW 1 */}
               <div className="grid grid-cols-2 gap-x-[14px] sm:gap-x-6 xl:gap-x-[44px]">
                 <div className="min-w-0">
@@ -386,9 +580,14 @@ function ContactFormSection() {
                     name="fullName"
                     type="text"
                     placeholder="Your name"
-                    className={inputCls}
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    className={`${inputCls} ${errors.fullName ? "!border-[#D32F2F]" : ""}`}
                     required
                   />
+                  {errors.fullName && (
+                    <p className="mt-1 text-[12px] text-[#D32F2F] font-medium">{errors.fullName}</p>
+                  )}
                 </div>
 
                 <div className="min-w-0">
@@ -401,9 +600,14 @@ function ContactFormSection() {
                     name="workEmail"
                     type="email"
                     placeholder="Your work email"
-                    className={inputCls}
+                    value={formData.workEmail}
+                    onChange={handleChange}
+                    className={`${inputCls} ${errors.workEmail ? "!border-[#D32F2F]" : ""}`}
                     required
                   />
+                  {errors.workEmail && (
+                    <p className="mt-1 text-[12px] text-[#D32F2F] font-medium">{errors.workEmail}</p>
+                  )}
                 </div>
               </div>
 
@@ -418,6 +622,8 @@ function ContactFormSection() {
                     name="companyName"
                     type="text"
                     placeholder="Company name"
+                    value={formData.companyName}
+                    onChange={handleChange}
                     className={inputCls}
                   />
                 </div>
@@ -431,8 +637,13 @@ function ContactFormSection() {
                     name="contactNumber"
                     type="tel"
                     placeholder="Enter your contact number"
-                    className={inputCls}
+                    value={formData.contactNumber}
+                    onChange={handleChange}
+                    className={`${inputCls} ${errors.contactNumber ? "!border-[#D32F2F]" : ""}`}
                   />
+                  {errors.contactNumber && (
+                    <p className="mt-1 text-[12px] text-[#D32F2F] font-medium">{errors.contactNumber}</p>
+                  )}
                 </div>
               </div>
 
@@ -486,8 +697,10 @@ function ContactFormSection() {
                   name="projectDetails"
                   rows={4}
                   placeholder="Tell us about your project, your goals, and where you want to go."
+                  value={formData.projectDetails}
+                  onChange={handleChange}
                   required
-                  className="
+                  className={`
                     w-full h-[70px] sm:h-[110px] xl:h-[143px]
                     px-3 sm:px-4 xl:px-[18px]
                     py-[11px] sm:py-4
@@ -500,47 +713,66 @@ function ContactFormSection() {
                     outline-none
                     focus:border-[#159E0D]
                     transition-all duration-200
-                  "
+                    ${errors.projectDetails ? "!border-[#D32F2F]" : ""}
+                  `}
                 />
+                {errors.projectDetails && (
+                  <p className="mt-1 text-[12px] text-[#D32F2F] font-medium">{errors.projectDetails}</p>
+                )}
               </div>
 
               {/* PRIVACY POLICY */}
-              <div className="flex items-center gap-[7px] sm:gap-[10px] mt-[11px] sm:mt-[18px]">
-                <input
-                  id="privacy"
-                  name="privacy"
-                  type="checkbox"
-                  checked={agreed}
-                  onChange={(e) => setAgreed(e.target.checked)}
-                  required
-                  className="
-                    w-[13px] h-[13px]
-                    sm:w-[18px] sm:h-[18px]
-                    shrink-0 cursor-pointer
-                    accent-[#159E0D]
-                  "
-                />
-                <label
-                  htmlFor="privacy"
-                  className="
-                    font-grift-medium
-                    text-[11px] sm:text-[13px] xl:text-[15px]
-                    text-[#111] cursor-pointer
-                  "
-                >
-                  I agree to the{" "}
-                  <a
-                    href="#"
-                    className="underline underline-offset-2 hover:text-[#159E0D]"
+              <div className="flex flex-col mt-[11px] sm:mt-[18px]">
+                <div className="flex items-center gap-[7px] sm:gap-[10px]">
+                  <input
+                    id="privacy"
+                    name="privacy"
+                    type="checkbox"
+                    checked={agreed}
+                    onChange={(e) => {
+                      setAgreed(e.target.checked);
+                      if (errors.privacy) {
+                        setErrors((prev) => {
+                          const copy = { ...prev };
+                          delete copy.privacy;
+                          return copy;
+                        });
+                      }
+                    }}
+                    required
+                    className="
+                      w-[13px] h-[13px]
+                      sm:w-[18px] sm:h-[18px]
+                      shrink-0 cursor-pointer
+                      accent-[#159E0D]
+                    "
+                  />
+                  <label
+                    htmlFor="privacy"
+                    className="
+                      font-grift-medium
+                      text-[11px] sm:text-[13px] xl:text-[15px]
+                      text-[#111] cursor-pointer
+                    "
                   >
-                    Privacy Policy.
-                  </a>
-                </label>
+                    I agree to the{" "}
+                    <a
+                      href="#"
+                      className="underline underline-offset-2 hover:text-[#159E0D]"
+                    >
+                      Privacy Policy.
+                    </a>
+                  </label>
+                </div>
+                {errors.privacy && (
+                  <p className="mt-1 text-[12px] text-[#D32F2F] font-medium">{errors.privacy}</p>
+                )}
               </div>
 
               {/* SUBMIT BUTTON */}
               <button
                 type="submit"
+                disabled={isSubmitting}
                 className="
                   w-full
                   h-[46px] sm:h-[56px] xl:h-[71px]
@@ -553,9 +785,36 @@ function ContactFormSection() {
                   text-white
                   hover:bg-[#159E0D]
                   transition-colors duration-200
+                  disabled:opacity-60 disabled:cursor-not-allowed
+                  gap-2 cursor-pointer
                 "
               >
-                Send Inquiry
+                {isSubmitting ? (
+                  <>
+                    <svg
+                      className="animate-spin h-5 w-5 text-white"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                      ></path>
+                    </svg>
+                    <span>Sending Inquiry...</span>
+                  </>
+                ) : (
+                  "Send Inquiry"
+                )}
               </button>
             </form>
           </div>
@@ -659,9 +918,10 @@ function ProcessMapSection() {
               <div
                 key={step.num}
                 className={`
-                  flex items-start
-                  gap-5 xl:gap-[28px]
-                  min-w-0
+                  grid grid-cols-[72px_minmax(0,1fr)]
+  items-start gap-x-[20px]
+  lg:flex lg:gap-5 xl:gap-[28px]
+  min-w-0
 
                   ${index === 0
                     ? "lg:pr-8 xl:pr-[48px]"
@@ -670,10 +930,12 @@ function ProcessMapSection() {
                       : "lg:pl-8 xl:pl-[48px]"
                   }
 
-                  ${index > 0
-                    ? "border-t lg:border-t-0 lg:border-l border-[#A9C9AB] pt-7 lg:pt-0"
-                    : ""
-                  }
+                 
+${index > 0
+  ? "lg:border-l lg:border-[#A9C9AB] pt-0 lg:pt-0"
+  : ""
+}
+
                 `}
               >
                 {/* STEP NUMBER */}
@@ -696,11 +958,11 @@ function ProcessMapSection() {
                 </span>
 
                 {/* STEP DESCRIPTION */}
-                <div className="min-w-0 pt-[3px]">
+                <div className="min-w-0 pt-0 lg:pt-[3px]">
                   <h3
                     className="
                       font-grift-semibold
-                      text-[18px]
+                      text-[21px]
                       sm:text-[21px]
                       lg:text-[20px]
                       xl:text-[30px]

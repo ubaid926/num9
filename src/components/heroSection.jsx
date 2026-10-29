@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, ArrowRight, X } from "lucide-react";
 
-import heroVideo from "../assets/videos/JamSpread15Sec.webm";
 
 import lexusHeroImg from "../assets/Metallic Blue Lexus in a Warehouse 1.webp";
 import citibankHeroImg from "../assets/Fintech Dashboard at Sunset 1.webp";
@@ -60,10 +59,15 @@ const isColoredLogo = (logoUrl) => {
 };
 
 
-// Preload and decode hero images immediately in memory to eliminate loading delay
-const HERO_PRELOAD_IMAGES = [
+// Prioritized preload: immediately decode active and adjacent visible slides on load
+const PRIMARY_HERO_IMAGES = [
   lexusHeroImg,
   citibankHeroImg,
+  almazaHeroImg,
+  lexusLogo,
+];
+
+const SECONDARY_HERO_IMAGES = [
   safewayHeroImg,
   empireHeroImg,
   lifegiveHeroImg,
@@ -73,22 +77,11 @@ const HERO_PRELOAD_IMAGES = [
   fairviewHeroImg,
   shanHeroImg,
   snacksHeroImg,
-  almazaHeroImg,
-  lexusLogo,
-  citibankLogo,
-  safewayLogo,
-  empireLogo,
-  lifegiveLogo,
-  pwcLogo,
-  sentralLogo,
-  zee5Logo,
-  fairviewLogo,
-  shanLogo,
-  snacksLogo,
-  almazaLogo,
 ];
+
 if (typeof window !== "undefined") {
-  HERO_PRELOAD_IMAGES.forEach((src) => {
+  // Preload and decode primary visible slide 1 + adjacent slides immediately
+  PRIMARY_HERO_IMAGES.forEach((src) => {
     if (!src) return;
     const img = new Image();
     img.src = src;
@@ -96,6 +89,23 @@ if (typeof window !== "undefined") {
       img.decode().catch(() => {});
     }
   });
+
+  // Defer remaining slides so they do not compete with initial paint
+  const loadSecondary = () => {
+    SECONDARY_HERO_IMAGES.forEach((src, idx) => {
+      setTimeout(() => {
+        if (!src) return;
+        const img = new Image();
+        img.src = src;
+      }, idx * 120);
+    });
+  };
+
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(loadSecondary, { timeout: 1500 });
+  } else {
+    setTimeout(loadSecondary, 600);
+  }
 }
 
 const slides = [
@@ -250,7 +260,21 @@ export default function HeroSection({
   onCaseStudyClick,
   onNavigate,
 }) {
+  
   const [currentIndex, setCurrentIndex] = useState(0);
+
+useEffect(() => {
+  // Preload only the upcoming slides
+  const nextIndexes = [
+    (currentIndex + 1) % slides.length,
+    (currentIndex + 2) % slides.length,
+  ];
+
+  nextIndexes.forEach((index) => {
+    const img = new Image();
+    img.src = slides[index].imageUrl;
+  });
+}, [currentIndex]);
 
   const [isShowreelOpen, setIsShowreelOpen] = useState(false);
 
@@ -401,7 +425,7 @@ export default function HeroSection({
                 onClick={() => {
                   if (!isActive) setCurrentIndex(index);
                 }}
-                className={`hero-slide-card absolute left-1/2 top-1/2 overflow-hidden rounded-[26px] sm:rounded-[22px] border border-white/40 sm:border-white/50 transition-[transform,opacity,filter] duration-700 ease-[cubic-bezier(.22,1,.36,1)] select-none ${
+                className={`hero-slide-card absolute left-1/2 top-1/2 overflow-hidden rounded-[26px] sm:rounded-[22px] border border-white/40 sm:border-white/50 bg-[#121417] transition-[transform,opacity,filter] duration-700 ease-[cubic-bezier(.22,1,.36,1)] select-none ${
                   isActive
                     ? "z-30"
                     : distance === 1
@@ -414,15 +438,19 @@ export default function HeroSection({
                   filter: isActive ? "none" : `brightness(${brightness})`,
                 }}
               >
-                <img
-                  src={slide.imageUrl}
-                  alt={`${slide.brand} project visual`}
-                  className="absolute inset-0 h-full w-full object-cover"
-                  draggable={false}
-                  loading="eager"
-                  fetchPriority={isActive ? "high" : "auto"}
-                  decoding="async"
-                />
+                
+{isVisible && (
+  <img
+    src={slide.imageUrl}
+    alt={`${slide.brand} project visual`}
+    className="absolute inset-0 h-full w-full object-cover"
+    draggable={false}
+    loading={isActive ? "eager" : "lazy"}
+    fetchPriority={isActive ? "high" : "low"}
+    decoding="async"
+  />
+)}
+
                 {/* Smooth black fade on the top and bottom edges of each hero image */}
                 <div
                   aria-hidden="true"

@@ -373,9 +373,11 @@ export default function CaseStudyOverviewSections({
                 lg:gap-[130px]
                 xl:gap-[150px]
 
-                mt-[60px]
-                sm:mt-[75px]
-                lg:mt-[85px]
+             
+mt-[20px]
+sm:mt-[75px]
+lg:mt-[85px]
+
               "
             >
               <StatisticCircle
