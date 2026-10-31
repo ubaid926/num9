@@ -159,7 +159,7 @@ const Footer = ({ onNavigate }) => {
                 Do Not Sell My Personal Information
               </a>
             </div>
-            <p className="mt-[20px]">©Number9 2026. All rights reserved.</p>
+            <p className="mt-[20px]">©Number9 2024 2025. All rights reserved.</p>
           </div>
         </div>
 

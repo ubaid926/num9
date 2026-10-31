@@ -2,19 +2,19 @@ import React, { useState, useEffect, useRef } from "react";
 import AppNav from "../components/nav";
 import AccelerateBusinessSection from "../components/AccelerateBusinessSection";
 import Footer from "../components/footer";
-import aboutHeroImage from "../assets/aboutHeroImage.webp";
+import aboutHeroImage from "../assets/Collaborative Design in a Warm Studio 1.webp";
 import aboutus3rdSect from "../assets/aboutus3rdSect.webp";
 
 /* ─── Brand logos — colored versions from ClientsGrid_Logos (same as Services page) ── */
-import pepsicoLogo   from "../assets/Logos/ClientsGrid_Logos/pepsico.png";
-import lexusLogo     from "../assets/Logos/ClientsGrid_Logos/lexus.png";
-import citibankLogo  from "../assets/Logos/ClientsGrid_Logos/citibank.png";
-import emiratesLogo  from "../assets/Logos/ClientsGrid_Logos/emirates.png";
+import pepsicoLogo from "../assets/Logos/ClientsGrid_Logos/pepsico.png";
+import lexusLogo from "../assets/Logos/ClientsGrid_Logos/lexus.png";
+import citibankLogo from "../assets/Logos/ClientsGrid_Logos/citibank.png";
+import emiratesLogo from "../assets/Logos/ClientsGrid_Logos/emirates.png";
 import microsoftLogo from "../assets/Logos/ClientsGrid_Logos/microsoft.png";
-import safewayLogo   from "../assets/Logos/ClientsGrid_Logos/safeway.png";
-import magellanLogo  from "../assets/Logos/ClientsGrid_Logos/magellan.png";
-import argoLogo      from "../assets/Logos/ClientsGrid_Logos/argo.png";
-import nutrienLogo   from "../assets/Logos/ClientsGrid_Logos/nutrien.png";
+import safewayLogo from "../assets/Logos/ClientsGrid_Logos/safeway.png";
+import magellanLogo from "../assets/Logos/ClientsGrid_Logos/magellan.png";
+import argoLogo from "../assets/Logos/ClientsGrid_Logos/argo.png";
+import nutrienLogo from "../assets/Logos/ClientsGrid_Logos/nutrien.png";
 
 /* ─── About Hero ─────────────────────────────────────────── */
 
@@ -146,10 +146,10 @@ mb-[12px] sm:mb-[20px] lg:mb-[34px]
         </div>
 
         {/* HERO IMAGE */}
-     
-{/* HERO IMAGE */}
-<div
-  className="
+
+        {/* HERO IMAGE */}
+        <div
+          className="
     relative w-full overflow-hidden
     aspect-[2.25/1]
     sm:aspect-auto
@@ -158,7 +158,7 @@ mb-[12px] sm:mb-[20px] lg:mb-[34px]
     border border-[#B8C2C4]
     shadow-[0_1px_2px_rgba(0,0,0,0.08)]
   "
->
+        >
 
           <img
             src={aboutHeroImage}
@@ -190,12 +190,12 @@ mb-[12px] sm:mb-[20px] lg:mb-[34px]
                 text-white
                 drop-shadow-md
               "
-                style={{
-    fontFamily: "GriftRegular, Grift, sans-serif",
-    fontWeight: 200,
-    fontStyle: "normal",
-    fontSynthesis: "none",
-  }}
+              style={{
+                fontFamily: "GriftRegular, Grift, sans-serif",
+                fontWeight: 200,
+                fontStyle: "normal",
+                fontSynthesis: "none",
+              }}
             >
               Digital ideas.
               <br />
@@ -252,8 +252,8 @@ function WhoWeAre() {
 
   return (
     <section ref={sectionRef} className="w-full bg-white">
-   
-<div className="max-w-[1640px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 pt-[15px] pb-[15px] sm:py-18 lg:py-20 xl:py-24">
+
+      <div className="max-w-[1640px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 pt-[15px] pb-[15px] sm:py-18 lg:py-20 xl:py-24">
 
         {/* ── Top row: stat (left) + divider + heading (right) ── */}
         <div className="flex flex-row items-start gap-0 sm:gap-0 mb-8 sm:mb-0">
@@ -357,10 +357,10 @@ function ThinkingSection() {
             </div>
 
             {/* Image caption */}
-            
-<p className="hidden sm:block mt-4 font-grift-medium text-[13px] sm:text-[15px] lg:text-[22px] text-[#858585]">
-  Strategy. Design. Technology. Execution.
-</p>
+
+            <p className="hidden sm:block mt-4 font-grift-medium text-[13px] sm:text-[15px] lg:text-[22px] text-[#858585]">
+              Strategy. Design. Technology. Execution.
+            </p>
 
           </div>
 
@@ -389,25 +389,9 @@ function ThinkingSection() {
 
             {/* Description */}
             <div className="space-y-5 lg:space-y-6 mb-10 lg:mb-12 xl:mb-14">
-            
-<p
-  className="
-    font-grift-medium
-    text-[22.99px]
-    sm:text-[17px]
-    lg:text-[17px]
-    xl:text-[25px]
-    leading-[1.15]
-    sm:leading-[1.4]
-    text-[#818282]
-  "
->
-  Great brand experiences bring strategy, creativity, and
-  technology together. That belief sits at the heart of Number9.
-</p>
 
-<p
-  className="
+              <p
+                className="
     font-grift-medium
     text-[22.99px]
     sm:text-[17px]
@@ -417,13 +401,29 @@ function ThinkingSection() {
     sm:leading-[1.4]
     text-[#818282]
   "
->
-  Based in Dallas, Texas, we bring over 20 years of industry
-  experience to digital platforms and real-world activations. We
-  collaborate with business, marketing, and technology teams to
-  turn ideas into clear, engaging experiences—from concept to
-  completion.
-</p>
+              >
+                Great brand experiences bring strategy, creativity, and
+                technology together. That belief sits at the heart of Number9.
+              </p>
+
+              <p
+                className="
+    font-grift-medium
+    text-[22.99px]
+    sm:text-[17px]
+    lg:text-[17px]
+    xl:text-[25px]
+    leading-[1.15]
+    sm:leading-[1.4]
+    text-[#818282]
+  "
+              >
+                Based in Dallas, Texas, we bring over 20 years of industry
+                experience to digital platforms and real-world activations. We
+                collaborate with business, marketing, and technology teams to
+                turn ideas into clear, engaging experiences—from concept to
+                completion.
+              </p>
 
             </div>
 
@@ -588,9 +588,9 @@ function BrandPartnerships({ onNavigate }) {
               </h2>
 
               {/* Description */}
-             
-<p
-  className="
+
+              <p
+                className="
     font-grift-medium
     text-[22.99px]
     sm:text-[18px]
@@ -602,10 +602,10 @@ function BrandPartnerships({ onNavigate }) {
     max-w-[510px]
     mb-9 lg:mb-10
   "
->
-  Our portfolio includes projects for pepsiCo, Lexus, Citibank,
-  Safeway, Shaan Foods, and ZEE5.
-</p>
+              >
+                Our portfolio includes projects for pepsiCo, Lexus, Citibank,
+                Safeway, Shaan Foods, and ZEE5.
+              </p>
 
 
               {/* CTA */}
@@ -817,10 +817,9 @@ function ConnectedCapabilities() {
                 sm:py-10
                 lg:py-9
                 xl:py-10
-                ${
-                  index !== capabilities.length - 1
-                    ? "border-b border-[#C8C8C8]"
-                    : ""
+                ${index !== capabilities.length - 1
+                  ? "border-b border-[#C8C8C8]"
+                  : ""
                 }
               `}
             >

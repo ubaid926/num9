@@ -90,6 +90,100 @@ function CustomerInteractions({ stat = "125K+ Customers", label = "Customer Inte
 }
 
 /* =========================================
+   GALLERY ROW ITEM (SUPPORTS MULTI-IMAGE CYCLING)
+========================================= */
+
+function GalleryRowItem({ item, index, caseStudyName }) {
+  const images = Array.isArray(item.images) && item.images.length > 0
+    ? item.images
+    : [{ src: item.src, title: item.title, subtitle: item.subtitle }];
+
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const timer = setInterval(() => {
+      setActiveIdx((prev) => (prev + 1) % images.length);
+    }, 4500 + index * 700);
+    return () => clearInterval(timer);
+  }, [images.length, index]);
+
+  const current = images[activeIdx] || images[0];
+  const currentTitle = current.title || item.title;
+  const currentSubtitle = current.subtitle || item.subtitle;
+
+  return (
+    <div className="relative w-full min-h-0 overflow-hidden bg-[#20242A]">
+      {images.map((imgObj, i) => {
+        const src = imgObj.src || imgObj;
+        const isActive = i === activeIdx;
+        return (
+          <div
+            key={i}
+            className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+              isActive ? "opacity-100 z-10" : "opacity-0 pointer-events-none z-0"
+            }`}
+          >
+            {src ? (
+              <img
+                src={src}
+                alt={currentSubtitle || `${caseStudyName || "Project"} outcome visual`}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <div className="w-full h-full bg-[#252B30]" />
+            )}
+          </div>
+        );
+      })}
+
+      {/* CAPTION OVERLAY */}
+      {(currentTitle || currentSubtitle) && (
+        <>
+          <div className="absolute inset-0 z-20 pointer-events-none bg-gradient-to-t from-black/75 via-transparent to-transparent" />
+
+          <div className="absolute bottom-[18px] left-[24px] right-[24px] z-30 text-white flex items-end justify-between gap-3">
+            <div className="min-w-0 flex-1">
+              {currentTitle && (
+                <h4 className="font-grift-semibold text-[15px] sm:text-[19px] lg:text-[22px] leading-[1.2] truncate">
+                  {currentTitle}
+                </h4>
+              )}
+
+              {currentSubtitle && (
+                <p className="mt-1 font-grift-medium text-[10px] sm:text-[13px] lg:text-[15px] uppercase tracking-[0.08em] text-white/80 truncate">
+                  {currentSubtitle}
+                </p>
+              )}
+            </div>
+
+            {images.length > 1 && (
+              <div className="flex items-center gap-1.5 shrink-0 pb-1">
+                {images.map((_, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => setActiveIdx(i)}
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                      i === activeIdx
+                        ? "w-6 bg-white"
+                        : "w-2 bg-white/40 hover:bg-white/75"
+                    }`}
+                    aria-label={`View photo ${i + 1}`}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+/* =========================================
    MAIN COMPONENT
 ========================================= */
 
@@ -617,6 +711,7 @@ className="
                 leading-[1.35]
                 tracking-[-0.02em]
                 text-white
+                whitespace-pre-line
               "
             >
               {solution.description}
@@ -737,79 +832,12 @@ className="
             "
           >
             {outcome.galleryImages?.map((item, index) => (
-              <div
+              <GalleryRowItem
                 key={index}
-                className="
-                  relative w-full min-h-0
-                  overflow-hidden bg-[#20242A]
-                "
-              >
-                {item.src ? (
-                  <img
-                    src={item.src}
-                    alt={item.subtitle || `${caseStudy.name || "Project"} outcome visual`}
-                    loading="lazy"
-                    decoding="async"
-                    className="
-                      absolute inset-0
-                      w-full h-full
-                      object-cover
-                    "
-                    loading="lazy"
-                  />
-                ) : (
-                  <div className="absolute inset-0 bg-[#252B30]" />
-                )}
-
-                {/* CAPTION OVERLAY */}
-                {(item.title || item.subtitle) && (
-                  <>
-                    <div
-                      className="
-                        absolute inset-0
-                        bg-gradient-to-t
-                        from-black/70 via-transparent
-                        to-transparent
-                      "
-                    />
-
-                    <div
-                      className="
-                        absolute bottom-[18px] left-[24px]
-                        text-white
-                      "
-                    >
-                      {item.title && (
-                        <h4
-                          className="
-                            font-grift-semibold
-                            text-[15px] sm:text-[19px]
-                            lg:text-[22px]
-                            leading-[1.2]
-                          "
-                        >
-                          {item.title}
-                        </h4>
-                      )}
-
-                      {item.subtitle && (
-                        <p
-                          className="
-                            mt-1
-                            font-grift-medium
-                            text-[10px] sm:text-[13px]
-                            lg:text-[15px]
-                            uppercase tracking-[0.08em]
-                            text-white/80
-                          "
-                        >
-                          {item.subtitle}
-                        </p>
-                      )}
-                    </div>
-                  </>
-                )}
-              </div>
+                item={item}
+                index={index}
+                caseStudyName={caseStudy.name}
+              />
             ))}
           </div>
 
@@ -848,6 +876,7 @@ className="
                 text-[17px] sm:text-[21px]
                 lg:text-[25px]
                 text-white
+                whitespace-pre-line
                 mb-[25px]
               "
             >
@@ -873,6 +902,22 @@ className="
                 </li>
               ))}
             </ul>
+
+            {outcome.closing && (
+              <p
+                className="
+                  max-w-[590px]
+                  mt-6 sm:mt-8
+                  font-grift-medium
+                  text-[15px] sm:text-[19px]
+                  lg:text-[21px]
+                  leading-[1.4]
+                  text-white/90
+                "
+              >
+                {outcome.closing}
+              </p>
+            )}
 
             {/* DOWNLOAD CASE STUDY CTA */}
             <form

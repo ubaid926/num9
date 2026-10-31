@@ -40,6 +40,7 @@ import clientLifegiftLogo from "../assets/Logos/ClientsGrid_Logos/Logos/LifeGive
 import clientIcomLogo from "../assets/Logos/Updated_Logos/Clean restored ICOM network logo.webp";
 import clientGenesisLogo from "../assets/Logos/Updated_Logos/GENESIS.Logo.032218_Site_PNG_RevB.webp";
 import clientStandardCharteredLogo from "../assets/Logos/Updated_Logos/Standard_Chartered__282021_29.webp";
+import clientSkinnyLogo from "../assets/caseStudies/skinny/Jordan_s_Skinny_Mixes_Logo_f5994884-b437-492f-aa4a-b5debcc1c695_1543x_copy_copy.png";
 
 /* ─── ImageCard ─────────────────────────────────────────── */
 
@@ -64,7 +65,7 @@ function ImageCard({
         loading="eager"
         fetchPriority="high"
         decoding="async"
-        className={`block w-full h-full ${imageClass} object-center transition-transform duration-500`}
+        className={`block w-full h-full ${imageClass || "object-cover"} object-center transition-transform duration-500`}
       />
 
       <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
@@ -137,6 +138,7 @@ const CLIENT_INDUSTRIES = {
   ICOM: ["Community & Non-Profit", "Media & Entertainment"],
   "GENESIS Exhibits": ["Media & Entertainment", "Architecture"],
   "Standard Chartered": ["Financial Services", "Enterprise"],
+  "Skinny Mixes": ["Retail", "Food & Beverage"],
 };
 
 /* ─── ClientsGrid ────────────────────────────────────────── */
@@ -302,6 +304,13 @@ const clients = [
     name: "Standard Chartered",
     desc: "Global banking digital transformation delivering intuitive financial platforms and customer-first innovation.",
     route: "case-study/standard-chartered",
+  },
+  {
+    logo: clientSkinnyLogo,
+    logoClass: "h-[58px] sm:h-[54px] xl:h-[60px] w-auto max-w-[240px]",
+    name: "Skinny Mixes",
+    desc: "Experiential marketing and high-impact street sampling campaign launching Skinnyccino across Manhattan.",
+    route: "case-study/skinny",
   },
 ];
 
@@ -481,9 +490,19 @@ function OurWorkHero({ onNavigate, industry, setIndustry }) {
 
         {/* Breadcrumb */}
         <div className="flex items-center gap-4 mb-[80px] sm:mb-10 lg:mb-[44px]">
-          <svg className="w-[20px] h-[20px] text-black shrink-0" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 11.25 12 3l8.25 8.25M5.25 9.75v10.5h13.5V9.75M9 20.25v-6h6v6" />
-          </svg>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              if (onNavigate) onNavigate("home");
+            }}
+            className="text-black hover:text-[#32c400] transition-colors cursor-pointer inline-flex items-center"
+            aria-label="Home"
+          >
+            <svg className="w-[20px] h-[20px] shrink-0" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 11.25 12 3l8.25 8.25M5.25 9.75v10.5h13.5V9.75M9 20.25v-6h6v6" />
+            </svg>
+          </button>
           <svg className="w-[13px] h-[13px] text-[#444]" fill="none" stroke="currentColor" strokeWidth="1.6" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" d="m9 5 7 7-7 7" />
           </svg>
@@ -517,7 +536,7 @@ function OurWorkHero({ onNavigate, industry, setIndustry }) {
                 img={workCar}
                 logo={lexusLogo}
                 logoClass="h-[46px] w-auto"
-                imageClass=""
+                imageClass="object-cover"
                 label="Lexus"
                 tag="Case study"
                 className="w-full h-full bg-[#101820]"

@@ -84,6 +84,27 @@ export default function LexusHeroSection({ onNavigate, onSubmit }) {
             mb-[43px] sm:mb-[52px] lg:mb-[65px]
           "
         >
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              if (onNavigate) onNavigate("home");
+            }}
+            className="
+              cursor-pointer
+              text-white
+              hover:text-white/75
+              transition-colors
+              inline-flex
+              items-center
+            "
+            aria-label="Home"
+          >
+            <svg className="w-[18px] h-[18px] shrink-0" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 11.25 12 3l8.25 8.25M5.25 9.75v10.5h13.5V9.75M9 20.25v-6h6v6" />
+            </svg>
+          </button>
+
           <ChevronRight
             size={19}
             strokeWidth={3}

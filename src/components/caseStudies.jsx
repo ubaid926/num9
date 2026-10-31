@@ -113,7 +113,7 @@ const originalCaseStudies = [
 
     logoClass:
 
-      'h-[70px] sm:h-[80px] w-[180px] sm:w-[210px]',
+        'h-[48px] w-[145px] sm:h-[80px] sm:w-[210px]',
     route: 'case-study/microsoft',
 
   },
@@ -658,10 +658,10 @@ const CaseStudies = ({ onNavigate }) => {
 
 
 
-          h-[560px]
-          sm:h-[580px]
-          md:h-[600px]
-          lg:h-[530px]
+       h-[475px]
+sm:h-[580px]
+md:h-[600px]
+lg:h-[530px]
           xl:h-[535px]
           2xl:h-[741px]
           case-studies-carousel-container
@@ -865,9 +865,9 @@ ${isActive
                     overflow-hidden
                     shrink-0
                     case-studies-card-img
-                    h-[245px]
-                    sm:h-[255px]
-                    lg:h-[220px]
+                 h-[205px]
+sm:h-[255px]
+lg:h-[220px]
                     xl:h-[225px]
                     2xl:h-[375px]
                   "
@@ -1016,7 +1016,10 @@ ${isActive
                         object-contain
 
                         drop-shadow-lg
-
+  ${study.id === '02' || study.id === '05'
+    ? '-mt-1 sm:mt-0'
+    : ''
+  }
                         ${study.logoClass}
 
                       `}
@@ -1076,14 +1079,18 @@ ${isActive
 
 
                 <div
-                  className={`p-5 sm:p-6 ${isActive ? 'lg:p-4.5 xl:p-5 2xl:p-8' : 'lg:p-4 xl:p-4.5 2xl:p-7'
+
+                  className={`p-5 sm:p-6 ${isActive
+                      ? 'lg:p-4.5 xl:p-5 2xl:p-8'
+                      : 'lg:p-4 xl:p-4.5 2xl:p-7'
                     } flex flex-col justify-between flex-1 transition-all duration-300`}
+
                 >
                   {/* 1. CATEGORY BADGE (Top) */}
                   <span
                     className={`self-start inline-flex items-center rounded-full border border-[#28B023] text-[#28B023] font-medium transition-all duration-300 text-[12px] sm:text-[13px] ${isActive
-                        ? 'lg:text-[13px] xl:text-[13.5px] 2xl:text-[18px] px-3.5 xl:px-3.5 2xl:px-5 py-0.5 xl:py-1 2xl:py-2'
-                        : 'lg:text-[11.5px] xl:text-[12px] 2xl:text-[14px] px-3 xl:px-3 2xl:px-4 py-[4px] 2xl:py-[6px]'
+                      ? 'lg:text-[13px] xl:text-[13.5px] 2xl:text-[18px] px-3.5 xl:px-3.5 2xl:px-5 py-0.5 xl:py-1 2xl:py-2'
+                      : 'lg:text-[11.5px] xl:text-[12px] 2xl:text-[14px] px-3 xl:px-3 2xl:px-4 py-[4px] 2xl:py-[6px]'
                       }`}
                   >
                     {study.category}
@@ -1092,7 +1099,7 @@ ${isActive
                   {/* 2. MIDDLE GROUP: TITLE + ICON + DESCRIPTION (Centered) */}
                   <div
                     className={`flex flex-col ${isActive ? 'gap-1.5 sm:gap-2.5 lg:gap-2 xl:gap-2 2xl:gap-3.5' : 'gap-1.5 sm:gap-2.5 lg:gap-2 xl:gap-2 2xl:gap-4'
-                      } my-auto py-1 sm:py-1.5 xl:py-1.5 2xl:py-3`}
+                      } my-3 sm:my-auto py-1 sm:py-1.5 xl:py-1.5 2xl:py-3`}
                   >
                     {/* TITLE + ICON */}
                     <div className="flex justify-between items-start gap-3 xl:gap-4">
@@ -1115,8 +1122,8 @@ ${isActive
                       {/* Icon */}
                       <div
                         className={`flex-shrink-0 ${isActive
-                            ? 'w-[44px] h-[44px] sm:w-[52px] sm:h-[52px] lg:w-[44px] lg:h-[44px] xl:w-[46px] xl:h-[46px] 2xl:w-[68px] 2xl:h-[68px] p-2 xl:p-2.5 2xl:p-3.5'
-                            : 'w-[36px] h-[36px] sm:w-[44px] sm:h-[44px] lg:w-[38px] lg:h-[38px] xl:w-[40px] xl:h-[40px] 2xl:w-[52px] 2xl:h-[52px] p-2 xl:p-2 2xl:p-3'
+                          ? 'w-[44px] h-[44px] sm:w-[52px] sm:h-[52px] lg:w-[44px] lg:h-[44px] xl:w-[46px] xl:h-[46px] 2xl:w-[68px] 2xl:h-[68px] p-2 xl:p-2.5 2xl:p-3.5'
+                          : 'w-[36px] h-[36px] sm:w-[44px] sm:h-[44px] lg:w-[38px] lg:h-[38px] xl:w-[40px] xl:h-[40px] 2xl:w-[52px] 2xl:h-[52px] p-2 xl:p-2 2xl:p-3'
                           } rounded-full flex items-center justify-center bg-[#E1F5ED] transition-all duration-300`}
                       >
                         {study.icon}
@@ -1126,8 +1133,8 @@ ${isActive
                     {/* DESCRIPTION */}
                     <p
                       className={`text-[14px] sm:text-[15px] ${isActive
-                          ? 'lg:text-[13px] xl:text-[13.5px] 2xl:text-[20px] leading-[1.38] 2xl:leading-[1.45] text-gray-800'
-                          : 'lg:text-[12px] xl:text-[12.5px] 2xl:text-[16px] leading-[1.38] 2xl:leading-[1.55] text-gray-600'
+                        ? 'lg:text-[13px] xl:text-[13.5px] 2xl:text-[20px] leading-[1.38] 2xl:leading-[1.45] text-gray-800'
+                        : 'lg:text-[12px] xl:text-[12.5px] 2xl:text-[16px] leading-[1.38] 2xl:leading-[1.55] text-gray-600'
                         } transition-all duration-300`}
                     >
                       {study.description}
@@ -1143,8 +1150,8 @@ ${isActive
                     >
                       <span
                         className={`text-[15px] sm:text-[16px] ${isActive
-                            ? 'lg:text-[15px] xl:text-[16px] 2xl:text-[21px] font-semibold text-gray-900'
-                            : 'lg:text-[13px] xl:text-[14px] 2xl:text-[17px] font-medium text-gray-600'
+                          ? 'lg:text-[15px] xl:text-[16px] 2xl:text-[21px] font-semibold text-gray-900'
+                          : 'lg:text-[13px] xl:text-[14px] 2xl:text-[17px] font-medium text-gray-600'
                           } transition-all duration-300`}
                       >
                         View Case Study
@@ -1152,8 +1159,8 @@ ${isActive
 
                       <div
                         className={`border border-[#1DC16A] rounded-full ${isActive
-                            ? 'w-[40px] h-[40px] sm:w-[46px] sm:h-[46px] lg:w-[40px] lg:h-[40px] xl:w-[42px] xl:h-[42px] 2xl:w-[58px] 2xl:h-[58px]'
-                            : 'w-[34px] h-[34px] sm:w-[38px] sm:h-[38px] lg:w-[34px] lg:h-[34px] xl:w-[36px] xl:h-[36px] 2xl:w-[44px] 2xl:h-[44px]'
+                          ? 'w-[40px] h-[40px] sm:w-[46px] sm:h-[46px] lg:w-[40px] lg:h-[40px] xl:w-[42px] xl:h-[42px] 2xl:w-[58px] 2xl:h-[58px]'
+                          : 'w-[34px] h-[34px] sm:w-[38px] sm:h-[38px] lg:w-[34px] lg:h-[34px] xl:w-[36px] xl:h-[36px] 2xl:w-[44px] 2xl:h-[44px]'
                           } flex items-center justify-center shrink-0 text-[#17A229] transition-all duration-300 group-hover/link:translate-x-1`}
                       >
                         <ArrowRight className={`${isActive ? 'w-4.5 h-4.5 sm:w-5 sm:h-5 lg:w-4.5 lg:h-4.5 xl:w-5 xl:h-5 2xl:w-7 2xl:h-7' : 'w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-4 lg:h-4 2xl:w-5 2xl:h-5'} transition-all duration-300`} />
@@ -1360,7 +1367,7 @@ ${isActive
 
       ================================================= */}
 
-      <div className="flex sm:hidden items-center justify-center gap-[7px] mt-8">
+      <div className="flex items-center justify-center gap-2 sm:gap-2.5 mt-8 sm:mt-10 lg:mt-12">
 
         {[0, 1, 2].map((index) => {
 
@@ -1384,13 +1391,15 @@ ${isActive
 
                 transition-all
 
-                duration-500
+                duration-300
+
+                cursor-pointer
 
                 ${isActiveDot
 
-                  ? 'w-[20px] h-[7px] bg-[#28B023]'
+                  ? 'w-7 sm:w-8 h-2 sm:h-2.5 bg-[#28B023]'
 
-                  : 'w-[7px] h-[7px] bg-gray-300 hover:bg-gray-400'
+                  : 'w-2 sm:w-2.5 h-2 sm:h-2.5 bg-gray-300 hover:bg-gray-400'
 
                 }
 

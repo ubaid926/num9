@@ -411,3 +411,27 @@ body {
   display: none;
 }
 
+
+/* ─── Fullscreen Menu Height-Adaptive Typography (Bold & Impactful) ───────── */
+.nav-menu-link {
+  font-size: clamp(48px, min(14vw, 10.5vh), 116px);
+  line-height: 0.92;
+  padding-top: clamp(2px, 0.8vh, 8px);
+  padding-bottom: clamp(2px, 0.8vh, 8px);
+}
+
+@media (min-height: 900px) and (min-width: 1024px) {
+  .nav-menu-link {
+    font-size: clamp(64px, min(12vw, 11vh), 128px);
+    padding-top: clamp(4px, 1vh, 10px);
+    padding-bottom: clamp(4px, 1vh, 10px);
+  }
+}
+
+@media (max-height: 620px) {
+  .nav-menu-link {
+    font-size: clamp(32px, 8.5vh, 52px);
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+}

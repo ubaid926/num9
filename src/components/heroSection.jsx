@@ -435,7 +435,11 @@ useEffect(() => {
                 style={{
                   transform: `translate(calc(-50% + ${shiftPercent}%), -50%) scale(${scale})`,
                   opacity: isActive ? 1 : opacity,
-                  filter: isActive ? "none" : `brightness(${brightness})`,
+                  
+filter: isActive
+  ? "grayscale(0%) brightness(1)"
+  : `grayscale(100%) brightness(${brightness})`,
+
                 }}
               >
                 

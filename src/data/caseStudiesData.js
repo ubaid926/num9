@@ -70,6 +70,16 @@ import icomLogo from "../assets/Logos/Updated_Logos/Clean restored ICOM network 
 import genesisLogo from "../assets/Logos/Updated_Logos/GENESIS.Logo.032218_Site_PNG_RevB.webp";
 import standardCharteredLogo from "../assets/Logos/Updated_Logos/Standard_Chartered__282021_29.webp";
 
+import skinnyLogo from "../assets/caseStudies/skinny/Jordan_s_Skinny_Mixes_Logo_f5994884-b437-492f-aa4a-b5debcc1c695_1543x_copy_copy.png";
+import skinnyHeroBg from "../assets/caseStudies/skinny/skinny-mixes-hero.avif";
+import skinnyImg1 from "../assets/caseStudies/skinny/skinny-mixes-1.avif";
+import skinnyImg2 from "../assets/caseStudies/skinny/skinny-mixes-2.avif";
+import skinnyImg3 from "../assets/caseStudies/skinny/skinny-mixes-3.avif";
+import skinnyImg4 from "../assets/caseStudies/skinny/skinny-mixes-4.avif";
+import skinnyImg5 from "../assets/caseStudies/skinny/skinny-mixes-5.avif";
+import skinnyImg6 from "../assets/caseStudies/skinny/skinny-mixes-6.avif";
+import skinnyImg7 from "../assets/caseStudies/skinny/Pink Coffee Activation Cutout.webp";
+
 
 export const caseStudiesData = {
   lexus: {
@@ -2973,8 +2983,171 @@ export const caseStudiesData = {
     },
   },
 
-
+  skinny: {
+    id: "skinny",
+    slug: "skinny",
+    name: "Skinny Mixes",
+    breadcrumbName: "Skinny Mixes",
+    category: "Beverage / Experiential Marketing",
+    hero: {
+      subheading: "SKINNY MIXES CASE STUDY — EXPERIENTIAL BRAND ACTIVATION",
+      titleLine1: "NYC Street Sampling &",
+      titleLine2: "Experiential Brand Activation",
+      bgImage: skinnyHeroBg,
+      accentColor: "#E4007D",
+      tags: [
+        "Experiential Marketing",
+        "Brand Activation",
+        "Speciality Marketing",
+      ],
+      pdfCardText: "Get this case study in PDF to your inbox.",
+    },
+    overviewSection: {
+      summaryHeading: "The summary",
+      summaryAccentDot: ".",
+      summaryText:
+        "Number9 Creative & Media partnered with Skinny Mixes to execute a high-impact street sampling and experiential marketing activation across Manhattan. Our creative agency deployed branded street teams, interactive photo opportunities, and live consumer interviews to distribute Skinnyccino beverages directly to New York City consumers. This media production and physical activation campaign successfully placed the product into thousands of hands, generating organic social media engagement and authentic consumer feedback.",
+      logo: skinnyLogo,
+      logoAlt: "Skinny Mixes logo",
+      stats: [
+        {
+          targetValue: 15000,
+          suffix: "+",
+          label: "Samples distributed",
+          subtext: null,
+        },
+        {
+          targetValue: 2025,
+          suffix: "",
+          label: "Campaign date",
+          subtext: "March",
+        },
+      ],
+      projectTags: [
+        "Street Sampling",
+        "Experiential Marketing",
+        "Brand Ambassadors",
+        "Social Content Creation",
+      ],
+      quoteSection: {
+        graphicImage: skinnyImg7,
+        graphicAlt: "Skinny Mixes brand ambassador distributing samples in Manhattan",
+        quote:
+          '"Launching Skinnyccino to New York City consumers required an experiential marketing strategy that cut through the noise of crowded public spaces. Number9 executed a high-energy physical activation and street sampling campaign across Manhattan that drove immediate product discovery, authentic consumer reactions, and massive social engagement."',
+        attributionTitle: "Brand Marketing Team",
+        attributionCompany: "Skinny Mixes",
+      },
+    },
+    storySection: {
+      about: {
+        title: "About",
+        clientName: "Skinny Mixes",
+        description:
+          "Skinny Mixes is a consumer beverage brand specializing in flavorful, low-calorie syrups and drink mixers designed for low-sugar indulgence. To launch its new Skinnyccino ready-to-drink product to the New York City market, Skinny Mixes hired Number9 Creative & Media. Our experiential marketing company developed a street-level brand activation focused on immediate product discovery, face-to-face consumer engagement, and digital social storytelling.",
+      },
+      challenge: {
+        heading: "The challenge",
+        leftParagraphs: [
+          "Launching a new beverage in the highly competitive New York City market requires capturing consumer attention in crowded public spaces.",
+          "Skinny Mixes needed an experiential marketing strategy to introduce Skinnyccino to target audiences, drive firsthand product trials, and maximize brand visibility.",
+          "Beyond standard product distribution, the objective was to facilitate meaningful brand interactions that generated word-of-mouth marketing and user-generated content.",
+        ],
+        rightParagraph:
+          "Our challenge at Number9 Creative & Media was to elevate a standard product giveaway into a comprehensive brand activation campaign that drove product trials, recorded authentic consumer reactions, and amplified the campaign's reach through social media content.",
+      },
+      solution: {
+        heading: "The solution.",
+        description:
+          "Number9 Creative & Media executed a targeted street sampling campaign for Skinnyccino in high-foot-traffic Manhattan neighborhoods, including Union Square, Times Square, and SoHo. Our fully trained brand ambassadors, dressed in signature bright pink uniforms, engaged pedestrians through physical product samples, branded experiential displays, and interactive photo frames that invited the public to participate.\n\nTo amplify this experiential marketing event online, our media production team filmed and edited a social media video reel titled \"What Does NYC Think of Skinnyccino?\" This content featured live street interviews capturing authentic consumer reactions to the beverage. By integrating physical event marketing with digital content creation, Number9 transformed in-person product discovery into highly shareable social media marketing assets.",
+        customerInteractions: {
+          stat: "8,000+",
+          label: "Direct Consumer Interactions",
+        },
+      },
+      services: {
+        heading: "Key Services Delivered.",
+        items: [
+          "Experiential Marketing",
+          "Street Sampling",
+          "Brand Ambassadors",
+          "Guerrilla Marketing",
+          "Consumer Engagement",
+          "Social Content Creation",
+        ],
+      },
+      outcome: {
+        heading: "The outcome",
+        intro:
+          "The Number9 Creative & Media campaign successfully launched Skinnyccino in Manhattan, driving thousands of direct consumer interactions and scaling the brand’s reach through organic social media content and word-of-mouth marketing.\n\nOur experiential marketing and media production teams achieved the following results:",
+        bullets: [
+          "Distributed over 15,000 Skinnyccino samples to drive immediate product trials across Manhattan.",
+          "Generated more than 8,000 direct consumer interactions via face-to-face brand engagement and product introductions.",
+          "Facilitated 500+ user-generated social media posts, expanding brand visibility beyond the physical street team activation.",
+          "Designed and deployed branded photo opportunities that incentivized consumer engagement with the marketing campaign.",
+          "Filmed and produced the \"What Does NYC Think of Skinnyccino?\" social media video reel, capturing authentic street-level feedback for digital distribution.",
+          "Executed activations in high-traffic New York City locations, including Union Square, Times Square, and SoHo, to maximize brand discovery.",
+        ],
+        closing:
+          "By seamlessly integrating product sampling, experiential event design, and social media content creation, Number9 Creative & Media successfully scaled a local street marketing activation into a broader digital brand conversation for Skinny Mixes.",
+        galleryImages: [
+          {
+            src: skinnyImg3,
+            images: [
+              {
+                src: skinnyImg3,
+                title: "Branded Photo Opportunities",
+                subtitle: "INTERACTIVE CONSUMER ENGAGEMENT",
+              },
+              {
+                src: skinnyImg6,
+                title: "Times Square Consumer Discovery",
+                subtitle: "AUTHENTIC STREET SURVEYS",
+              },
+            ],
+            title: "Branded Photo Opportunities",
+            subtitle: "INTERACTIVE CONSUMER ENGAGEMENT",
+          },
+          {
+            src: skinnyImg5,
+            images: [
+              {
+                src: skinnyImg5,
+                title: "Live Street Interviews",
+                subtitle: "AUTHENTIC NYC CONSUMER FEEDBACK",
+              },
+              {
+                src: skinnyImg4,
+                title: "Union Square Street Teams",
+                subtitle: "HIGH-FOOT-TRAFFIC PRODUCT DISCOVERY",
+              },
+            ],
+            title: "Live Street Interviews",
+            subtitle: "AUTHENTIC NYC CONSUMER FEEDBACK",
+          },
+          {
+            src: skinnyImg1,
+            images: [
+              {
+                src: skinnyImg1,
+                title: "Times Square Street Sampling",
+                subtitle: "15,000+ SAMPLES DISTRIBUTED",
+              },
+              {
+                src: skinnyImg2,
+                title: "Direct Consumer Engagement",
+                subtitle: "ORGANIC WORD-OF-MOUTH BUZZ",
+              },
+            ],
+            title: "Times Square Street Sampling",
+            subtitle: "15,000+ SAMPLES DISTRIBUTED",
+          },
+        ],
+      },
+    },
+  },
 };
+
+caseStudiesData["skinny-mixes"] = caseStudiesData.skinny;
 
 
 
@@ -2990,5 +3163,6 @@ export function getCaseStudy(slug) {
   if (key === "empire-cinemas") return caseStudiesData.empire;
   if (key === "lifegift") return caseStudiesData.lifegive;
   if (key === "standard-chartered") return caseStudiesData["standard-chartered"];
+  if (key === "skinny" || key === "skinny-mixes") return caseStudiesData.skinny;
   return caseStudiesData[key] || caseStudiesData.lexus;
 }

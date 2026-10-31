@@ -10,34 +10,64 @@ export default function AppNav({
   onNavigate,
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrollbarCompensation, setScrollbarCompensation] = useState(0);
 
   const menuButtonRef = useRef(null);
-  const [menuOrigin, setMenuOrigin] = useState({
-    x: window.innerWidth - 40,
-    y: 40,
+  const [menuOrigin, setMenuOrigin] = useState(() => {
+    if (typeof window !== "undefined") {
+      return { x: window.innerWidth - 40, y: 40 };
+    }
+    return { x: 1200, y: 40 };
   });
 
-  const [menuRadius, setMenuRadius] = useState(150);
+  const [menuRadius, setMenuRadius] = useState(1800);
+
+  const updateMenuDimensions = () => {
+    if (!menuButtonRef.current) return;
+    const rect = menuButtonRef.current.getBoundingClientRect();
+    if (rect.width > 0 && rect.height > 0) {
+      const x = Math.round(rect.left + rect.width / 2);
+      const y = Math.round(rect.top + rect.height / 2);
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      const radius =
+        Math.ceil(
+          Math.max(
+            Math.hypot(x, y),
+            Math.hypot(w - x, y),
+            Math.hypot(x, h - y),
+            Math.hypot(w - x, h - y)
+          )
+        ) + 40;
+
+      setMenuOrigin((prev) => {
+        if (prev.x === x && prev.y === y) return prev;
+        return { x, y };
+      });
+      setMenuRadius((prev) => {
+        if (prev === radius) return prev;
+        return radius;
+      });
+    }
+  };
+
+  useEffect(() => {
+    updateMenuDimensions();
+    const rafId = requestAnimationFrame(updateMenuDimensions);
+    window.addEventListener("resize", updateMenuDimensions, { passive: true });
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("resize", updateMenuDimensions);
+    };
+  }, []);
 
   const openMenu = () => {
-    const rect = menuButtonRef.current?.getBoundingClientRect();
-
-    if (rect) {
-      const x = rect.left + rect.width / 2;
-      const y = rect.top + rect.height / 2;
-
-      setMenuOrigin({ x, y });
-
-      const radius = Math.max(
-        Math.hypot(x, y),
-        Math.hypot(window.innerWidth - x, y),
-        Math.hypot(x, window.innerHeight - y),
-        Math.hypot(window.innerWidth - x, window.innerHeight - y)
-      );
-
-      setMenuRadius(radius + 50);
+    const sbWidth = typeof window !== "undefined" ? window.innerWidth - document.documentElement.clientWidth : 0;
+    setScrollbarCompensation(sbWidth);
+    if (sbWidth > 0) {
+      document.body.style.paddingRight = `${sbWidth}px`;
     }
-
+    updateMenuDimensions();
     setIsMenuOpen(true);
   };
 
@@ -61,23 +91,37 @@ export default function AppNav({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Lock body scroll when full-screen menu is open
+  // Lock both documentElement and body scroll with scrollbar compensation to eliminate horizontal shifting
   useEffect(() => {
+    let unlockTimer = null;
+
     if (isMenuOpen) {
+      const sbWidth = window.innerWidth - document.documentElement.clientWidth;
+      setScrollbarCompensation(sbWidth);
+      if (sbWidth > 0) {
+        document.body.style.paddingRight = `${sbWidth}px`;
+      }
+      document.documentElement.style.overflow = "hidden";
       document.body.style.overflow = "hidden";
       setIsNavbarVisible(true);
-
-      if (setActiveDropdown) setActiveDropdown("menu-open");
     } else {
-      document.body.style.overflow = "unset";
-
-      if (setActiveDropdown) setActiveDropdown(null);
+      // Delay restoring scroll and compensation until the circular shrink animation completes (500ms)
+      // This guarantees the layout remains 100% frozen and still while the menu closes
+      unlockTimer = setTimeout(() => {
+        document.documentElement.style.overflow = "";
+        document.body.style.overflow = "";
+        document.body.style.paddingRight = "";
+        setScrollbarCompensation(0);
+      }, 700);
     }
 
     return () => {
-      document.body.style.overflow = "unset";
+      if (unlockTimer) clearTimeout(unlockTimer);
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
     };
-  }, [isMenuOpen, setActiveDropdown]);
+  }, [isMenuOpen]);
 
   // Show navbar on scroll up, hide on scroll down
   useEffect(() => {
@@ -159,6 +203,9 @@ export default function AppNav({
             : "-translate-y-full"
           }
         `}
+        style={{
+          paddingRight: scrollbarCompensation > 0 ? `${scrollbarCompensation}px` : undefined,
+        }}
       >
         <div className="navbar-desktop-container py-3 sm:py-4 lg:py-2.5 flex items-center justify-between">
           {/* Left: Brand Logo */}
@@ -216,28 +263,26 @@ export default function AppNav({
       </header>
 
       {/* OPENED FULL-SCREEN MENU */}
-
-      {/* OPENED FULL-SCREEN MENU */}
       <div
-        className="
-    fixed inset-0 z-[100]
-    bg-[#0e7428]
-    text-white
-    flex flex-col
-    justify-between
-    overflow-y-auto
-    no-scrollbar
-    transition-[clip-path]
-    duration-[850ms]
-    ease-[cubic-bezier(0.76,0,0.24,1)]
-  "
+        className="fixed inset-0 z-[100] h-[100dvh] max-h-[100dvh] bg-[#0e7428] text-white flex flex-col justify-between overflow-y-auto no-scrollbar overscroll-contain"
         style={{
           clipPath: isMenuOpen
             ? `circle(${menuRadius}px at ${menuOrigin.x}px ${menuOrigin.y}px)`
             : `circle(0px at ${menuOrigin.x}px ${menuOrigin.y}px)`,
+          WebkitClipPath: isMenuOpen
+            ? `circle(${menuRadius}px at ${menuOrigin.x}px ${menuOrigin.y}px)`
+            : `circle(0px at ${menuOrigin.x}px ${menuOrigin.y}px)`,
+
+          transition: "clip-path 700ms cubic-bezier(0.65, 0, 0.35, 1), -webkit-clip-path 700ms cubic-bezier(0.65, 0, 0.35, 1)",
+          WebkitTransition: "clip-path 700ms cubic-bezier(0.65, 0, 0.35, 1), -webkit-clip-path 700ms cubic-bezier(0.65, 0, 0.35, 1)",
 
           pointerEvents: isMenuOpen ? "auto" : "none",
-
+          willChange: "clip-path",
+          transform: "translateZ(0)",
+          WebkitBackfaceVisibility: "hidden",
+          backfaceVisibility: "hidden",
+          overscrollBehavior: "contain",
+          paddingRight: scrollbarCompensation > 0 ? `${scrollbarCompensation}px` : undefined,
           backgroundImage:
             "linear-gradient(135deg, #0d6b24 0%, #0e7428 50%, #11842e 100%)",
         }}
@@ -254,7 +299,7 @@ export default function AppNav({
         </div> */}
 
         {/* Top Header Row */}
-        <div className="relative z-10 navbar-desktop-container py-3 sm:py-4 lg:py-2.5 flex items-center justify-between shrink-0">
+        <div className="relative z-10 navbar-desktop-container py-2.5 sm:py-3 lg:py-3 flex items-center justify-between shrink-0">
           <a
             href="/"
             onClick={(e) => {
@@ -270,119 +315,130 @@ export default function AppNav({
             <img
               src={whiteLogo}
               alt="Number 9"
-              className="h-12 sm:h-14 lg:h-16 w-auto object-contain block brightness-0 invert transition-transform group-hover:scale-[1.02]"
+              className="h-10 sm:h-12 lg:h-14 w-auto object-contain block brightness-0 invert transition-transform group-hover:scale-[1.02]"
             />
           </a>
-
-
 
           <button
             onClick={() => setIsMenuOpen(false)}
             aria-label="Close menu"
             className="w-6 h-6 flex items-center justify-center text-white hover:rotate-90 hover:opacity-75 transition-all duration-200 focus:outline-none cursor-pointer shrink-0"
           >
-            <X className="w-8 h-8 sm:w-9 sm:h-9 stroke-[2.2] shrink-0" />
+            <X className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2] shrink-0" />
           </button>
-
         </div>
 
-        {/* Content Container */}
-        <div
-          className={`
- 
-relative z-10 w-full
-px-6 sm:px-10 lg:px-16
-flex-1 flex flex-col justify-center
-lg:items-center
-py-6 sm:py-10
+        {/* Content Container (Left-aligned with logo and social links, zero center shift) */}
+        <div className="relative z-10 w-full navbar-desktop-container flex-1 min-h-0 flex flex-col justify-center items-start py-1 sm:py-2 lg:py-2">
+          <nav className="flex flex-col items-start w-full">
+            {menuItems.map((item, idx) => {
+              const isHovered = hoveredIndex === idx;
 
-
-  transition-all duration-500 ease-out
-
-  ${isMenuOpen
-              ? "opacity-100 translate-y-0 delay-[450ms]"
-              : "opacity-0 translate-y-[30px] delay-0"
-            }
-`}
-        >
-          <div className="w-full max-w-[700px] lg:max-w-[900px]">
-            <div className="hidden w-full h-[1px] bg-white/40" />
-
-            <nav className="flex flex-col">
-              {menuItems.map((item, idx) => {
-                const isHovered = hoveredIndex === idx;
-
-                return (
-                  <div key={item.label} className="w-full">
-                    <a
-                      href={item.href || (item.isPage === "home" ? "/" : `/${item.isPage}`)}
-                      onClick={(e) => {
-                        if (item.isPage && onNavigate) {
-                          e.preventDefault();
-                          onNavigate(item.isPage);
-                        }
-                        setIsMenuOpen(false);
-                      }}
-                      onMouseEnter={() => setHoveredIndex(idx)}
-
-                      className={`
-  block w-full
-
-  py-[8px]
-  sm:py-[10px]
-  lg:py-[12px]
-
- 
-
-
-text-[clamp(60px,17vw,76px)]
-sm:text-[116px]
-lg:text-[clamp(56px,9vh,82px)]
-2xl:text-[136px]
+              return (
+                <div key={item.label} className="w-full text-left">
+                  <a
+                    href={item.href || (item.isPage === "home" ? "/" : `/${item.isPage}`)}
+                    onClick={(e) => {
+                      if (item.isPage && onNavigate) {
+                        e.preventDefault();
+                        onNavigate(item.isPage);
+                      }
+                      setIsMenuOpen(false);
+                    }}
+                    onMouseEnter={() => setHoveredIndex(idx)}
+                    className={`nav-menu-link inline-block text-left tracking-[0.01em] font-grift-black transition-all duration-200 ${isHovered ? "text-white/50" : "text-white"
+                      }`}
+                  >
+                    {item.label}
+                  </a>
+                </div>
+              );
+            })}
+          </nav>
+        </div>
 
 
 
-  leading-[0.95]
-  
-tracking-[0.01em]
-
-  font-grift-black
-
-  transition-all duration-200
-
-
-${isHovered
-                          ? "text-white/50 px-1"
-                          : "text-white px-1"
-                        }
-
-`}
-
-                    >
-                      {item.label}
-                    </a>
-
-                    <div className="hidden w-full h-[1px] bg-white/40" />
-                  </div>
-                );
-              })}
-            </nav>
-
-            {/* Existing Contact Us section preserved */}
-            {/* <div className="pt-6 sm:pt-8">
+        {/* Bottom Social Links (Static in place) */}
+        <div className="relative z-10 w-full navbar-desktop-container pb-4 sm:pb-5 lg:pb-6 shrink-0">
+          <div className="flex flex-wrap items-center gap-6 sm:gap-10 lg:gap-14">
+            {[
+              { label: "FACEBOOK", href: "#" },
+              { label: "INSTAGRAM", href: "#" },
+              { label: "LINKEDIN", href: "#" },
+            ].map((social) => (
               <a
-                href="#contact"
-                onClick={() => setIsMenuOpen(false)}
-                className="w-full bg-white text-slate-900 hover:text-black font-bold text-[16px] sm:text-[18px] py-3.5 px-6 sm:px-8 rounded-full flex items-center justify-between shadow-lg hover:bg-slate-100 hover:scale-[1.01] transition-all duration-200 group"
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => {
+                  if (social.href === "#") e.preventDefault();
+                }}
+                className="
+          relative inline-block
+          text-white
+          text-[13px] sm:text-[15px] lg:text-[17px]
+          font-bold
+          tracking-[0.16em]
+          uppercase
+          pb-1.5
+          transition-opacity duration-200
+          hover:opacity-60
+          after:content-['']
+          after:absolute
+          after:left-0
+          after:bottom-0
+          after:h-[1px]
+          after:w-[26px]
+          after:bg-white/50
+        "
               >
-                <span>Contact Us</span>
-                <ArrowRight className="w-5 h-5 text-slate-900 group-hover:translate-x-1 transition-transform duration-200" />
+                {social.label}
               </a>
-            </div> */}
+            ))}
           </div>
         </div>
+        {/* Bottom Right Contact Button */}
+        <a
+          href="/contact"
+          onClick={(e) => {
+            if (onNavigate) {
+              e.preventDefault();
+              setIsMenuOpen(false);
+              onNavigate("contact");
+            }
+          }}
 
-        <div className="relative z-10 h-6 sm:h-10 shrink-0" />
+          className="
+  relative sm:absolute
+  z-20
+  w-[calc(100%-30px)] sm:w-auto
+  mx-[15px] sm:mx-0
+  mb-[15px] sm:mb-0
+  bottom-auto sm:bottom-5 lg:bottom-6
+  right-auto sm:right-10 lg:right-16
+  rounded-full
+  
+bg-white
+text-[#0E7428]
+hover:bg-[#E8F5E9]
+border border-white
+
+  font-semibold
+  text-[16px]
+  sm:text-[15px] lg:text-[16px]
+  px-6 sm:px-8
+  py-[14px] sm:py-3
+  text-center
+  transition-colors duration-200
+  whitespace-nowrap
+"
+
+        >
+          Contact
+        </a>
+
       </div>
     </>
   );

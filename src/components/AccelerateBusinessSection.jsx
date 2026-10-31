@@ -1,6 +1,6 @@
 
 import React from "react";
-import business from "../assets/bussinesAcltImage.webp";
+import business from "../assets/Gemini_Generated_Image_dvw68dvw68dvw68d 1.webp";
 
 const AccelerateBusinessSection = ({ onScheduleClick }) => {
   return (

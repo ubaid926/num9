@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import AppNav from './components/nav'
 import HeroSectionFullWidth from './components/heroSection'
 import CaseStudies from './components/caseStudies'
@@ -15,7 +15,7 @@ import ContactPage from './pages/ContactPage'
 import OurWorkPage from './pages/OurWorkPage'
 import CaseStudyTemplate from './pages/CaseStudyTemplate'
 import ServiceDetailPage from './pages/ServiceDetailPage'
-import aboutHeroImg from './assets/aboutHeroImage.webp'
+import aboutHeroImg from './assets/Collaborative Design in a Warm Studio 1.webp'
 import servicesHeroImg from './assets/Overlapping Circles Office Collaboration Cutout.webp'
 import workHeroImg from './assets/workCar.webp'
 import homeHeroImg from './assets/Metallic Blue Lexus in a Warehouse 1.webp'
@@ -108,6 +108,23 @@ if (typeof window !== 'undefined') {
 export default function App() {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [page, setPage] = useState(() => resolvePageFromLocation());
+  const [previousPage, setPreviousPage] = useState(null);
+  const historyStackRef = useRef([resolvePageFromLocation()]);
+
+  // Seed history state on initial mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const initial = resolvePageFromLocation();
+      if (!window.history.state || !window.history.state.page) {
+        try {
+          const initialPath = initial === 'home' ? '/' : `/${initial.replace(/^\/+/, '')}`;
+          window.history.replaceState({ page: initial, isInitial: true }, '', initialPath);
+        } catch (e) {
+          // Graceful fallback
+        }
+      }
+    }
+  }, []);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -120,14 +137,30 @@ export default function App() {
 
   useEffect(() => {
     const handlePopState = () => {
-      setPage(resolvePageFromLocation());
+      const newPage = resolvePageFromLocation();
+      setPreviousPage(page);
+
+      if (
+        historyStackRef.current.length > 1 &&
+        historyStackRef.current[historyStackRef.current.length - 2] === newPage
+      ) {
+        historyStackRef.current.pop();
+      } else {
+        historyStackRef.current.push(newPage);
+      }
+
+      setPage(newPage);
     };
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
-  }, []);
+  }, [page]);
 
   const handleNavigate = (newPage) => {
     const target = newPage || 'home';
+    if (target === page) return;
+
+    setPreviousPage(page);
+    historyStackRef.current.push(target);
     preloadHeroForPage(target);
     setPage(target);
 
@@ -138,13 +171,37 @@ export default function App() {
           targetPath = `/${target.replace(/^\/+/, '')}`;
         }
         if (window.location.pathname !== targetPath || window.location.search) {
-          window.history.pushState({}, '', targetPath);
+          window.history.pushState({ page: target, from: page }, '', targetPath);
         }
       } catch (e) {
         // Fallback gracefully
       }
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }
+  };
+
+  const handleBack = (fallback = 'home') => {
+    if (typeof window !== 'undefined') {
+      const hasHistoryStack = historyStackRef.current.length > 1;
+      const hasHistoryStateFrom = !!(window.history.state && window.history.state.from);
+      const isNotInitialState = !!(window.history.state && !window.history.state.isInitial);
+
+      if ((hasHistoryStack || hasHistoryStateFrom || isNotInitialState) && window.history.length > 1) {
+        window.history.back();
+        return;
+      }
+
+      if (previousPage) {
+        handleNavigate(previousPage);
+        return;
+      }
+
+      if (window.history.state && window.history.state.from) {
+        handleNavigate(window.history.state.from);
+        return;
+      }
+    }
+    handleNavigate(fallback || 'home');
   };
 
   // Intercept standard internal <a> clicks for seamless client-side SPA routing
@@ -192,6 +249,8 @@ export default function App() {
 
   const sharedNavProps = {
     onNavigate: handleNavigate,
+    onBack: handleBack,
+    previousPage,
     activeDropdown,
     setActiveDropdown,
   };

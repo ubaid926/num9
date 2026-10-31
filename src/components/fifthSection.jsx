@@ -950,7 +950,8 @@ export default function FifthSection({ onNavigate }) {
     if (offset < count || offset >= count * 2) {
       // Jump to the identical card in the middle copy, invisibly.
       setIsLoopResetting(true);
-      setOffset((current) => current < count ? current + count : current - count);
+      const normalized = ((offset % count) + count) % count;
+      setOffset(count + normalized);
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           setIsLoopResetting(false);
@@ -959,6 +960,49 @@ export default function FifthSection({ onNavigate }) {
       });
     } else {
       isSliding.current = false;
+    }
+  };
+
+  const handleDotClick = (index) => {
+    if (isSliding.current || isLoopResetting) return;
+
+    const count = testimonials.length;
+    const currentActive = ((offset % count) + count) % count;
+    let diff = index - currentActive;
+    if (diff === 0) return;
+
+    if (diff > count / 2) {
+      diff -= count;
+    } else if (diff < -count / 2) {
+      diff += count;
+    }
+
+    isSliding.current = true;
+    setOffset((current) => current + diff);
+  };
+
+  const carouselContainerRef = useRef(null);
+
+  const handleCardClick = (e, t) => {
+    if (isSliding.current || isLoopResetting) return;
+
+    const cardRect = e.currentTarget.getBoundingClientRect();
+    const cardCenter = cardRect.left + cardRect.width / 2;
+
+    const containerRect = carouselContainerRef.current?.getBoundingClientRect();
+    const centerRef = containerRect
+      ? containerRect.left + containerRect.width / 2
+      : window.innerWidth / 2;
+
+    const step = cardW + rowGap;
+    const distance = cardCenter - centerRef;
+    const stepsToMove = Math.round(distance / step);
+
+    if (stepsToMove !== 0) {
+      isSliding.current = true;
+      setOffset((current) => current + stepsToMove);
+    } else {
+      handleNavigateClick(t.route);
     }
   };
 
@@ -1127,7 +1171,7 @@ export default function FifthSection({ onNavigate }) {
 
 
 
-          <div className="w-full max-w-[1920px] mx-auto lg:flex lg:justify-start lg:pl-[2.2%]">
+          <div ref={carouselContainerRef} className="w-full max-w-[1920px] mx-auto lg:flex lg:justify-start lg:pl-[2.2%]">
 
 
 
@@ -1184,7 +1228,7 @@ export default function FifthSection({ onNavigate }) {
 
 
 
-                  onClick={() => handleNavigateClick(t.route)}
+                  onClick={(e) => handleCardClick(e, t)}
                   className="shrink-0 bg-white border border-slate-100 rounded-2xl flex flex-col justify-between cursor-pointer transition-all duration-300 hover:-translate-z-2 shadow-md hover:shadow-xl"
 
 
@@ -1305,11 +1349,40 @@ export default function FifthSection({ onNavigate }) {
 
 
 
+          {/* =================================================
+              DOTS — below the carousel
+          ================================================= */}
+          <div className="flex items-center justify-center gap-2 sm:gap-2.5 mt-8 sm:mt-10">
+            {testimonials.map((_, index) => {
+              const activeIndex = ((offset % testimonials.length) + testimonials.length) % testimonials.length;
+              const isActiveDot = index === activeIndex;
+
+              return (
+                <button
+                  key={index}
+                  type="button"
+                  onClick={() => handleDotClick(index)}
+                  aria-label={`Go to slide ${index + 1}`}
+                  className={`
+                    rounded-full
+                    transition-all
+                    duration-300
+                    cursor-pointer
+                    ${isActiveDot
+                      ? 'w-7 sm:w-8 h-2 sm:h-2.5 bg-[#28B023]'
+                      : 'w-2 sm:w-2.5 h-2 sm:h-2.5 bg-gray-300 hover:bg-gray-400'
+                    }
+                  `}
+                />
+              );
+            })}
+          </div>
+
           {/* Arrows — centered, both green, desktop only */}
 
 
 
-          <div className="hidden sm:flex items-center justify-center gap-4 mt-12 pb-5">
+          <div className="hidden sm:flex items-center justify-center gap-4 mt-6 pb-5">
 
 
 

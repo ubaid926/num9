@@ -11,6 +11,8 @@ export default function CaseStudyTemplate({
   slug = "lexus",
   caseStudy: caseStudyProp,
   onNavigate,
+  onBack,
+  previousPage,
   activeDropdown,
   setActiveDropdown,
 }) {
@@ -38,6 +40,8 @@ export default function CaseStudyTemplate({
       <CaseStudyHeroSection
         caseStudy={caseStudy}
         onNavigate={onNavigate}
+        onBack={onBack}
+        previousPage={previousPage}
       />
 
       {/* Overview Sections (Summary + Animated Stats + Quote) */}

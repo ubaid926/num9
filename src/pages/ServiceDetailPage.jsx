@@ -208,6 +208,8 @@ function TagPill({ label }) {
 export default function ServiceDetailPage({
   slug,
   onNavigate,
+  onBack,
+  previousPage,
   activeDropdown,
   setActiveDropdown,
 }) {
@@ -232,10 +234,14 @@ export default function ServiceDetailPage({
         <div className="flex-1 flex flex-col items-center justify-center text-white gap-4 px-6">
           <h1 className="font-grift-semibold text-[32px] text-[#3FC000]">Page not found</h1>
           <button
-            onClick={() => onNavigate?.("our-work")}
-            className="flex items-center gap-2 text-[14px] text-white/60 hover:text-white transition-colors"
+            onClick={() => {
+              if (onBack) onBack();
+              else if (typeof window !== "undefined" && window.history.length > 1) window.history.back();
+              else onNavigate?.(previousPage || "home");
+            }}
+            className="flex items-center gap-2 text-[14px] text-white/60 hover:text-white transition-colors cursor-pointer"
           >
-            <ArrowLeft size={16} /> Back to Our Clients
+            <ArrowLeft size={16} /> Back
           </button>
         </div>
       </div>
@@ -263,38 +269,51 @@ export default function ServiceDetailPage({
 
           {/* Eyebrow Breadcrumb: "01 / THIS IS OUR PROCESS" on mobile, Back to Case Studies on desktop */}
        
-{/* Back to Case Studies - Mobile & Desktop */}
-<div className="flex items-center mb-4 sm:mb-6 lg:mb-0">
-  <button
-    type="button"
-    onClick={() => onNavigate?.("our-work")}
-    className="
-      inline-flex
-      items-center
-      gap-3 lg:gap-4
-      font-grift-medium
-      text-[14px] sm:text-[15px] lg:text-[17px]
-      text-[#171717]
-      hover:text-[#299F00]
-      transition-colors
-      group
-      cursor-pointer
-    "
-  >
-    <ArrowLeft
-      size={21}
-      strokeWidth={2}
-      className="
-        shrink-0
-        lg:w-[25px] lg:h-[25px]
-        transition-transform duration-200
-        group-hover:-translate-x-1
-      "
-    />
-
-    <span>Back to Case Studies</span>
-  </button>
-</div>
+          {/* Back Button - Mobile & Desktop */}
+          <div className="flex items-center mb-4 sm:mb-6 lg:mb-0">
+            <a
+              href={
+                previousPage
+                  ? previousPage === "home"
+                    ? "/"
+                    : `/${previousPage.replace(/^\/+/, "")}`
+                  : "/"
+              }
+              onClick={(e) => {
+                e.preventDefault();
+                if (onBack) {
+                  onBack();
+                } else if (typeof window !== "undefined" && window.history.length > 1) {
+                  window.history.back();
+                } else if (onNavigate) {
+                  onNavigate(previousPage || "home");
+                }
+              }}
+              className="
+                inline-flex
+                items-center
+                gap-2.5 lg:gap-3
+                font-grift-medium
+                text-[14px] sm:text-[15px] lg:text-[17px]
+                text-[#171717]
+                hover:text-[#299F00]
+                transition-colors
+                group
+                cursor-pointer
+              "
+            >
+              <ArrowLeft
+                size={19}
+                strokeWidth={2}
+                className="
+                  shrink-0
+                  transition-transform duration-200
+                  group-hover:-translate-x-1
+                "
+              />
+              <span>Back</span>
+            </a>
+          </div>
 
 
           {/* Main Content */}
@@ -304,22 +323,41 @@ export default function ServiceDetailPage({
             <div className="min-w-0">
 
               {/* Main Heading: two-tone styling for all services (first part black, last word green) */}
-              <h1 className="font-grift-semibold text-[88px] sm:text-[68px] lg:text-[80px] xl:text-[100px] 2xl:text-[116px] leading-[1.0] sm:leading-[1.05] tracking-[-0.045em] mb-4 sm:mb-5 text-black">
-                {(() => {
-                  const heading = data.heading || "";
-                  const words = heading.trim().split(/\s+/);
-                  if (words.length <= 1) {
-                    return <FitHeadingWord text={heading} isLastWord={true} />;
-                  }
-                  const lastWord = words.pop();
-                  const firstPart = words.join(" ");
-                  return (
-                    <>
-                      <FitHeadingWord text={firstPart} isLastWord={false} />
-                      <FitHeadingWord text={lastWord} isLastWord={true} />
-                    </>
-                  );
-                })()}
+              <h1 className="font-grift-semibold text-[44px] min-[420px]:text-[52px] sm:text-[68px] lg:text-[76px] xl:text-[96px] 2xl:text-[110px] leading-[1.0] sm:leading-[1.05] tracking-[-0.045em] mb-4 sm:mb-5 text-black">
+                {data.titleLine1 && data.titleLine2 ? (
+                  <>
+                    <span className="block text-black">{data.titleLine1}</span>
+                    <span className="block">
+                      {(() => {
+                        const words = data.titleLine2.trim().split(/\s+/);
+                        const last = words.pop();
+                        const rest = words.join(" ");
+                        return (
+                          <>
+                            {rest && <span className="text-black">{rest} </span>}
+                            <span className="text-[#299F00]">{last}</span>
+                          </>
+                        );
+                      })()}
+                    </span>
+                  </>
+                ) : (
+                  (() => {
+                    const heading = data.heading || "";
+                    const words = heading.trim().split(/\s+/);
+                    if (words.length <= 1) {
+                      return <FitHeadingWord text={heading} isLastWord={true} />;
+                    }
+                    const lastWord = words.pop();
+                    const firstPart = words.join(" ");
+                    return (
+                      <>
+                        <FitHeadingWord text={firstPart} isLastWord={false} />
+                        <FitHeadingWord text={lastWord} isLastWord={true} />
+                      </>
+                    );
+                  })()
+                )}
               </h1>
 
               {/* Subtitle */}

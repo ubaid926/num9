@@ -1,10 +1,10 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
-import tradeShowImage from "../assets/Neon_Prism_Stage_Star.webp";
-import digitalImage from "../assets/digital-experience.jpg";
-import andrasImage from "../assets/andras.jpg";
-import dataAnalysisImage from "../assets/data-analysis.jpg";
-import interactiveImage from "../assets/Paper-Cut Web Design Workspace.png";
+import tradeShowImage from "../assets/whatWeDoImages/exact_reference_star_trade_show.webp";
+import dialImage from "../assets/whatWeDoImages/Finger pressing a brushed silver dial 1.webp";
+import suvConfiguratorImage from "../assets/whatWeDoImages/Touchscreen SUV configurator 1.webp";
+import beigeFabricImage from "../assets/whatWeDoImages/Hand Lifting Textured Beige Fabric 1.webp";
+import cinematicCollageImage from "../assets/whatWeDoImages/Cinematic Filmmaking Blob Collage.webp";
 import laptopImage from "../assets/laptopImage.webp";
 
 /* =========================================================
@@ -120,10 +120,12 @@ const services = [
   {
     id: "01",
     titleLine1: "TRADE SHOWS /",
-    titleLine2: "BRAND ACTIVATION",
+    titleLine2: "EXPERIENTIAL MARKETING",
+    route: "service/trade-shows-experiential-marketing",
     headingGradient:
       "linear-gradient(180deg, #FCFBFB 0%, #E8E1E0 49%, #F2F2F1 100%)",
-    description: "We create the experiences\nthat make brands matter.",
+    description:
+      "We design custom trade show booths and immersive experiences that drive measurable brand engagement.",
     background: "radial-gradient(ellipse at 42% 50%, #5B886A 0%, #3A6E4C 100%)",
     image: tradeShowImage,
     dark: true,
@@ -133,19 +135,20 @@ const services = [
     id: "02",
     titleLine1: "INTERACTIVE",
     titleLine1Gradient:
-  "linear-gradient(90deg, #000000 0%, #3D3D3D 49%, #000000 100%)",
+      "linear-gradient(90deg, #000000 0%, #3D3D3D 49%, #000000 100%)",
     titleLine2: "DIGITAL EXPERIENCES",
+    route: "service/interactive-digital-experiences",
     accentLine2: true,
     headingLine2Gradient:
-  "linear-gradient(90deg, #3967FA 0%, #287CFC 45%, #1FD4FF 100%)",
+      "linear-gradient(90deg, #3967FA 0%, #287CFC 45%, #1FD4FF 100%)",
     description:
-      "Engaging, intuitive, and seamless experiences that bring your brand to life online.",
+      "We design immersive AR/VR, touchscreens, and gamified experiences that transform observers into active participants.",
 
     background: "#DCEEFF",
 
-    topImage: digitalImage,
-    mainImage: dataAnalysisImage,
-    bottomImage: andrasImage,
+    topImage: dialImage,
+    mainImage: suvConfiguratorImage,
+    bottomImage: beigeFabricImage,
 
     dark: false,
     decoration: "cross",
@@ -154,21 +157,23 @@ const services = [
     id: "03",
     titleLine1: "DIGITAL VIDEO",
     titleLine2: "PRODUCTIONS",
+    route: "service/digital-video-productions",
     headingGradient:
       "linear-gradient(180deg, #FCFBFB 0%, #E8E1E0 49%, #F2F2F1 100%)",
     description:
-      "Designing intuitive experiences that\nengage users across digital platforms.",
-    background: "linear-gradient(135deg, #263E50 0%, #527184 100%)",
-    image: interactiveImage,
+      "We produce high-impact video commercials and digital content that elevate your brand's storytelling.",
+    background: "linear-gradient(135deg, #2A3E50 0%, #455E71 100%)",
+    image: cinematicCollageImage,
     dark: true,
     decoration: "circles",
   },
   {
     id: "04",
-    titleLine1: "DIGITAL",
-    titleLine2: "MARKETING",
+    titleLine1: "DIGITAL MARKETING /",
+    titleLine2: "SPECIALTY DISTRIBUTION",
+    route: "service/digital-marketing",
     description:
-      "Driving engagement through content,\ncreators, and targeted paid campaigns",
+      "Amplify your reach with strategic marketing campaigns and targeted specialty distribution to niche markets.",
     background: "linear-gradient(180deg, #E7D2C2 0%, #F1B68F 100%)",
     image: laptopImage,
     dark: false,
@@ -241,178 +246,163 @@ const crossPath2 = (
   `;
 };
 
-const CrossDecoration = ({ topImage, mainImage, bottomImage, serviceId }) => {
-  const crosses = [
-    {
-      id: "top",
-      cx: 390,
-      cy: 48,
-      halfArm: 21,
-      halfSize: 58,
-      outerRadius: 13,
-      innerRadius: 15,
-      imageScale: 1.18,
-      image: topImage,
-    },
-
-    {
-      id: "main",
-      cx: 468,
-      cy: 248,
-      halfArm: 48,
-      halfSize: 132,
-      outerRadius: 22,
-      innerRadius: 28,
-      imageScale: 1.12,
-      image: mainImage,
-    },
-
-    {
-      id: "bottom",
-      cx: 355,
-      cy: 412,
-      halfArm: 20,
-      halfSize: 55,
-      outerRadius: 13,
-      innerRadius: 16,
-      imageScale: 1.2,
-      image: bottomImage,
-    },
-  ];
-
-  // Mobile cross positions — matches the reference image layout:
-  // large main cross centered at bottom overflowing, small ones at corners
-
-  const mobileCrosses = [
-    {
-      id: "top",
-      cx: 320,
-      cy: 165,
-      halfArm: 21,
-      halfSize: 48,
-      outerRadius: 12,
-      innerRadius: 14,
-      imageScale: 1.18,
-      image: topImage,
-    },
-    {
-      id: "main",
-      cx: 125,
-      cy: 335,
-      halfArm: 45,
-      halfSize: 90,
-      outerRadius: 18,
-      innerRadius: 22,
-      imageScale: 1.14,
-      image: mainImage,
-    },
-  ];
-
-  const renderCrosses = (crossList, idSuffix) => (
-    <>
-      <defs>
-        {crossList.map((cross, index) => (
-          <clipPath
-            key={`clip-${cross.id}-${idSuffix}`}
-            id={`crossClip-${serviceId}-${idSuffix}-${index}`}
-          >
-            <path
-              d={crossPath2(
-                cross.cx,
-                cross.cy,
-                cross.halfArm,
-                cross.halfSize,
-                cross.outerRadius,
-                cross.innerRadius,
-              )}
-            />
-          </clipPath>
-        ))}
-      </defs>
-
-      {crossList.map((cross, index) => {
-        const imageSize = cross.halfSize * 2 * cross.imageScale;
-        return (
-          <image
-            key={`image-${cross.id}-${idSuffix}`}
-            href={cross.image}
-            x={cross.cx - imageSize / 2}
-            y={cross.cy - imageSize / 2}
-            width={imageSize}
-            height={imageSize}
-            preserveAspectRatio="xMidYMid slice"
-            clipPath={`url(#crossClip-${serviceId}-${idSuffix}-${index})`}
-          />
-        );
-      })}
-
-      {crossList.map((cross) => (
-        <path
-          key={`outline-${cross.id}-${idSuffix}`}
-          d={crossPath2(
-            cross.cx,
-            cross.cy,
-            cross.halfArm,
-            cross.halfSize,
-            cross.outerRadius,
-            cross.innerRadius,
-          )}
-          fill="none"
-          stroke="rgba(0,0,0,0.06)"
-          strokeWidth="0.8"
-          vectorEffect="non-scaling-stroke"
-        />
-      ))}
-    </>
-  );
+/* =========================================================
+   SINGLE CROSS COMPONENT (SVG with cross clipPath & outline)
+========================================================= */
+const SingleCross = ({
+  id,
+  image,
+  className = "",
+  stroke = "rgba(0, 0, 0, 0.08)",
+}) => {
+  // 120 x 120 box, cx=60, cy=60, halfArm=22, halfSize=56, outerRadius=8, innerRadius=10
+  const path = crossPath2(60, 60, 22, 56, 8, 10);
+  const clipId = `crossClip-${id}`;
 
   return (
+    <div className={`pointer-events-none select-none ${className}`}>
+      <svg
+        viewBox="0 0 120 120"
+        className="w-full h-full overflow-visible"
+        aria-hidden="true"
+      >
+        <defs>
+          <clipPath id={clipId}>
+            <path d={path} />
+          </clipPath>
+        </defs>
+        <image
+          href={image}
+          x="0"
+          y="0"
+          width="120"
+          height="120"
+          preserveAspectRatio="xMidYMid slice"
+          clipPath={`url(#${clipId})`}
+        />
+        <path
+          d={path}
+          fill="none"
+          stroke={stroke}
+          strokeWidth="1"
+          vectorEffect="non-scaling-stroke"
+        />
+      </svg>
+    </div>
+  );
+};
+
+/* =========================================================
+   CROSS DECORATION — three plus shapes (card 02 only)
+   Matches reference layout:
+   - Top Cross: top arm overflows above top card border, positioned at top-right
+   - Main Cross: vertically centered, right arm overflows past right card border
+   - Bottom Cross: bottom arm overflows below bottom card border, positioned directly under main cross's left arm
+========================================================= */
+const CrossDecoration = ({ topImage, mainImage, bottomImage, serviceId }) => {
+  return (
     <>
-      {/* ── Mobile SVG (hidden at md+) ── */}
+      {/* ── Mobile Cross Cluster (< md) — matches reference layout ── */}
+      <div className="md:hidden absolute left-0 right-0 bottom-0 h-[280px] min-[390px]:h-[300px] sm:h-[330px] pointer-events-none overflow-visible">
+        {/* Upper Small Cross (Dial) - Upper Right */}
+        <SingleCross
+          id={`${serviceId}-mob-top`}
+          image={topImage}
+          className="
+            absolute
+            z-10
+            bottom-[190px] min-[390px]:bottom-[205px] sm:bottom-[230px]
+            right-[6%] min-[390px]:right-[8%] sm:right-[12%]
+            w-[72px] h-[72px]
+            min-[390px]:w-[78px] min-[390px]:h-[78px]
+            sm:w-[86px] sm:h-[86px]
+          "
+        />
 
-      {/* Mobile Crosses */}
-      <svg
-        viewBox="0 0 360 400"
-        preserveAspectRatio="xMidYMid meet"
-        overflow="visible"
-        className="
-    absolute
-    pointer-events-none
-    overflow-visible
-    z-10
-    md:hidden
+        {/* Main Big Cross (SUV Configurator) - Center Right */}
+        <SingleCross
+          id={`${serviceId}-mob-main`}
+          image={mainImage}
+          className="
+            absolute
+            z-10
+            bottom-[30px] min-[390px]:bottom-[35px] sm:bottom-[40px]
+            right-[-12px] min-[390px]:right-[-8px] sm:right-[0px]
+            w-[220px] h-[220px]
+            min-[390px]:w-[245px] min-[390px]:h-[245px]
+            sm:w-[270px] sm:h-[270px]
+          "
+        />
 
-    w-full
-    h-[400px]
+        {/* Lower Small Cross (Beige Fabric) - Bottom Right / Under Main */}
+        <SingleCross
+          id={`${serviceId}-mob-bottom`}
+          image={bottomImage}
+          className="
+            absolute
+            z-10
+            bottom-[-14px] min-[390px]:bottom-[-16px] sm:bottom-[-20px]
+            right-[20%] min-[390px]:right-[22%] sm:right-[24%]
+            w-[68px] h-[68px]
+            min-[390px]:w-[74px] min-[390px]:h-[74px]
+            sm:w-[82px] sm:h-[82px]
+          "
+        />
+      </div>
 
-    left-0
-    bottom-[-35px]
-  "
-      >
-        {renderCrosses(mobileCrosses, "mob")}
-      </svg>
+      {/* ── Desktop Cross Cluster (md+) — matches exact reference ── */}
+      <div className="hidden md:block pointer-events-none">
+        {/* Top Cross (Dial) - Top arm overflows card top edge */}
+        <SingleCross
+          id={`${serviceId}-desk-top`}
+          image={topImage}
+          className="
+            absolute
+            z-10
+            -top-3 md:-top-4 lg:-top-5 xl:-top-6
+            right-[21%] md:right-[22%] lg:right-[22%] xl:right-[22%] 2xl:right-[21%]
+            w-[90px] h-[90px]
+            md:w-[100px] md:h-[100px]
+            lg:w-[115px] lg:h-[115px]
+            xl:w-[130px] xl:h-[130px]
+            2xl:w-[140px] 2xl:h-[140px]
+          "
+        />
 
-      {/* ── Desktop SVG (hidden below md) ── */}
-      <svg
-        viewBox="0 0 640 480"
-        preserveAspectRatio="xMidYMid meet"
-        overflow="visible"
-        className="
-          hidden
-          md:block
-          absolute
-          pointer-events-none
-          overflow-visible
-          z-10
-          inset-auto
-          right-0
-          top-0
-          w-[58%]
-          h-full
-        "
-      >
-        {renderCrosses(crosses, "desk")}
-      </svg>
+        {/* Main Cross (SUV Configurator) - Vertically centered, sits inside right edge with clean margin */}
+        <SingleCross
+          id={`${serviceId}-desk-main`}
+          image={mainImage}
+          className="
+            absolute
+            z-10
+            top-1/2 -translate-y-1/2
+            right-3 sm:right-5 md:right-7 lg:right-9 xl:right-12
+            w-[260px] h-[260px]
+            md:w-[300px] md:h-[300px]
+            lg:w-[350px] lg:h-[350px]
+            xl:w-[400px] xl:h-[400px]
+            2xl:w-[440px] 2xl:h-[440px]
+          "
+        />
+
+        {/* Bottom Cross (Beige Fabric) - Bottom arm touches card bottom edge, sits under main cross's left arm */}
+        <SingleCross
+          id={`${serviceId}-desk-bottom`}
+          image={bottomImage}
+          className="
+            absolute
+            z-10
+            -bottom-2 md:-bottom-3 lg:-bottom-4 xl:-bottom-5
+            right-[25%] md:right-[26%] lg:right-[26%] xl:right-[26%] 2xl:right-[25%]
+            w-[90px] h-[90px]
+            md:w-[100px] md:h-[100px]
+            lg:w-[115px] lg:h-[115px]
+            xl:w-[130px] xl:h-[130px]
+            2xl:w-[140px] 2xl:h-[140px]
+          "
+        />
+      </div>
     </>
   );
 };
@@ -427,26 +417,20 @@ const CircleDecoration = ({ image }) => {
         z-10
         pointer-events-none
         select-none
-        right-2
-        sm:right-4
-        md:right-5
-        lg:right-7
-        xl:right-9
-        2xl:right-11
-        bottom-3
-        sm:bottom-4
-        md:bottom-5
-        lg:bottom-6
-        h-[290px]
-        sm:h-[330px]
+        right-[-6px] min-[390px]:right-[-10px]
+        bottom-[-10px] min-[390px]:bottom-[-15px]
+        h-[240px] min-[390px]:h-[260px] sm:h-[290px]
+        md:right-0
+        md:bottom-0
         md:h-[calc(100%+16px)]
         lg:h-[calc(100%+20px)]
         xl:h-[calc(100%+24px)]
         w-auto
         max-w-[85%]
-        md:max-w-[48%]
-        lg:max-w-[46%]
-        xl:max-w-[45%]
+        md:max-w-[46%]
+        lg:max-w-[44%]
+        xl:max-w-[42%]
+        2xl:max-w-[40%]
         flex
         items-end
         justify-end
@@ -475,36 +459,40 @@ const ServiceCard = ({ service, onNavigate }) => {
       className={`
         relative
         w-full
-            max-w-full
+        max-w-full
         flex
         flex-col
-        min-h-0
-        md:min-h-[520px]
-        lg:min-h-[600px]
-        xl:min-h-[685px]
-        rounded-[18px]
-        overflow-visible
-        ${decoration === "star" ? "pb-[140px] sm:pb-[170px] md:pb-0 " : ""}
-        ${decoration === "cross" ? "pb-[200px] sm:pb-[220px] md:pb-0" : ""}
-        ${decoration === "circles" ? "pb-[220px] sm:pb-[240px] md:pb-0" : ""}
-        ${decoration === "laptop" ? "pb-[180px] sm:pb-[200px] md:pb-0" : ""}
+        rounded-[24px]
+        min-[390px]:rounded-[28px]
+        md:rounded-[18px]
+   ${decoration === "star"
+          ? "overflow-hidden md:overflow-visible"
+          : "overflow-visible"
+        }
+min-h-[490px]
+        min-[390px]:min-h-[520px]
+        sm:min-h-[550px]
+        md:min-h-[420px]
+        lg:min-h-[460px]
+        xl:min-h-[500px]
+        2xl:min-h-[530px]
       `}
-     
-style={{
-  background: service.background,
-  borderColor:
-    service.id === "04"
-      ? "#686565"
-      : decoration === "cross"
-        ? "#76A9FF"
-        : "transparent",
-  borderWidth:
-    service.id === "04" || decoration === "cross"
-      ? "1px"
-      : "0px",
-  borderStyle: "solid",
-  borderRadius: "18px",
-}}
+
+      style={{
+        background: service.background,
+        borderColor:
+          service.id === "04"
+            ? "#686565"
+            : decoration === "cross"
+              ? "#76A9FF"
+              : "transparent",
+        borderWidth:
+          service.id === "04" || decoration === "cross"
+            ? "1px"
+            : "0px",
+        borderStyle: "solid",
+        borderRadius: "18px",
+      }}
 
     >
       {/* ── Text Content ── */}
@@ -514,15 +502,20 @@ style={{
           z-20
           w-full
           max-w-full
-          md:max-w-[60%]
-          lg:max-w-[55%]
-          md:min-h-[520px]
-          lg:min-h-[600px]
-          xl:min-h-[685px]
+          md:max-w-[54%]
+          lg:max-w-[52%]
+          xl:max-w-[50%]
+          2xl:max-w-[52%]
+          md:min-h-[420px]
+          lg:min-h-[460px]
+          xl:min-h-[500px]
+          2xl:min-h-[530px]
           px-5
-          py-7
+          pt-6
+          pb-0
           sm:px-8
-          sm:py-9
+          sm:pt-8
+          sm:pb-0
           md:px-10
           md:py-12
           lg:px-14
@@ -533,90 +526,109 @@ style={{
           flex-col
           justify-start
           md:justify-center
-          xl:gap-10
+          xl:gap-8
           items-start
         "
       >
         {/* Accent line */}
         <div
-          className={`w-[28px] sm:w-[34px] md:w-[38px] h-[3px] mb-5 sm:mb-6 md:mb-7 rounded-full ${
-            dark ? "bg-white" : "bg-gray-900"
-          }`}
+          className={`block w-[24px] sm:w-[30px] md:w-[38px] h-[2.5px] md:h-[3px] mb-3.5 sm:mb-4 md:mb-6 rounded-full ${dark ? "bg-white" : "bg-[#171717]"
+            }`}
         />
 
         {/* Heading */}
         <h3
           className={`
-            text-[26px]
-            sm:text-[32px]
-            md:text-[40px]
-            lg:text-[52px]
-            xl:text-[72px]
-            2xl:text-[93px]
+            text-[24px]
+            min-[360px]:text-[26px]
+            min-[390px]:text-[28px]
+            sm:text-[34px]
+            md:text-[34px]
+            lg:text-[42px]
+            xl:text-[54px]
+            2xl:text-[66px]
             font-bold
-            leading-[1.02]
-            md:leading-[0.75]
-            tracking-[-0.04em]
+            leading-[1.05]
+            sm:leading-[1.05]
+            md:leading-[0.98]
+            lg:leading-[1.0]
+            xl:leading-[1.02]
+            tracking-[-0.035em]
             ${service.headingGradient ? "bg-clip-text text-transparent inline-block" : ""}
           `}
           style={
             service.headingGradient
               ? {
-                  backgroundImage: service.headingGradient,
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }
+                backgroundImage: service.headingGradient,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }
               : undefined
           }
         >
-       
-<span
-  className={`block ${
-    service.headingGradient
-      ? ""
-      : service.titleLine1Gradient
-        ? "bg-clip-text text-transparent"
-        : dark
-          ? "text-white"
-          : "text-gray-900"
-  }`}
-  style={
-    service.titleLine1Gradient
-      ? {
-          backgroundImage: service.titleLine1Gradient,
-          backgroundClip: "text",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-        }
-      : undefined
-  }
->
-  {service.titleLine1}
-</span>
+          <span
+            className={`block ${service.headingGradient
+                ? ""
+                : service.titleLine1Gradient
+                  ? "bg-clip-text text-transparent"
+                  : dark
+                    ? "text-white"
+                    : "text-gray-900"
+              }`}
+            style={
+              service.titleLine1Gradient
+                ? {
+                  backgroundImage: service.titleLine1Gradient,
+                  backgroundClip: "text",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }
+                : undefined
+            }
+          >
+            {service.id === "04" ? (
+              <>
+                <span className="block md:inline">DIGITAL</span>{" "}
+                <span className="block md:inline">MARKETING /</span>
+              </>
+            ) : (
+              service.titleLine1
+            )}
+          </span>
 
-        <span
- className={`block whitespace-nowrap ${
-    service.headingGradient
-      ? ""
-      : dark
-        ? "text-white"
-        : accentLine2
-          ? "bg-clip-text text-transparent"
-          : "text-gray-900"
-  }`}
-  style={
-    service.headingLine2Gradient
-      ? {
-          backgroundImage: service.headingLine2Gradient,
-          WebkitBackgroundClip: "text",
-          backgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-        }
-      : undefined
-  }
->
-  {service.titleLine2}
-</span>
+          <span
+            className={`block whitespace-normal md:whitespace-nowrap ${service.headingGradient
+                ? ""
+                : dark
+                  ? "text-white"
+                  : accentLine2
+                    ? "bg-clip-text text-transparent"
+                    : "text-gray-900"
+              }`}
+            style={
+              service.headingLine2Gradient
+                ? {
+                  backgroundImage: service.headingLine2Gradient,
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }
+                : undefined
+            }
+          >
+            {(() => {
+              const words = service.titleLine2.split(" ");
+              if (words.length === 2) {
+                return (
+                  <>
+                    <span className="block md:inline">{words[0]}</span>{" "}
+                    <span className="block md:inline">{words[1]}</span>
+                  </>
+                );
+              }
+              return service.titleLine2;
+            })()}
+          </span>
         </h3>
 
         {/* Description */}
@@ -624,20 +636,27 @@ style={{
           className={`
             whitespace-normal
             lg:whitespace-pre-line
-            mt-4
-            sm:mt-5
-            md:mt-6
-            text-[18px]
+            mt-3
+            sm:mt-3.5
+            md:mt-4
+            lg:mt-5
+            text-[13.5px]
+            min-[390px]:text-[14.5px]
             sm:text-[16px]
-            md:text-[18px]
-            lg:text-[24px]
-            xl:text-[28px]
-            2xl:text-[33px]
-            leading-[1.45]
-            md:leading-[1.05]
-            max-w-[42rem]
-            2xl:max-w-[880px]
-            ${dark ? "text-white" : "text-black"}
+            md:text-[17px]
+            lg:text-[20px]
+            xl:text-[24px]
+            2xl:text-[26px]
+            font-normal
+            leading-[1.3]
+            min-[390px]:leading-[1.35]
+            md:leading-[1.35]
+            max-w-full
+            md:max-w-[440px]
+            lg:max-w-[480px]
+            xl:max-w-[540px]
+            2xl:max-w-[600px]
+            ${dark ? "text-white/90" : "text-[#171717]"}
           `}
         >
           {service.description}
@@ -646,40 +665,42 @@ style={{
         {/* Learn More button */}
 
         <a
-          href="/services"
+          href={`/${service.route || "services"}`}
           onClick={(e) => {
             e.preventDefault();
-            if (onNavigate) onNavigate("services");
+            if (onNavigate) onNavigate(service.route || "services");
           }}
           className={`
-    mt-6 sm:mt-8 md:mt-9
-    inline-flex
-    w-fit
-    items-center
-    justify-between
-    gap-7 sm:gap-9 lg:gap-10
-    pl-5 pr-4
-    sm:pl-6 sm:pr-5
-    h-[44px]
-    sm:h-[48px]
-    lg:h-[56px]
-    rounded-full
-    text-[14px]
-    sm:text-[16px]
-    lg:text-[20px]
-    xl:text-[25px]
-    font-medium
-    whitespace-nowrap
-    transition-all
-    duration-300
-    group
-    cursor-pointer
-    ${
-      dark || service.lightBtn
-        ? "bg-white text-black hover:bg-gray-100"
-        : "bg-gray-900 text-white hover:bg-black"
-    }
-  `}
+            mt-3.5 sm:mt-4 md:mt-6 lg:mt-8
+            inline-flex
+            w-fit
+            items-center
+            justify-between
+            gap-3.5 min-[390px]:gap-4 sm:gap-6 lg:gap-10
+            pl-4 pr-3
+            min-[390px]:pl-5 min-[390px]:pr-4
+            sm:pl-6 sm:pr-5
+            h-[35px]
+            min-[390px]:h-[38px]
+            sm:h-[46px]
+            lg:h-[54px]
+            rounded-full
+            text-[12.5px]
+            min-[390px]:text-[13.5px]
+            sm:text-[16px]
+            lg:text-[20px]
+            xl:text-[25px]
+            font-medium
+            whitespace-nowrap
+            transition-all
+            duration-300
+            group
+            cursor-pointer
+            ${dark || service.lightBtn
+              ? "bg-white text-black hover:bg-gray-100"
+              : "bg-black text-white hover:bg-gray-900"
+            }
+          `}
         >
           <span className="leading-none">Learn More</span>
 
@@ -690,15 +711,16 @@ style={{
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="
-      w-[38px]
-      sm:w-[45px]
-      lg:w-[55px]
-      h-auto
-      shrink-0
-      transition-transform
-      duration-300
-      group-hover:translate-x-1
-    "
+              w-[28px]
+              min-[390px]:w-[32px]
+              sm:w-[45px]
+              lg:w-[55px]
+              h-auto
+              shrink-0
+              transition-transform
+              duration-300
+              group-hover:translate-x-1
+            "
             aria-hidden="true"
           >
             <path
@@ -712,9 +734,133 @@ style={{
         </a>
       </div>
 
-      <div className="contents pointer-events-none">
-        {/* ── Decoration: STAR (card 01 only) ── */}
+      {/* ── Mobile-only Graphic Containers (< md): exact mockup alignment ── */}
+      {decoration === "star" && (
 
+        <div
+          className="
+    md:hidden
+    absolute
+    z-10
+    pointer-events-none
+    bottom-[-25px]
+    right-[-95px]
+    min-[390px]:right-[-105px]
+    min-[390px]:bottom-[-30px]
+    w-[285px] h-[285px]
+    min-[390px]:w-[310px]
+    min-[390px]:h-[310px]
+  "
+        >
+
+          <svg
+            viewBox="100 0 540 580"
+            className="w-full h-full overflow-visible"
+            preserveAspectRatio="xMidYMid meet"
+            aria-hidden="true"
+          >
+
+            {/* Star Image */}
+            <image
+              href={service.image}
+              x="115"
+              y="15"
+              width="515"
+              height="540"
+              preserveAspectRatio="xMidYMid meet"
+            />
+
+            {/* Star Outline - aligned with image */}
+            {/* <path
+              d={STAR_PATH}
+              fill="none"
+              stroke="rgba(255,255,255,0.35)"
+              strokeWidth="1.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              vectorEffect="non-scaling-stroke"
+              transform="translate(372 300) scale(0.85) translate(-372 -300)"
+            /> */}
+          </svg>
+        </div>
+      )}
+
+      {decoration === "cross" && (
+        <div className="md:hidden absolute inset-0 pointer-events-none overflow-visible">
+          {/* Main Big Cross (SUV Configurator) - Center Left, left arm overflows left card border, bottom arm overflows bottom */}
+          <SingleCross
+            id={`${service.id}-mob-main`}
+            image={service.mainImage}
+            className="
+              absolute
+              z-10
+              bottom-[-16px] min-[390px]:bottom-[-20px] sm:bottom-[-24px]
+              -left-4 min-[390px]:-left-5 sm:-left-6
+              w-[260px] h-[260px]
+              min-[390px]:w-[285px] min-[390px]:h-[285px]
+              sm:w-[310px] sm:h-[310px]
+            "
+          />
+
+          {/* Upper Small Cross (Dial) - Upper Center-Right, sits directly beside the 'Learn More' button */}
+          <SingleCross
+            id={`${service.id}-mob-top`}
+            image={service.topImage}
+            className="
+              absolute
+              z-20
+              bottom-[195px] min-[390px]:bottom-[210px] sm:bottom-[230px]
+              right-[18%] min-[390px]:right-[20%] sm:right-[22%]
+              w-[74px] h-[74px]
+              min-[390px]:w-[82px] min-[390px]:h-[82px]
+              sm:w-[90px] sm:h-[90px]
+            "
+          />
+
+          {/* Lower Small Cross (Beige Fabric) - Overflowing right edge, in the middle of lower half */}
+          <SingleCross
+            id={`${service.id}-mob-bottom`}
+            image={service.bottomImage}
+            className="
+              absolute
+              z-10
+              bottom-[105px] min-[390px]:bottom-[118px] sm:bottom-[132px]
+              -right-2 min-[390px]:-right-2.5 sm:-right-3
+              w-[68px] h-[68px]
+              min-[390px]:w-[76px] min-[390px]:h-[76px]
+              sm:w-[84px] sm:h-[84px]
+            "
+          />
+        </div>
+      )}
+
+      {decoration === "circles" && (
+        <div className="md:hidden absolute bottom-[-18px] min-[390px]:bottom-[-24px] right-[-8px] min-[390px]:right-[-12px] h-[275px] min-[390px]:h-[305px] pointer-events-none overflow-visible z-10 flex items-end justify-end">
+          <img
+            src={service.image}
+            alt="Digital Video Productions"
+            loading="lazy"
+            decoding="async"
+            draggable={false}
+            className="h-full w-auto max-w-none object-contain object-bottom-right drop-shadow-md"
+          />
+        </div>
+      )}
+
+      {decoration === "laptop" && (
+        <div className="md:hidden absolute bottom-[32px] min-[390px]:bottom-[40px] sm:bottom-[46px] left-1/2 -translate-x-[49%] w-[104%] min-[390px]:w-[106%] pointer-events-none overflow-visible z-10 flex items-end justify-center">
+          <img
+            src={service.image}
+            alt="Digital Marketing Dashboard"
+            loading="lazy"
+            decoding="async"
+            className="w-full h-auto object-contain drop-shadow-2xl"
+          />
+        </div>
+      )}
+
+      {/* ── Desktop-only decorations (md+) — perfectly preserved as original ── */}
+      <div className="hidden md:block pointer-events-none">
         {/* Decoration: CROSSES - Card 02 */}
         {decoration === "cross" && (
           <CrossDecoration
@@ -725,44 +871,35 @@ style={{
           />
         )}
 
+        {/* Decoration: STAR (card 01 only) */}
         {decoration === "star" && (
           <svg
             viewBox="0 0 640 640"
             preserveAspectRatio="xMidYMid meet"
             className="
-      absolute
-      pointer-events-none
-      overflow-visible
-      z-10
-
-      w-[300px] h-[300px]
-      right-[-20px] bottom-[-100px] top-auto
-
-      sm:w-[340px] sm:h-[340px]
-      sm:right-[-40px] sm:bottom-[-170px]
-
-      md:w-[500px] md:h-[500px]
-      md:right-[-60px] md:bottom-auto md:top-[-30px]
-
-      lg:w-[600px] lg:h-[600px]
-      lg:right-[-80px] lg:top-[-40px]
-
-      xl:w-[680px] xl:h-[680px]
-      xl:right-[-90px] xl:top-[-50px]
-
-      2xl:w-[900px] 2xl:h-[900px]
-      2xl:right-[-100px] 2xl:top-[-60px]
-    "
+              absolute
+              pointer-events-none
+              overflow-visible
+              z-10
+              md:w-[460px] md:h-[460px]
+              md:right-[-40px] md:top-[-20px]
+              lg:w-[540px] lg:h-[540px]
+              lg:right-[-50px] lg:top-[-30px]
+              xl:w-[620px] xl:h-[620px]
+              xl:right-[-60px] xl:top-[-30px]
+              2xl:w-[780px] 2xl:h-[780px]
+              2xl:right-[-80px] 2xl:top-[-40px]
+            "
             aria-hidden="true"
           >
             {/* White outline - vector based, cleaner corners */}
             <g
               transform="
-        translate(396 238)
-        scale(1.37)
-        translate(-376 -308)
-        translate(-14 38)
-      "
+                translate(396 238)
+                scale(1.37)
+                translate(-376 -308)
+                translate(-14 38)
+              "
             >
               <path
                 d={STAR_PATH}
@@ -794,40 +931,30 @@ style={{
         {decoration === "laptop" && (
           <div
             className="
-            absolute
-            right-[-8%]
-            sm:right-[-6%]
-            md:-right-10
-            lg:-right-12
-            xl:-right-1
-            bottom-[-10px]
-            sm:bottom-[-100px]
-            md:bottom-auto
-            md:-top-12
-            
-            lg:-top-14
-            xl:top-33
-            w-[95%]
-            max-w-[360px]
-            sm:max-w-[400px]
-            md:w-[540px]
-            md:max-w-none
-            lg:w-[660px]
-            xl:w-[760px]
-            2xl:w-[1020px]
-            pointer-events-none
-            z-10
-            flex
-            items-center
-            justify-center
-          "
+              absolute
+              bottom-0
+              md:right-2
+              lg:right-4
+              xl:right-8
+              2xl:right-12
+              md:w-[50%]
+              md:max-w-[520px]
+              lg:max-w-[600px]
+              xl:max-w-[700px]
+              2xl:max-w-[800px]
+              pointer-events-none
+              z-10
+              flex
+              items-end
+              justify-end
+            "
           >
             <img
               src={service.image}
               alt="Digital Marketing Dashboard"
               loading="lazy"
               decoding="async"
-              className="w-full h-auto object-contain drop-shadow-xl"
+              className="w-full h-auto object-contain object-bottom drop-shadow-xl"
             />
           </div>
         )}
@@ -886,7 +1013,7 @@ const WhatWeDo = ({ onNavigate }) => {
         </div>
 
         {/* Service Cards */}
-        <div className="flex flex-col gap-[90px] sm:gap-16 md:gap-20 lg:gap-24 xl:gap-28">
+        <div className="flex flex-col gap-10 sm:gap-14 md:gap-20 lg:gap-24 xl:gap-28">
           {services.map((service) => (
             <ServiceCard key={service.id} service={service} onNavigate={onNavigate || handleNavigateClick} />
           ))}

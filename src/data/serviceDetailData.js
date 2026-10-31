@@ -2,15 +2,15 @@
 // Each key maps to a URL segment: service/ui-ux-design → serviceDetailData['ui-ux-design']
 // Add new service entries here to make them available as pages automatically.
 
-import img1  from "../assets/Fintech Dashboard at Sunset 1.webp";
-import img2  from "../assets/Fintech Dashboard at Sunset 1 (1).webp";
-import img3  from "../assets/Metallic Blue Lexus in a Warehouse 1.webp";
-import img4  from "../assets/homeHeroSectionImages/Sunlit Sentral Education Workspace 1.webp";
-import img5  from "../assets/data-analysis.jpg";
-import img6  from "../assets/digital-experience.jpg";
-import img7  from "../assets/interactive-tech.jpg";
-import img8  from "../assets/workLaptop.webp";
-import img9  from "../assets/workCar.webp";
+import img1 from "../assets/Fintech Dashboard at Sunset 1.webp";
+import img2 from "../assets/Fintech Dashboard at Sunset 1 (1).webp";
+import img3 from "../assets/Metallic Blue Lexus in a Warehouse 1.webp";
+import img4 from "../assets/homeHeroSectionImages/Sunlit Sentral Education Workspace 1.webp";
+import img5 from "../assets/data-analysis.jpg";
+import img6 from "../assets/digital-experience.jpg";
+import img7 from "../assets/interactive-tech.jpg";
+import img8 from "../assets/workLaptop.webp";
+import img9 from "../assets/workCar.webp";
 import img10 from "../assets/workEmirates.webp";
 import img11 from "../assets/bussinesAcltImage.webp";
 import img12 from "../assets/homeHeroSectionImages/PwC_Enterprise_Dashboard_in_Executive_Office 1.webp";
@@ -22,6 +22,18 @@ import img17 from "../assets/aboutus3rdSect.webp";
 import img18 from "../assets/homeHeroSectionImages/LifeGive Mediterranean Supplement Showcase 1.webp";
 import empireCinemasImg from "../assets/homeHeroSectionImages/Empire Cinemas Grand Lobby 1 (1).webp";
 
+import ahmedFoodsVideoImg from "../assets/caseStudies/elipse/digitalVideo/ahmedFoods.webp";
+import bikeVideoImg from "../assets/caseStudies/elipse/digitalVideo/bike.webp";
+import malkaVideoImg from "../assets/caseStudies/elipse/digitalVideo/malka.webp";
+import roohAfzaVideoImg from "../assets/caseStudies/elipse/digitalVideo/roohAfza.webp";
+import zooVideoImg from "../assets/caseStudies/elipse/digitalVideo/zoo.webp";
+
+import bydInteractiveImg from "../assets/caseStudies/elipse/interactveDigital/byd.webp";
+import golfInteractiveImg from "../assets/caseStudies/elipse/interactveDigital/golf.webp";
+import virtualTourInteractiveImg from "../assets/caseStudies/elipse/interactveDigital/interactiveVirtualTour.webp";
+import kiaInteractiveImg from "../assets/caseStudies/elipse/interactveDigital/kia.webp";
+import volvoInteractiveImg from "../assets/caseStudies/elipse/interactveDigital/volvo.webp";
+
 export const serviceDetailData = {
 
   "ui-ux-design": {
@@ -31,80 +43,385 @@ export const serviceDetailData = {
       "We create intuitive, user-centered interfaces that turn ideas into impactful digital experiences. Our UI/UX design work combines research, creativity and technology to build products that are simple, engaging and built for real people.",
     industries: ["Healthcare", "Finance", "Retail", "Technology", "Automotive", "Entertainment"],
     locations: ["New York", "Texas", "California"],
-  
-works: [
-  {
-    title: "Safeway",
-    image: img2,
-    category: "Responsive UI/UX Experience",
-    description:
-      "A seamless and intuitive shopping experience designed to simplify the customer journey across desktop and mobile.",
-  },
-  {
-    title: "CitiBank",
-    image: img1,
-    category: "Data Visualization Dashboards",
-    description:
-      "A modern financial dashboard experience that transforms complex data into clear, actionable insights.",
-  },
-  {
-    title: "Lexus",
-    image: img9,
-    category: "Automotive Digital Experience",
-    description:
-      "A premium digital experience designed to showcase vehicles through intuitive and engaging interfaces.",
-  },
-  {
-    title: "YMCA",
-    image: img13,
-    category: "Digital Platform Design",
-    description:
-      "An accessible digital platform designed to make everyday interactions simpler and more efficient.",
-  },
-  {
-    title: "Sentral Education",
-    image: img4,
-    category: "Education Platform UI/UX",
-    description:
-      "A user-focused learning experience that simplifies navigation and improves digital engagement.",
-  },
-  {
-    title: "B2B Dashboard",
-    image: img5,
-    category: "Enterprise Dashboard Design",
-    description:
-      "A structured dashboard that helps businesses understand data and manage workflows efficiently.",
-  },
-  {
-    title: "Ticket Reservation",
-    image: empireCinemasImg,
-    category: "Booking Experience Design",
-    description:
-      "An intuitive ticket reservation experience designed to make booking fast and effortless.",
-  },
-  {
-    title: "LifeGive",
-    image: img18,
-    category: "Healthcare Digital Experience",
-    description:
-      "A clean and engaging digital experience focused on usability and customer interaction.",
-  },
-  {
-    title: "Fairview",
-    image: img17,
-    category: "Digital Product Design",
-    description:
-      "A modern interface that simplifies complex user journeys.",
-  },
-  {
-    title: "Almaza",
-    image: img15,
-    category: "Brand Digital Experience",
-    description:
-      "A visually engaging digital experience that connects brand storytelling with intuitive design.",
-  },
-],
 
+    works: [
+      {
+        title: "Safeway",
+        image: img2,
+        category: "Responsive UI/UX Experience",
+        description:
+          "A seamless and intuitive shopping experience designed to simplify the customer journey across desktop and mobile.",
+      },
+      {
+        title: "CitiBank",
+        image: img1,
+        category: "Data Visualization Dashboards",
+        description:
+          "A modern financial dashboard experience that transforms complex data into clear, actionable insights.",
+      },
+      {
+        title: "Lexus",
+        image: img9,
+        category: "Automotive Digital Experience",
+        description:
+          "A premium digital experience designed to showcase vehicles through intuitive and engaging interfaces.",
+      },
+      {
+        title: "YMCA",
+        image: img13,
+        category: "Digital Platform Design",
+        description:
+          "An accessible digital platform designed to make everyday interactions simpler and more efficient.",
+      },
+      {
+        title: "Sentral Education",
+        image: img4,
+        category: "Education Platform UI/UX",
+        description:
+          "A user-focused learning experience that simplifies navigation and improves digital engagement.",
+      },
+      {
+        title: "B2B Dashboard",
+        image: img5,
+        category: "Enterprise Dashboard Design",
+        description:
+          "A structured dashboard that helps businesses understand data and manage workflows efficiently.",
+      },
+      {
+        title: "Ticket Reservation",
+        image: empireCinemasImg,
+        category: "Booking Experience Design",
+        description:
+          "An intuitive ticket reservation experience designed to make booking fast and effortless.",
+      },
+      {
+        title: "LifeGive",
+        image: img18,
+        category: "Healthcare Digital Experience",
+        description:
+          "A clean and engaging digital experience focused on usability and customer interaction.",
+      },
+      {
+        title: "Fairview",
+        image: img17,
+        category: "Digital Product Design",
+        description:
+          "A modern interface that simplifies complex user journeys.",
+      },
+      {
+        title: "Almaza",
+        image: img15,
+        category: "Brand Digital Experience",
+        description:
+          "A visually engaging digital experience that connects brand storytelling with intuitive design.",
+      },
+    ],
+
+  },
+
+  "trade-shows-experiential-marketing": {
+    slug: "trade-shows-experiential-marketing",
+    heading: "Trade Shows / Experiential Marketing",
+    titleLine1: "TRADE SHOWS /",
+    titleLine2: "EXPERIENTIAL MARKETING",
+    description:
+      "We design custom trade show booths and immersive experiences that drive measurable brand engagement. From bespoke exhibition installations to immersive pop-ups and retail activations, we design moments that captivate audiences and drive measurable business results.",
+    industries: ["Consumer Goods", "Retail", "Entertainment", "Automotive", "Technology"],
+    locations: ["New York", "Texas", "California"],
+    works: [
+      {
+        title: "Trade Show Execution",
+        image: img16,
+        category: "Exhibition & Trade Show",
+        description: "Custom immersive exhibition structures designed for multi-city trade shows with integrated brand touchpoints.",
+      },
+      {
+        title: "PepsiCo Shopper",
+        image: img11,
+        category: "Retail Brand Activation",
+        description: "Engaging retail and event activations connecting consumer brands directly with live audiences.",
+      },
+      {
+        title: "Shan Launch Event",
+        image: img17,
+        category: "Experiential Launch",
+        description: "An experiential product launch event blending cultural authenticity with modern spatial design.",
+      },
+      {
+        title: "LifeGive Wellness",
+        image: img18,
+        category: "Wellness Pop-Up Store",
+        description: "Interactive brand display space boosting product trials and lifestyle brand loyalty.",
+      },
+      {
+        title: "Citibank VIP Lounge",
+        image: img1,
+        category: "Corporate Hospitality Suite",
+        description: "Exclusive corporate lounge experiences engineered for high-net-worth client engagement.",
+      },
+      {
+        title: "Lexus Pavilion",
+        image: img9,
+        category: "Automotive Pavilion Stage",
+        description: "Cutting-edge sensory car showcase incorporating dynamic lighting and spatial vehicle acoustics.",
+      },
+      {
+        title: "Emirates First Lounge",
+        image: img10,
+        category: "Aviation Exhibition Experience",
+        description: "High-end luxury cabin experience replica constructed for global aviation exhibitions.",
+      },
+      {
+        title: "Microsoft Tech Summit",
+        image: img8,
+        category: "Developer Conference Stage",
+        description: "Dynamic keynote stages and hands-on developer demo pods for annual enterprise tech events.",
+      },
+      {
+        title: "Safeway Food Expo",
+        image: img2,
+        category: "Interactive Grocery Showcase",
+        description: "Fresh-market experiential grocery booths introducing new product lines to convention visitors.",
+      },
+      {
+        title: "Sentral Showcase",
+        image: img4,
+        category: "Interactive Presentation Stage",
+        description: "Dynamic presentation stages and interactive demonstration areas for educational summits.",
+      },
+    ],
+  },
+
+  "trade-shows-brand-activation": {
+    slug: "trade-shows-brand-activation",
+    heading: "Trade Shows / Experiential Marketing",
+    titleLine1: "TRADE SHOWS /",
+    titleLine2: "EXPERIENTIAL MARKETING",
+    description:
+      "We design custom trade show booths and immersive experiences that drive measurable brand engagement. From bespoke exhibition installations to immersive pop-ups and retail activations, we design moments that captivate audiences and drive measurable business results.",
+    industries: ["Consumer Goods", "Retail", "Entertainment", "Automotive", "Technology"],
+    locations: ["New York", "Texas", "California"],
+    works: [
+      {
+        title: "Trade Show Execution",
+        image: img16,
+        category: "Exhibition & Trade Show",
+        description: "Custom immersive exhibition structures designed for multi-city trade shows with integrated brand touchpoints.",
+      },
+      {
+        title: "PepsiCo Shopper",
+        image: img11,
+        category: "Retail Brand Activation",
+        description: "Engaging retail and event activations connecting consumer brands directly with live audiences.",
+      },
+      {
+        title: "Shan Launch Event",
+        image: img17,
+        category: "Experiential Launch",
+        description: "An experiential product launch event blending cultural authenticity with modern spatial design.",
+      },
+      {
+        title: "LifeGive Wellness",
+        image: img18,
+        category: "Live Brand Activation",
+        description: "Interactive brand storytelling stations built to showcase premium wellness products.",
+      },
+      {
+        title: "Lexus Automotive",
+        image: img3,
+        category: "Automotive Spatial Showcase",
+        description: "Interactive showroom and trade show vehicle displays designed for luxury consumer engagement.",
+      },
+      {
+        title: "GENESIS Exhibits",
+        image: img7,
+        category: "Trade Show Architecture",
+        description: "Modern architectural trade show installations delivering memorable brand presence.",
+      },
+      {
+        title: "Citibank Experience",
+        image: img1,
+        category: "Interactive Booth Display",
+        description: "High-tech interactive digital booths for financial industry summits.",
+      },
+      {
+        title: "Safeway In-Store",
+        image: img2,
+        category: "In-Store Promotional System",
+        description: "In-store digital and physical promotional installations maximizing foot traffic and sales.",
+      },
+      {
+        title: "YMCA Community",
+        image: img13,
+        category: "Community Event Activation",
+        description: "Large-scale community brand activation and experiential engagement platforms.",
+      },
+      {
+        title: "Sentral Showcase",
+        image: img4,
+        category: "Interactive Presentation Stage",
+        description: "Dynamic presentation stages and interactive demonstration areas for educational summits.",
+      },
+    ],
+  },
+
+  "interactive-digital-experiences": {
+    slug: "interactive-digital-experiences",
+    heading: "Interactive Digital Experiences",
+    titleLine1: "INTERACTIVE",
+    titleLine2: "DIGITAL EXPERIENCES",
+    description:
+      "We design immersive AR/VR, touchscreens, and gamified experiences that transform observers into active participants. We bridge human-centered design, creative storytelling, and cutting-edge web technologies to craft interactive platforms, web portals, and configurators that turn visitors into loyal customers.",
+    industries: ["Technology", "Finance", "Healthcare", "Entertainment", "Enterprise"],
+    locations: ["New York", "Texas", "California"],
+    works: [
+      {
+        title: "Volvo Configurator",
+        image: volvoInteractiveImg,
+        category: "Interactive 3D Configurator",
+        description: "Real-time photorealistic 3D vehicle customization platform delivering interactive interior exploration and dynamic exterior configuration.",
+      },
+      {
+        title: "BYD Shark 6",
+        image: bydInteractiveImg,
+        category: "3D Vehicle Configurator",
+        description: "Interactive 3D build-your-own truck customizer with multi-angle views, accessories, custom bumper configurations, and live pricing.",
+      },
+      {
+        title: "Kia Sportage",
+        image: kiaInteractiveImg,
+        category: "Real-Time 3D Vehicle Showcase",
+        description: "High-fidelity real-time 3D automotive experience featuring interactive lighting modes (Day, Night, Studio), paint finishes, and custom environments.",
+      },
+      {
+        title: "Costa Carts",
+        image: golfInteractiveImg,
+        category: "3D Interactive Customizer",
+        description: "Custom 3D golf cart configurator allowing customers to personalize body colors, custom wheels, seating, and performance accessories in real time.",
+      },
+      {
+        title: "Interactive Virtual Tour",
+        image: virtualTourInteractiveImg,
+        category: "3D Architectural Walkthrough",
+        description: "Immersive interior architectural walkthrough featuring personalized teleportation UI, daylight simulation, and interactive space exploration.",
+      },
+    ],
+  },
+
+  "digital-video-productions": {
+    slug: "digital-video-productions",
+    heading: "Digital Video Productions",
+    titleLine1: "DIGITAL VIDEO",
+    titleLine2: "PRODUCTIONS",
+    description:
+      "We produce high-impact video commercials and digital content that elevate your brand's storytelling. From high-impact brand commercials, 3D motion design, and product launch films to social video campaigns, we produce visual content that captivates and converts.",
+    industries: ["Entertainment", "Retail", "Technology", "Automotive", "Consumer Goods"],
+    locations: ["New York", "Texas", "California"],
+    works: [
+      {
+        title: "Rooh Afza",
+        image: roohAfzaVideoImg,
+        category: "3D Anamorphic Billboard",
+        description: "Hyper-realistic 3D anamorphic outdoor billboard commercial capturing the vibrant heritage and refreshing nature of Rooh Afza.",
+      },
+      {
+        title: "Ahmed Foods",
+        image: ahmedFoodsVideoImg,
+        category: "3D Product Motion Graphics",
+        description: "Dynamic 3D product motion graphics and commercial animation showcasing the vibrant range of Ahmed Foods fruit jams.",
+      },
+      {
+        title: "Malka Foods",
+        image: malkaVideoImg,
+        category: "Cinematic TV Commercial",
+        description: "Cinematic TV commercial production with photorealistic culinary lighting and luxury interior atmosphere for Malka Foods.",
+      },
+      {
+        title: "Electric Motorcycle Launch",
+        image: bikeVideoImg,
+        category: "Automotive & EV Cinematography",
+        description: "Dramatic studio cinematography and sleek lighting commercial showcasing modern electric motorcycle performance and craftsmanship.",
+      },
+      {
+        title: "3D Anamorphic Wildlife Display",
+        image: zooVideoImg,
+        category: "3D Anamorphic CGI & VFX",
+        description: "High-fidelity CGI leopard stepping through a 3D illusion portal, engineered for large-format immersive digital displays.",
+      },
+    ],
+  },
+
+  "digital-marketing": {
+    slug: "digital-marketing",
+    heading: "Digital Marketing / Specialty Distribution",
+    titleLine1: "DIGITAL MARKETING /",
+    titleLine2: "SPECIALTY DISTRIBUTION",
+    description:
+      "Amplify your reach with strategic marketing campaigns and targeted specialty distribution to niche markets. We architect multi-channel marketing programs that blend data science, creative excellence, and full-funnel optimization to scale customer acquisition and long-term brand equity.",
+    industries: ["Retail", "Consumer Goods", "Technology", "Healthcare", "Finance"],
+    locations: ["New York", "Texas", "California"],
+    works: [
+      {
+        title: "Snacks.com Platform",
+        image: img14,
+        category: "Direct-to-Consumer Growth",
+        description: "Integrated digital marketing and influencer campaign driving millions in first-year direct sales.",
+      },
+      {
+        title: "PepsiCo Shopper",
+        image: img11,
+        category: "Omnichannel Retail Strategy",
+        description: "Precision-targeted digital promotions driving in-store and online snack box purchases.",
+      },
+      {
+        title: "Safeway Omnichannel",
+        image: img2,
+        category: "Customer Loyalty & Retention",
+        description: "Personalized promotional campaigns driving weekly active app engagement and basket size.",
+      },
+      {
+        title: "JCPenney Retail",
+        image: img12,
+        category: "Seasonal Promo Campaigns",
+        description: "Seasonal promotional campaign execution across search, social, and programmatic media.",
+      },
+      {
+        title: "Citibank Acquisition",
+        image: img1,
+        category: "Fintech Growth Marketing",
+        description: "Conversion-optimized acquisition funnels and digital onboarding journeys.",
+      },
+      {
+        title: "ZEE5 North America",
+        image: img6,
+        category: "Global Affiliate Strategy",
+        description: "Targeted digital acquisition campaigns reaching South Asian diaspora audiences.",
+      },
+      {
+        title: "LifeGive Health",
+        image: img18,
+        category: "Full-Funnel Paid Acquisition",
+        description: "Full-funnel digital paid media, email lifecycle marketing, and customer retention systems.",
+      },
+      {
+        title: "Lexus Digital",
+        image: img9,
+        category: "High-Intent Automotive Leads",
+        description: "High-intent digital campaigns connecting luxury car shoppers with regional dealer networks.",
+      },
+      {
+        title: "YMCA Membership",
+        image: img13,
+        category: "Hyper-Local Campaign Execution",
+        description: "Hyper-local social and search campaigns boosting program sign-ups and memberships.",
+      },
+      {
+        title: "Sentral Growth",
+        image: img4,
+        category: "B2B SaaS Demand Generation",
+        description: "Content syndication and targeted ABM campaigns reaching education administrators.",
+      },
+    ],
   },
 
   "interactive-experience": {
@@ -115,12 +432,12 @@ works: [
     industries: ["Automotive", "Retail", "Entertainment", "Technology"],
     locations: ["Texas", "New York", "California"],
     works: [
-      { title: "Lexus Configurator", image: img9  },
-      { title: "Emirates Digital",   image: img10 },
-      { title: "Microsoft 365",      image: img8  },
-      { title: "PwC Dashboard",      image: img15 },
-      { title: "Sentral Platform",   image: img4  },
-      { title: "CitiBank Analytics", image: img1  },
+      { title: "Lexus Configurator", image: img9 },
+      { title: "Emirates Digital", image: img10 },
+      { title: "Microsoft 365", image: img8 },
+      { title: "PwC Dashboard", image: img15 },
+      { title: "Sentral Platform", image: img4 },
+      { title: "CitiBank Analytics", image: img1 },
     ],
   },
 
@@ -132,9 +449,9 @@ works: [
     industries: ["Automotive"],
     locations: ["Texas", "California"],
     works: [
-      { title: "Lexus Build & Price",       image: img9  },
-      { title: "Lexus Accessories Explorer",image: img3  },
-      { title: "Lexus Multimedia Hub",      image: img7  },
+      { title: "Lexus Build & Price", image: img9 },
+      { title: "Lexus Accessories Explorer", image: img3 },
+      { title: "Lexus Multimedia Hub", image: img7 },
     ],
   },
 
@@ -146,14 +463,14 @@ works: [
     industries: ["Finance", "Healthcare", "Retail", "Technology", "Aviation"],
     locations: ["New York", "Texas", "California"],
     works: [
-      { title: "CitiBank Dashboard",  image: img1  },
-      { title: "Microsoft Enterprise",image: img8  },
-      { title: "Emirates Platform",   image: img10 },
-      { title: "PwC Analytics",       image: img15 },
-      { title: "Safeway Commerce",    image: img2  },
-      { title: "Sentral Education",   image: img4  },
-      { title: "LifeGive Portal",     image: img18 },
-      { title: "Fairview System",     image: img17 },
+      { title: "CitiBank Dashboard", image: img1 },
+      { title: "Microsoft Enterprise", image: img8 },
+      { title: "Emirates Platform", image: img10 },
+      { title: "PwC Analytics", image: img15 },
+      { title: "Safeway Commerce", image: img2 },
+      { title: "Sentral Education", image: img4 },
+      { title: "LifeGive Portal", image: img18 },
+      { title: "Fairview System", image: img17 },
     ],
   },
 
@@ -165,11 +482,11 @@ works: [
     industries: ["Entertainment", "Automotive", "Retail", "Media"],
     locations: ["New York", "Texas"],
     works: [
-      { title: "Lexus Short Films",    image: img3  },
-      { title: "Empire Cinemas",       image: img13 },
-      { title: "ZEE5 Streaming",       image: img11 },
-      { title: "Shan Brand Story",     image: img16 },
-      { title: "Neon Stage Activation",image: img11 },
+      { title: "Lexus Short Films", image: img3 },
+      { title: "Empire Cinemas", image: img13 },
+      { title: "ZEE5 Streaming", image: img11 },
+      { title: "Shan Brand Story", image: img16 },
+      { title: "Neon Stage Activation", image: img11 },
     ],
   },
 
@@ -182,8 +499,8 @@ works: [
     industries: ["Technology", "Finance", "Healthcare"],
     locations: ["New York", "Texas", "California"],
     works: [
-      { title: "Microsoft Azure",    image: img8  },
-      { title: "CitiBank Cloud",     image: img1  },
+      { title: "Microsoft Azure", image: img8 },
+      { title: "CitiBank Cloud", image: img1 },
       { title: "PwC Infrastructure", image: img15 },
     ],
   },
@@ -196,10 +513,10 @@ works: [
     industries: ["Technology", "Finance", "Healthcare", "Retail"],
     locations: ["New York", "Texas", "California"],
     works: [
-      { title: "Microsoft Design System", image: img8  },
-      { title: "CitiBank UI Library",     image: img1  },
-      { title: "Sentral Component Kit",   image: img4  },
-      { title: "Safeway Commerce Kit",    image: img2  },
+      { title: "Microsoft Design System", image: img8 },
+      { title: "CitiBank UI Library", image: img1 },
+      { title: "Sentral Component Kit", image: img4 },
+      { title: "Safeway Commerce Kit", image: img2 },
     ],
   },
 
@@ -211,9 +528,9 @@ works: [
     industries: ["Technology", "Finance", "Healthcare"],
     locations: ["New York", "Texas"],
     works: [
-      { title: "Microsoft 365 Workflows", image: img8  },
-      { title: "PwC Process Hub",         image: img15 },
-      { title: "MedImpact Systems",       image: img13 },
+      { title: "Microsoft 365 Workflows", image: img8 },
+      { title: "PwC Process Hub", image: img15 },
+      { title: "MedImpact Systems", image: img13 },
     ],
   },
 
@@ -225,9 +542,9 @@ works: [
     industries: ["Retail", "Consumer Goods"],
     locations: ["New York", "Texas", "California"],
     works: [
-      { title: "Safeway Retail",    image: img2  },
+      { title: "Safeway Retail", image: img2 },
       { title: "JCPenney Commerce", image: img12 },
-      { title: "PepsiCo Shopper",   image: img11 },
+      { title: "PepsiCo Shopper", image: img11 },
     ],
   },
 
@@ -239,10 +556,10 @@ works: [
     industries: ["Consumer Goods", "Retail", "Entertainment"],
     locations: ["New York", "Texas", "California"],
     works: [
-      { title: "PepsiCo Activation",  image: img11 },
-      { title: "Trade Show Execution",image: img16 },
-      { title: "Shan Launch Event",   image: img17 },
-      { title: "LifeGive Campaign",   image: img18 },
+      { title: "PepsiCo Activation", image: img11 },
+      { title: "Trade Show Execution", image: img16 },
+      { title: "Shan Launch Event", image: img17 },
+      { title: "LifeGive Campaign", image: img18 },
     ],
   },
 
@@ -254,10 +571,10 @@ works: [
     industries: ["Retail", "Consumer Goods", "Technology"],
     locations: ["New York", "Texas", "California"],
     works: [
-      { title: "Safeway Omnichannel",  image: img2  },
-      { title: "PepsiCo Digital",      image: img11 },
-      { title: "JCPenney Experience",  image: img12 },
-      { title: "Snacks.com Platform",  image: img14 },
+      { title: "Safeway Omnichannel", image: img2 },
+      { title: "PepsiCo Digital", image: img11 },
+      { title: "JCPenney Experience", image: img12 },
+      { title: "Snacks.com Platform", image: img14 },
     ],
   },
 
@@ -270,9 +587,9 @@ works: [
     locations: ["New York", "Texas", "California"],
     works: [
       { title: "Microsoft 365 Workflows", image: img8 },
-      { title: "Azure DevOps",            image: img8 },
-      { title: "CitiBank CI/CD",          image: img1 },
-      { title: "PwC Process Hub",         image: img15 },
+      { title: "Azure DevOps", image: img8 },
+      { title: "CitiBank CI/CD", image: img1 },
+      { title: "PwC Process Hub", image: img15 },
     ],
   },
 
@@ -285,8 +602,8 @@ works: [
     locations: ["New York", "Texas", "California"],
     works: [
       { title: "Microsoft Copilot Tools", image: img8 },
-      { title: "CitiBank AI Analytics",   image: img1 },
-      { title: "PwC Intelligence",        image: img15 },
+      { title: "CitiBank AI Analytics", image: img1 },
+      { title: "PwC Intelligence", image: img15 },
     ],
   },
 
@@ -298,9 +615,9 @@ works: [
     industries: ["Finance", "Banking", "Enterprise"],
     locations: ["New York", "California", "Texas"],
     works: [
-      { title: "CitiBank Dashboard",      image: img1 },
-      { title: "Standard Chartered Hub",  image: img1 },
-      { title: "PwC Financial Core",      image: img15 },
+      { title: "CitiBank Dashboard", image: img1 },
+      { title: "Standard Chartered Hub", image: img1 },
+      { title: "PwC Financial Core", image: img15 },
     ],
   },
 
@@ -312,9 +629,9 @@ works: [
     industries: ["Finance", "Banking"],
     locations: ["New York", "California"],
     works: [
-      { title: "CitiBank Mobile",         image: img1 },
-      { title: "Standard Chartered App",  image: img1 },
-      { title: "Fintech Core Banking",    image: img2 },
+      { title: "CitiBank Mobile", image: img1 },
+      { title: "Standard Chartered App", image: img1 },
+      { title: "Fintech Core Banking", image: img2 },
     ],
   },
 
@@ -326,9 +643,9 @@ works: [
     industries: ["Healthcare", "Life Sciences", "Telemedicine"],
     locations: ["California", "Texas", "New York"],
     works: [
-      { title: "MedImpact Portal",        image: img13 },
-      { title: "LifeGive Health",         image: img18 },
-      { title: "Magellan Care Platform",  image: img5 },
+      { title: "MedImpact Portal", image: img13 },
+      { title: "LifeGive Health", image: img18 },
+      { title: "Magellan Care Platform", image: img5 },
     ],
   },
 
@@ -340,8 +657,8 @@ works: [
     industries: ["Aviation", "Travel & Hospitality"],
     locations: ["California", "New York"],
     works: [
-      { title: "Emirates Experience",     image: img10 },
-      { title: "Global Flight Booking",   image: img10 },
+      { title: "Emirates Experience", image: img10 },
+      { title: "Global Flight Booking", image: img10 },
       { title: "In-Flight Entertainment", image: img10 },
     ],
   },
@@ -354,9 +671,9 @@ works: [
     industries: ["Agriculture", "Enterprise", "Supply Chain"],
     locations: ["Texas", "California"],
     works: [
-      { title: "Nutrien Digital Core",    image: img14 },
-      { title: "Supply Chain Insights",   image: img5 },
-      { title: "Operational Dashboards",  image: img8 },
+      { title: "Nutrien Digital Core", image: img14 },
+      { title: "Supply Chain Insights", image: img5 },
+      { title: "Operational Dashboards", image: img8 },
     ],
   },
 
@@ -364,6 +681,12 @@ works: [
 
 /* Map of standard slugs to exact display titles */
 export const TAG_TITLE_MAP = {
+  "trade-shows-experiential-marketing": "Trade Shows / Experiential Marketing",
+  "trade-shows-brand-activation": "Trade Shows / Brand Activation",
+  "trade-shows": "Trade Shows / Brand Activation",
+  "interactive-digital-experiences": "Interactive Digital Experiences",
+  "digital-video-productions": "Digital Video Productions",
+  "digital-marketing": "Digital Marketing",
   "ui-ux-design": "UI/UX Design",
   "ux-ui-design": "UX/UI Design",
   "interactive-experience": "Interactive Experience",
@@ -480,7 +803,7 @@ export function getServiceDetail(slug, customTitle) {
     return {
       ...found,
       heading,
-      works: padWorks(found.works, 10),
+      works: found.works || [],
     };
   }
 

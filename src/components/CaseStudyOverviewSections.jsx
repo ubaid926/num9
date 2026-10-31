@@ -6,6 +6,7 @@ import { caseStudiesData } from "../data/caseStudiesData";
 ========================================== */
 
 function StatisticCircle({ value, subtext, label }) {
+  const isLong = String(value).length > 4;
   return (
     <div className="flex flex-col items-center min-w-0">
       <div
@@ -42,19 +43,15 @@ function StatisticCircle({ value, subtext, label }) {
         />
 
         {/* NUMBER & SUBTEXT CENTERED AS A UNIT */}
-        <div className="relative z-10 flex flex-col items-center justify-center -mt-0.5 sm:-mt-1">
+        <div className="relative z-10 flex flex-col items-center justify-center -mt-0.5 sm:-mt-1 px-1 text-center">
           <span
-            className="
+            className={`
               font-grift-semibold
-              text-[40px]
-              sm:text-[50px]
-              md:text-[58px]
-              lg:text-[68px]
-              xl:text-[80px]
+              ${isLong ? 'text-[24px] sm:text-[32px] md:text-[38px] lg:text-[46px] xl:text-[54px]' : 'text-[40px] sm:text-[50px] md:text-[58px] lg:text-[68px] xl:text-[80px]'}
               leading-none
               tracking-[-0.035em]
               text-[#25C800]
-            "
+            `}
           >
             {value}
           </span>
@@ -124,14 +121,16 @@ export default function CaseStudyOverviewSections({
     const el = statsSectionRef.current;
     if (!el) return;
 
+    const target1 = stat1Data.targetValue || 10;
+    const target2 = stat2Data.targetValue || 3;
+    const start1 = stat1Data.startValue !== undefined ? stat1Data.startValue : (target1 > 1000 ? Math.floor(target1 * 0.7) : 1);
+    const start2 = stat2Data.startValue !== undefined ? stat2Data.startValue : (target2 > 1000 ? Math.floor(target2 * 0.98) : 1);
+
     // Reset when case study changes
     animatedRef.current = false;
     hasUserScrolledRef.current = false;
-    setCount1(1);
-    setCount2(1);
-
-    const target1 = stat1Data.targetValue || 10;
-    const target2 = stat2Data.targetValue || 3;
+    setCount1(start1);
+    setCount2(start2);
 
     const startAnimation = () => {
       if (animatedRef.current) return;
@@ -145,8 +144,8 @@ export default function CaseStudyOverviewSections({
         const progress = Math.min(1, elapsed / duration);
         const ease = 1 - Math.pow(1 - progress, 3);
 
-        const val1 = Math.round(1 + ease * (target1 - 1));
-        const val2 = Math.round(1 + ease * (target2 - 1));
+        const val1 = Math.round(start1 + ease * (target1 - start1));
+        const val2 = Math.round(start2 + ease * (target2 - start2));
 
         setCount1(val1);
         setCount2(val2);
@@ -384,14 +383,18 @@ lg:mt-[85px]
               <StatisticCircle
                 value={
                   stat1Data.suffix && count1 >= stat1Data.targetValue
-                    ? `${count1}${stat1Data.suffix}`
-                    : count1
+                    ? `${count1 >= 1000 ? count1.toLocaleString() : count1}${stat1Data.suffix}`
+                    : (count1 >= 1000 ? count1.toLocaleString() : count1)
                 }
                 label={stat1Data.label}
               />
 
               <StatisticCircle
-                value={count2}
+                value={
+                  stat2Data.noComma || (stat2Data.targetValue > 1000 && stat2Data.targetValue < 2100)
+                    ? count2
+                    : (count2 >= 1000 ? count2.toLocaleString() : count2)
+                }
                 subtext={stat2Data.subtext}
                 label={stat2Data.label}
               />
@@ -510,7 +513,6 @@ lg:mt-[85px]
                     max-w-[320px]
                     object-contain
                   "
-                  loading="lazy"
                 />
               )}
             </div>

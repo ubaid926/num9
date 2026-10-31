@@ -308,7 +308,7 @@ aria-label="Home"
 HERO SECTION
 ========================================================= */
 
-function HeroSection() {
+function HeroSection({ onNavigate }) {
 return (
 
 <section
@@ -328,9 +328,19 @@ return (
 
       {/* Breadcrumb / Tag */}
       <div className="flex items-center gap-1.5 mb-4 text-[#555] font-normal">
-         <svg className="w-[20px] h-[20px] text-black shrink-0" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 11.25 12 3l8.25 8.25M5.25 9.75v10.5h13.5V9.75M9 20.25v-6h6v6" />
-      </svg>
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            if (onNavigate) onNavigate("home");
+          }}
+          className="text-black hover:text-[#15B83E] transition-colors cursor-pointer inline-flex items-center"
+          aria-label="Home"
+        >
+          <svg className="w-[20px] h-[20px] shrink-0" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 11.25 12 3l8.25 8.25M5.25 9.75v10.5h13.5V9.75M9 20.25v-6h6v6" />
+          </svg>
+        </button>
         <svg className="w-3 h-3 text-slate-400 shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
         </svg>
@@ -530,7 +540,7 @@ return (
    />
 
   {/* 2. Hero Section */}
-  <HeroSection />
+  <HeroSection onNavigate={onNavigate} />
 
   {/* 3. Three Services Categories (9 Cards Each = 27 Cards) */}
 
