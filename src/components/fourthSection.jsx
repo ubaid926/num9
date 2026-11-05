@@ -61,7 +61,7 @@ export default function FourthSection() {
   };
 
   return (
-    <section className="w-full bg-white py-8 sm:py-30 px-4 sm:px-6 flex items-center justify-center">
+    <section className="w-full bg-white dark:bg-[#0B0D0C] py-8 sm:py-30 px-4 sm:px-6 flex items-center justify-center transition-colors">
       <div className="w-full max-w-[1070px] rounded-[16px] overflow-hidden shadow-lg">
 
         {/* ── TOP BAR ── #52606D */}

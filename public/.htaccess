@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /num9dev/
+
+    RewriteRule ^index\.html$ - [L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /num9dev/index.html [L]
+</IfModule>
+
+# Hostinger LiteSpeed 404 Fallback
+ErrorDocument 404 /num9dev/index.html
+

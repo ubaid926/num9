@@ -6,7 +6,7 @@ const AccelerateBusinessSection = ({ onScheduleClick }) => {
   return (
     <section className="w-full relative overflow-hidden bg-black">
       {/* Mobile background: top white area cutting across the exact midpoint of the image */}
-      <div className="absolute inset-x-0 top-0 h-[113px] sm:h-[136px] md:h-[156px] bg-white lg:hidden pointer-events-none" />
+      <div className="absolute inset-x-0 top-0 h-[113px] sm:h-[136px] md:h-[156px] bg-white dark:bg-[#0B0D0C] lg:hidden pointer-events-none" />
 
       <div
         className="

@@ -21,6 +21,7 @@ import img16 from "../assets/trade-show-activation.jpg";
 import img17 from "../assets/aboutus3rdSect.webp";
 import img18 from "../assets/homeHeroSectionImages/LifeGive Mediterranean Supplement Showcase 1.webp";
 import empireCinemasImg from "../assets/homeHeroSectionImages/Empire Cinemas Grand Lobby 1 (1).webp";
+import skinnyServiceImg from "../assets/caseStudies/skinny/Updated_Image (2).png";
 
 import ahmedFoodsVideoImg from "../assets/caseStudies/elipse/digitalVideo/ahmedFoods.webp";
 import bikeVideoImg from "../assets/caseStudies/elipse/digitalVideo/bike.webp";
@@ -130,10 +131,11 @@ export const serviceDetailData = {
     locations: ["New York", "Texas", "California"],
     works: [
       {
-        title: "Trade Show Execution",
-        image: img16,
-        category: "Exhibition & Trade Show",
-        description: "Custom immersive exhibition structures designed for multi-city trade shows with integrated brand touchpoints.",
+        title: "Skinny Mixes",
+        image: skinnyServiceImg,
+        category: "Experiential Brand Activation",
+        description: "High-impact street sampling and experiential marketing activation across Manhattan for Skinnyccino beverages.",
+        link: "/case-study/skinny",
       },
       {
         title: "PepsiCo Shopper",
@@ -203,10 +205,11 @@ export const serviceDetailData = {
     locations: ["New York", "Texas", "California"],
     works: [
       {
-        title: "Trade Show Execution",
-        image: img16,
-        category: "Exhibition & Trade Show",
-        description: "Custom immersive exhibition structures designed for multi-city trade shows with integrated brand touchpoints.",
+        title: "Skinny Mixes",
+        image: skinnyServiceImg,
+        category: "Experiential Brand Activation",
+        description: "High-impact street sampling and experiential marketing activation across Manhattan for Skinnyccino beverages.",
+        link: "/case-study/skinny",
       },
       {
         title: "PepsiCo Shopper",
@@ -368,16 +371,10 @@ export const serviceDetailData = {
         description: "Integrated digital marketing and influencer campaign driving millions in first-year direct sales.",
       },
       {
-        title: "PepsiCo Shopper",
-        image: img11,
-        category: "Omnichannel Retail Strategy",
-        description: "Precision-targeted digital promotions driving in-store and online snack box purchases.",
-      },
-      {
-        title: "Safeway Omnichannel",
-        image: img2,
-        category: "Customer Loyalty & Retention",
-        description: "Personalized promotional campaigns driving weekly active app engagement and basket size.",
+        title: "Empire Cinemas",
+        image: empireCinemasImg,
+        category: "Omnichannel Entertainment Growth",
+        description: "Digital ticketing campaigns and loyalty acquisition scaling box-office reservations.",
       },
       {
         title: "JCPenney Retail",
@@ -386,10 +383,10 @@ export const serviceDetailData = {
         description: "Seasonal promotional campaign execution across search, social, and programmatic media.",
       },
       {
-        title: "Citibank Acquisition",
-        image: img1,
-        category: "Fintech Growth Marketing",
-        description: "Conversion-optimized acquisition funnels and digital onboarding journeys.",
+        title: "PwC Dashboard",
+        image: img5,
+        category: "Enterprise Analytics Marketing",
+        description: "B2B executive acquisition funnels and digital thought-leadership campaigns.",
       },
       {
         title: "ZEE5 North America",
@@ -398,16 +395,16 @@ export const serviceDetailData = {
         description: "Targeted digital acquisition campaigns reaching South Asian diaspora audiences.",
       },
       {
-        title: "LifeGive Health",
-        image: img18,
-        category: "Full-Funnel Paid Acquisition",
-        description: "Full-funnel digital paid media, email lifecycle marketing, and customer retention systems.",
+        title: "Almaza",
+        image: img15,
+        category: "Luxury Brand Distribution",
+        description: "Omnichannel product positioning and digital direct-to-consumer expansion.",
       },
       {
-        title: "Lexus Digital",
-        image: img9,
-        category: "High-Intent Automotive Leads",
-        description: "High-intent digital campaigns connecting luxury car shoppers with regional dealer networks.",
+        title: "Fairview",
+        image: img17,
+        category: "Full-Funnel Paid Media",
+        description: "High-intent programmatic campaigns driving enterprise engagement across digital channels.",
       },
       {
         title: "YMCA Membership",
@@ -416,10 +413,16 @@ export const serviceDetailData = {
         description: "Hyper-local social and search campaigns boosting program sign-ups and memberships.",
       },
       {
-        title: "Sentral Growth",
-        image: img4,
-        category: "B2B SaaS Demand Generation",
-        description: "Content syndication and targeted ABM campaigns reaching education administrators.",
+        title: "Nutrien",
+        image: img8,
+        category: "B2B Demand Generation",
+        description: "Data-driven B2B campaigns connecting agtech innovations with national distribution networks.",
+      },
+      {
+        title: "Magellan Health",
+        image: img7,
+        category: "Healthcare Acquisition",
+        description: "Multi-channel digital health communications and patient enrollment optimization.",
       },
     ],
   },

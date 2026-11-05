@@ -1,9 +1,10 @@
-﻿import lexusHeroBg from "../assets/lexus/lexusHeroImg.webp";
+import lexusHeroBg from "../assets/lexus/lexusHeroImg.webp";
 import lexusLogo from "../assets/lexus/lexus_PNG22 1.jpg";
 import lexusCar from "../assets/lexus/Blue Lexus Coupe in Architectural Triptych.webp";
 import lexusImg1 from "../assets/lexus/1stimg.webp";
 import lexusImg2 from "../assets/lexus/2ndimg.webp";
 import lexusImg3 from "../assets/lexus/3rdimg.webp";
+import lexusWarehouse from "../assets/Metallic Blue Lexus in a Warehouse 1.webp";
 
 import microsoftLogo from "../assets/Logos/Updated_Logos/Microsoft_logo__282012_29.png";
 import workLaptop from "../assets/workLaptop.webp";
@@ -71,7 +72,8 @@ import genesisLogo from "../assets/Logos/Updated_Logos/GENESIS.Logo.032218_Site_
 import standardCharteredLogo from "../assets/Logos/Updated_Logos/Standard_Chartered__282021_29.webp";
 
 import skinnyLogo from "../assets/caseStudies/skinny/Jordan_s_Skinny_Mixes_Logo_f5994884-b437-492f-aa4a-b5debcc1c695_1543x_copy_copy.png";
-import skinnyHeroBg from "../assets/caseStudies/skinny/skinny-mixes-hero.avif";
+import skinnyHeroBg from "../assets/caseStudies/skinny/Updated_Image (2).png";
+import skinnyMixesAmbassador from "../assets/caseStudies/skinny/skinny-mixes-7.avif";
 import skinnyImg1 from "../assets/caseStudies/skinny/skinny-mixes-1.avif";
 import skinnyImg2 from "../assets/caseStudies/skinny/skinny-mixes-2.avif";
 import skinnyImg3 from "../assets/caseStudies/skinny/skinny-mixes-3.avif";
@@ -110,6 +112,8 @@ export const caseStudiesData = {
         "Lexus partnered with us to develop an interactive platform that allows customers to build and customize their vehicles while accessing premium multimedia content. By combining intuitive navigation, high readability, and luxury-focused design, we created a seamless digital experience that enhances dealership engagement and strengthens the Lexus customer journey.",
       logo: lexusLogo,
       logoAlt: "Lexus logo",
+      showcaseImage: lexusWarehouse,
+      showcaseAlt: "Lexus vehicle customization showcase",
       stats: [
         {
           targetValue: 10,
@@ -149,6 +153,8 @@ export const caseStudiesData = {
       },
       challenge: {
         heading: "The challenge",
+        image: skinnyMixesAmbassador,
+        imageAlt: "Skinny Mixes Manhattan street sampling challenge",
         leftParagraphs: [
           "Lexus wanted to empower its dealerships with an interactive platform that would allow customers to build and customize their vehicles from scratch while exploring available accessories and premium features.",
           "The platform also needed to serve as a central multimedia hub, providing access to Lexus International content including promotional videos, product showcases, and TV commercials.",
@@ -159,6 +165,8 @@ export const caseStudiesData = {
       },
       solution: {
         heading: "The solution.",
+        image: skinnyHeroBg,
+        imageAlt: "Skinny Mixes brand ambassadors and interactive activation in NYC",
         description:
           "We created an interactive Lexus dealership platform that allows customers to build and customize vehicles, explore accessories, and engage with premium multimedia content. Designed with intuitive navigation, high readability, and a luxury-focused user experience, the solution simplifies customer interactions while supporting dealerships with a powerful sales and presentation tool.",
         customerInteractions: {
@@ -187,18 +195,18 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
@@ -272,6 +280,8 @@ export const caseStudiesData = {
       },
       challenge: {
         heading: "The challenge",
+        image: lexusWarehouse,
+        imageAlt: "Lexus interactive dealership platform challenge",
         leftParagraphs: [
           "Microsoft required unified design patterns and high-performance frontend architecture to reduce engineering friction across diverse product ecosystems.",
           "Internal development teams needed modular tooling and robust design tokens that aligned with stringent accessibility and global localization standards.",
@@ -282,6 +292,8 @@ export const caseStudiesData = {
       },
       solution: {
         heading: "The solution.",
+        image: lexusHeroBg,
+        imageAlt: "Lexus interactive dealership platform solution",
         description:
           "We engineered an extensible design system and optimized application frameworks that unified interaction patterns across enterprise tools. With comprehensive documentation, accessibility compliance, and optimized bundle delivery, we enabled faster development cycles and cohesive digital experiences.",
         customerInteractions: {
@@ -310,18 +322,18 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
@@ -395,6 +407,8 @@ export const caseStudiesData = {
       },
       challenge: {
         heading: "The challenge",
+        image: lexusWarehouse,
+        imageAlt: "Lexus interactive dealership platform challenge",
         leftParagraphs: [
           "PepsiCo needed to stand out in saturated retail environments through synchronized digital and physical brand experiences.",
           "Regional marketing teams required flexible campaign templates that could be localized quickly without diluting brand prestige.",
@@ -405,6 +419,8 @@ export const caseStudiesData = {
       },
       solution: {
         heading: "The solution.",
+        image: lexusHeroBg,
+        imageAlt: "Lexus interactive dealership platform solution",
         description:
           "We engineered dynamic digital campaign platforms, interactive QR-activated microsites, and automated regional marketing toolkits. Designed for rapid deployment and maximum visual punch, these assets connected in-store displays with engaging digital incentives and loyalty rewards.",
         customerInteractions: {
@@ -433,18 +449,18 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
@@ -518,6 +534,8 @@ export const caseStudiesData = {
       },
       challenge: {
         heading: "The challenge",
+        image: lexusWarehouse,
+        imageAlt: "Lexus interactive dealership platform challenge",
         leftParagraphs: [
           "Global travelers expect fast, personalized booking and journey management across multiple languages, currencies, and devices.",
           "Presenting luxury inflight cabin amenities and personalized entertainment needed to feel as effortless and inspiring as the actual flight.",
@@ -528,6 +546,8 @@ export const caseStudiesData = {
       },
       solution: {
         heading: "The solution.",
+        image: lexusHeroBg,
+        imageAlt: "Lexus interactive dealership platform solution",
         description:
           "We designed high-conversion booking workflows, interactive cabin exploration interfaces, and responsive journey dashboards. By emphasizing swift page loads, clear hierarchy, and elegant visual polish, the platform elevated customer satisfaction and accelerated direct digital bookings.",
         customerInteractions: {
@@ -556,18 +576,18 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
@@ -649,6 +669,8 @@ export const caseStudiesData = {
 
       challenge: {
         heading: "The challenge",
+        image: lexusWarehouse,
+        imageAlt: "Lexus interactive dealership platform challenge",
         leftParagraphs: [
           "Citi wanted to leverage big data through interactive data visualization dashboards to capture portfolio performance, consumer trends, and risk management metrics without operational UI friction.",
 
@@ -662,6 +684,8 @@ export const caseStudiesData = {
 
       solution: {
         heading: "The solution.",
+        image: lexusHeroBg,
+        imageAlt: "Lexus interactive dealership platform solution",
         description:
           "We created an interactive Citibank analytics platform that allows analysts to track portfolio performance, monitor risk metrics, and engage with real-time financial data visualizations. Designed with intuitive navigation, high readability, and an enterprise-focused user experience, the solution simplifies complex banking data while supporting executives with a powerful strategic decision and presentation tool.",
 
@@ -697,18 +721,18 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
@@ -782,6 +806,8 @@ export const caseStudiesData = {
       },
       challenge: {
         heading: "The challenge",
+        image: lexusWarehouse,
+        imageAlt: "Lexus interactive dealership platform challenge",
         leftParagraphs: [
           "Agronomic data was siloed across legacy regional ERPs and field monitoring systems, slowing critical seasonal operations.",
           "Operations managers required rapid visibility into fertilizer inventories, shipping schedules, and regional weather forecasts.",
@@ -792,6 +818,8 @@ export const caseStudiesData = {
       },
       solution: {
         heading: "The solution.",
+        image: lexusHeroBg,
+        imageAlt: "Lexus interactive dealership platform solution",
         description:
           "We built a unified enterprise web platform featuring responsive geographic map overlays, predictive inventory forecasting, and real-time shipping tracking. Optimized for quick glanceability, the platform gave managers complete operational control from any screen.",
         customerInteractions: {
@@ -820,18 +848,18 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
@@ -905,6 +933,8 @@ export const caseStudiesData = {
       },
       challenge: {
         heading: "The challenge",
+        image: lexusWarehouse,
+        imageAlt: "Lexus interactive dealership platform challenge",
         leftParagraphs: [
           "Argo needed to build a brand new software suite within an ambitious go-to-market timeline.",
           "The platform had to accommodate complex workflow customization while maintaining effortless simplicity for non-technical users.",
@@ -915,6 +945,8 @@ export const caseStudiesData = {
       },
       solution: {
         heading: "The solution.",
+        image: lexusHeroBg,
+        imageAlt: "Lexus interactive dealership platform solution",
         description:
           "We partnered closely with Argo leadership to engineer a modern web application powered by clean component architecture, optimized state management, and responsive layouts. The result was a fast, robust product that delighted early adopters and enabled rapid commercialization.",
         customerInteractions: {
@@ -943,18 +975,18 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
@@ -1028,6 +1060,8 @@ export const caseStudiesData = {
       },
       challenge: {
         heading: "The challenge",
+        image: lexusWarehouse,
+        imageAlt: "Lexus interactive dealership platform challenge",
         leftParagraphs: [
           "Legacy pharmacy benefit systems were complicated for members to navigate, causing confusion around medication costs and claims status.",
           "Healthcare compliance mandated strict data protection, audit trails, and Section 508 / WCAG accessibility standards.",
@@ -1038,6 +1072,8 @@ export const caseStudiesData = {
       },
       solution: {
         heading: "The solution.",
+        image: lexusHeroBg,
+        imageAlt: "Lexus interactive dealership platform solution",
         description:
           "We designed an accessible, responsive patient web application featuring clear cost calculators, automated claims tracking, and direct digital prescription management. With streamlined provider workflows, the platform reduced friction across the entire healthcare ecosystem.",
         customerInteractions: {
@@ -1066,18 +1102,18 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
@@ -1151,6 +1187,8 @@ export const caseStudiesData = {
       },
       challenge: {
         heading: "The challenge",
+        image: lexusWarehouse,
+        imageAlt: "Lexus interactive dealership platform challenge",
         leftParagraphs: [
           "Shoppers encountered high friction in mobile checkout and coupon application, leading to cart abandonment.",
           "The loyalty rewards program needed deeper integration into every product browse and purchase touchpoint.",
@@ -1161,6 +1199,8 @@ export const caseStudiesData = {
       },
       solution: {
         heading: "The solution.",
+        image: lexusHeroBg,
+        imageAlt: "Lexus interactive dealership platform solution",
         description:
           "We re-engineered the mobile product detail pages, streamlined one-tap coupon redemption, and optimized the buy-online-pickup-in-store (BOPIS) experience. The result was a modern, intuitive shopping experience that drove substantial digital revenue growth.",
         customerInteractions: {
@@ -1189,18 +1229,18 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
@@ -1282,6 +1322,8 @@ export const caseStudiesData = {
 
       challenge: {
         heading: "The challenge",
+        image: lexusWarehouse,
+        imageAlt: "Lexus interactive dealership platform challenge",
         leftParagraphs: [
           "Safeway wanted to modernize its legacy digital platforms where users experienced high drop-off rates during checkout and delivery window selection.",
 
@@ -1295,6 +1337,8 @@ export const caseStudiesData = {
 
       solution: {
         heading: "The solution.",
+        image: lexusHeroBg,
+        imageAlt: "Lexus interactive dealership platform solution",
         description:
           "We created an interactive Safeway grocery platform that allows customers to browse products, manage prescriptions, and engage with flexible delivery scheduling. Designed with intuitive navigation, high readability, and a convenience-focused user experience, the solution simplifies online shopping while supporting supermarkets with a powerful digital sales and fulfillment tool.",
 
@@ -1330,18 +1374,18 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
@@ -1424,6 +1468,8 @@ export const caseStudiesData = {
 
       challenge: {
         heading: "The challenge",
+        image: lexusWarehouse,
+        imageAlt: "Lexus interactive dealership platform challenge",
         leftParagraphs: [
           "The YMCA needed a modern mobile solution to simplify check-in procedures at facility entry points and reduce front-desk lines.",
 
@@ -1437,6 +1483,8 @@ export const caseStudiesData = {
 
       solution: {
         heading: "The solution.",
+        image: lexusHeroBg,
+        imageAlt: "Lexus interactive dealership platform solution",
         description:
           "We created an interactive YMCA mobile application that allows members to display digital membership passes, verify entry status, and engage with facility updates. Designed with intuitive navigation, high readability, and a community-focused mobile experience, the solution simplifies front-desk entry while supporting facilities with a powerful digital member management tool.",
 
@@ -1472,18 +1520,18 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
@@ -1557,6 +1605,8 @@ export const caseStudiesData = {
       },
       challenge: {
         heading: "The challenge",
+        image: lexusWarehouse,
+        imageAlt: "Lexus interactive dealership platform challenge",
         leftParagraphs: [
           "Siloed clinical records and disparate behavioral health assessments slowed care coordination between primary physicians and behavioral specialists.",
           "Complex authorization protocols and regulatory hurdles imposed heavy administrative burdens on healthcare providers and care managers.",
@@ -1567,6 +1617,8 @@ export const caseStudiesData = {
       },
       solution: {
         heading: "The solution.",
+        image: lexusHeroBg,
+        imageAlt: "Lexus interactive dealership platform solution",
         description:
           "We developed an enterprise clinical optimization platform featuring automated care pathway triage, unified provider dashboards, and low-friction patient onboarding. Secure data integrations provided real-time insights into treatment efficacy and patient health trajectories.",
         customerInteractions: {
@@ -1595,18 +1647,18 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
@@ -1688,6 +1740,8 @@ export const caseStudiesData = {
 
       challenge: {
         heading: "The challenge",
+        image: lexusWarehouse,
+        imageAlt: "Lexus interactive dealership platform challenge",
         leftParagraphs: [
           "Shaan Foods needed to expand its footprint in North American retail channels like Costco and Sam's Club by engaging consumers directly and increasing product trial rates.",
 
@@ -1701,6 +1755,8 @@ export const caseStudiesData = {
 
       solution: {
         heading: "The solution.",
+        image: lexusHeroBg,
+        imageAlt: "Lexus interactive dealership platform solution",
         description:
           "We created an interactive Shaan Foods retail activation platform that allows shoppers to taste authentic recipes, explore spice products, and engage with live cooking demonstrations. Designed with intuitive presentation, high visibility, and a culture-focused consumer experience, the solution simplifies in-store discovery while supporting retailers with a powerful promotional and sales tool.",
 
@@ -1736,18 +1792,18 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
@@ -1830,6 +1886,8 @@ export const caseStudiesData = {
 
       challenge: {
         heading: "The challenge",
+        image: lexusWarehouse,
+        imageAlt: "Lexus interactive dealership platform challenge",
         leftParagraphs: [
           "ZEE5 needed an effective offline strategy to capture diaspora audiences in North America who frequented community grocery stores.",
 
@@ -1843,6 +1901,8 @@ export const caseStudiesData = {
 
       solution: {
         heading: "The solution.",
+        image: lexusHeroBg,
+        imageAlt: "Lexus interactive dealership platform solution",
         description:
           "We created an interactive ZEE5 digital signage platform that allows shoppers to view content trailers, explore streaming options, and engage with local store cross-promotions. Designed with intuitive navigation, high visual contrast, and an entertainment-focused user experience, the solution simplifies media discovery while supporting grocery partners with a powerful promotional and presentation tool.",
 
@@ -1878,18 +1938,18 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
@@ -1971,6 +2031,8 @@ export const caseStudiesData = {
 
       challenge: {
         heading: "The challenge",
+        image: lexusWarehouse,
+        imageAlt: "Lexus interactive dealership platform challenge",
         leftParagraphs: [
           "Frito-Lay wanted to establish a direct-to-consumer channel allowing fans to build custom variety packs of their favorite snacks on recurring delivery schedules.",
 
@@ -1984,6 +2046,8 @@ export const caseStudiesData = {
 
       solution: {
         heading: "The solution.",
+        image: lexusHeroBg,
+        imageAlt: "Lexus interactive dealership platform solution",
         description:
           "We created an interactive Frito-Lay e-commerce platform that allows customers to build custom snack boxes, select delivery frequencies, and engage with social media campaigns. Designed with intuitive navigation, high visual engagement, and a flavor-focused user experience, the solution simplifies direct ordering while supporting brand growth with a powerful digital sales and presentation tool.",
 
@@ -2019,18 +2083,18 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
@@ -2112,6 +2176,8 @@ export const caseStudiesData = {
 
       challenge: {
         heading: "The challenge",
+        image: lexusWarehouse,
+        imageAlt: "Lexus interactive dealership platform challenge",
         leftParagraphs: [
           "Schools needed a centralized communication channel to bridge the gap between busy parents and teachers, eliminating lost paperwork and opaque homework tracking.",
 
@@ -2125,6 +2191,8 @@ export const caseStudiesData = {
 
       solution: {
         heading: "The solution.",
+        image: lexusHeroBg,
+        imageAlt: "Lexus interactive dealership platform solution",
         description:
           "We created an interactive Sentral educational platform that allows parents to track student homework, communicate with teachers, and engage with instant school fee payments. Designed with intuitive navigation, high readability, and a family-focused user experience, the solution simplifies school communication while supporting institutions with a powerful digital administration and presentation tool.",
 
@@ -2159,18 +2227,18 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
@@ -2251,6 +2319,8 @@ export const caseStudiesData = {
 
       challenge: {
         heading: "The challenge",
+        image: lexusWarehouse,
+        imageAlt: "Lexus interactive dealership platform challenge",
         leftParagraphs: [
           "Professional teams at PwC required an intuitive internal workspace to manage complex tax policies, track open engagements, and monitor task completion deadlines across large teams without administrative bottlenecks.",
 
@@ -2264,6 +2334,8 @@ export const caseStudiesData = {
 
       solution: {
         heading: "The solution.",
+        image: lexusHeroBg,
+        imageAlt: "Lexus interactive dealership platform solution",
         description:
           "We created an interactive PwC enterprise dashboard that allows advisors to track tax policies, manage active engagements, and engage with real-time workflow analytics. Designed with intuitive navigation, high readability, and a data-focused user experience, the solution simplifies complex corporate operations while supporting advisors with a powerful workflow management and presentation tool.",
 
@@ -2299,18 +2371,18 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
@@ -2393,6 +2465,8 @@ export const caseStudiesData = {
 
       challenge: {
         heading: "The challenge",
+        image: lexusWarehouse,
+        imageAlt: "Lexus interactive dealership platform challenge",
         leftParagraphs: [
           "Empire Cinemas needed a complete website redesign that matched the excitement of the big screen while simplifying the user journey from browsing showtimes to selecting seats and completing ticket checkout.",
 
@@ -2406,6 +2480,8 @@ export const caseStudiesData = {
 
       solution: {
         heading: "The solution.",
+        image: lexusHeroBg,
+        imageAlt: "Lexus interactive dealership platform solution",
         description:
           "We created an interactive Empire Cinemas ticketing platform that allows moviegoers to browse showtimes, reserve seats, and engage with blockbuster video trailers. Designed with intuitive navigation, high visual contrast, and a cinematic-focused user experience, the solution simplifies online booking while supporting theatres with a powerful digital sales and presentation tool.",
 
@@ -2441,18 +2517,18 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
@@ -2535,6 +2611,8 @@ export const caseStudiesData = {
 
       challenge: {
         heading: "The challenge",
+        image: lexusWarehouse,
+        imageAlt: "Lexus interactive dealership platform challenge",
         leftParagraphs: [
           "Almaza needed an interactive digital platform to showcase its multi-decade heritage, educate consumers on its brewing craftsmanship, and encourage community-driven social engagement.",
 
@@ -2548,6 +2626,8 @@ export const caseStudiesData = {
 
       solution: {
         heading: "The solution.",
+        image: lexusHeroBg,
+        imageAlt: "Lexus interactive dealership platform solution",
         description:
           "We created an interactive Almaza brand website that allows consumers to explore heritage timelines, view brewing processes, and engage with social media storytelling. Designed with intuitive navigation, high visual richness, and a heritage-focused user experience, the solution simplifies brand discovery while supporting marketing teams with a powerful digital storytelling and presentation tool.",
 
@@ -2583,18 +2663,18 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
@@ -2677,6 +2757,8 @@ export const caseStudiesData = {
 
       challenge: {
         heading: "The challenge",
+        image: lexusWarehouse,
+        imageAlt: "Lexus interactive dealership platform challenge",
         leftParagraphs: [
           "Fairview needed to modernize its digital product catalog to help architects and facade engineers easily search, filter, and compare high-performance architectural panels.",
 
@@ -2690,6 +2772,8 @@ export const caseStudiesData = {
 
       solution: {
         heading: "The solution.",
+        image: lexusHeroBg,
+        imageAlt: "Lexus interactive dealership platform solution",
         description:
           "We created an interactive Fairview architectural platform that allows professionals to browse cladding products, view completed project showcases, and engage with rapid sample requests. Designed with intuitive navigation, high technical readability, and an industry-focused user experience, the solution simplifies material specification while supporting manufacturers with a powerful digital sales and presentation tool.",
 
@@ -2725,18 +2809,18 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
@@ -2818,6 +2902,8 @@ export const caseStudiesData = {
 
       challenge: {
         heading: "The challenge",
+        image: lexusWarehouse,
+        imageAlt: "Lexus interactive dealership platform challenge",
         leftParagraphs: [
           "LifeGive needed to modernize its digital store to help wellness consumers easily explore health categories like vitamins, destress formulas, weight management, and detox solutions.",
 
@@ -2831,6 +2917,8 @@ export const caseStudiesData = {
 
       solution: {
         heading: "The solution.",
+        image: lexusHeroBg,
+        imageAlt: "Lexus interactive dealership platform solution",
         description:
           "We created an interactive LifeGive e-commerce platform that allows customers to explore wellness categories, review vegan supplement benefits, and engage with rapid slide-out checkout. Designed with intuitive navigation, high visual clarity, and a health-focused user experience, the solution simplifies online supplement shopping while supporting brand growth with a powerful digital sales and presentation tool.",
 
@@ -2866,18 +2954,18 @@ export const caseStudiesData = {
         galleryImages: [
           {
             src: lexusImg1,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg2,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
           {
             src: lexusImg3,
-            // title: "This is a video title",
-            // subtitle: "LEXUS SHORT FILMS",
+            title: "This is a video title",
+            subtitle: "LEXUS SHORT FILMS",
           },
         ],
       },
@@ -3047,6 +3135,8 @@ export const caseStudiesData = {
       },
       challenge: {
         heading: "The challenge",
+        image: skinnyMixesAmbassador,
+        imageAlt: "Skinny Mixes Manhattan street sampling challenge",
         leftParagraphs: [
           "Launching a new beverage in the highly competitive New York City market requires capturing consumer attention in crowded public spaces.",
           "Skinny Mixes needed an experiential marketing strategy to introduce Skinnyccino to target audiences, drive firsthand product trials, and maximize brand visibility.",
@@ -3057,8 +3147,10 @@ export const caseStudiesData = {
       },
       solution: {
         heading: "The solution.",
+        image: skinnyHeroBg,
+        imageAlt: "Skinny Mixes brand ambassadors and interactive activation in NYC",
         description:
-          "Number9 Creative & Media executed a targeted street sampling campaign for Skinnyccino in high-foot-traffic Manhattan neighborhoods, including Union Square, Times Square, and SoHo. Our fully trained brand ambassadors, dressed in signature bright pink uniforms, engaged pedestrians through physical product samples, branded experiential displays, and interactive photo frames that invited the public to participate.\n\nTo amplify this experiential marketing event online, our media production team filmed and edited a social media video reel titled \"What Does NYC Think of Skinnyccino?\" This content featured live street interviews capturing authentic consumer reactions to the beverage. By integrating physical event marketing with digital content creation, Number9 transformed in-person product discovery into highly shareable social media marketing assets.",
+          "Number9 Creative & Media executed a targeted street sampling campaign for Skinnyccino in high-foot-traffic Manhattan neighborhoods, including Union Square, Times Square, and SoHo. Our fully trained brand ambassadors, dressed in signature bright pink uniforms, engaged pedestrians through physical product samples, branded experiential displays, and interactive photo frames that invited the public to participate.",
         customerInteractions: {
           stat: "8,000+",
           label: "Direct Consumer Interactions",
@@ -3078,28 +3170,31 @@ export const caseStudiesData = {
       outcome: {
         heading: "The outcome",
         intro:
-          "The Number9 Creative & Media campaign successfully launched Skinnyccino in Manhattan, driving thousands of direct consumer interactions and scaling the brand’s reach through organic social media content and word-of-mouth marketing.\n\nOur experiential marketing and media production teams achieved the following results:",
+          "The Number9 Creative & Media campaign successfully launched\nSkinnyccino in Manhattan, driving thousands of direct\nconsumer interactions and scaling the brand’s reach through\norganic social media content and word-of-mouth marketing.\n\nOur experiential marketing and media production teams\nachieved the following results:",
         bullets: [
           "Distributed over 15,000 Skinnyccino samples to drive immediate product trials across Manhattan.",
           "Generated more than 8,000 direct consumer interactions via face-to-face brand engagement and product introductions.",
-          "Facilitated 500+ user-generated social media posts, expanding brand visibility beyond the physical street team activation.",
+          "Facilitated 100+ user-generated social media posts, expanding brand visibility beyond the physical street team activation.",
           "Designed and deployed branded photo opportunities that incentivized consumer engagement with the marketing campaign.",
           "Filmed and produced the \"What Does NYC Think of Skinnyccino?\" social media video reel, capturing authentic street-level feedback for digital distribution.",
           "Executed activations in high-traffic New York City locations, including Union Square, Times Square, and SoHo, to maximize brand discovery.",
         ],
         closing:
           "By seamlessly integrating product sampling, experiential event design, and social media content creation, Number9 Creative & Media successfully scaled a local street marketing activation into a broader digital brand conversation for Skinny Mixes.",
+        galleryFit: "cover", // portrait photos: fill each row, focus kept on faces
         galleryImages: [
           {
             src: skinnyImg3,
             images: [
               {
                 src: skinnyImg3,
+                position: "center 38%",
                 title: "Branded Photo Opportunities",
                 subtitle: "INTERACTIVE CONSUMER ENGAGEMENT",
               },
               {
                 src: skinnyImg6,
+                position: "center 30%",
                 title: "Times Square Consumer Discovery",
                 subtitle: "AUTHENTIC STREET SURVEYS",
               },
@@ -3112,11 +3207,13 @@ export const caseStudiesData = {
             images: [
               {
                 src: skinnyImg5,
+                position: "center 22%",
                 title: "Live Street Interviews",
                 subtitle: "AUTHENTIC NYC CONSUMER FEEDBACK",
               },
               {
                 src: skinnyImg4,
+                position: "center 30%",
                 title: "Union Square Street Teams",
                 subtitle: "HIGH-FOOT-TRAFFIC PRODUCT DISCOVERY",
               },
@@ -3129,11 +3226,13 @@ export const caseStudiesData = {
             images: [
               {
                 src: skinnyImg1,
+                position: "center 28%",
                 title: "Times Square Street Sampling",
                 subtitle: "15,000+ SAMPLES DISTRIBUTED",
               },
               {
                 src: skinnyImg2,
+                position: "center 20%",
                 title: "Direct Consumer Engagement",
                 subtitle: "ORGANIC WORD-OF-MOUTH BUZZ",
               },

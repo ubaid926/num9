@@ -38,7 +38,6 @@ import citibankLogo from '../assets/citibankLogo.png';
 
 
 
-import nutrienLogo from '../assets/nutrienLogo.png';
 
 
 
@@ -77,6 +76,7 @@ import layer6 from '../assets/Logos/ClientsGrid_Logos/citibank.png';
 import layer7 from '../assets/Logos/ClientsGrid_Logos/lexus.png';
 import layer11 from '../assets/Logos/ClientsGrid_Logos/safeway.png';
 import layer12 from '../assets/Logos/ClientsGrid_Logos/emirates.png';
+import nutrienLogo from '../assets/Logos/ClientsGrid_Logos/nutrien.png';
 
 
 
@@ -438,7 +438,7 @@ const testimonials = [
     route: 'case-study/microsoft',
   },
   {
-    logo: layer6,
+    logo: nutrienLogo,
     logoAlt: 'Nutrien',
     logoWidth: 160,
     logoHeight: 42,
@@ -902,19 +902,39 @@ export default function FifthSection({ onNavigate }) {
 
 
 
-  const cardW = isUltra ? ULTRA_CARD_W : CARD_W;
+  const isMobile = viewportWidth < 640;
+  const isTablet = viewportWidth >= 640 && viewportWidth < 1024;
 
+  const mobileCardW = Math.min(CARD_W, Math.max(250, Math.round(viewportWidth * 0.77)));
+  const tabletCardW = 320;
 
+  const cardW = isUltra
+    ? ULTRA_CARD_W
+    : isMobile
+      ? mobileCardW
+      : isTablet
+        ? tabletCardW
+        : CARD_W;
 
-  const cardH = isUltra ? ULTRA_CARD_H : CARD_H;
-
-
+  const cardH = isUltra
+    ? ULTRA_CARD_H
+    : isMobile
+      ? 420
+      : isTablet
+        ? 435
+        : CARD_H;
 
   const strideGap = isUltra ? ULTRA_GAP : CARD_GAP;
 
+  const rowGap = isUltra
+    ? ULTRA_GAP
+    : isMobile
+      ? 16
+      : isTablet
+        ? 24
+        : CARD_VISUAL_GAP;
 
-
-  const rowGap = isUltra ? ULTRA_GAP : CARD_VISUAL_GAP;
+  const logoScale = isMobile ? 0.85 : 1;
 
 
 
@@ -986,6 +1006,18 @@ export default function FifthSection({ onNavigate }) {
   const handleCardClick = (e, t) => {
     if (isSliding.current || isLoopResetting) return;
 
+    if (isMobile) {
+      const cardRect = e.currentTarget.getBoundingClientRect();
+      if (cardRect.left >= 0 && cardRect.left < 50) {
+        handleNavigateClick(t.route);
+      } else if (cardRect.left >= 50) {
+        next();
+      } else {
+        prev();
+      }
+      return;
+    }
+
     const cardRect = e.currentTarget.getBoundingClientRect();
     const cardCenter = cardRect.left + cardRect.width / 2;
 
@@ -1022,7 +1054,7 @@ export default function FifthSection({ onNavigate }) {
 
 
 
-    <section className="w-full bg-white font-grift overflow-hidden">
+    <section className="w-full bg-white dark:bg-[#0B0D0C] font-grift overflow-hidden transition-colors duration-300">
 
 
 
@@ -1096,11 +1128,11 @@ export default function FifthSection({ onNavigate }) {
 
 
 
-          <div className="flex-1 min-w-0 flex flex-col gap-8 justify-start pt-10 sm:pt-14 lg:pt-[clamp(115px,10vw,220px)] px-6 sm:px-10 lg:pl-12 xl:pl-16 pb-6">
+          <div className="flex-1 min-w-0 flex flex-col gap-5 sm:gap-6 lg:gap-7 justify-start pt-6 sm:pt-8 lg:pt-[clamp(65px,6vw,120px)] px-6 sm:px-10 lg:pl-12 xl:pl-16 pb-3 sm:pb-4 lg:pb-6">
 
 
 
-            <h2 className="text-[26px] sm:text-[26px] md:text-[30px] lg:text-[34px] xl:text-[40px] font-bold  leading-[1.3] max-w-[900px]">
+            <h2 className="text-[26px] sm:text-[26px] md:text-[30px] lg:text-[34px] xl:text-[40px] font-bold leading-[1.3] max-w-[900px] text-black dark:text-white">
 
 
 
@@ -1116,7 +1148,7 @@ export default function FifthSection({ onNavigate }) {
 
 
 
-            <p className="text-black font-grift-light text-[18px] sm:text-[20px] leading-relaxed mt-0 max-w-[800px]">
+            <p className="text-black dark:text-[#B4BCB6] font-grift-light text-[18px] sm:text-[20px] leading-relaxed mt-0 max-w-[800px]">
 
 
 
@@ -1135,7 +1167,7 @@ export default function FifthSection({ onNavigate }) {
             <button
               type="button"
               onClick={() => handleNavigateClick('our-work')}
-              className="group flex items-center gap-18 font-medium text-[14px] sm:text-[22px] text-black border-b-2 pb-2 w-fit hover:text-[#11C911] hover:border-[#11C911] transition-colors duration-300 mt-6 cursor-pointer"
+              className="group flex items-center gap-18 font-medium text-[14px] sm:text-[22px] text-black dark:text-white border-b-2 border-black dark:border-white pb-2 w-fit hover:text-[#11C911] dark:hover:text-[#15B83E] hover:border-[#11C911] dark:hover:border-[#15B83E] transition-colors duration-300 mt-3 sm:mt-4 cursor-pointer"
             >
               View Our Work
               <ArrowRight className="w-4 h-4 xl:w-8 xl:h-8 group-hover:translate-x-1 transition-transform" />
@@ -1162,7 +1194,7 @@ export default function FifthSection({ onNavigate }) {
     
 {/* ══ CARDS ROW ══ */}
 
-<div className="w-full py-2 lg:absolute lg:top-[45%] lg:left-0 lg:z-20">
+<div className="w-full py-2 lg:absolute lg:top-[38%] lg:left-0 lg:z-20">
 
 
 
@@ -1229,7 +1261,7 @@ export default function FifthSection({ onNavigate }) {
 
 
                   onClick={(e) => handleCardClick(e, t)}
-                  className="shrink-0 bg-white border border-slate-100 rounded-2xl flex flex-col justify-between cursor-pointer transition-all duration-300 hover:-translate-z-2 shadow-md hover:shadow-xl"
+                  className="shrink-0 bg-white dark:bg-[#171A18] border border-slate-100 dark:border-[#28322B] rounded-2xl flex flex-col justify-between cursor-pointer transition-all duration-300 hover:-translate-z-2 shadow-md hover:shadow-xl"
 
 
 
@@ -1246,14 +1278,12 @@ export default function FifthSection({ onNavigate }) {
 
 
                     padding: isUltra
-
-
-
                       ? ULTRA_PAD
-
-
-
-                      : '28px 28px 24px 28px',
+                      : isMobile
+                        ? '24px 20px 20px 20px'
+                        : isTablet
+                          ? '26px 24px 22px 24px'
+                          : '28px 28px 24px 28px',
 
 
 
@@ -1267,15 +1297,16 @@ export default function FifthSection({ onNavigate }) {
 
                   <div>
                     {/* Fixed-height logo container: bottom-aligns logos and guarantees uniform start line for text */}
-                    <div className="h-[62px] flex items-end justify-start mb-6 shrink-0">
+                    <div className="h-[52px] sm:h-[62px] flex items-end justify-start mb-4 sm:mb-6 shrink-0">
                       <img
                         src={t.logo}
                         loading="lazy"
                         decoding="async"
                         alt={t.logoAlt}
+                        className={`object-contain transition-all duration-300 ${t.logoAlt === 'Lexus' ? 'dark:invert' : ''}`}
                         style={{
-                          width: `${t.logoWidth}px`,
-                          height: `${t.logoHeight}px`,
+                          width: `${Math.round(t.logoWidth * logoScale)}px`,
+                          height: `${Math.round(t.logoHeight * logoScale)}px`,
                           objectFit: 'contain',
                           objectPosition: 'left bottom',
                         }}
@@ -1289,13 +1320,7 @@ export default function FifthSection({ onNavigate }) {
 
 
                     <p
-
-
-
-                      className="leading-[1.5] text-[20px]"
-
-
-
+                      className="leading-[1.5] text-[17px] min-[390px]:text-[18px] sm:text-[20px] text-[#414141] dark:text-[#D1D5DB]"
                     >
 
 
@@ -1322,7 +1347,7 @@ export default function FifthSection({ onNavigate }) {
                       e.stopPropagation();
                       handleNavigateClick(t.route);
                     }}
-                    className="sm:block text-left hover:underline w-fit mt-4 text-[20px] cursor-pointer"
+                    className="sm:block text-left hover:underline w-fit mt-4 text-[17px] min-[390px]:text-[18px] sm:text-[20px] text-black dark:text-[#15B83E] cursor-pointer"
                   >
                     Learn More
                   </button>
@@ -1370,7 +1395,7 @@ export default function FifthSection({ onNavigate }) {
                     cursor-pointer
                     ${isActiveDot
                       ? 'w-7 sm:w-8 h-2 sm:h-2.5 bg-[#28B023]'
-                      : 'w-2 sm:w-2.5 h-2 sm:h-2.5 bg-gray-300 hover:bg-gray-400'
+                      : 'w-2 sm:w-2.5 h-2 sm:h-2.5 bg-gray-300 dark:bg-[#2C362F] hover:bg-gray-400 dark:hover:bg-[#3D4B41]'
                     }
                   `}
                 />
@@ -1382,7 +1407,7 @@ export default function FifthSection({ onNavigate }) {
 
 
 
-          <div className="hidden sm:flex items-center justify-center gap-4 mt-6 pb-5">
+          <div className="hidden sm:flex items-center justify-center gap-4 mt-10 sm:mt-12 lg:mt-14 pb-5">
 
 
 
@@ -1463,20 +1488,25 @@ export default function FifthSection({ onNavigate }) {
       px-5 py-8
       sm:px-8 sm:py-12
       lg:px-10 lg:py-14
-      xl:px-[75px]
-      xl:py-[65px]
-      xl:min-h-[900px]
+      xl:px-10
+      xl:py-12
+      2xl:px-16
+      2xl:py-16
+      xl:min-h-[820px]
     "
         >
           <div
             className="
     grid grid-cols-1
     lg:grid-cols-2
-    xl:grid-cols-[minmax(0,1.35fr)_minmax(245px,0.95fr)_minmax(0,1.85fr)]
+    xl:grid-cols-[minmax(0,1.15fr)_minmax(220px,0.85fr)_minmax(0,1.4fr)]
+    2xl:grid-cols-[minmax(0,1.15fr)_minmax(250px,0.85fr)_minmax(0,1.4fr)]
     gap-8 sm:gap-10 lg:gap-8
     xl:gap-8
+    2xl:gap-12
     min-h-0
-    xl:min-h-[770px]
+    xl:min-h-[720px]
+    2xl:min-h-[760px]
     xl:items-stretch
   "
           >
@@ -1513,12 +1543,14 @@ export default function FifthSection({ onNavigate }) {
       text-white font-semibold
       text-[40px]
       sm:text-[clamp(40px,7vw,64px)]
-      xl:text-[65px]
+      xl:text-[48px]
+      2xl:text-[56px]
       leading-[1.08]
       sm:leading-[1.02]
       max-w-[280px]
       sm:max-w-none
-      xl:max-w-[440px]
+      xl:max-w-[360px]
+      2xl:max-w-[420px]
     "
               >
                 <span className="text-[#8DEB28]">
@@ -1535,15 +1567,18 @@ export default function FifthSection({ onNavigate }) {
               {/* DESCRIPTION */}
               <p
                 className="
-      mt-6 sm:mt-8 lg:mt-12
-      xl:mt-[75px]
-      max-w-[400px]
+      mt-6 sm:mt-8 lg:mt-10
+      xl:mt-8
+      2xl:mt-12
+      max-w-[340px]
+      2xl:max-w-[380px]
       text-white/70
       text-[18px]
       sm:text-[17px]
-      md:text-[19px]
-      xl:text-[23px]
-      leading-[1.55]
+      md:text-[18px]
+      xl:text-[19px]
+      2xl:text-[21px]
+      leading-[1.5]
     "
               >
                 Strategy, design, development, and
@@ -1567,7 +1602,7 @@ export default function FifthSection({ onNavigate }) {
       pb-3
       border-b border-[#22B8F3]
       text-white
-      text-[16px] sm:text-[18px] xl:text-[22px]
+      text-[16px] sm:text-[18px] xl:text-[20px] 2xl:text-[22px]
       cursor-pointer
     "
               >
@@ -1589,8 +1624,9 @@ export default function FifthSection({ onNavigate }) {
     flex flex-row lg:flex-col
     flex-wrap lg:flex-nowrap
     items-center justify-center
-    gap-4 sm:gap-8 lg:gap-16
-    xl:gap-[115px]
+    gap-4 sm:gap-8 lg:gap-12
+    xl:gap-14
+    2xl:gap-20
     xl:justify-center
     xl:h-full
     xl:py-0
@@ -1612,15 +1648,18 @@ export default function FifthSection({ onNavigate }) {
               sm:h-[190px]
               md:w-[210px]
               md:h-[210px]
-              xl:w-[245px]
-              xl:h-[245px]
+              xl:w-[220px]
+              xl:h-[220px]
+              2xl:w-[245px]
+              2xl:h-[245px]
             "
                 >
                   {/* ROTATING CIRCULAR TEXT */}
                   <div className="absolute inset-0 opacity-[0.52]">
                     <CircularText
                       text="Successfully executed projects · "
-                      radius={52}
+                      radius={47}
+                      fontSize="clamp(11px, 1vw, 13.5px)"
                       color="#FFFFFF"
                     />
                   </div>
@@ -1646,7 +1685,8 @@ export default function FifthSection({ onNavigate }) {
       text-[18px]
       sm:text-[20px]
       md:text-[22px]
-      xl:text-[29px]
+      xl:text-[24px]
+      2xl:text-[28px]
       leading-[1.08]
       tracking-[-0.035em]
       text-center
@@ -1660,14 +1700,15 @@ export default function FifthSection({ onNavigate }) {
                     <p
                       className="
       mt-1.5
-      sm:mt-4
-      xl:mt-5
+      sm:mt-3
+      xl:mt-3.5
       text-white/90
       text-[13px]
-      xl:text-[15px]
+      xl:text-[14px]
+      2xl:text-[15px]
       leading-[1.4]
       text-center
-      max-w-[200px]
+      max-w-[190px]
     "
                     >
                       {item.desc}
@@ -1693,7 +1734,8 @@ export default function FifthSection({ onNavigate }) {
     xl:pt-0
     xl:border-l
     xl:border-white/20
-    xl:pl-[54px]
+    xl:pl-8
+    2xl:pl-12
     xl:self-stretch
   "
             >
@@ -1702,9 +1744,11 @@ export default function FifthSection({ onNavigate }) {
       grid
       grid-cols-1
       sm:grid-cols-2
-      gap-3 sm:gap-5
-      xl:gap-x-[55px]
-      xl:gap-y-[62px]
+      gap-3 sm:gap-4
+      xl:gap-x-6
+      xl:gap-y-6
+      2xl:gap-x-10
+      2xl:gap-y-8
       xl:grid-rows-3
       w-full
       xl:h-full

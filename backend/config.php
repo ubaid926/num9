@@ -131,6 +131,7 @@ function get_app_config() {
             'rate_limit_max'          => (int) get_config('RATE_LIMIT_MAX_REQUESTS', 5),
             'rate_limit_window'       => (int) get_config('RATE_LIMIT_WINDOW_SECONDS', 600), // 10 minutes
             'min_submission_seconds'  => (int) get_config('MIN_SUBMISSION_TIME_SECONDS', 2),
+            'recaptcha_secret'        => (string) get_config('RECAPTCHA_SECRET_KEY', ''),
         ],
     ];
 }

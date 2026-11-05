@@ -1,9 +1,11 @@
 import React from "react";
-import { ArrowRight, Phone, Mail } from "lucide-react";
+import { ArrowRight, Phone, Mail, Plus, Minus } from "lucide-react";
 import logo from "../assets/Green 9 with Blue NO Badge.webp";
 
 // Matched to the supplied 1920px reference with routing integrated to existing routes.
 const Footer = ({ onNavigate }) => {
+  const [isResourcesOpen, setIsResourcesOpen] = React.useState(false);
+  const [isCareersOpen, setIsCareersOpen] = React.useState(false);
   const handleNavigateClick = (e, targetPage) => {
     e?.preventDefault?.();
     if (!targetPage) return;
@@ -51,15 +53,15 @@ const Footer = ({ onNavigate }) => {
 
 
   const linkClass =
-    "block font-grift-regular text-[22px] sm:text-[14px] leading-[1.4] text-black hover:opacity-60 transition-opacity cursor-pointer";
+    "block font-grift-regular text-[22px] sm:text-[14px] leading-[1.4] text-black dark:text-[#D1D5DB] hover:text-[#15B83E] dark:hover:text-[#15B83E] hover:opacity-100 transition-colors cursor-pointer";
 
-  const headingClass = "mb-[25px] text-[30px] xl:text-[19px] 2xl:text-[20px] font-semibold leading-[1.25] tracking-[-0.025em] text-black whitespace-nowrap";
+  const headingClass = "mb-[25px] text-[30px] xl:text-[19px] 2xl:text-[20px] font-semibold leading-[1.25] tracking-[-0.025em] text-black dark:text-white whitespace-nowrap";
 
   return (
-    <footer className="w-full bg-white text-black">
+    <footer className="w-full bg-white dark:bg-[#0B0D0C] text-black dark:text-white border-t border-transparent dark:border-[#1E2521] transition-colors duration-300">
       <div className="grid w-full min-w-0 grid-cols-1 xl:grid-cols-[minmax(0,63.4fr)_minmax(0,36.6fr)]">
         {/* LEFT: White navigation and legal */}
-        <div className="flex min-h-[640px] flex-col justify-between bg-white px-6 pt-10 pb-11 sm:px-10 lg:px-12 xl:pl-[max(56px,calc((100vw-1400px)/2+64px))] xl:pr-6 2xl:pr-[40px] xl:pt-[60px] xl:pb-[45px]">
+        <div className="flex min-h-[640px] flex-col justify-between bg-white dark:bg-[#0B0D0C] px-6 pt-10 pb-11 sm:px-10 lg:px-12 xl:pl-[max(56px,calc((100vw-1400px)/2+64px))] xl:pr-6 2xl:pr-[40px] xl:pt-[60px] xl:pb-[45px] transition-colors duration-300">
           <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 lg:grid-cols-[72px_minmax(185px,1.3fr)_minmax(130px,1fr)_minmax(110px,1fr)] gap-x-6 xl:gap-x-7 2xl:gap-x-12 items-start">
             {/* LOGO */}
             <div className="flex items-start justify-start pt-1 sm:col-span-2 lg:col-span-1">
@@ -99,43 +101,93 @@ const Footer = ({ onNavigate }) => {
               </ul>
             </div>
             <div>
-              <h3 className={headingClass}>
-                Resources<span className="text-[#F15B40]">.</span>
-              </h3>
-              <ul className="space-y-[14px]">
-                {resourceLinks.map((item) => (
-                  <li key={item.label}>
-                    <a
-                      href={getHref(item.route)}
-                      onClick={(e) => handleNavigateClick(e, item.route)}
-                      className={linkClass}
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <button
+                type="button"
+                onClick={() => setIsResourcesOpen((prev) => !prev)}
+                aria-expanded={isResourcesOpen}
+                className="flex items-center justify-between w-full text-left mb-[18px] sm:mb-[25px] sm:pointer-events-none cursor-pointer group"
+              >
+                <h3 className="text-[30px] xl:text-[19px] 2xl:text-[20px] font-semibold leading-[1.25] tracking-[-0.025em] text-black dark:text-white whitespace-nowrap">
+                  Resources<span className="text-[#F15B40]">.</span>
+                </h3>
+                <span
+                  className="sm:hidden flex items-center justify-center w-8 h-8 rounded-full border border-black/20 dark:border-white/20 text-black dark:text-white shrink-0 ml-3 transition-colors group-hover:border-black dark:group-hover:border-white"
+                  aria-hidden="true"
+                >
+                  {isResourcesOpen ? (
+                    <Minus className="w-4 h-4" strokeWidth={2.5} />
+                  ) : (
+                    <Plus className="w-4 h-4" strokeWidth={2.5} />
+                  )}
+                </span>
+              </button>
+              <div
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  isResourcesOpen
+                    ? "max-h-[600px] opacity-100"
+                    : "max-h-0 opacity-0 sm:max-h-none sm:opacity-100"
+                }`}
+              >
+                <ul className="space-y-[14px]">
+                  {resourceLinks.map((item) => (
+                    <li key={item.label}>
+                      <a
+                        href={getHref(item.route)}
+                        onClick={(e) => handleNavigateClick(e, item.route)}
+                        className={linkClass}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
             <div>
-              <h3 className={headingClass}>
-                Careers<span className="text-[#F15B40]">.</span>
-              </h3>
-              <ul className="space-y-[17px]">
-                {careerLinks.map((item) => (
-                  <li key={item.label}>
-                    <a
-                      href={getHref(item.route)}
-                      onClick={(e) => handleNavigateClick(e, item.route)}
-                      className={linkClass}
-                    >
-                      {item.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <button
+                type="button"
+                onClick={() => setIsCareersOpen((prev) => !prev)}
+                aria-expanded={isCareersOpen}
+                className="flex items-center justify-between w-full text-left mb-[18px] sm:mb-[25px] sm:pointer-events-none cursor-pointer group"
+              >
+                <h3 className="text-[30px] xl:text-[19px] 2xl:text-[20px] font-semibold leading-[1.25] tracking-[-0.025em] text-black dark:text-white whitespace-nowrap">
+                  Careers<span className="text-[#F15B40]">.</span>
+                </h3>
+                <span
+                  className="sm:hidden flex items-center justify-center w-8 h-8 rounded-full border border-black/20 dark:border-white/20 text-black dark:text-white shrink-0 ml-3 transition-colors group-hover:border-black dark:group-hover:border-white"
+                  aria-hidden="true"
+                >
+                  {isCareersOpen ? (
+                    <Minus className="w-4 h-4" strokeWidth={2.5} />
+                  ) : (
+                    <Plus className="w-4 h-4" strokeWidth={2.5} />
+                  )}
+                </span>
+              </button>
+              <div
+                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  isCareersOpen
+                    ? "max-h-[600px] opacity-100"
+                    : "max-h-0 opacity-0 sm:max-h-none sm:opacity-100"
+                }`}
+              >
+                <ul className="space-y-[17px]">
+                  {careerLinks.map((item) => (
+                    <li key={item.label}>
+                      <a
+                        href={getHref(item.route)}
+                        onClick={(e) => handleNavigateClick(e, item.route)}
+                        className={linkClass}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
-          <div className="mt-16 text-[14px] leading-[1.4]">
+          <div className="mt-16 text-[14px] leading-[1.4] text-black/70 dark:text-[#9CA3AF]">
             <div className="flex flex-wrap items-center gap-x-[44px] gap-y-3">
               <a
                 href={getHref("about")}
@@ -151,15 +203,15 @@ const Footer = ({ onNavigate }) => {
               >
                 Terms of Service
               </a>
-              <a
+              {/* <a
                 href={getHref("about")}
                 onClick={(e) => handleNavigateClick(e, "about")}
                 className="hover:underline cursor-pointer"
               >
                 Do Not Sell My Personal Information
-              </a>
+              </a> */}
             </div>
-            <p className="mt-[20px]">©Number9 2024 2025. All rights reserved.</p>
+            <p className="mt-[20px] text-black/60 dark:text-[#777777]">©Number9 2024 2025. All rights reserved.</p>
           </div>
         </div>
 
@@ -167,6 +219,10 @@ const Footer = ({ onNavigate }) => {
         <div
           className="
             bg-[#D9DDE0]
+            dark:bg-[#171A18]
+            text-black
+            dark:text-[#F3F4F6]
+            border-t xl:border-t-0 xl:border-l border-transparent dark:border-[#222A24]
             min-w-0
             w-full
             px-6
@@ -180,6 +236,7 @@ const Footer = ({ onNavigate }) => {
             min-h-[670px]
             flex
             flex-col
+            transition-colors duration-300
           "
         >
           <section>
@@ -190,7 +247,7 @@ const Footer = ({ onNavigate }) => {
               <a
                 href="#contact"
                 onClick={(e) => handleNavigateClick(e, "contact")}
-                className="flex h-[40px] items-center justify-center rounded-[5px] border-2 border-black px-[20px] text-[16px] transition-colors hover:bg-black hover:text-white cursor-pointer"
+                className="flex h-[40px] items-center justify-center rounded-[5px] border-2 border-black dark:border-white/30 text-black dark:text-white px-[20px] text-[16px] transition-colors hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black cursor-pointer"
               >
                 Contact Us
               </a>
@@ -207,20 +264,20 @@ const Footer = ({ onNavigate }) => {
                 href="tel:+14693597107"
                 className="inline-flex items-center gap-[14px] text-[15px] hover:underline"
               >
-                <Phone className="h-[17px] w-[17px] fill-black" />
+                <Phone className="h-[17px] w-[17px] fill-black dark:fill-white" />
                 +1 469 359 7107
               </a>
               <a
                 href="mailto:info@number9.us"
                 className="inline-flex items-center gap-[14px] text-[15px] hover:underline"
               >
-                <Mail className="h-[17px] w-[17px]" />
+                <Mail className="h-[17px] w-[17px] text-black dark:text-white" />
                 info@number9.us
               </a>
             </div>
           </section>
 
-          <div className="my-[38px] h-px w-full bg-black/20" />
+          <div className="my-[38px] h-px w-full bg-black/20 dark:bg-white/15" />
 
           <section className="w-full min-w-0">
             <h3 className="text-[20px] font-semibold leading-[1.25] tracking-[-0.025em]">
@@ -238,17 +295,17 @@ const Footer = ({ onNavigate }) => {
               <input
                 type="email"
                 placeholder="Your e-mail address"
-                className="block box-border h-[40px] w-full min-w-0 bg-transparent border-0 outline-none px-3 text-[16px] text-black placeholder:text-black/45"
+                className="block box-border h-[40px] w-full min-w-0 bg-transparent dark:bg-[#121513] border border-transparent dark:border-[#2E3832] rounded-[5px] outline-none px-3 text-[16px] text-black dark:text-white placeholder:text-black/45 dark:placeholder:text-white/40"
               />
               <button
                 type="button"
-                className="box-border h-[40px] w-[123px] min-w-0 whitespace-nowrap rounded-[5px] border-2 border-black bg-transparent px-3 text-[18px] text-black transition-colors hover:bg-black hover:text-white cursor-pointer"
+                className="box-border h-[40px] w-[123px] min-w-0 whitespace-nowrap rounded-[5px] border-2 border-black dark:border-[#15B83E] bg-transparent px-3 text-[18px] text-black dark:text-[#15B83E] transition-colors hover:bg-black hover:text-white dark:hover:bg-[#15B83E] dark:hover:text-black cursor-pointer"
               >
                 Subscribe
               </button>
             </div>
 
-            <label className="mt-[32px] flex cursor-pointer items-start gap-[14px] text-[16px] leading-[1.45]">
+            <label className="mt-[32px] flex cursor-pointer items-start gap-[14px] text-[16px] leading-[1.45] text-black/80 dark:text-[#A1A1AA]">
               <input
                 type="checkbox"
                 className="mt-[1px] h-[18px] w-[18px] shrink-0 accent-black"
@@ -268,7 +325,7 @@ const Footer = ({ onNavigate }) => {
           </section>
 
           <div className="mt-auto mb-[39px] pt-[48px]">
-            <div className="h-px w-full bg-black/20" />
+            <div className="h-px w-full bg-black/20 dark:bg-white/15" />
           </div>
 
           <section>
@@ -341,7 +398,7 @@ const SocialIcon = ({ children, label }) => {
         w-[30px]
         h-[30px]
         rounded-full
-        bg-[#3D4442]
+        bg-[#3D4442] dark:bg-[#252C28]
         text-white
         flex
         items-center

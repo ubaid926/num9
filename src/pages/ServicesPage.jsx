@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import logo from '../assets/Black Logo.png';
-import heroImage from '../assets/Overlapping Circles Office Collaboration Cutout.webp';
+import servicesHeroImg from '../assets/servicesHeroImg.webp';
 import AppNav from '../components/nav';
 import AccelerateBusinessSection from '../components/AccelerateBusinessSection';
 import Footer from '../components/footer';
@@ -16,115 +16,127 @@ const strategyServices = [
     text: 'Create high-impact consumer experiences through events, retail activations, and experiential campaigns.',
   },
   {
-    title: 'Digital Strategy',
+    title: 'Trade Show Booth Design',
     text: 'Plan and deliver digital roadmaps that align creative, technology, and business goals.',
   },
   {
-    title: 'UI/UX Design',
+    title: 'Experiential Marketing',
     text: 'Design intuitive web, mobile, and interactive experiences that make customer journeys simple.',
   },
   {
-    title: 'Website & Web App Development',
+    title: 'Exhibition Design',
     text: 'Build scalable, responsive websites and platforms designed for performance and growth.',
   },
   {
-    title: 'Digital Marketing',
+    title: 'Interactive Experiences',
     text: 'Drive awareness, engagement, and conversions through targeted digital campaigns.',
   },
   {
-    title: 'Retail Marketing',
+    title: 'Event Production',
     text: 'Activate brands in physical locations with shopper-focused campaigns and in-store experiences.',
   },
   {
-    title: 'Logistics Management',
+    title: '3D Booth Visualization',
     text: 'Coordinate teams, vendors, and fulfillment to ensure smooth campaign execution.',
   },
   {
-    title: 'Multichannel Marketing',
+    title: 'Immersive Experiences',
     text: 'Deliver consistent messaging across digital, retail, social, and partner platforms.',
   },
   {
-    title: 'Customer Experience',
+    title: 'Retail & Pop-Up Experiences',
     text: 'Create seamless customer touchpoints that connect brands with audiences meaningfully.',
   },
 ];
 
 const vrServices = [
   {
-    title: 'Custom VR Experience Development',
+    title: 'UI/UX Design',
     text: 'We build immersive VR applications for training, simulation, and entertainment tailored to business needs.',
   },
   {
-    title: 'VR Training Simulations',
+    title: 'Web Development',
     text: 'Create interactive VR training environments for industries like healthcare, automotive, and corporate learning platforms.',
   },
   {
-    title: 'Virtual Showrooms',
+    title: '3D Product Configurators',
     text: 'Design fully immersive virtual product showrooms for automotive, real estate, and retail experiences.',
   },
   {
-    title: 'VR App Development',
+    title: 'Augmented Reality (AR)',
     text: 'Develop high-performance VR applications optimized for Meta Quest and other major VR platforms.',
   },
   {
-    title: 'UI/UX for VR Interfaces',
+    title: 'Virtual Reality (VR)',
     text: 'Design intuitive 3D interfaces and spatial UI systems that improve interaction within virtual environments.',
   },
   {
-    title: 'Cloud-based VR Systems',
+    title: 'Interactive Installations',
     text: 'Deliver scalable VR solutions with cloud integration, real-time streaming, and multi-user environments.',
   },
   {
-    title: 'VR QA & Performance Testing',
+    title: 'Immersive Digital Experiences',
     text: 'Test VR applications for motion sickness, latency, performance, and user experience optimization.',
   },
   {
-    title: 'Digital Simulation & Visualization',
+    title: 'Touchscreen Experiences',
     text: 'Construct accurate 3D simulations for engineering, architecture, and enterprise data visualization.',
   },
   {
-    title: 'VR Integration & Deployment',
+    title: 'Gamification & Interactive Games',
     text: 'Deploy VR systems into enterprise workflows with full integration into existing software ecosystems.',
   },
 ];
 
 const configuratorServices = [
   {
-    title: '3D Product Configurator',
+    title: '3D Animation',
     text: 'We build real-time 3D configurators that allow users to customize products with instant visual feedback and high-performance rendering.',
   },
   {
-    title: 'Automotive Configurator',
+    title: 'Motion Graphics',
     text: 'We build real-time 3D configurators with instant visual feedback and high-performance rendering.',
   },
   {
-    title: 'Web-Based Configurator Platforms',
+    title: 'Video Production',
     text: 'Develop scalable web configurators that work seamlessly across desktop, tablet, and mobile environments.',
   },
   {
-    title: 'VR Configurator Experiences',
+    title: 'Product Visualization',
     text: 'Design immersive VR-based configurators for enterprise, products, showrooms, and interactive commerce systems.',
   },
   {
-    title: 'UI/UX for Configurator Systems',
+    title: 'CGI & VFX',
     text: 'Create intuitive interfaces that simplify complex customization flows and improve user engagement.',
   },
   {
-    title: 'Real-Time Visualization Engine',
+    title: 'Brand Films',
     text: 'Integrate high-performance rendering systems for real-time product visualization and dynamic updates.',
   },
   {
-    title: 'E-Commerce Configuration Tools',
+    title: 'Commercial Videos',
     text: 'Ignite advanced product customization within e-commerce platforms to increase conversion and user interaction.',
   },
   {
-    title: 'Cloud-Based Configurator Solutions',
+    title: 'Explainer Videos',
     text: 'Deploy scalable cloud-powered configurators that support heavy rendering and global accessibility.',
   },
   {
-    title: 'Enterprise Integration Systems',
+    title: 'Post-Production',
     text: 'Connect configurators with ERP, CRM, and backend systems for seamless product and data synchronization.',
   },
+];
+
+const marketingServices = [
+  { title: 'Digital Strategy', text: 'Build a clear digital roadmap that connects your brand goals with the right channels, content, and campaigns.' },
+  { title: 'Social Media Marketing', text: 'Grow your online presence through engaging social content, community management, and targeted campaigns.' },
+  { title: 'Content Marketing', text: 'Create valuable content that tells your story, attracts the right audience, and keeps customers engaged.' },
+  { title: 'Performance Marketing', text: 'Run data-driven advertising campaigns focused on measurable results, conversions, and return on investment.' },
+  { title: 'Search Engine Optimization (SEO)', text: 'Improve search visibility with optimized website content, technical SEO, and strategies that drive organic traffic.' },
+  { title: 'Influencer Marketing', text: 'Connect with relevant creators to introduce your brand to new audiences and build authentic engagement.' },
+  { title: 'Media Planning & Buying', text: 'Reach the right people at the right time with smart media placements and carefully managed advertising budgets.' },
+  { title: 'Content Distribution', text: 'Extend the reach of your content across digital platforms, partner channels, and targeted audience networks.' },
+  { title: 'Omnichannel Marketing', text: 'Deliver a consistent brand experience across social, search, web, email, and other customer touchpoints.' },
 ];
 
 /* =========================================================
@@ -155,9 +167,9 @@ function ServiceCard({ title, text }) {
     <div
       className="
         group
-        bg-white
+        bg-white dark:bg-[#171A18]
         rounded-[24px]
-        border border-[#D8DCE3]
+        border border-[#D8DCE3] dark:border-[#27302A]
         px-7 sm:px-8 lg:px-9 pt-7 sm:pt-8 lg:pt-9 pb-8 sm:pb-9 lg:pb-10
         flex flex-col justify-start
         transition-all duration-300
@@ -166,10 +178,10 @@ function ServiceCard({ title, text }) {
         hover:-translate-y-0.5
       "
     >
-      <h3 className="font-grift-semibold text-[18px] sm:text-[25px] text-[#111827] tracking-[-0.015em] mb-3.5 sm:mb-4 leading-[1.3] group-hover:text-black transition-colors">
+      <h3 className="font-grift-semibold text-[18px] sm:text-[25px] text-[#111827] dark:text-[#F3F4F6] tracking-[-0.015em] mb-3.5 sm:mb-4 leading-[1.3] group-hover:text-black dark:group-hover:text-white transition-colors">
         {title}
       </h3>
-      <p className="font-grift-regular text-[15px] sm:text-[21px] leading-[1.55] text-[#555E6D]">
+      <p className="font-grift-regular text-[15px] sm:text-[21px] leading-[1.55] text-[#555E6D] dark:text-[#A1A1AA]">
         {text}
       </p>
     </div>
@@ -181,7 +193,7 @@ function ServiceCategorySection({ title, items }) {
     <section className="w-full">
       <div className="mb-7 sm:mb-9 lg:mb-10">
         <CodeBracketIcon />
-        <h2 className="font-grift-medium text-[28px] sm:text-[38px] lg:text-[44px] text-[#111827] tracking-[-0.03em] leading-tight">
+        <h2 className="font-grift-medium text-[28px] sm:text-[38px] lg:text-[44px] text-[#111827] dark:text-white tracking-[-0.03em] leading-tight">
           {title}
         </h2>
       </div>
@@ -216,7 +228,7 @@ const navLinks = [
 ];
 
 return (
-<header className="w-full bg-white border-b border-slate-100/90 sticky top-0 z-40 transition-all">
+<header className="w-full bg-white dark:bg-[#0B0D0C] transition-colors duration-300 border-b border-slate-100/90 sticky top-0 z-40 transition-all">
 <div className="max-w-[1240px] mx-auto px-6 lg:px-8 h-[74px] sm:h-[80px] flex items-center justify-between">
 {/* Brand Logo */}
 <a
@@ -243,11 +255,11 @@ aria-label="Home"
         <div key={link.label} className="relative group">
           <button
             type="button"
-            className="flex items-center gap-1.5 text-[13px] font-medium text-[#2C2C2C] hover:text-black transition-colors py-2 cursor-pointer"
+            className="flex items-center gap-1.5 text-[13px] font-medium text-[#2C2C2C] dark:text-[#E5E7EB] hover:text-black dark:hover:text-[#15B83E] transition-colors py-2 cursor-pointer"
           >
             <span>{link.label}</span>
             {link.hasDropdown && (
-              <ChevronDown className="w-3.5 h-3.5 text-slate-500 group-hover:text-black group-hover:translate-y-0.5 transition-all" />
+              <ChevronDown className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400 group-hover:text-black dark:group-hover:text-white group-hover:translate-y-0.5 transition-all" />
             )}
           </button>
         </div>
@@ -266,7 +278,7 @@ aria-label="Home"
     <button
       onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
       aria-label="Toggle navigation menu"
-      className="lg:hidden p-2 text-slate-800 hover:text-black focus:outline-none"
+      className="lg:hidden p-2 text-slate-800 dark:text-white hover:text-black dark:hover:text-[#15B83E] focus:outline-none"
     >
       {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
     </button>
@@ -274,14 +286,14 @@ aria-label="Home"
 
   {/* Mobile Menu Dropdown */}
   {mobileMenuOpen && (
-    <div className="lg:hidden bg-white border-b border-slate-200 px-6 py-5 shadow-lg animate-fadeIn">
+    <div className="lg:hidden bg-white dark:bg-[#171A18] border-b border-slate-200 dark:border-[#222A24] px-6 py-5 shadow-lg animate-fadeIn">
       <div className="flex flex-col gap-3">
         {navLinks.map((link) => (
           <a
             key={link.label}
             href="#"
             onClick={() => setMobileMenuOpen(false)}
-            className="flex items-center justify-between py-2 text-[14px] font-medium text-slate-800 hover:text-[#15B83E]"
+            className="flex items-center justify-between py-2 text-[14px] font-medium text-slate-800 dark:text-[#F3F4F6] hover:text-[#15B83E]"
           >
             <span>{link.label}</span>
             {link.hasDropdown && <ChevronDown className="w-4 h-4 text-slate-400" />}
@@ -313,11 +325,11 @@ return (
 
 <section
   className="
-    w-full bg-white
+    w-full bg-white dark:bg-[#0B0D0C]
     pt-8 pb-8
     sm:pt-12 sm:pb-12
-    lg:pt-12 lg:pb-6
-    overflow-hidden
+    lg:pt-12 lg:pb-12
+    overflow-visible
   "
 >
 
@@ -334,7 +346,7 @@ return (
             e.preventDefault();
             if (onNavigate) onNavigate("home");
           }}
-          className="text-black hover:text-[#15B83E] transition-colors cursor-pointer inline-flex items-center"
+          className="text-black dark:text-white hover:text-[#15B83E] transition-colors cursor-pointer inline-flex items-center"
           aria-label="Home"
         >
           <svg className="w-[20px] h-[20px] shrink-0" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
@@ -344,7 +356,7 @@ return (
         <svg className="w-3 h-3 text-slate-400 shrink-0" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
         </svg>
-        <span className="font-grift-semibold text-[21.6px] sm:text-[15px] lg:text-[18px] text-[#141414]">Solutions</span>
+        <span className="font-grift-semibold text-[21.6px] sm:text-[15px] lg:text-[18px] text-[#141414] dark:text-white">Solutions</span>
       </div>
 
       {/* Eyebrow Label */}
@@ -356,7 +368,7 @@ return (
       </div>
 
       {/* Main Headline */}
-      <h1 className="font-grift-semibold text-[48px] sm:text-[54px] lg:text-[70px] text-[#141414] leading-[1.08] mb-6">
+      <h1 className="font-grift-semibold text-[48px] sm:text-[54px] lg:text-[70px] text-[#141414] dark:text-white leading-[1.08] mb-6">
         Build smarter{' '}
         <span className="text-[#0F9E11] relative inline-block">
           {/* <svg
@@ -406,16 +418,13 @@ return (
     "
   >
     <img
-      src={heroImage}
+      src={servicesHeroImg}
       alt="Team collaboration in modern office"
       className="
         block
         w-full
         h-auto
         object-contain
-        lg:scale-[1.08]
-        xl:scale-[1.12]
-        origin-center
       "
       loading="eager"
       fetchPriority="high"
@@ -442,14 +451,14 @@ const row2Items = [...marqueeRow2, ...marqueeRow2, ...marqueeRow2];
 
 function MarqueeAndSummary() {
 return (
-<section className="w-full bg-white pt-4 pb-20 sm:pt-6 sm:pb-28 lg:pt-28 lg:pb-32 overflow-hidden">
+<section className="w-full bg-white dark:bg-[#0B0D0C] pt-4 pb-20 sm:pt-6 sm:pb-28 lg:pt-28 lg:pb-32 overflow-hidden transition-colors">
 {/* Centered Heading & Subtitle */}
 <div className="max-w-[1400px] mx-auto text-center px-5 sm:px-6 mb-6 sm:mb-10">
-<h2 className="font-grift-bold font-bold text-[30px] sm:text-[28px] md:text-[34px] lg:text-[40px] text-[#141414] tracking-[-0.03em] leading-[1.2] xl:whitespace-nowrap">
+<h2 className="font-grift-bold font-bold text-[30px] sm:text-[28px] md:text-[34px] lg:text-[40px] text-[#141414] dark:text-white tracking-[-0.03em] leading-[1.2] xl:whitespace-nowrap">
 Yes, we cover everything you need to build, market & grow your brand
 <span className="text-[#F25C22]">.</span>
 </h2>
-<p className="font-grift-medium text-[16px] sm:text-[14px] md:text-[14px] lg:text-[17px] xl:text-[20px] text-[#4B5563] leading-[1.45] mt-7 sm:mt-8 md:mt-9 lg:mt-10 max-w-[1050px] mx-auto">
+<p className="font-grift-medium text-[16px] sm:text-[14px] md:text-[14px] lg:text-[17px] xl:text-[20px] text-[#4B5563] dark:text-[#A1A1AA] leading-[1.45] mt-7 sm:mt-8 md:mt-9 lg:mt-10 max-w-[1050px] mx-auto">
 From strategy and creative to technology and activation
 <br className="hidden sm:inline" />
 {' '}we bring all the pieces together to deliver real results.
@@ -470,7 +479,7 @@ From strategy and creative to technology and activation
         {row1Items.map((item, idx) => (
           <span
             key={`row1-a-${idx}`}
-            className="inline-block px-5 sm:px-7 md:px-9 text-[26px] sm:text-[36px] md:text-[44px] lg:text-[60px] leading-[1.15] font-bold text-[#CFD2D7] transition-colors duration-200 cursor-default hover:text-[#11C911] select-none"
+            className="inline-block px-5 sm:px-7 md:px-9 text-[26px] sm:text-[36px] md:text-[44px] lg:text-[60px] leading-[1.15] font-bold text-[#CFD2D7] dark:text-[#2A342D] transition-colors duration-200 cursor-default hover:text-[#11C911] select-none"
           >
             {item}
           </span>
@@ -480,7 +489,7 @@ From strategy and creative to technology and activation
         {row1Items.map((item, idx) => (
           <span
             key={`row1-b-${idx}`}
-            className="inline-block px-5 sm:px-7 md:px-9 text-[26px] sm:text-[36px] md:text-[44px] lg:text-[60px] leading-[1.15] font-bold text-[#CFD2D7] transition-colors duration-200 cursor-default hover:text-[#11C911] select-none"
+            className="inline-block px-5 sm:px-7 md:px-9 text-[26px] sm:text-[36px] md:text-[44px] lg:text-[60px] leading-[1.15] font-bold text-[#CFD2D7] dark:text-[#2A342D] transition-colors duration-200 cursor-default hover:text-[#11C911] select-none"
           >
             {item}
           </span>
@@ -502,7 +511,7 @@ From strategy and creative to technology and activation
         {row2Items.map((item, idx) => (
           <span
             key={`row2-a-${idx}`}
-            className="inline-block px-5 sm:px-7 md:px-9 text-[26px] sm:text-[36px] md:text-[44px] lg:text-[60px] leading-[1.15] font-bold text-[#CFD2D7] transition-colors duration-200 cursor-default hover:text-[#11C911] select-none"
+            className="inline-block px-5 sm:px-7 md:px-9 text-[26px] sm:text-[36px] md:text-[44px] lg:text-[60px] leading-[1.15] font-bold text-[#CFD2D7] dark:text-[#2A342D] transition-colors duration-200 cursor-default hover:text-[#11C911] select-none"
           >
             {item}
           </span>
@@ -512,7 +521,7 @@ From strategy and creative to technology and activation
         {row2Items.map((item, idx) => (
           <span
             key={`row2-b-${idx}`}
-            className="inline-block px-5 sm:px-7 md:px-9 text-[26px] sm:text-[36px] md:text-[44px] lg:text-[60px] leading-[1.15] font-bold text-[#CFD2D7] transition-colors duration-200 cursor-default hover:text-[#11C911] select-none"
+            className="inline-block px-5 sm:px-7 md:px-9 text-[26px] sm:text-[36px] md:text-[44px] lg:text-[60px] leading-[1.15] font-bold text-[#CFD2D7] dark:text-[#2A342D] transition-colors duration-200 cursor-default hover:text-[#11C911] select-none"
           >
             {item}
           </span>
@@ -529,20 +538,21 @@ From strategy and creative to technology and activation
 MAIN SERVICES PAGE
 ========================================================= */
 
-export default function ServicesPage({ onNavigate, activeDropdown, setActiveDropdown }) {
+export default function ServicesPage({ onNavigate, activeDropdown, setActiveDropdown, currentPage }) {
 return (
-<div className="bg-white min-h-screen text-[#141414] font-grift antialiased selection:bg-[#15B83E]/20 selection:text-black">
+<div className="bg-white dark:bg-[#0B0D0C] min-h-screen text-[#141414] dark:text-[#F3F4F6] font-grift antialiased selection:bg-[#15B83E]/20 selection:text-black transition-colors duration-300">
 {/* 1. Header Navigation — same AppNav as Home page */}
 <AppNav
      activeDropdown={activeDropdown}
      setActiveDropdown={setActiveDropdown}
      onNavigate={onNavigate}
+     currentPage={currentPage || "services"}
    />
 
   {/* 2. Hero Section */}
   <HeroSection onNavigate={onNavigate} />
 
-  {/* 3. Three Services Categories (9 Cards Each = 27 Cards) */}
+  {/* 3. Four Services Categories (9 Cards Each = 36 Cards) */}
 
 <div
   id="services-grid"
@@ -558,18 +568,23 @@ space-y-10 sm:space-y-24 lg:space-y-32
 >
 
     <ServiceCategorySection
-      title="Strategy, Creative & Execution"
+      title="TRADE SHOWS / EXPERIENTIAL MARKETING"
       items={strategyServices}
     />
 
     <ServiceCategorySection
-      title="Virtual Reality Development Services"
+      title="INTERACTIVE DIGITAL EXPERIENCES"
       items={vrServices}
     />
 
     <ServiceCategorySection
-      title="Next-Gen 3D Configurator Services"
+      title="DIGITAL VIDEO PRODUCTIONS"
       items={configuratorServices}
+    />
+
+    <ServiceCategorySection
+      title="DIGITAL MARKETING / SPECIALTY DISTRIBUTION"
+      items={marketingServices}
     />
   </div>
 

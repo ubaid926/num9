@@ -93,7 +93,7 @@ function CustomerInteractions({ stat = "125K+ Customers", label = "Customer Inte
    GALLERY ROW ITEM (SUPPORTS MULTI-IMAGE CYCLING)
 ========================================= */
 
-function GalleryRowItem({ item, index, caseStudyName }) {
+function GalleryRowItem({ item, index, caseStudyName, fit = "contain" }) {
   const images = Array.isArray(item.images) && item.images.length > 0
     ? item.images
     : [{ src: item.src, title: item.title, subtitle: item.subtitle }];
@@ -120,18 +120,37 @@ function GalleryRowItem({ item, index, caseStudyName }) {
         return (
           <div
             key={i}
-            className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-              isActive ? "opacity-100 z-10" : "opacity-0 pointer-events-none z-0"
-            }`}
+            className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${isActive ? "opacity-100 z-10" : "opacity-0 pointer-events-none z-0"
+              }`}
           >
-            {src ? (
+            {src && fit === "cover" ? (
+              // Fill the whole row (no side gaps); focal point keeps faces in frame
               <img
                 src={src}
                 alt={currentSubtitle || `${caseStudyName || "Project"} outcome visual`}
                 loading="lazy"
                 decoding="async"
                 className="w-full h-full object-cover"
+                style={{ objectPosition: imgObj.position || "center 30%" }}
               />
+            ) : src ? (
+              <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+                {/* Ambient blur fill so edges blend seamlessly with the image's own color palette */}
+                <img
+                  src={src}
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 w-full h-full object-cover blur-2xl scale-125 opacity-35 pointer-events-none"
+                />
+                {/* Full uncropped image - heads, people, and details stay completely intact */}
+                <img
+                  src={src}
+                  alt={currentSubtitle || `${caseStudyName || "Project"} outcome visual`}
+                  loading="lazy"
+                  decoding="async"
+                  className="relative z-10 w-full h-full object-contain"
+                />
+              </div>
             ) : (
               <div className="w-full h-full bg-[#252B30]" />
             )}
@@ -166,11 +185,10 @@ function GalleryRowItem({ item, index, caseStudyName }) {
                     key={i}
                     type="button"
                     onClick={() => setActiveIdx(i)}
-                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                      i === activeIdx
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${i === activeIdx
                         ? "w-6 bg-white"
                         : "w-2 bg-white/40 hover:bg-white/75"
-                    }`}
+                      }`}
                     aria-label={`View photo ${i + 1}`}
                   />
                 ))}
@@ -212,6 +230,8 @@ export default function CaseStudyStorySections({
     height: 1,
     endX: 0,
     endY: 0,
+    strokeWidth: 6,
+    dotRadius: 15,
   });
   const [pathLength, setPathLength] = useState(0);
 
@@ -242,54 +262,107 @@ export default function CaseStudyStorySections({
       const rootRect = root.getBoundingClientRect();
       const challengeRect = challenge.getBoundingClientRect();
       const solutionRect = solution.getBoundingClientRect();
+      const serviceRect = serviceSection.getBoundingClientRect();
       const ctaRect = cta.getBoundingClientRect();
 
       const width = root.offsetWidth;
       const height = root.offsetHeight;
 
       const mobile = width < 768;
-      const radius = mobile ? 16 : 42;
+      const tablet = width >= 768 && width < 1024;
+      const radius = mobile ? 16 : (tablet ? 28 : 38);
+      const strokeWidth = mobile ? 4.5 : 6;
+      const dotRadius = mobile ? 11 : 15;
 
-      // Reference layout is based on a centered 1200px area.
-      const contentWidth = Math.min(width, 1200);
-      const contentLeft = (width - contentWidth) / 2;
+      // 1. START POINT & LEFT VERTICAL LINE
+      // Anchor dynamically to the challenge heading element for exact alignment
+      const challengeHeading = challenge.querySelector("h2");
+      const headingRect = challengeHeading
+        ? challengeHeading.getBoundingClientRect()
+        : challengeRect;
+      const headingLeft = headingRect.left - rootRect.left;
+      const headingTop = headingRect.top - rootRect.top;
 
-      const leftX = mobile
-        ? 12
-        : contentLeft + 24;
+      // Vertical line runs in the left margin, safely clear of heading and paragraphs
+      const targetLeftX = mobile
+        ? 14
+        : Math.max(20, headingLeft - (radius + 12));
+      const leftX = Math.round(targetLeftX);
 
-      const rightX = mobile
-        ? width - 12
-        : contentLeft + contentWidth - 66;
-
-      const startY =
-        challengeRect.top - rootRect.top +
-        (mobile ? 42 : 48);
-
-      // Bottom corner after the solution.
-      const turnY =
-        solutionRect.bottom - rootRect.top -
-        (mobile ? 18 : 35);
-
-      // End point aligned with the CTA.
-      const endY =
-        ctaRect.top - rootRect.top +
-        ctaRect.height / 2;
-
-      const endX = mobile
-        ? Math.max(35, rightX - 35)
-        : rightX - 85;
-
-      const safeTurnY = Math.max(
-        startY + radius * 3,
-        turnY
+      // Hook starts above/level with the heading and curves down
+      const startY = Math.round(
+        headingTop + (mobile ? 8 : (tablet ? 10 : 12))
       );
 
-      const safeEndY = Math.max(
-        safeTurnY + radius * 3,
-        endY
+      // 2. HORIZONTAL TURN BETWEEN "THE SOLUTION" AND "KEY SERVICES"
+      // Find the bottom of solution content (text & image)
+      const solutionInner = solution.firstElementChild || solution;
+      const solutionInnerRect = solutionInner.getBoundingClientRect();
+      const solutionContentBottom = solutionInnerRect.bottom - rootRect.top;
+
+      // Find the top of services content (heading)
+      const servicesHeading = serviceSection.querySelector("h2");
+      const servicesHeadingRect = servicesHeading
+        ? servicesHeading.getBoundingClientRect()
+        : serviceRect;
+      const servicesContentTop = servicesHeadingRect.top - rootRect.top;
+
+      // Sits cleanly in the clear vertical gap between Section 03 and Section 04
+      const rawTurnY = (solutionContentBottom + servicesContentTop) / 2;
+      const safeTurnY = Math.round(
+        Math.max(startY + radius * 3, rawTurnY)
       );
 
+      // 3. RIGHT VERTICAL LINE
+      // Find the rightmost boundary of services content (pills)
+      const servicesInner = serviceSection.firstElementChild || serviceSection;
+      const servicesInnerRect = servicesInner.getBoundingClientRect();
+      const servicesRight = servicesInnerRect.right - rootRect.left;
+
+      // Find the rightmost boundary of outcome text elements and CTA card
+      const cardRight = ctaRect.right - rootRect.left;
+      let maxOutcomeTextRight = cardRight;
+      const outcomeTexts = outcome.querySelectorAll("h2, p, ul");
+      outcomeTexts.forEach((el) => {
+        const r = el.getBoundingClientRect().right - rootRect.left;
+        if (r > maxOutcomeTextRight) maxOutcomeTextRight = r;
+      });
+
+      const maxContentRight = Math.max(
+        servicesRight,
+        maxOutcomeTextRight,
+        cardRight
+      );
+
+      // rightX must be safely to the right of all content, within the right margin
+      let rightX;
+      if (mobile) {
+        rightX = Math.round(width - 12);
+      } else if (tablet) {
+        rightX = Math.round(Math.min(width - 16, Math.max(maxContentRight + 28, width - 28)));
+      } else {
+        const preferredRightX = width >= 1530
+          ? Math.max(maxContentRight + 55, width - 100)
+          : Math.max(maxContentRight + 45, width - 45);
+        rightX = Math.round(Math.min(width - 24, preferredRightX));
+      }
+
+      // Ensure rightX is strictly to the right of leftX + radius * 2
+      rightX = Math.max(leftX + radius * 2 + 20, rightX);
+
+      // 4. END POINT AT THE CTA CARD
+      const endY = Math.round(
+        ctaRect.top - rootRect.top + ctaRect.height * 0.5
+      );
+      const safeEndY = Math.round(
+        Math.max(safeTurnY + radius * 2, endY)
+      );
+
+      // Target endX: touching the right edge of the CTA card
+      const targetEndX = Math.round(cardRight + dotRadius + (mobile ? 5 : 8));
+      const endX = Math.min(rightX - radius, targetEndX);
+
+      // Build the path with smooth rounded corners
       const path = `
         M ${leftX + radius} ${startY}
         Q ${leftX} ${startY} ${leftX} ${startY + radius}
@@ -312,6 +385,8 @@ export default function CaseStudyStorySections({
         height,
         endX,
         endY: safeEndY,
+        strokeWidth,
+        dotRadius,
       });
     };
 
@@ -336,6 +411,13 @@ export default function CaseStudyStorySections({
       cta,
     ].forEach((element) => observer.observe(element));
 
+    const images = root.querySelectorAll("img");
+    images.forEach((img) => {
+      if (!img.complete) {
+        img.addEventListener("load", scheduleMeasure);
+      }
+    });
+
     window.addEventListener("resize", scheduleMeasure);
 
     if (document.fonts?.ready) {
@@ -345,6 +427,7 @@ export default function CaseStudyStorySections({
     return () => {
       observer.disconnect();
       window.removeEventListener("resize", scheduleMeasure);
+      images.forEach((img) => img.removeEventListener("load", scheduleMeasure));
 
       if (frameRef.current !== null) {
         cancelAnimationFrame(frameRef.current);
@@ -377,14 +460,14 @@ export default function CaseStudyStorySections({
     let lastProgress = -1;
 
     const updateProgress = () => {
-      const challengeRect = challenge.getBoundingClientRect();
+      const challengeHeading = challenge.querySelector("h2");
+      const headingRect = challengeHeading
+        ? challengeHeading.getBoundingClientRect()
+        : challenge.getBoundingClientRect();
       const ctaRect = cta.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
-      const mobile = window.innerWidth < 768;
-      const startOffset = mobile ? 42 : 48;
-
-      const lineStartTop = challengeRect.top + startOffset;
+      const lineStartTop = headingRect.top;
       const lineEndTop = ctaRect.top + ctaRect.height * 0.5;
 
       const focalY = viewportHeight * 0.6;
@@ -457,8 +540,11 @@ export default function CaseStudyStorySections({
       className="
         relative
         w-full
-        bg-white
+        bg-white dark:bg-[#0B0D0C]
+        text-[#141414] dark:text-[#F3F4F6]
         font-grift-medium
+        overflow-x-clip
+        transition-colors duration-300
       "
     >
       {/* =====================================
@@ -470,18 +556,19 @@ export default function CaseStudyStorySections({
           z-30
           w-full h-full
           pointer-events-none
-          overflow-hidden
+          overflow-visible
         "
         viewBox={`0 0 ${geometry.width} ${geometry.height}`}
         preserveAspectRatio="none"
         fill="none"
         aria-hidden="true"
+        style={{ display: "block" }}
       >
         <path
           ref={pathRef}
           d={geometry.path}
           stroke="#49B1EA"
-          strokeWidth="5"
+          strokeWidth={geometry.strokeWidth || 6}
           strokeLinecap="round"
           strokeLinejoin="round"
           fill="none"
@@ -494,7 +581,7 @@ export default function CaseStudyStorySections({
           <circle
             cx={geometry.endX}
             cy={geometry.endY}
-            r="16"
+            r={geometry.dotRadius || 15}
             fill="#49B1EA"
           />
         )}
@@ -505,10 +592,11 @@ export default function CaseStudyStorySections({
       ===================================== */}
       <section
         className="
-          relative w-full bg-white
+          relative w-full bg-white dark:bg-[#0B0D0C]
           pt-[60px] sm:pt-[100px]
           lg:pt-[130px]
           pb-[55px] lg:pb-[70px]
+          transition-colors duration-300
         "
       >
         <div
@@ -521,39 +609,39 @@ export default function CaseStudyStorySections({
           "
         >
           {/* ABOUT TITLE */}
-         
-{/* ABOUT TITLE */}
-<div className="flex items-center gap-[7px] md:block min-w-0">
 
-  <span
-    className="
+          {/* ABOUT TITLE */}
+          <div className="flex items-center gap-[7px] md:block min-w-0">
+
+            <span
+              className="
       inline-block md:block
       font-grift-medium
       text-[24px] lg:text-[30px]
       leading-[1.3]
       tracking-[-0.01em]
-      text-[#4A4A4A]
+      text-[#4A4A4A] dark:text-white
       whitespace-nowrap
     "
-  >
-    {about.title || "About"}
-  </span>
+            >
+              {about.title || "About"}
+            </span>
 
-  <h2
-    className="
+            <h2
+              className="
       inline-block md:block
       font-grift-semibold
       text-[24px] lg:text-[36px]
       leading-[1.15]
       tracking-[-0.02em]
-      text-[#4A4A4A]
+      text-[#4A4A4A] dark:text-white
       whitespace-nowrap
     "
-  >
-    {about.clientName || caseStudy.name}
-  </h2>
+            >
+              {about.clientName || caseStudy.name}
+            </h2>
 
-</div>
+          </div>
 
 
           {/* DESCRIPTION */}
@@ -564,7 +652,7 @@ export default function CaseStudyStorySections({
               text-[16px] sm:text-[16px]
               lg:text-[18px]
               leading-[1.45]
-              text-[#575757]
+              text-[#575757] dark:text-[#D1D5DB]
             "
           >
             {about.description}
@@ -578,87 +666,168 @@ export default function CaseStudyStorySections({
       <section
         ref={challengeRef}
         className="
-          relative w-full bg-white
+          relative w-full bg-white dark:bg-[#0B0D0C]
           pt-[20px] lg:pt-[35px]
           pb-[115px] sm:pb-[160px]
           lg:pb-[250px]
+          transition-colors duration-300
         "
       >
         <div
           className="
-            w-full max-w-[1200px] mx-auto
-            pl-[55px] pr-[30px]
-            sm:pl-[75px] sm:pr-[60px]
-            lg:pl-[100px] lg:pr-[85px]
+   max-w-[1530px] mx-auto
+pl-[55px] pr-[30px]
+sm:pl-[75px] sm:pr-[50px]
+lg:pl-[85px] lg:pr-[55px]
+2xl:pl-[50px] 2xl:pr-[50px]
           "
         >
           {/* CHALLENGE HEADING */}
           <h2
             className="
               font-grift-semibold
-              text-[32px] sm:text-[42px]
-              lg:text-[50px]
+              text-[32px] sm:text-[40px]
+              lg:text-[48px]
               leading-[1.12]
               tracking-[-0.03em]
-              text-[#4A4A4A]
-              mb-[50px] sm:mb-[70px] lg:mb-[110px]
+              text-[#333333] dark:text-white
+            mb-[28px] sm:mb-[36px] lg:mb-[60px] 2xl:mb-[85px]
             "
           >
             {challenge.heading || "The challenge"}
             <span className="text-[#F2693A]">.</span>
           </h2>
 
-          {/* TWO COLUMNS */}
-          <div
-            className="
-              grid grid-cols-1 md:grid-cols-2
-              gap-[45px] md:gap-[95px]
-              lg:gap-[150px]
-              items-start
-            "
-          >
-            {/* LEFT PARAGRAPHS */}
-            <div
-           
-className="
-  w-full
-  order-2 md:order-1
-  space-y-[30px] lg:space-y-[38px]
-  font-grift-medium
-  text-[16px] sm:text-[16px]
-  lg:text-[18px]
-  leading-[1.35]
-  text-[#626262]
-"
+          {/* CHALLENGE COLUMNS (3-col when image present, 2-col fallback) */}
+          {challenge.image || challenge.centerImage ? (
 
+            <div
+              className="
+    grid grid-cols-1
+
+    lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)_minmax(0,1.15fr)]
+
+    2xl:grid-cols-[minmax(0,420px)_minmax(0,382px)_minmax(0,490px)]
+
+    gap-y-10
+    lg:gap-x-[30px]
+    xl:gap-x-[45px]
+    2xl:gap-x-[65px]
+
+    items-center
+    2xl:justify-between
+  "
             >
-              {challenge.leftParagraphs?.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
+              {/* LEFT PARAGRAPHS */}
+              <div
+                className="
+      w-full min-w-0
+      space-y-[26px] lg:space-y-[36px]
+      font-grift-regular
+      font-normal
+      text-[16px] lg:text-[18px]
+      leading-[1.4]
+      text-[#555555] dark:text-[#C5CAD1]
+    "
+              >
+                {challenge.leftParagraphs?.map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+              </div>
+
+              {/* CENTER IMAGE */}
+              <div className="w-full min-w-0 flex justify-center items-center">
+                <div className="w-full min-w-0 flex justify-center items-center">
+                  <div
+                    className="
+      w-full
+      max-w-[382px]
+      aspect-[382/452]
+      overflow-hidden
+      rounded-[18px]
+      border border-[#2F2F2F]
+      bg-white
+    "
+                  >
+                    <img
+                      src={challenge.image || challenge.centerImage}
+                      alt={challenge.imageAlt || `${caseStudy.name} challenge`}
+                      loading="lazy"
+                      decoding="async"
+                      className="block w-full h-full object-cover object-center"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* RIGHT PARAGRAPH */}
+              {challenge.rightParagraph && (
+                <div className="w-full min-w-0 flex items-center">
+                  <p
+                    className="
+          w-full
+          font-grift-semibold
+          font-semibold
+          text-[22px] lg:text-[26px] 2xl:text-[30px]
+          leading-[1.25]
+          tracking-[-0.015em]
+          text-[#4A4A4A] dark:text-white
+        "
+                  >
+                    {challenge.rightParagraph}
+                  </p>
+                </div>
+              )}
             </div>
 
-            {/* RIGHT PARAGRAPH */}
-            {challenge.rightParagraph && (
-              <p
-              
-className="
-  w-full
-  order-1 md:order-2
-  font-grift-medium
-  text-[20px] sm:text-[25px]
-  lg:text-[28px]
-  leading-[1.25]
-  tracking-[-0.018em]
-  text-[#4A4A4A]
-  md:-mt-[75px]
-  lg:-mt-[80px]
-"
-
+          ) : (
+            <div
+              className="
+                grid grid-cols-1 md:grid-cols-2
+                gap-[45px] md:gap-[95px]
+                lg:gap-[150px]
+                items-start
+              "
+            >
+              {/* LEFT PARAGRAPHS */}
+              <div
+                className="
+                  w-full
+                  order-2 md:order-1
+                  space-y-[30px] lg:space-y-[38px]
+                  font-grift-medium
+                  text-[16px] sm:text-[16px]
+                  lg:text-[18px]
+                  leading-[1.35]
+                  text-[#626262] dark:text-[#D1D5DB]
+                "
               >
-                {challenge.rightParagraph}
-              </p>
-            )}
-          </div>
+                {challenge.leftParagraphs?.map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+              </div>
+
+              {/* RIGHT PARAGRAPH */}
+              {challenge.rightParagraph && (
+                <p
+                  className="
+                    w-full
+                    order-1 md:order-2
+                    font-grift-medium
+                    text-[20px] sm:text-[25px]
+                    lg:text-[28px]
+                    leading-[1.25]
+                    tracking-[-0.018em]
+                    text-[#4A4A4A] dark:text-white
+                    md:-mt-[75px]
+                    lg:-mt-[80px]
+                  "
+                >
+                  {challenge.rightParagraph}
+                </p>
+              )}
+            </div>
+          )}
         </div>
       </section>
 
@@ -675,57 +844,77 @@ className="
           lg:pb-[155px]
         "
       >
-        <div
-          className="
-            w-full max-w-[1200px] mx-auto
-            pl-[55px] pr-[30px]
-            sm:pl-[75px] sm:pr-[60px]
-            lg:pl-[105px] lg:pr-[85px]
+ <div
+  className="
+    w-full max-w-[1600px] mx-auto
+    pl-[55px] pr-[30px]
+    sm:pl-[75px] sm:pr-[50px]
+    lg:pl-[105px] lg:pr-[65px]
+    xl:pl-[110px] xl:pr-[30px]
 
-            grid grid-cols-1 md:grid-cols-2
-            gap-12 md:gap-[80px] lg:gap-[140px]
-            items-start
-          "
-        >
-          {/* LEFT — SOLUTION CONTENT */}
-          <div>
-            <h2
-              className="
-                font-grift-semibold
-                text-[34px] sm:text-[43px]
-                lg:text-[50px]
-                leading-[1.1]
-                tracking-[-0.03em]
-                text-white
-                mb-[22px]
-              "
-            >
-              {solution.heading || "The solution."}
-            </h2>
+    grid grid-cols-1
+    lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.35fr)]
+    gap-[45px] lg:gap-[80px] xl:gap-[90px]
+    items-start
+  "
+>
+  {/* LEFT — SOLUTION CONTENT */}
+  <div className="min-w-0">
+    <h2
+      className="
+        font-grift-semibold
+        text-[34px] sm:text-[43px] lg:text-[50px]
+        leading-[1.1]
+        tracking-[-0.03em]
+        text-white
+        mb-[22px]
+      "
+    >
+      {solution.heading || "The solution."}
+    </h2>
 
-            <p
-              className="
-                font-grift-medium
-                text-[19px] sm:text-[24px]
-                lg:text-[30px]
-                leading-[1.35]
-                tracking-[-0.02em]
-                text-white
-                whitespace-pre-line
-              "
-            >
-              {solution.description}
-            </p>
-          </div>
+    <p
+      className="
+        font-grift-medium
+        text-[19px] sm:text-[24px] lg:text-[30px]
+        leading-[1.25]
+        tracking-[-0.02em]
+        text-white
+        whitespace-pre-line
+      "
+    >
+      {solution.description}
+    </p>
+  </div>
 
-          {/* RIGHT — CUSTOMER INTERACTIONS */}
-          <div className="flex justify-start md:justify-center md:pt-[10px]">
-            <CustomerInteractions
-              stat={solution.customerInteractions?.stat}
-              label={solution.customerInteractions?.label}
-            />
-          </div>
-        </div>
+  {/* RIGHT — IMAGE */}
+  <div className="w-full min-w-0 flex justify-center lg:justify-end">
+    {solution.image ? (
+      <div
+        className="
+          w-full max-w-[760px]
+          aspect-[760/450]
+          overflow-hidden
+          rounded-[20px]
+          border border-white/10
+        "
+      >
+        <img
+          src={solution.image}
+          alt={solution.imageAlt || `${caseStudy.name || "Brand"} solution`}
+          loading="lazy"
+          decoding="async"
+          className="w-full h-full object-cover object-center"
+        />
+      </div>
+    ) : (
+      <CustomerInteractions
+        stat={solution.customerInteractions?.stat}
+        label={solution.customerInteractions?.label}
+      />
+    )}
+  </div>
+</div>
       </section>
 
       {/* =====================================
@@ -816,20 +1005,22 @@ className="
           className="
             w-full
             grid grid-cols-1
-            md:grid-cols-[34%_66%]
+            md:grid-cols-[45%_55%] lg:grid-cols-[44%_56%] xl:grid-cols-[42%_58%]
             min-h-[650px]
             lg:min-h-[800px]
           "
         >
           {/* LEFT — IMAGE GALLERY */}
           <div
-            className="
+            className={`
               w-full
               grid grid-rows-3
-              h-[470px] sm:h-[580px]
+              ${outcome.galleryFit === "cover"
+                ? "h-[900px] sm:h-[1080px]"
+                : "h-[470px] sm:h-[580px]"}
               md:h-full
               overflow-hidden
-            "
+            `}
           >
             {outcome.galleryImages?.map((item, index) => (
               <GalleryRowItem
@@ -837,6 +1028,7 @@ className="
                 item={item}
                 index={index}
                 caseStudyName={caseStudy.name}
+                fit={outcome.galleryFit}
               />
             ))}
           </div>
@@ -845,9 +1037,9 @@ className="
           <div
             className="
               relative w-full
-              px-[45px] sm:px-[65px]
-              md:px-[75px] lg:px-[145px]
-              xl:pl-[150px] xl:pr-[160px]
+              pl-[35px] pr-[45px] sm:px-[50px]
+              md:px-[50px] lg:px-[80px]
+              xl:pl-[90px] xl:pr-[100px]
 
               pt-[65px] sm:pt-[80px]
               lg:pt-[80px]
@@ -872,6 +1064,7 @@ className="
 
             <p
               className="
+                max-w-[620px]
                 font-grift-medium
                 text-[17px] sm:text-[21px]
                 lg:text-[25px]
@@ -927,8 +1120,10 @@ className="
                 relative z-40
                 w-full max-w-[475px]
                 mt-[65px] lg:mt-[95px]
+                ml-0 sm:ml-6 md:ml-8 lg:ml-12 xl:ml-20
 
-                bg-white
+                bg-white dark:bg-[#171A18]
+                border border-transparent dark:border-[#27302A]
                 rounded-[22px]
                 p-[25px] sm:p-[30px]
               "
@@ -941,7 +1136,7 @@ className="
                   text-[14px] sm:text-[17px]
                   lg:text-[18px]
                   leading-[1.4]
-                  text-[#333]
+                  text-[#333] dark:text-[#F3F4F6]
                   mb-[18px]
                 "
               >
@@ -960,13 +1155,14 @@ className="
                     min-w-0 flex-1
                     h-[54px]
                     rounded-[10px]
-                    border border-[#A0A0A0]
+                    border border-[#A0A0A0] dark:border-[#323D35]
                     px-[16px]
 
                     font-grift-medium
                     text-[16px]
-                    text-[#333]
-                    placeholder:text-[#999]
+                    text-[#333] dark:text-white
+                    bg-white dark:bg-[#151816]
+                    placeholder:text-[#999] dark:placeholder:text-[#6B7280]
 
                     outline-none
                     focus:border-[#49B1EA]
@@ -991,7 +1187,7 @@ className="
                     disabled:opacity-60
                   "
                 >
-                  {isSent ? "Sent" : "Send"}
+                  {isSent ? "Sent" : "Get"}
                 </button>
               </div>
             </form>

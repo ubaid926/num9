@@ -178,6 +178,64 @@ if (isset($input['formTime'])) {
     }
 }
 
+// C. Google reCAPTCHA v2 verification
+$recaptchaSecret = $config['security']['recaptcha_secret'];
+if ($recaptchaSecret === '') {
+    error_log('[Number9 Contact Form] Warning: RECAPTCHA_SECRET_KEY is not configured; skipping reCAPTCHA check');
+} else {
+    $recaptchaToken = isset($input['recaptchaToken']) ? trim((string) $input['recaptchaToken']) : '';
+
+    if ($recaptchaToken === '') {
+        json_response(400, [
+            'success' => false,
+            'message' => 'Please confirm you are not a robot.',
+            'errors'  => ['recaptcha' => 'Please confirm you are not a robot.'],
+        ]);
+    }
+
+    $verifyPayload = http_build_query([
+        'secret'   => $recaptchaSecret,
+        'response' => $recaptchaToken,
+        'remoteip' => $clientIp,
+    ]);
+    $verifyUrl = 'https://www.google.com/recaptcha/api/siteverify';
+    $verifyRaw = false;
+
+    if (function_exists('curl_init')) {
+        $ch = curl_init($verifyUrl);
+        curl_setopt_array($ch, [
+            CURLOPT_POST           => true,
+            CURLOPT_POSTFIELDS     => $verifyPayload,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT        => 10,
+            CURLOPT_HTTPHEADER     => ['Content-Type: application/x-www-form-urlencoded'],
+        ]);
+        $verifyRaw = curl_exec($ch);
+        curl_close($ch);
+    } else {
+        $verifyRaw = @file_get_contents($verifyUrl, false, stream_context_create([
+            'http' => [
+                'method'  => 'POST',
+                'header'  => "Content-Type: application/x-www-form-urlencoded\r\n",
+                'content' => $verifyPayload,
+                'timeout' => 10,
+            ],
+        ]));
+    }
+
+    $verify = $verifyRaw ? json_decode($verifyRaw, true) : null;
+
+    if (!is_array($verify) || empty($verify['success'])) {
+        $codes = (is_array($verify) && isset($verify['error-codes'])) ? implode(',', (array) $verify['error-codes']) : 'no-response';
+        error_log("[Number9 Contact Form] reCAPTCHA verification failed: {$codes}");
+        json_response(400, [
+            'success' => false,
+            'message' => 'reCAPTCHA verification failed. Please tick the box and try again.',
+            'errors'  => ['recaptcha' => 'reCAPTCHA verification failed. Please try again.'],
+        ]);
+    }
+}
+
 // -------------------------------------------------------------
 // 5. SERVER-SIDE VALIDATION & NORMALIZATION
 // -------------------------------------------------------------

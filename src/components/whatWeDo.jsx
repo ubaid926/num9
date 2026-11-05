@@ -1,10 +1,11 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
-import tradeShowImage from "../assets/whatWeDoImages/exact_reference_star_trade_show.webp";
+import tradeShowImage from "../assets/Star-Cut Exhibition Booth Scene.webp";
 import dialImage from "../assets/whatWeDoImages/Finger pressing a brushed silver dial 1.webp";
 import suvConfiguratorImage from "../assets/whatWeDoImages/Touchscreen SUV configurator 1.webp";
 import beigeFabricImage from "../assets/whatWeDoImages/Hand Lifting Textured Beige Fabric 1.webp";
 import cinematicCollageImage from "../assets/whatWeDoImages/Cinematic Filmmaking Blob Collage.webp";
+import mobileImageDigitalVideo from "../assets/mobileImageDigitalVideo.png";
 import laptopImage from "../assets/laptopImage.webp";
 
 /* =========================================================
@@ -164,6 +165,7 @@ const services = [
       "We produce high-impact video commercials and digital content that elevate your brand's storytelling.",
     background: "linear-gradient(135deg, #2A3E50 0%, #455E71 100%)",
     image: cinematicCollageImage,
+    mobileImage: mobileImageDigitalVideo,
     dark: true,
     decoration: "circles",
   },
@@ -362,8 +364,8 @@ const CrossDecoration = ({ topImage, mainImage, bottomImage, serviceId }) => {
             -top-3 md:-top-4 lg:-top-5 xl:-top-6
             right-[21%] md:right-[22%] lg:right-[22%] xl:right-[22%] 2xl:right-[21%]
             w-[90px] h-[90px]
-            md:w-[100px] md:h-[100px]
-            lg:w-[115px] lg:h-[115px]
+            md:w-[110px] md:h-[110px]
+            lg:w-[120px] lg:h-[120px]
             xl:w-[130px] xl:h-[130px]
             2xl:w-[140px] 2xl:h-[140px]
           "
@@ -379,7 +381,7 @@ const CrossDecoration = ({ topImage, mainImage, bottomImage, serviceId }) => {
             top-1/2 -translate-y-1/2
             right-3 sm:right-5 md:right-7 lg:right-9 xl:right-12
             w-[260px] h-[260px]
-            md:w-[300px] md:h-[300px]
+            md:w-[310px] md:h-[310px]
             lg:w-[350px] lg:h-[350px]
             xl:w-[400px] xl:h-[400px]
             2xl:w-[440px] 2xl:h-[440px]
@@ -396,7 +398,7 @@ const CrossDecoration = ({ topImage, mainImage, bottomImage, serviceId }) => {
             -bottom-2 md:-bottom-3 lg:-bottom-4 xl:-bottom-5
             right-[25%] md:right-[26%] lg:right-[26%] xl:right-[26%] 2xl:right-[25%]
             w-[90px] h-[90px]
-            md:w-[100px] md:h-[100px]
+            md:w-[105px] md:h-[105px]
             lg:w-[115px] lg:h-[115px]
             xl:w-[130px] xl:h-[130px]
             2xl:w-[140px] 2xl:h-[140px]
@@ -456,6 +458,7 @@ const ServiceCard = ({ service, onNavigate }) => {
 
   return (
     <div
+      data-wwd-card="true"
       className={`
         relative
         w-full
@@ -469,10 +472,10 @@ const ServiceCard = ({ service, onNavigate }) => {
           ? "overflow-hidden md:overflow-visible"
           : "overflow-visible"
         }
-min-h-[490px]
-        min-[390px]:min-h-[520px]
-        sm:min-h-[550px]
-        md:min-h-[420px]
+   ${decoration === "laptop"
+          ? "min-h-[540px] min-[390px]:min-h-[580px] sm:min-h-[610px] md:min-h-[420px]"
+          : "min-h-[520px] min-[390px]:min-h-[550px] sm:min-h-[580px] md:min-h-[420px]"
+        }
         lg:min-h-[460px]
         xl:min-h-[500px]
         2xl:min-h-[530px]
@@ -511,10 +514,10 @@ min-h-[490px]
           xl:min-h-[500px]
           2xl:min-h-[530px]
           px-5
-          pt-6
+          pt-7
           pb-0
           sm:px-8
-          sm:pt-8
+          sm:pt-9
           sm:pb-0
           md:px-10
           md:py-12
@@ -530,9 +533,9 @@ min-h-[490px]
           items-start
         "
       >
-        {/* Accent line */}
+        {/* Accent line - hidden on mobile */}
         <div
-          className={`block w-[24px] sm:w-[30px] md:w-[38px] h-[2.5px] md:h-[3px] mb-3.5 sm:mb-4 md:mb-6 rounded-full ${dark ? "bg-white" : "bg-[#171717]"
+          className={`hidden md:block w-[24px] sm:w-[30px] md:w-[38px] h-[2.5px] md:h-[3px] mb-3.5 sm:mb-4 md:mb-6 rounded-full ${dark ? "bg-white" : "bg-[#171717]"
             }`}
         />
 
@@ -568,12 +571,12 @@ min-h-[490px]
         >
           <span
             className={`block ${service.headingGradient
-                ? ""
-                : service.titleLine1Gradient
-                  ? "bg-clip-text text-transparent"
-                  : dark
-                    ? "text-white"
-                    : "text-gray-900"
+              ? ""
+              : service.titleLine1Gradient
+                ? "bg-clip-text text-transparent"
+                : dark
+                  ? "text-white"
+                  : "text-gray-900"
               }`}
             style={
               service.titleLine1Gradient
@@ -598,12 +601,12 @@ min-h-[490px]
 
           <span
             className={`block whitespace-normal md:whitespace-nowrap ${service.headingGradient
-                ? ""
-                : dark
-                  ? "text-white"
-                  : accentLine2
-                    ? "bg-clip-text text-transparent"
-                    : "text-gray-900"
+              ? ""
+              : dark
+                ? "text-white"
+                : accentLine2
+                  ? "bg-clip-text text-transparent"
+                  : "text-gray-900"
               }`}
             style={
               service.headingLine2Gradient
@@ -636,10 +639,12 @@ min-h-[490px]
           className={`
             whitespace-normal
             lg:whitespace-pre-line
-            mt-3
-            sm:mt-3.5
-            md:mt-4
-            lg:mt-5
+            mt-5
+            min-[390px]:mt-6
+            sm:mt-7
+            md:mt-6
+            lg:mt-7
+            xl:mt-8
             text-[13.5px]
             min-[390px]:text-[14.5px]
             sm:text-[16px]
@@ -671,7 +676,7 @@ min-h-[490px]
             if (onNavigate) onNavigate(service.route || "services");
           }}
           className={`
-            mt-3.5 sm:mt-4 md:mt-6 lg:mt-8
+            mt-6 min-[390px]:mt-7 sm:mt-8 md:mt-8 lg:mt-10 xl:mt-12
             inline-flex
             w-fit
             items-center
@@ -736,51 +741,60 @@ min-h-[490px]
 
       {/* ── Mobile-only Graphic Containers (< md): exact mockup alignment ── */}
       {decoration === "star" && (
-
         <div
           className="
-    md:hidden
-    absolute
-    z-10
-    pointer-events-none
-    bottom-[-25px]
-    right-[-95px]
-    min-[390px]:right-[-105px]
-    min-[390px]:bottom-[-30px]
-    w-[285px] h-[285px]
-    min-[390px]:w-[310px]
-    min-[390px]:h-[310px]
-  "
+            md:hidden
+            absolute
+            z-10
+            pointer-events-none
+            bottom-[-135px]
+            right-[-25px]
+            w-[380px] h-[380px]
+            min-[390px]:bottom-[-145px]
+            min-[390px]:right-[-30px]
+            min-[390px]:w-[410px]
+            min-[390px]:h-[410px]
+            sm:bottom-[-160px]
+            sm:right-[-35px]
+            sm:w-[450px]
+            sm:h-[450px]
+          "
         >
-
           <svg
-            viewBox="100 0 540 580"
+            viewBox="0 0 640 640"
             className="w-full h-full overflow-visible"
             preserveAspectRatio="xMidYMid meet"
             aria-hidden="true"
           >
+            {/* White outline - vector based, clean rounded corners */}
+            <g
+              transform="
+                translate(396 238)
+                scale(1.37)
+                translate(-376 -308)
+                translate(-14 38)
+              "
+            >
+              <path
+                d={STAR_PATH}
+                fill="none"
+                stroke="rgba(255,255,255,0.45)"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                vectorEffect="non-scaling-stroke"
+              />
+            </g>
 
             {/* Star Image */}
             <image
               href={service.image}
-              x="115"
-              y="15"
-              width="515"
-              height="540"
+              x="140"
+              y="0"
+              width="600"
+              height="500"
               preserveAspectRatio="xMidYMid meet"
             />
-
-            {/* Star Outline - aligned with image */}
-            {/* <path
-              d={STAR_PATH}
-              fill="none"
-              stroke="rgba(255,255,255,0.35)"
-              strokeWidth="1.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              vectorEffect="non-scaling-stroke"
-              transform="translate(372 300) scale(0.85) translate(-372 -300)"
-            /> */}
           </svg>
         </div>
       )}
@@ -794,11 +808,12 @@ min-h-[490px]
             className="
               absolute
               z-10
-              bottom-[-16px] min-[390px]:bottom-[-20px] sm:bottom-[-24px]
-              -left-4 min-[390px]:-left-5 sm:-left-6
+              bottom-[-16px] min-[390px]:bottom-[-20px] sm:bottom-[-20px]
+              -left-4 min-[390px]:-left-5 sm:-left-4
               w-[260px] h-[260px]
               min-[390px]:w-[285px] min-[390px]:h-[285px]
-              sm:w-[310px] sm:h-[310px]
+              min-[480px]:w-[315px] min-[480px]:h-[315px]
+              sm:w-[350px] sm:h-[350px]
             "
           />
 
@@ -809,11 +824,12 @@ min-h-[490px]
             className="
               absolute
               z-20
-              bottom-[195px] min-[390px]:bottom-[210px] sm:bottom-[230px]
-              right-[18%] min-[390px]:right-[20%] sm:right-[22%]
-              w-[74px] h-[74px]
-              min-[390px]:w-[82px] min-[390px]:h-[82px]
-              sm:w-[90px] sm:h-[90px]
+              bottom-[195px] min-[390px]:bottom-[210px] sm:bottom-[215px]
+              right-[16%] min-[390px]:right-[18%] min-[480px]:right-[24%] sm:right-[28%]
+              w-[78px] h-[78px]
+              min-[390px]:w-[88px] min-[390px]:h-[88px]
+              min-[480px]:w-[108px] min-[480px]:h-[108px]
+              sm:w-[130px] sm:h-[130px]
             "
           />
 
@@ -824,31 +840,67 @@ min-h-[490px]
             className="
               absolute
               z-10
-              bottom-[105px] min-[390px]:bottom-[118px] sm:bottom-[132px]
-              -right-2 min-[390px]:-right-2.5 sm:-right-3
-              w-[68px] h-[68px]
-              min-[390px]:w-[76px] min-[390px]:h-[76px]
-              sm:w-[84px] sm:h-[84px]
+              bottom-[105px] min-[390px]:bottom-[118px] sm:bottom-[105px]
+              -right-1 min-[390px]:right-[1%] min-[480px]:right-[4%] sm:right-[8%]
+              w-[72px] h-[72px]
+              min-[390px]:w-[82px] min-[390px]:h-[82px]
+              min-[480px]:w-[100px] min-[480px]:h-[100px]
+              sm:w-[120px] sm:h-[120px]
             "
           />
         </div>
       )}
 
       {decoration === "circles" && (
-        <div className="md:hidden absolute bottom-[-18px] min-[390px]:bottom-[-24px] right-[-8px] min-[390px]:right-[-12px] h-[275px] min-[390px]:h-[305px] pointer-events-none overflow-visible z-10 flex items-end justify-end">
+        <div
+          className="
+            md:hidden
+            absolute
+            pointer-events-none
+            overflow-visible
+            z-10
+            flex
+            items-end
+            justify-end
+            bottom-[-8px] min-[390px]:bottom-[-10px] sm:bottom-[-8px]
+            right-[2px] min-[390px]:right-[4px] sm:right-[8px]
+            w-[265px] min-[360px]:w-[280px] min-[390px]:w-[305px] min-[440px]:w-[330px] sm:w-[360px]
+            max-w-[88%]
+          "
+        >
           <img
-            src={service.image}
+            src={service.mobileImage || service.image}
             alt="Digital Video Productions"
             loading="lazy"
             decoding="async"
             draggable={false}
-            className="h-full w-auto max-w-none object-contain object-bottom-right drop-shadow-md"
+            className="w-full h-auto object-contain object-bottom-right drop-shadow-md"
           />
         </div>
       )}
 
       {decoration === "laptop" && (
-        <div className="md:hidden absolute bottom-[32px] min-[390px]:bottom-[40px] sm:bottom-[46px] left-1/2 -translate-x-[49%] w-[104%] min-[390px]:w-[106%] pointer-events-none overflow-visible z-10 flex items-end justify-center">
+        <div
+          className="
+            md:hidden
+            absolute
+          bottom-8
+min-[390px]:bottom-10
+sm:bottom-12
+            left-1/2
+            -translate-x-1/2
+           w-[105%]
+min-[390px]:w-[110%]
+max-w-[480px]
+sm:max-w-[520px]
+            pointer-events-none
+            overflow-visible
+            z-10
+            flex
+            items-end
+            justify-center
+          "
+        >
           <img
             src={service.image}
             alt="Digital Marketing Dashboard"
@@ -927,27 +979,35 @@ min-h-[490px]
         {/* ── Decoration: CIRCLES (card 03) ── */}
         {decoration === "circles" && <CircleDecoration image={service.image} />}
 
-        {/* ── Decoration: LAPTOP (card 04) ── */}
+
+        {/* Decoration: LAPTOP (card 04) */}
         {decoration === "laptop" && (
           <div
             className="
-              absolute
-              bottom-0
-              md:right-2
-              lg:right-4
-              xl:right-8
-              2xl:right-12
-              md:w-[50%]
-              md:max-w-[520px]
-              lg:max-w-[600px]
-              xl:max-w-[700px]
-              2xl:max-w-[800px]
-              pointer-events-none
-              z-10
-              flex
-              items-end
-              justify-end
-            "
+      absolute
+      bottom-0
+
+      md:right-2
+      lg:right-2
+      xl:right-4
+      2xl:right-4
+
+      md:w-[48%]
+      lg:w-[49%]
+      xl:w-[56%]
+      2xl:w-[60%]
+
+      md:max-w-[520px]
+      lg:max-w-[620px]
+      xl:max-w-[850px]
+      2xl:max-w-[1000px]
+
+      pointer-events-none
+      z-10
+      flex
+      items-end
+      justify-end
+    "
           >
             <img
               src={service.image}
@@ -958,6 +1018,8 @@ min-h-[490px]
             />
           </div>
         )}
+
+
       </div>
     </div>
   );
@@ -977,18 +1039,18 @@ const WhatWeDo = ({ onNavigate }) => {
     }
   };
   return (
-    <section className="w-full bg-white pt-[52px] sm:pt-[54px] lg:pt-[58px] xl:pt-[60px] pb-12 sm:pb-16 lg:pb-20 xl:pb-24 xl:pb-40 ">
+    <section className="w-full bg-white dark:bg-[#0B0D0C] pt-7 sm:pt-[54px] lg:pt-[58px] xl:pt-[60px] pb-12 sm:pb-16 lg:pb-20 xl:pb-24 xl:pb-40 transition-colors duration-300">
       <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-16 2xl:px-20">
         {/* Section header */}
         <div className="flex items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12 md:mb-16 lg:mb-20">
-          <h2 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[64px] xl:text-[72px] font-bold tracking-[-0.035em] leading-none text-black">
+          <h2 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[64px] xl:text-[72px] font-bold tracking-[-0.035em] leading-none text-black dark:text-white transition-colors">
             What We Do
           </h2>
 
           <a
             href="/services"
             onClick={(e) => handleNavigateClick(e, "services")}
-            className="hidden md:flex items-center justify-between shrink-0 pb-3 border-b-2 border-black text-[16px] lg:text-[22px] text-black group gap-14 cursor-pointer"
+            className="hidden md:flex items-center justify-between shrink-0 pb-3 border-b-2 border-black dark:border-white text-[16px] lg:text-[22px] text-black dark:text-white group gap-14 cursor-pointer"
           >
             <span>Explore All Services</span>
 
@@ -1013,7 +1075,7 @@ const WhatWeDo = ({ onNavigate }) => {
         </div>
 
         {/* Service Cards */}
-        <div className="flex flex-col gap-10 sm:gap-14 md:gap-20 lg:gap-24 xl:gap-28">
+        <div className="flex flex-col gap-12 min-[390px]:gap-[50px] sm:gap-[54px] md:gap-[54px] lg:gap-[54px] xl:gap-[54px]">
           {services.map((service) => (
             <ServiceCard key={service.id} service={service} onNavigate={onNavigate || handleNavigateClick} />
           ))}
@@ -1023,7 +1085,7 @@ const WhatWeDo = ({ onNavigate }) => {
         <a
           href="/services"
           onClick={(e) => handleNavigateClick(e, "services")}
-          className="md:hidden mt-8 inline-flex items-center gap-3 pb-1 border-b border-black text-[14px] sm:text-[16px] text-black cursor-pointer"
+          className="md:hidden mt-8 inline-flex items-center gap-3 pb-1 border-b border-black dark:border-white text-[14px] sm:text-[16px] text-black dark:text-white cursor-pointer"
         >
           Explore All Services
           <ArrowRight className="w-4 h-4" />

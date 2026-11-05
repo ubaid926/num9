@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Check, AlertCircle } from 'lucide-react';
 import AppNav from '../components/nav';
 import WhyWorkWithUs from '../components/contact';
 import AccelerateBusinessSection from '../components/AccelerateBusinessSection';
 import Footer from '../components/footer';
-import heroImage from '../assets/aboutHeroImage.webp';
+import ReCaptcha from '../components/ReCaptcha';
+import contactHeroImg from '../assets/contactHeroImg.webp';
 
 /* ─── Contact Hero ───────────────────────────────────────── */
 
 function ContactHero() {
   return (
-    <section className="w-full bg-white">
+    <section className="w-full bg-white dark:bg-[#0B0D0C] transition-colors duration-300">
       <div
         className="
           w-full max-w-[1920px] mx-auto
@@ -86,7 +87,7 @@ mb-[12px] sm:mb-12 lg:mb-[35px]
 
                 leading-[1.07]
                 tracking-[-0.035em]
-                text-black
+                text-black dark:text-white
                 m-0
               "
             >
@@ -130,12 +131,12 @@ mb-[12px] sm:mb-12 lg:mb-[35px]
     lg:rounded-[22px]
 
     overflow-hidden
-    border border-[#B7B7B7]
-    bg-white
+    border border-[#B7B7B7] dark:border-[#27302A]
+    bg-white dark:bg-[#171A18]
   "
 >
   <img
-    src={heroImage}
+    src={contactHeroImg}
     alt="Number9 team in conversation"
     className="
       block
@@ -189,15 +190,14 @@ Tell us about it.
 /* ─── Contact Form Section ───────────────────────────────── */
 
 const services = [
-  "UI/UX Design",
-  "Web & App Development",
-  "E-commerce",
-  "Digital Marketing",
-  "Brand Activation",
+  "Trade Shows / Experiential Marketing",
+  "Interactive Digital Experiences",
+  "Digital Video Productions",
+  "Digital Marketing / Specialty Distribution",
 ];
 
 function ContactFormSection() {
-  const [selected, setSelected] = useState(["UI/UX Design"]);
+  const [selected, setSelected] = useState([services[0]]);
   const [agreed, setAgreed] = useState(false);
   const [formData, setFormData] = useState({
     fullName: "",
@@ -211,6 +211,8 @@ function ContactFormSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState({ type: null, message: "" });
   const [errors, setErrors] = useState({});
+  const [captchaToken, setCaptchaToken] = useState("");
+  const captchaRef = useRef(null);
 
   const toggle = (service) => {
     setSelected((prev) =>
@@ -263,6 +265,10 @@ function ContactFormSection() {
       newErrors.privacy = "Please agree to the Privacy Policy.";
     }
 
+    if (!captchaToken) {
+      newErrors.recaptcha = "Please confirm you are not a robot.";
+    }
+
     return newErrors;
   };
 
@@ -299,6 +305,7 @@ function ContactFormSection() {
           projectDetails: formData.projectDetails.trim(),
           companyHp: formData.companyHp,
           formTime,
+          recaptchaToken: captchaToken,
         }),
       });
 
@@ -319,7 +326,7 @@ function ContactFormSection() {
           projectDetails: "",
           companyHp: "",
         });
-        setSelected(["UI/UX Design"]);
+        setSelected([services[0]]);
         setAgreed(false);
       } else {
         setStatus({
@@ -340,6 +347,8 @@ function ContactFormSection() {
       });
     } finally {
       setIsSubmitting(false);
+      // A reCAPTCHA token is single-use, so always reset after a submit attempt
+      captchaRef.current?.reset();
     }
   };
 
@@ -347,12 +356,12 @@ function ContactFormSection() {
     w-full min-w-0
     h-[38px] sm:h-[48px] xl:h-[56px]
     px-3 sm:px-4 xl:px-[18px]
-    border border-[#C9CBD3]
+    border border-[#C9CBD3] dark:border-[#323D35]
     rounded-[6px] lg:rounded-[8px]
-    bg-white font-grift-medium
+    bg-white dark:bg-[#171A18] font-grift-medium
     text-[11px] sm:text-[14px] xl:text-[15px]
-    text-[#111] placeholder:text-[#A1A1AA]
-    outline-none focus:border-[#159E0D]
+    text-[#111] dark:text-[#F3F4F6] placeholder:text-[#A1A1AA] dark:placeholder:text-[#6B7280]
+    outline-none focus:border-[#159E0D] dark:focus:border-[#15B83E]
     transition-all duration-200
   `;
 
@@ -360,7 +369,7 @@ function ContactFormSection() {
     block mb-[6px] lg:mb-[8px]
     font-grift-medium
     text-[9.9px] sm:text-[14px] xl:text-[16px]
-    text-[#111]
+    text-[#111] dark:text-[#E5E7EB]
   `;
 
   const AddressContent = () => (
@@ -383,7 +392,7 @@ function ContactFormSection() {
         <h4 className="font-grift-semibold text-[15.31px] sm:text-[18px] xl:text-[25px] leading-[1.35] text-[#111] mb-[2px]">
           McKinney, Texas
         </h4>
-        <p className="font-grift-medium text-[13.31px] sm:text-[16px] xl:text-[22px] leading-[1.35] text-[#181817]">
+        <p className="font-grift-medium text-[13.31px] sm:text-[16px] xl:text-[22px] leading-[1.35] text-[#181817] dark:text-[#D1D5DB]">
           300 Davis St, STE 220
           <br />
           McKinney, TX 75069
@@ -391,13 +400,13 @@ function ContactFormSection() {
         <div className="mt-3 flex flex-col gap-1 font-grift-medium text-[13.31px] sm:text-[16px] xl:text-[20px]">
           <a
             href="tel:+14693597107"
-            className="text-[#181817] hover:text-[#169F09] transition-colors"
+            className="text-[#181817] dark:text-[#D1D5DB] hover:text-[#169F09] transition-colors"
           >
             +1 469 359 7107
           </a>
           <a
             href="mailto:info@number9.us"
-            className="text-[#181817] hover:text-[#169F09] transition-colors"
+            className="text-[#181817] dark:text-[#D1D5DB] hover:text-[#169F09] transition-colors"
           >
             info@number9.us
           </a>
@@ -441,7 +450,7 @@ function ContactFormSection() {
   );
 
   return (
-    <section className="w-full bg-white">
+    <section className="w-full bg-white dark:bg-[#0B0D0C] transition-colors duration-300">
       <div
         className="
           w-full max-w-[1920px] mx-auto
@@ -459,7 +468,7 @@ function ContactFormSection() {
 className="
   w-full lg:w-[30%] shrink-0
   lg:pr-[45px] xl:pr-[70px]
-  lg:border-r lg:border-[#BDBDBD]
+  lg:border-r lg:border-[#BDBDBD] lg:dark:border-[#27302A]
   flex flex-col
   lg:min-h-[740px] xl:min-h-[795px]
 "
@@ -474,7 +483,7 @@ className="
                 2xl:text-[70px]
                 leading-[1.12] lg:leading-[1.06]
                 tracking-[-0.035em]
-                text-black m-0
+                text-black dark:text-white m-0
               "
             >
               Let’s make your next move count.
@@ -489,7 +498,7 @@ className="
                 font-grift-medium
                 text-[14px] sm:text-[16px] xl:text-[23px]
                 leading-[1.4] lg:leading-[1.35]
-                text-[#181817]
+                text-[#181817] dark:text-[#D1D5DB]
               "
             >
               Share your goals. We’ll explore how strategy,
@@ -529,7 +538,7 @@ className="
                 lg:text-[37px] xl:text-[42px]
                 leading-[1.15]
                 tracking-[-0.025em]
-                text-black
+                text-black dark:text-white
                 mb-[22px] sm:mb-8 lg:mb-[36px]
               "
             >
@@ -543,14 +552,14 @@ className="
             >
               {/* Status Message Alerts */}
               {status.type === "success" && (
-                <div className="mb-5 p-4 rounded-[10px] bg-[#E8F8E5] border border-[#2E7D27]/30 text-[#1B5E20] text-[14px] leading-relaxed flex items-start gap-3">
+                <div className="mb-5 p-4 rounded-[10px] bg-[#E8F8E5] dark:bg-[#15341a] border border-[#2E7D27]/30 dark:border-[#2E7D27]/50 text-[#1B5E20] dark:text-[#7ce886] text-[14px] leading-relaxed flex items-start gap-3">
                   <Check className="w-5 h-5 shrink-0 text-[#2E7D27] mt-0.5" />
                   <span>{status.message}</span>
                 </div>
               )}
 
               {status.type === "error" && (
-                <div className="mb-5 p-4 rounded-[10px] bg-[#FDEDED] border border-[#D32F2F]/30 text-[#C62828] text-[14px] leading-relaxed flex items-start gap-3">
+                <div className="mb-5 p-4 rounded-[10px] bg-[#FDEDED] dark:bg-[#3d1818] border border-[#D32F2F]/30 dark:border-[#D32F2F]/50 text-[#C62828] dark:text-[#ff8a8a] text-[14px] leading-relaxed flex items-start gap-3">
                   <AlertCircle className="w-5 h-5 shrink-0 text-[#D32F2F] mt-0.5" />
                   <span>{status.message}</span>
                 </div>
@@ -675,8 +684,8 @@ className="
                           whitespace-nowrap
                           transition-all duration-200
                           ${active
-                            ? "border-[#18A827] bg-[#E9F5E9] text-[#111]"
-                            : "border-[#C9CBD3] bg-white text-[#A1A1AA] hover:border-[#18A827]"
+                            ? "border-[#18A827] bg-[#E9F5E9] dark:bg-[#1a3820] text-[#111] dark:text-[#8ef598]"
+                            : "border-[#C9CBD3] dark:border-[#323D35] bg-white dark:bg-[#171A18] text-[#A1A1AA] dark:text-[#9CA3AF] hover:border-[#15B83E] dark:hover:border-[#15B83E]"
                           }
                         `}
                       >
@@ -706,14 +715,13 @@ className="
                     w-full h-[70px] sm:h-[110px] xl:h-[143px]
                     px-3 sm:px-4 xl:px-[18px]
                     py-[11px] sm:py-4
-                    border border-[#C9CBD3]
+                    border border-[#C9CBD3] dark:border-[#323D35]
                     rounded-[6px] lg:rounded-[8px]
-                    bg-white resize-none
+                    bg-white dark:bg-[#171A18] text-[#111] dark:text-[#F3F4F6] placeholder:text-[#A1A1AA] dark:placeholder:text-[#6B7280] resize-none
                     font-grift-medium
                     text-[11px] sm:text-[14px] xl:text-[15px]
-                    text-[#111] placeholder:text-[#A1A1AA]
                     outline-none
-                    focus:border-[#159E0D]
+                    focus:border-[#159E0D] dark:focus:border-[#15B83E]
                     transition-all duration-200
                     ${errors.projectDetails ? "!border-[#D32F2F]" : ""}
                   `}
@@ -754,7 +762,7 @@ className="
                     className="
                       font-grift-medium
                       text-[11px] sm:text-[13px] xl:text-[15px]
-                      text-[#111] cursor-pointer
+                      text-[#111] dark:text-white cursor-pointer
                     "
                   >
                     I agree to the{" "}
@@ -768,6 +776,26 @@ className="
                 </div>
                 {errors.privacy && (
                   <p className="mt-1 text-[12px] text-[#D32F2F] font-medium">{errors.privacy}</p>
+                )}
+              </div>
+
+              {/* RECAPTCHA */}
+              <div className="mt-[16px] sm:mt-[20px]">
+                <ReCaptcha
+                  ref={captchaRef}
+                  onChange={(token) => {
+                    setCaptchaToken(token);
+                    if (token && errors.recaptcha) {
+                      setErrors((prev) => {
+                        const copy = { ...prev };
+                        delete copy.recaptcha;
+                        return copy;
+                      });
+                    }
+                  }}
+                />
+                {errors.recaptcha && (
+                  <p className="mt-1 text-[12px] text-[#D32F2F] font-medium">{errors.recaptcha}</p>
                 )}
               </div>
 
@@ -971,7 +999,7 @@ ${index > 0
 
                       leading-[1.2]
                       tracking-[-0.02em]
-                      text-black
+                      text-black dark:text-white
                       mb-[12px]
                     "
                   >
@@ -1004,7 +1032,7 @@ ${index > 0
       {/* =========================================
           BOTTOM — LOCATION AND MAP
       ========================================= */}
-      <div className="w-full bg-white">
+      <div className="w-full bg-white dark:bg-[#0B0D0C] transition-colors duration-300">
         <div className="w-full max-w-[1920px] mx-auto">
           <div className="flex flex-col lg:flex-row lg:items-stretch">
             {/* LEFT LOCATION CONTENT */}
@@ -1018,10 +1046,11 @@ ${index > 0
                 lg:pl-16 lg:pr-8
                 xl:pl-[118px] xl:pr-[45px]
 
-                pt-8 sm:pt-10 lg:pt-[35px]
-                pb-8 sm:pb-10 lg:pb-[10px]
+                pt-8 sm:pt-10 lg:pt-[60px]
+                pb-8 sm:pb-10 lg:pb-[60px]
 
-                flex flex-col
+                lg:min-h-[560px] xl:min-h-[640px]
+                flex flex-col lg:justify-center
                 items-start
               "
             >
@@ -1069,7 +1098,7 @@ ${index > 0
 
                   leading-[1.06]
                   tracking-[-0.035em]
-                  text-black
+                  text-black dark:text-white
                   m-0
                 "
               >
@@ -1094,15 +1123,15 @@ ${index > 0
                   mt-7 lg:mt-[24px]
                   pb-[10px]
 
-                  border-b-2 border-black
+                  border-b-2 border-black dark:border-white
 
                   font-grift-medium
                   text-[15.4px] sm:text-[19px]
                   lg:text-[22px]
-                  text-black
+                  text-black dark:text-white
 
-                  hover:text-[#16A20B]
-                  hover:border-[#16A20B]
+                  hover:text-[#16A20B] dark:hover:text-[#16A20B]
+                  hover:border-[#16A20B] dark:hover:border-[#16A20B]
                   transition-all duration-200
                 "
               >
@@ -1136,15 +1165,15 @@ ${index > 0
               className="
     relative
     w-full
-    lg:flex-1
+    lg:flex-1 lg:mr-16 xl:mr-[118px]
     min-w-0
 
     h-[300px]
     sm:h-[350px]
-    lg:h-[300px]
+    lg:h-[560px] xl:h-[640px]
 
     overflow-hidden
-    bg-[#ECEEEF]
+    bg-[#ECEEEF] dark:bg-[#171A18]
   "
             >
               {/* MAP — CENTERED WITHOUT SEARCH MARKER */}
@@ -1155,10 +1184,11 @@ ${index > 0
       absolute inset-0
       w-full h-full
       border-0
+      dark:brightness-[0.88] dark:contrast-[1.05] dark:invert-[0.9] dark:hue-rotate-[180deg]
     "
                 style={{
                   filter:
-                    "grayscale(1) contrast(0.88) brightness(1.08)",
+                    "grayscale(0.35) saturate(0.9) contrast(0.95) brightness(1.03)",
                 }}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -1210,13 +1240,13 @@ ${index > 0
                   className="
         px-[20px] py-[10px]
         rounded-full
-        bg-white
+        bg-white dark:bg-[#171A18] border border-transparent dark:border-[#2C382F]
         shadow-md
 
         font-grift-semibold
         text-[15px] sm:text-[18px]
         lg:text-[20px]
-        text-black
+        text-black dark:text-white
         whitespace-nowrap
 
         group-hover:shadow-lg
@@ -1239,13 +1269,14 @@ ${index > 0
 
 
 /* ─── Page ────────────────────────────────────────────────── */
-export default function ContactPage({ onNavigate, activeDropdown, setActiveDropdown }) {
+export default function ContactPage({ onNavigate, activeDropdown, setActiveDropdown, currentPage }) {
   return (
-    <div className="bg-white min-h-screen text-[#141414] font-grift antialiased">
+    <div className="bg-white dark:bg-[#0B0D0C] min-h-screen text-[#141414] dark:text-[#F3F4F6] font-grift antialiased transition-colors duration-300">
       <AppNav
         activeDropdown={activeDropdown}
         setActiveDropdown={setActiveDropdown}
         onNavigate={onNavigate}
+        currentPage={currentPage || "contact"}
       />
 
       <ContactHero />

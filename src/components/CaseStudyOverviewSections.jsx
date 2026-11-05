@@ -20,7 +20,7 @@ function StatisticCircle({ value, subtext, label }) {
 
           rounded-full
           border-[2px] border-dashed
-          border-[#D5D5D5]
+          border-[#D5D5D5] dark:border-[#2D362F]
 
           flex flex-col items-center justify-center
         "
@@ -36,7 +36,7 @@ function StatisticCircle({ value, subtext, label }) {
 
             rounded-full
             border-[2px] border-dashed
-            border-[#D5D5D5]
+            border-[#D5D5D5] dark:border-[#2D362F]
 
             pointer-events-none
           "
@@ -65,7 +65,7 @@ function StatisticCircle({ value, subtext, label }) {
                 md:text-[16px]
                 lg:text-[30px]
                 leading-none
-                text-[#444444]
+                text-[#444444] dark:text-[#D1D5DB]
                 mt-1.5 sm:mt-2
                 tracking-[-0.01em]
               "
@@ -88,7 +88,7 @@ function StatisticCircle({ value, subtext, label }) {
           xl:text-[35px]
           leading-[1.2]
           tracking-[-0.02em]
-          text-[#2D343E]
+          text-[#2D343E] dark:text-white
           text-center
           whitespace-nowrap
         "
@@ -197,11 +197,11 @@ export default function CaseStudyOverviewSections({
   const quoteSection = overview.quoteSection || {};
 
   return (
-    <div className="w-full bg-white">
+    <div className="w-full bg-white dark:bg-[#0B0D0C] transition-colors duration-300">
       {/* ======================================
           SECTION 01 — PROJECT SUMMARY
       ====================================== */}
-      <section className="w-full bg-white">
+      <section className="w-full bg-white dark:bg-[#0B0D0C] transition-colors duration-300">
         <div
           className="
             w-full
@@ -226,30 +226,34 @@ export default function CaseStudyOverviewSections({
           <div
             className="
               w-full
-              max-w-[1130px]
+              max-w-[1260px]
+              xl:max-w-[1320px]
               mx-auto
             "
           >
             {/* SUMMARY + LOGO */}
             <div
               className="
-                w-full max-w-[1400px] mx-auto
+                w-full
+                max-w-[1260px]
+                xl:max-w-[1320px]
+                mx-auto
 
-                px-[18px] sm:px-8
-                lg:px-8 xl:px-0
+                px-4 sm:px-6
+                lg:px-0
 
                 grid grid-cols-1
-                md:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]
+                md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]
 
-                gap-0 md:gap-[45px] lg:gap-[60px]
-                items-center
+                gap-8 md:gap-[50px] lg:gap-[65px]
+                items-stretch
 
-                py-[52px] sm:py-[65px]
-                md:py-[80px] lg:py-[100px]
+                py-[36px] sm:py-[50px]
+                md:py-[65px] lg:py-[80px]
               "
             >
               {/* LEFT CONTENT */}
-              <div className="w-full min-w-0">
+              <div className="w-full min-w-0 flex flex-col justify-start">
                 {/* HEADING */}
                 <h2
                   className="
@@ -259,7 +263,7 @@ export default function CaseStudyOverviewSections({
 
                     leading-[1.13]
                     tracking-[-0.035em]
-                    text-[#414A55]
+                    text-[#414A55] dark:text-white
 
                     max-w-[210px]
                     sm:max-w-none
@@ -294,7 +298,7 @@ export default function CaseStudyOverviewSections({
                     lg:leading-[1.37]
 
                     tracking-[-0.015em]
-                    text-[#555555]
+                    text-[#555555] dark:text-[#D1D5DB]
 
                     max-w-[570px]
                     m-0
@@ -304,30 +308,33 @@ export default function CaseStudyOverviewSections({
                 </p>
               </div>
 
-              {/* RIGHT LOGO / SHOWCASE */}
+              {/* RIGHT LOGO / SHOWCASE (ENLARGED & ALIGNED BILKUL TEXT K SAMNE) */}
               <div
                 className="
                   w-full min-w-0
                   flex items-center justify-center
-                  bg-white overflow-hidden
+                  bg-white dark:bg-[#171A18] overflow-hidden
 
-                  mt-[34px]
-                  h-[210px]
-                  border-y border-[#D0D0D0]
-                  border-x-0
-                  rounded-none
+                  mt-[30px]
+                  h-[220px]
+                  border border-[#D0D0D0] dark:border-[#27302A]
+                  rounded-[20px]
 
-                  sm:mt-[40px]
-                  sm:h-[250px]
+                  sm:mt-[36px]
+                  sm:h-[260px]
 
                   md:mt-0
-                  md:h-[350px]
-                  lg:h-[380px]
+                  md:h-auto
+                  md:min-h-[380px]
+                  lg:min-h-[440px]
+                  self-stretch
 
                   md:border
-                  md:border-[#BDBDBD]
-                  md:rounded-[24px]
-                  lg:rounded-[35px]
+                  md:border-[#BDBDBD] md:dark:border-[#27302A]
+                  md:rounded-[28px]
+                  lg:rounded-[36px]
+                  shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.3)]
+                  p-6 sm:p-8 lg:p-12
                 "
               >
                 {overview.logo && (
@@ -336,69 +343,83 @@ export default function CaseStudyOverviewSections({
                     alt={overview.logoAlt || `${caseStudy.name || "Brand"} logo`}
                     loading="lazy"
                     decoding="async"
-                    className="
+                    className={`
                       block
-                      w-[90%]
+                      w-[80%]
                       h-auto
-                      max-w-none
-                      max-h-[175px]
-
-                      sm:w-[75%]
-                      sm:max-h-[210px]
-
-                      md:w-[55%]
-                      md:max-h-[60%]
+                      max-w-[340px]
+                      sm:max-w-[380px]
+                      lg:max-w-[420px]
+                      max-h-[160px]
+                      sm:max-h-[200px]
+                      md:max-h-[240px]
+                      lg:max-h-[270px]
 
                       object-contain
                       object-center
-                    "
+                      ${caseStudy?.slug === 'lexus' || overview.logoAlt === 'Lexus' ? 'dark:invert' : ''}
+                    `}
                   />
                 )}
               </div>
             </div>
 
             {/* ==================================
-                STATISTICS
+                SHOWCASE FEATURE IMAGE (REPLACES STATS - WIDE & EXPANSIVE)
             ================================== */}
             <div
-              ref={statsSectionRef}
               className="
-                flex flex-row
-                items-start
-                justify-center
-
-                gap-8
-                sm:gap-14
-                md:gap-20
-                lg:gap-[130px]
-                xl:gap-[150px]
-
-             
-mt-[20px]
-sm:mt-[75px]
-lg:mt-[85px]
-
+                w-full
+                mt-8 sm:mt-12 md:mt-14 lg:mt-16
+                overflow-hidden
+                rounded-[14px] sm:rounded-[18px] md:rounded-[22px]
+                border border-[#D0D0D0] dark:border-[#27302A]
+                bg-[#F8F9FA] dark:bg-[#151816]
+                shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)]
               "
+              style={{ aspectRatio: "2.65 / 1" }}
             >
-              <StatisticCircle
-                value={
-                  stat1Data.suffix && count1 >= stat1Data.targetValue
-                    ? `${count1 >= 1000 ? count1.toLocaleString() : count1}${stat1Data.suffix}`
-                    : (count1 >= 1000 ? count1.toLocaleString() : count1)
-                }
-                label={stat1Data.label}
-              />
-
-              <StatisticCircle
-                value={
-                  stat2Data.noComma || (stat2Data.targetValue > 1000 && stat2Data.targetValue < 2100)
-                    ? count2
-                    : (count2 >= 1000 ? count2.toLocaleString() : count2)
-                }
-                subtext={stat2Data.subtext}
-                label={stat2Data.label}
+              <img
+                src={overview.showcaseImage || caseStudy.hero?.bgImage}
+                alt={overview.showcaseAlt || `${caseStudy.name || 'Brand'} showcase`}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover object-center block"
               />
             </div>
+
+            {/* OPTIONAL STATS (IF SPECIFICALLY CONFIGURED) */}
+            {overview.showStats && (
+              <div
+                ref={statsSectionRef}
+                className="
+                  flex flex-row
+                  items-start
+                  justify-center
+                  gap-8 sm:gap-14 md:gap-20 lg:gap-[130px] xl:gap-[150px]
+                  mt-[30px] sm:mt-[50px] lg:mt-[60px]
+                "
+              >
+                <StatisticCircle
+                  value={
+                    stat1Data.suffix && count1 >= stat1Data.targetValue
+                      ? `${count1 >= 1000 ? count1.toLocaleString() : count1}${stat1Data.suffix}`
+                      : (count1 >= 1000 ? count1.toLocaleString() : count1)
+                  }
+                  label={stat1Data.label}
+                />
+
+                <StatisticCircle
+                  value={
+                    stat2Data.noComma || (stat2Data.targetValue > 1000 && stat2Data.targetValue < 2100)
+                      ? count2
+                      : (count2 >= 1000 ? count2.toLocaleString() : count2)
+                  }
+                  subtext={stat2Data.subtext}
+                  label={stat2Data.label}
+                />
+              </div>
+            )}
 
             {/* ==================================
                 PROJECT TAGS
@@ -415,9 +436,9 @@ lg:mt-[85px]
                 xl:gap-x-14
                 gap-y-3
 
-                mt-12
-                sm:mt-16
-                lg:mt-[75px]
+                mt-8
+                sm:mt-10
+                lg:mt-12
               "
             >
               {projectTags.map((tag) => (
@@ -431,7 +452,7 @@ lg:mt-[85px]
                     lg:text-[20px]
 
                     leading-[1.4]
-                    text-[#4A5568]
+                    text-[#4A5568] dark:text-[#D1D5DB]
                     whitespace-nowrap
                     tracking-[-0.01em]
                   "
@@ -451,7 +472,8 @@ lg:mt-[85px]
         className="
           relative
           w-full
-          bg-[#D9D9D9]
+          bg-[#D9D9D9] dark:bg-[#171A18]
+          transition-colors duration-300
         "
       >
         <div
@@ -544,7 +566,7 @@ lg:mt-[85px]
 
                   leading-[1.35]
                   tracking-[-0.01em]
-                  text-[#4A4A4A]
+                  text-[#4A4A4A] dark:text-[#F3F4F6]
 
                   m-0
                 "
@@ -564,7 +586,7 @@ lg:mt-[85px]
                     lg:text-[20px]
 
                     leading-[1.4]
-                    text-[#929292]
+                    text-[#929292] dark:text-[#9CA3AF]
                   "
                 >
                   {quoteSection.attributionTitle}

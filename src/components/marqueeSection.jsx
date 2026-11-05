@@ -8,15 +8,15 @@ const row2Items = [...ROW2, ...ROW2, ...ROW2];
 
 export default function MarqueeSection() {
   return (
-    <section className="w-full bg-white pt-4 pb-20 sm:pt-6 sm:pb-28 lg:pt-8 lg:pb-32 overflow-hidden">
+    <section className="w-full bg-white dark:bg-[#0B0D0C] pt-4 pb-20 sm:pt-6 sm:pb-28 lg:pt-8 lg:pb-32 overflow-hidden transition-colors">
 
       {/* Heading & Subtitle */}
       <div className="max-w-[1400px] mx-auto text-center px-5 sm:px-6 mb-6 sm:mb-12">
-        <h3 className="font-grift-bold font-bold text-[22px] sm:text-[28px] md:text-[34px] lg:text-[40px] text-[#141414] tracking-[-0.03em] leading-[1.2] xl:whitespace-nowrap">
+        <h3 className="font-grift-bold font-bold text-[22px] sm:text-[28px] md:text-[34px] lg:text-[40px] text-[#141414] dark:text-white tracking-[-0.03em] leading-[1.2] xl:whitespace-nowrap">
           Yes, we cover everything you need to build, market &amp; grow your brand
           <span className="text-[#F25C22]">.</span>
         </h3>
-        <p className="font-grift-medium text-[16px] sm:text-[20px] md:text-[24px] lg:text-[27px] xl:text-[30px] text-[#4B5563] leading-[1.45] mt-7 sm:mt-8 md:mt-9 lg:mt-10 max-w-[1050px] mx-auto">
+        <p className="font-grift-medium text-[16px] sm:text-[20px] md:text-[24px] lg:text-[27px] xl:text-[30px] text-[#4B5563] dark:text-[#A1A1AA] leading-[1.45] mt-7 sm:mt-8 md:mt-9 lg:mt-10 max-w-[1050px] mx-auto">
           From strategy and creative to technology and activation
           <br className="hidden sm:inline" />
           {' '}we bring all the pieces together to deliver real results.
@@ -36,7 +36,7 @@ export default function MarqueeSection() {
             {row1Items.map((item, i) => (
               <span
                 key={`row1-a-${i}`}
-                className="inline-block px-5 sm:px-7 md:px-9 text-[26px] sm:text-[36px] md:text-[44px] lg:text-[60px] leading-[1.15] font-bold text-[#CFD2D7] transition-colors duration-200 cursor-default hover:text-[#11C911] select-none"
+                className="inline-block px-5 sm:px-7 md:px-9 text-[26px] sm:text-[36px] md:text-[44px] lg:text-[60px] leading-[1.15] font-bold text-[#CFD2D7] dark:text-[#2A342D] transition-colors duration-200 cursor-default hover:text-[#11C911] select-none"
               >
                 {item}
               </span>
@@ -46,7 +46,7 @@ export default function MarqueeSection() {
             {row1Items.map((item, i) => (
               <span
                 key={`row1-b-${i}`}
-                className="inline-block px-5 sm:px-7 md:px-9 text-[26px] sm:text-[36px] md:text-[44px] lg:text-[60px] leading-[1.15] font-bold text-[#CFD2D7] transition-colors duration-200 cursor-default hover:text-[#11C911] select-none"
+                className="inline-block px-5 sm:px-7 md:px-9 text-[26px] sm:text-[36px] md:text-[44px] lg:text-[60px] leading-[1.15] font-bold text-[#CFD2D7] dark:text-[#2A342D] transition-colors duration-200 cursor-default hover:text-[#11C911] select-none"
               >
                 {item}
               </span>
@@ -68,7 +68,7 @@ export default function MarqueeSection() {
             {row2Items.map((item, i) => (
               <span
                 key={`row2-a-${i}`}
-                className="inline-block px-5 sm:px-7 md:px-9 text-[26px] sm:text-[36px] md:text-[44px] lg:text-[60px] leading-[1.15] font-bold text-[#CFD2D7] transition-colors duration-200 cursor-default hover:text-[#11C911] select-none"
+                className="inline-block px-5 sm:px-7 md:px-9 text-[26px] sm:text-[36px] md:text-[44px] lg:text-[60px] leading-[1.15] font-bold text-[#CFD2D7] dark:text-[#2A342D] transition-colors duration-200 cursor-default hover:text-[#11C911] select-none"
               >
                 {item}
               </span>
@@ -78,7 +78,7 @@ export default function MarqueeSection() {
             {row2Items.map((item, i) => (
               <span
                 key={`row2-b-${i}`}
-                className="inline-block px-5 sm:px-7 md:px-9 text-[26px] sm:text-[36px] md:text-[44px] lg:text-[60px] leading-[1.15] font-bold text-[#CFD2D7] transition-colors duration-200 cursor-default hover:text-[#11C911] select-none"
+                className="inline-block px-5 sm:px-7 md:px-9 text-[26px] sm:text-[36px] md:text-[44px] lg:text-[60px] leading-[1.15] font-bold text-[#CFD2D7] dark:text-[#2A342D] transition-colors duration-200 cursor-default hover:text-[#11C911] select-none"
               >
                 {item}
               </span>

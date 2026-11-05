@@ -4,15 +4,17 @@ import { ArrowRight, X, Menu } from "lucide-react";
 import logo from "../assets/logoGreen.webp";
 import whiteLogo from "../assets/logoWhite.webp";
 import menuIcon from "../assets/navMenu.png";
+import ThemeToggle from "./ThemeToggle";
 export default function AppNav({
   activeDropdown,
   setActiveDropdown,
   onNavigate,
+  currentPage,
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrollbarCompensation, setScrollbarCompensation] = useState(0);
 
   const menuButtonRef = useRef(null);
+  const menuOverlayRef = useRef(null);
   const [menuOrigin, setMenuOrigin] = useState(() => {
     if (typeof window !== "undefined") {
       return { x: window.innerWidth - 40, y: 40 };
@@ -62,17 +64,47 @@ export default function AppNav({
   }, []);
 
   const openMenu = () => {
-    const sbWidth = typeof window !== "undefined" ? window.innerWidth - document.documentElement.clientWidth : 0;
-    setScrollbarCompensation(sbWidth);
-    if (sbWidth > 0) {
-      document.body.style.paddingRight = `${sbWidth}px`;
-    }
+    // First commit the correct circle origin at radius 0, then open on the next
+    // frames so only the radius animates (no jump / sudden fill).
     updateMenuDimensions();
-    setIsMenuOpen(true);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setIsMenuOpen(true));
+    });
   };
 
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth < 640 : false
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const isHomePage = React.useMemo(() => {
+    if (currentPage !== undefined && currentPage !== null) {
+      return currentPage === "home" || currentPage === "" || currentPage === "/";
+    }
+    if (typeof window !== "undefined") {
+      const pathname = (window.location.pathname || "").replace(/^\/+|\/+$/g, "").toLowerCase();
+      if (pathname && pathname !== "home") return false;
+      const params = new URLSearchParams(window.location.search);
+      const queryPage = (params.get("page") || "").toLowerCase();
+      if (queryPage && queryPage !== "home") return false;
+      return true;
+    }
+    return true;
+  }, [currentPage]);
+
+  const isTransparentOnMobile =
+    isMobile && isHomePage && !isScrolled && !isMenuOpen;
 
   const lastScrollY = useRef(0);
   const scrollDirectionDistance = useRef(0);
@@ -91,35 +123,56 @@ export default function AppNav({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Lock both documentElement and body scroll with scrollbar compensation to eliminate horizontal shifting
+  // Lock page scroll WITHOUT hiding the scrollbar, so the layout never shifts
+  // (hiding the scrollbar via overflow:hidden caused a horizontal jerk).
   useEffect(() => {
-    let unlockTimer = null;
+    if (!isMenuOpen) return;
 
-    if (isMenuOpen) {
-      const sbWidth = window.innerWidth - document.documentElement.clientWidth;
-      setScrollbarCompensation(sbWidth);
-      if (sbWidth > 0) {
-        document.body.style.paddingRight = `${sbWidth}px`;
+    setIsNavbarVisible(true);
+    const overlay = menuOverlayRef.current;
+
+    const overlayCanScroll = (deltaY) => {
+      if (!overlay || overlay.scrollHeight <= overlay.clientHeight) return false;
+      if (deltaY > 0) return overlay.scrollTop + overlay.clientHeight < overlay.scrollHeight - 1;
+      if (deltaY < 0) return overlay.scrollTop > 0;
+      return false;
+    };
+
+    const onWheel = (e) => {
+      if (!(overlay && overlay.contains(e.target) && overlayCanScroll(e.deltaY))) {
+        e.preventDefault();
       }
-      document.documentElement.style.overflow = "hidden";
-      document.body.style.overflow = "hidden";
-      setIsNavbarVisible(true);
-    } else {
-      // Delay restoring scroll and compensation until the circular shrink animation completes (500ms)
-      // This guarantees the layout remains 100% frozen and still while the menu closes
-      unlockTimer = setTimeout(() => {
-        document.documentElement.style.overflow = "";
-        document.body.style.overflow = "";
-        document.body.style.paddingRight = "";
-        setScrollbarCompensation(0);
-      }, 700);
-    }
+    };
+
+    let touchStartY = 0;
+    const onTouchStart = (e) => {
+      touchStartY = e.touches[0]?.clientY ?? 0;
+    };
+    const onTouchMove = (e) => {
+      const y = e.touches[0]?.clientY ?? 0;
+      const deltaY = touchStartY - y;
+      if (!(overlay && overlay.contains(e.target) && overlayCanScroll(deltaY))) {
+        e.preventDefault();
+      }
+    };
+
+    const scrollKeys = ["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " ", "Spacebar"];
+    const onKeyDown = (e) => {
+      const tag = e.target?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || e.target?.isContentEditable) return;
+      if (scrollKeys.includes(e.key)) e.preventDefault();
+    };
+
+    window.addEventListener("wheel", onWheel, { passive: false });
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: false });
+    window.addEventListener("keydown", onKeyDown);
 
     return () => {
-      if (unlockTimer) clearTimeout(unlockTimer);
-      document.documentElement.style.overflow = "";
-      document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
+      window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("keydown", onKeyDown);
     };
   }, [isMenuOpen]);
 
@@ -134,6 +187,7 @@ export default function AppNav({
 
       window.requestAnimationFrame(() => {
         const currentScrollY = Math.max(0, window.scrollY);
+        setIsScrolled(currentScrollY > 20);
         const difference = currentScrollY - lastScrollY.current;
 
         if (isMenuOpen) {
@@ -182,30 +236,36 @@ export default function AppNav({
     { label: "Home", href: "/", isPage: "home" },
     { label: "About Us", href: "/about", isPage: "about" },
     { label: "Services", href: "/services", isPage: "services" },
-    { label: "Our Work", href: "/our-work", isPage: "our-work" },
+    { label: "Work", href: "/work", isPage: "work" },
+    { label: "Clients", href: "/our-work", isPage: "our-work" },
     { label: "Contact", href: "/contact", isPage: "contact" },
   ];
 
   return (
     <>
-      {/* Navbar height spacer to prevent content jumping */}
+      {/* Navbar height spacer to prevent content jumping & ensure empty space behind navbar on all non-home pages */}
       <div
-        className="w-full h-[64px] sm:h-[92px] lg:h-[84px]"
+        className={`w-full shrink-0 ${
+          isHomePage
+            ? "hidden sm:block sm:h-[92px] lg:h-[84px]"
+            : "h-[72px] sm:h-[92px] lg:h-[84px] bg-white dark:bg-[#0B0D0C] transition-colors duration-300"
+        }`}
         aria-hidden="true"
       />
 
       {/* CLOSED NAVBAR */}
       <header
-        className={`fixed top-0 left-0 right-0 w-full bg-white z-40
-          transition-transform duration-300 ease-in-out
+        className={`fixed top-0 left-0 right-0 w-full z-40 transition-all duration-300 ease-in-out
           ${isNavbarVisible || isMenuOpen
             ? "translate-y-0"
             : "-translate-y-full"
           }
+          ${
+            isTransparentOnMobile
+              ? "bg-transparent border-transparent"
+              : "bg-white/95 dark:bg-[#0B0D0C]/95 backdrop-blur-md border-b border-black/5 dark:border-[#202722] shadow-[0_1px_3px_rgba(0,0,0,0.04)] dark:shadow-[0_1px_3px_rgba(0,0,0,0.2)]"
+          }
         `}
-        style={{
-          paddingRight: scrollbarCompensation > 0 ? `${scrollbarCompensation}px` : undefined,
-        }}
       >
         <div className="navbar-desktop-container py-3 sm:py-4 lg:py-2.5 flex items-center justify-between">
           {/* Left: Brand Logo */}
@@ -230,31 +290,46 @@ export default function AppNav({
             />
           </a>
 
-          {/* Right: Schedule a Call + Hamburger */}
+          {/* Right: Schedule a Call + ThemeToggle + Hamburger */}
           <div className="flex items-center">
+            <ThemeToggle
+              variant="navbar"
+              className={`mr-2 sm:mr-4 ${
+                isTransparentOnMobile
+                  ? "!bg-black/40 !border-white/40 !text-white"
+                  : ""
+              }`}
+            />
+
             <a
               href="/contact"
               onClick={(e) => {
                 e.preventDefault();
                 if (onNavigate) onNavigate("contact");
               }}
-              className="nav-schedule-call-btn px-5 sm:px-6 py-2 sm:py-2.5 rounded-full border-[1.5px] border-slate-300 text-[13px] sm:text-[15px] font-semibold bg-white hover:border-slate-900 hover:text-black text-black transition-all duration-200 shadow-[0_1px_2px_rgba(0,0,0,0.04)] whitespace-nowrap mr-4 sm:mr-6"
+              className={`nav-schedule-call-btn px-4 sm:px-6 py-1.5 sm:py-2.5 rounded-full border-[1.5px] text-[12px] sm:text-[15px] font-semibold transition-all duration-200 shadow-[0_1px_2px_rgba(0,0,0,0.04)] whitespace-nowrap mr-2.5 sm:mr-5 ${
+                isTransparentOnMobile
+                  ? "border-white/40 text-white bg-black/40 backdrop-blur-sm hover:border-white"
+                  : "border-slate-300 dark:border-[#28322B] bg-white dark:bg-[#171A18] hover:border-slate-900 dark:hover:border-[#15B83E] hover:text-black dark:hover:text-white text-black dark:text-[#E5E7EB]"
+              }`}
             >
               Schedule a Call
             </a>
-
 
             <button
               ref={menuButtonRef}
               onClick={openMenu}
               aria-label="Open menu"
               aria-expanded={isMenuOpen}
-              className="w-6 h-6 flex items-center justify-center hover:opacity-75 transition-opacity focus:outline-none cursor-pointer shrink-0"
+              className="nav-toggle-btn nav-toggle-btn--open relative w-6 h-6 flex items-center justify-center focus:outline-none cursor-pointer shrink-0"
             >
+              <span className="nav-toggle-blob" aria-hidden="true" />
               <img
                 src={menuIcon}
                 alt=""
-                className="w-6 h-6 object-contain"
+                className={`nav-toggle-icon w-6 h-6 object-contain transition-all ${
+                  isTransparentOnMobile ? "brightness-0 invert" : "dark:invert"
+                }`}
               />
             </button>
 
@@ -264,6 +339,7 @@ export default function AppNav({
 
       {/* OPENED FULL-SCREEN MENU */}
       <div
+        ref={menuOverlayRef}
         className="fixed inset-0 z-[100] h-[100dvh] max-h-[100dvh] bg-[#0e7428] text-white flex flex-col justify-between overflow-y-auto no-scrollbar overscroll-contain"
         style={{
           clipPath: isMenuOpen
@@ -273,8 +349,13 @@ export default function AppNav({
             ? `circle(${menuRadius}px at ${menuOrigin.x}px ${menuOrigin.y}px)`
             : `circle(0px at ${menuOrigin.x}px ${menuOrigin.y}px)`,
 
-          transition: "clip-path 700ms cubic-bezier(0.65, 0, 0.35, 1), -webkit-clip-path 700ms cubic-bezier(0.65, 0, 0.35, 1)",
-          WebkitTransition: "clip-path 700ms cubic-bezier(0.65, 0, 0.35, 1), -webkit-clip-path 700ms cubic-bezier(0.65, 0, 0.35, 1)",
+          // Smooth ease-out when opening, gentle ease-in when closing
+          transition: isMenuOpen
+            ? "clip-path 800ms cubic-bezier(0.33, 1, 0.68, 1), -webkit-clip-path 800ms cubic-bezier(0.33, 1, 0.68, 1)"
+            : "clip-path 600ms cubic-bezier(0.32, 0, 0.67, 0), -webkit-clip-path 600ms cubic-bezier(0.32, 0, 0.67, 0)",
+          WebkitTransition: isMenuOpen
+            ? "clip-path 800ms cubic-bezier(0.33, 1, 0.68, 1), -webkit-clip-path 800ms cubic-bezier(0.33, 1, 0.68, 1)"
+            : "clip-path 600ms cubic-bezier(0.32, 0, 0.67, 0), -webkit-clip-path 600ms cubic-bezier(0.32, 0, 0.67, 0)",
 
           pointerEvents: isMenuOpen ? "auto" : "none",
           willChange: "clip-path",
@@ -282,7 +363,6 @@ export default function AppNav({
           WebkitBackfaceVisibility: "hidden",
           backfaceVisibility: "hidden",
           overscrollBehavior: "contain",
-          paddingRight: scrollbarCompensation > 0 ? `${scrollbarCompensation}px` : undefined,
           backgroundImage:
             "linear-gradient(135deg, #0d6b24 0%, #0e7428 50%, #11842e 100%)",
         }}
@@ -298,8 +378,22 @@ export default function AppNav({
           />
         </div> */}
 
+        {/* Close button pinned to the hamburger's exact centre (overlay = viewport) */}
+        <button
+          onClick={() => setIsMenuOpen(false)}
+          aria-label="Close menu"
+          className="nav-toggle-btn nav-toggle-btn--close absolute z-20 w-6 h-6 flex items-center justify-center focus:outline-none cursor-pointer"
+          style={{
+            left: `${menuOrigin.x - 12}px`,
+            top: `${menuOrigin.y - 12}px`,
+          }}
+        >
+          <span className="nav-toggle-blob" aria-hidden="true" />
+          <X className="nav-toggle-icon w-6 h-6 stroke-[2.2] shrink-0" />
+        </button>
+
         {/* Top Header Row */}
-        <div className="relative z-10 navbar-desktop-container py-2.5 sm:py-3 lg:py-3 flex items-center justify-between shrink-0">
+        <div className="relative z-10 navbar-desktop-container py-3 sm:py-4 lg:py-2.5 flex items-center justify-between shrink-0">
           <a
             href="/"
             onClick={(e) => {
@@ -315,17 +409,14 @@ export default function AppNav({
             <img
               src={whiteLogo}
               alt="Number 9"
-              className="h-10 sm:h-12 lg:h-14 w-auto object-contain block brightness-0 invert transition-transform group-hover:scale-[1.02]"
+              className="h-12 sm:h-14 lg:h-16 w-auto object-contain block brightness-0 invert transition-transform group-hover:scale-[1.02]"
             />
           </a>
 
-          <button
-            onClick={() => setIsMenuOpen(false)}
-            aria-label="Close menu"
-            className="w-6 h-6 flex items-center justify-center text-white hover:rotate-90 hover:opacity-75 transition-all duration-200 focus:outline-none cursor-pointer shrink-0"
-          >
-            <X className="w-7 h-7 sm:w-8 sm:h-8 stroke-[2.2] shrink-0" />
-          </button>
+          {/* Spacer keeps the header row layout; the real X button is pinned
+              to the exact centre of the hamburger so it never shifts. */}
+          <span className="w-6 h-6 shrink-0" aria-hidden="true" />
+
         </div>
 
         {/* Content Container (Left-aligned with logo and social links, zero center shift) */}
@@ -359,86 +450,45 @@ export default function AppNav({
 
 
 
-        {/* Bottom Social Links (Static in place) */}
+        {/* Bottom row: Theme switcher left, social links right */}
         <div className="relative z-10 w-full navbar-desktop-container pb-4 sm:pb-5 lg:pb-6 shrink-0">
-          <div className="flex flex-wrap items-center gap-6 sm:gap-10 lg:gap-14">
-            {[
-              { label: "FACEBOOK", href: "#" },
-              { label: "INSTAGRAM", href: "#" },
-              { label: "LINKEDIN", href: "#" },
-            ].map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => {
-                  if (social.href === "#") e.preventDefault();
-                }}
-                className="
-          relative inline-block
-          text-white
-          text-[13px] sm:text-[15px] lg:text-[17px]
-          font-bold
-          tracking-[0.16em]
-          uppercase
-          pb-1.5
-          transition-opacity duration-200
-          hover:opacity-60
-          after:content-['']
-          after:absolute
-          after:left-0
-          after:bottom-0
-          after:h-[1px]
-          after:w-[26px]
-          after:bg-white/50
-        "
-              >
-                {social.label}
-              </a>
-            ))}
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 sm:gap-8">
+            {/* Theme Switcher inside Fullscreen Menu */}
+            <div className="shrink-0">
+              <ThemeToggle variant="menu" />
+            </div>
+
+            {/* Social links in place of the old bottom-right Contact button */}
+            <div className="flex flex-wrap items-center justify-start sm:justify-end gap-x-5 gap-y-4 sm:gap-x-7 lg:gap-x-10">
+              {[
+                { label: "FACEBOOK", href: "#" },
+                { label: "INSTAGRAM", href: "#" },
+                { label: "LINKEDIN", href: "#" },
+              ].map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    if (social.href === "#") e.preventDefault();
+                  }}
+                  className="
+                    relative inline-block
+                    text-white
+                    text-[16px] sm:text-[19px] lg:text-[24px] xl:text-[26px]
+                    font-bold tracking-[0.12em] uppercase
+                    pb-1.5 transition-opacity duration-200 hover:opacity-60
+                    after:content-[''] after:absolute after:left-0
+                    after:bottom-0 after:h-[1px] after:w-[26px] after:bg-white/50
+                  "
+                >
+                  {social.label}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
-        {/* Bottom Right Contact Button */}
-        <a
-          href="/contact"
-          onClick={(e) => {
-            if (onNavigate) {
-              e.preventDefault();
-              setIsMenuOpen(false);
-              onNavigate("contact");
-            }
-          }}
-
-          className="
-  relative sm:absolute
-  z-20
-  w-[calc(100%-30px)] sm:w-auto
-  mx-[15px] sm:mx-0
-  mb-[15px] sm:mb-0
-  bottom-auto sm:bottom-5 lg:bottom-6
-  right-auto sm:right-10 lg:right-16
-  rounded-full
-  
-bg-white
-text-[#0E7428]
-hover:bg-[#E8F5E9]
-border border-white
-
-  font-semibold
-  text-[16px]
-  sm:text-[15px] lg:text-[16px]
-  px-6 sm:px-8
-  py-[14px] sm:py-3
-  text-center
-  transition-colors duration-200
-  whitespace-nowrap
-"
-
-        >
-          Contact
-        </a>
-
       </div>
     </>
   );

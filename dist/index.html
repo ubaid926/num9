@@ -11,17 +11,35 @@
          Preloading fonts eliminates FOUT (flash of unstyled text)
          and prevents layout shifts during initial render.
     ═══════════════════════════════════════════════════════ -->
-    <link rel="preload" as="font" href="/assets/grift-medium-BMChGuQk.ttf"   type="font/ttf" crossorigin="anonymous" />
-    <link rel="preload" as="font" href="/assets/grift-semibold-DQvwUlMB.ttf" type="font/ttf" crossorigin="anonymous" />
-    <link rel="preload" as="font" href="/assets/grift-light-D9Lm0WTF.ttf"    type="font/ttf" crossorigin="anonymous" />
-    <link rel="preload" as="font" href="/assets/grift-medium-BMChGuQk.ttf"  type="font/ttf" crossorigin="anonymous" />
-    <link rel="preload" as="font" href="/assets/grift-black-Co9DwoHo.ttf"    type="font/ttf" crossorigin="anonymous" />
-    <link rel="preload" as="font" href="/assets/grift-extrabold-D2GILg_l.ttf" type="font/ttf" crossorigin="anonymous" />
+    <link rel="preload" as="font" href="/num9dev/assets/grift-medium-BMChGuQk.ttf"   type="font/ttf" crossorigin="anonymous" />
+    <link rel="preload" as="font" href="/num9dev/assets/grift-semibold-DQvwUlMB.ttf" type="font/ttf" crossorigin="anonymous" />
+    <link rel="preload" as="font" href="/num9dev/assets/grift-light-D9Lm0WTF.ttf"    type="font/ttf" crossorigin="anonymous" />
+    <link rel="preload" as="font" href="/num9dev/assets/grift-medium-BMChGuQk.ttf"  type="font/ttf" crossorigin="anonymous" />
+    <link rel="preload" as="font" href="/num9dev/assets/grift-black-Co9DwoHo.ttf"    type="font/ttf" crossorigin="anonymous" />
+    <link rel="preload" as="font" href="/num9dev/assets/grift-extrabold-D2GILg_l.ttf" type="font/ttf" crossorigin="anonymous" />
 
 
 
-    <script type="module" crossorigin src="/assets/index-DQayKRAL.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Bk9hlFUd.css">
+    <!-- ═══════════════════════════════════════════════════════
+         THEME INITIALIZATION — Prevents FOUC (flash of white)
+    ═══════════════════════════════════════════════════════ -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (saved === 'dark' || (!saved && prefersDark)) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.setAttribute('data-theme', 'light');
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <script type="module" crossorigin src="/num9dev/assets/index-9kyFotiN.js"></script>
+    <link rel="stylesheet" crossorigin href="/num9dev/assets/index-CKXWTifm.css">
   </head>
   <body>
     <div id="root"></div>

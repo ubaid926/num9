@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { ChevronRight, Check } from "lucide-react";
 import { caseStudiesData } from "../data/caseStudiesData";
-import { slugify } from "../data/serviceDetailData";
 
 export default function CaseStudyHeroSection({
   caseStudy = caseStudiesData.lexus,
@@ -125,7 +124,7 @@ export default function CaseStudyHeroSection({
               transition-colors
             "
           >
-            Our Work
+            Our Clients
           </button>
 
           <ChevronRight
@@ -208,7 +207,7 @@ export default function CaseStudyHeroSection({
               style={hero.accentColor ? { backgroundColor: hero.accentColor } : undefined}
             />
 
-            {/* DESKTOP TAGS — clickable buttons navigating to service detail page */}
+            {/* DESKTOP TAGS — display only, not clickable */}
             <div
               className="
                 hidden lg:flex
@@ -217,13 +216,8 @@ export default function CaseStudyHeroSection({
               "
             >
               {tags.map((tag) => (
-                <button
+                <span
                   key={tag}
-                  type="button"
-                  onClick={() => {
-                    const route = `service/${slugify(tag)}`;
-                    onNavigate?.(route);
-                  }}
                   className="
                     inline-flex items-center
                     rounded-full
@@ -235,18 +229,16 @@ export default function CaseStudyHeroSection({
                     leading-[1.2]
                     whitespace-nowrap
                     text-white
-                    cursor-pointer
-                    hover:bg-white/10
-                    hover:border-white
-                    transition-all duration-200
+                    cursor-default
+                    select-none
                   "
                 >
                   {tag}
-                </button>
+                </span>
               ))}
             </div>
 
-            {/* MOBILE TAGS */}
+            {/* MOBILE TAGS — display only, not clickable */}
             <div
               className="
                 flex lg:hidden
@@ -256,13 +248,8 @@ export default function CaseStudyHeroSection({
               "
             >
               {tags.map((tag) => (
-                <button
+                <span
                   key={tag}
-                  type="button"
-                  onClick={() => {
-                    const route = `service/${slugify(tag)}`;
-                    onNavigate?.(route);
-                  }}
                   className="
                     inline-flex items-center
                     rounded-full
@@ -274,13 +261,12 @@ export default function CaseStudyHeroSection({
                     leading-[1.2]
                     whitespace-nowrap
                     text-white
-                    cursor-pointer
-                    hover:bg-white/10
-                    transition-all duration-200
+                    cursor-default
+                    select-none
                   "
                 >
                   {tag}
-                </button>
+                </span>
               ))}
             </div>
           </div>
@@ -300,8 +286,9 @@ export default function CaseStudyHeroSection({
                 w-full
                 lg:w-[400px] xl:w-[440px]
                 rounded-[26px]
-                bg-white
-                text-[#222222]
+                bg-white dark:bg-[#171A18]
+                text-[#222222] dark:text-[#F3F4F6]
+                border border-transparent dark:border-[#27302A]
                 px-[32px] py-[27px]
                 sm:p-[32px]
                 lg:px-[29px] lg:py-[25px]
@@ -314,7 +301,7 @@ export default function CaseStudyHeroSection({
                   text-[18px] sm:text-[20px]
                   lg:text-[18px] xl:text-[19px]
                   leading-[1.35]
-                  text-[#343434]
+                  text-[#343434] dark:text-[#E5E7EB]
                   mb-[18px]
                 "
               >
@@ -339,14 +326,14 @@ export default function CaseStudyHeroSection({
                     w-full min-w-0 flex-1
                     h-[58px]
                     rounded-[10px]
-                    border border-[#999]
-                    bg-white
+                    border border-[#999] dark:border-[#323D35]
+                    bg-white dark:bg-[#151816]
                     px-[15px]
                     font-grift-medium
                     text-[17px] sm:text-[18px]
                     lg:text-[16px]
-                    text-[#222]
-                    placeholder:text-[#929292]
+                    text-[#222] dark:text-white
+                    placeholder:text-[#929292] dark:placeholder:text-[#6B7280]
                     outline-none
                     focus:border-[#35C900]
                     focus:ring-1

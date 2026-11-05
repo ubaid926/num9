@@ -20,7 +20,7 @@ import nutrienLogo from "../assets/Logos/ClientsGrid_Logos/nutrien.png";
 
 function AboutHero() {
   return (
-    <section className="w-full bg-white">
+    <section className="w-full bg-white dark:bg-[#0B0D0C] transition-colors duration-300">
       <div
         className="
           w-full max-w-[1814px] mx-auto
@@ -67,7 +67,7 @@ mb-[12px] sm:mb-[20px] lg:mb-[34px]
                   text-[clamp(11px,2.1vw,14px)]
                   sm:text-[16px] lg:text-[19px]
                   tracking-[0.28em]
-                  text-[#555353]
+                  text-[#555353] dark:text-[#B4BCB6]
                 "
               >
                 About Number9
@@ -84,7 +84,7 @@ mb-[12px] sm:mb-[20px] lg:mb-[34px]
                 2xl:text-[66px]
                 leading-[1.08]
                 tracking-[-0.035em]
-                text-black
+                text-black dark:text-white
                 m-0
               "
             >
@@ -116,7 +116,7 @@ mb-[12px] sm:mb-[20px] lg:mb-[34px]
                 lg:text-[19px] xl:text-[21px]
                 leading-[1.35]
                 tracking-[-0.015em]
-                text-[#151515]
+                text-[#151515] dark:text-[#E5E7EB]
                 max-w-[590px]
                 mb-[24px]
               "
@@ -131,13 +131,13 @@ mb-[12px] sm:mb-[20px] lg:mb-[34px]
                 inline-flex items-center justify-center
                 min-h-[53px]
                 px-[16px] py-[10px]
-                border border-[#222]
+                border border-[#222] dark:border-[#4B5563]
                 rounded-[7px]
                 font-grift-semibold
-                text-[20px] text-black
+                text-[20px] text-black dark:text-white
                 no-underline
                 transition-all duration-300
-                hover:bg-black hover:text-white
+                hover:bg-black dark:hover:bg-[#15B83E] hover:text-white dark:hover:text-black
               "
             >
               Explore Our Story
@@ -155,7 +155,7 @@ mb-[12px] sm:mb-[20px] lg:mb-[34px]
     sm:aspect-auto
     rounded-[12px] sm:rounded-[18px]
     lg:rounded-[24px]
-    border border-[#B8C2C4]
+    border border-[#B8C2C4] dark:border-[#27302A]
     shadow-[0_1px_2px_rgba(0,0,0,0.08)]
   "
         >
@@ -251,7 +251,7 @@ function WhoWeAre() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full bg-white">
+    <section ref={sectionRef} className="w-full bg-white dark:bg-[#0B0D0C] transition-colors duration-300">
 
       <div className="max-w-[1640px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 pt-[15px] pb-[15px] sm:py-18 lg:py-20 xl:py-24">
 
@@ -279,11 +279,11 @@ function WhoWeAre() {
           </div>
 
           {/* Vertical divider */}
-          <div className="w-px self-stretch bg-[#000000] shrink-0" />
+          <div className="w-px self-stretch bg-[#000000] dark:bg-[#2C362F] shrink-0" />
 
           {/* RIGHT — heading */}
           <div className="flex-1 pl-5 sm:pl-10 lg:pl-14 xl:pl-16">
-            <h2 className="font-grift-semibold text-[22.99px] sm:text-[30px] lg:text-[36px] xl:text-[48px] leading-[0.85] tracking-[-0.02em] text-[#111] mt-7 sm:mb-6 lg:mb-8 max-w-[560px]">
+            <h2 className="font-grift-semibold text-[22.99px] sm:text-[30px] lg:text-[36px] xl:text-[48px] leading-[0.85] tracking-[-0.02em] text-[#111] dark:text-white mt-7 sm:mb-6 lg:mb-8 max-w-[560px]">
               A creative partner from concept to completion.
             </h2>
 
@@ -321,7 +321,7 @@ function WhoWeAre() {
 
 function ThinkingSection() {
   return (
-    <section className="w-full bg-white">
+    <section className="w-full bg-white dark:bg-[#0B0D0C] transition-colors duration-300">
       <div className="max-w-[1640px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 py-10 sm:py-14 lg:py-12">
         <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-10 xl:gap-12">
           {/* LEFT — Image + Caption */}
@@ -336,7 +336,7 @@ function ThinkingSection() {
       rounded-[18px]
       sm:rounded-[20px]
       lg:rounded-[22px]
-      border border-[#B7B7B7]
+      border border-[#B7B7B7] dark:border-[#27302A]
     "
             >
               <img
@@ -378,7 +378,7 @@ function ThinkingSection() {
               2xl:text-[70px]
               leading-[1.07]
               tracking-[-0.035em]
-              text-black
+              text-black dark:text-white
               mb-6 lg:mb-7
             "
             >
@@ -442,7 +442,7 @@ function ThinkingSection() {
                   lg:text-[18px]
                   xl:text-[25px]
                   leading-[1.3]
-                  text-[#111]
+                  text-[#111] dark:text-white
                   mb-3
                 "
                 >
@@ -474,7 +474,7 @@ function ThinkingSection() {
                   lg:text-[18px]
                   xl:text-[25px]
                   leading-[1.3]
-                  text-[#111]
+                  text-[#111] dark:text-white
                   mb-3
                 "
                 >
@@ -531,7 +531,7 @@ function BrandPartnerships({ onNavigate }) {
   ];
 
   return (
-    <section className="w-full bg-white">
+    <section className="w-full bg-white dark:bg-[#0B0D0C] transition-colors duration-300">
       <div className="max-w-[1640px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 lg:py-20 xl:py-18">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-12 xl:gap-16">
           {/* LEFT — Text Content */}
@@ -542,7 +542,7 @@ function BrandPartnerships({ onNavigate }) {
                 hidden lg:block
                 w-px h-[200px]
                 lg:h-[230px] xl:h-[253px]
-                bg-[#111] shrink-0
+                bg-[#111] dark:bg-[#333E35] shrink-0
               "
             />
 
@@ -574,7 +574,7 @@ function BrandPartnerships({ onNavigate }) {
                 2xl:text-[76px]
                 leading-[1.08]
                 tracking-[-0.035em]
-                text-black
+                text-black dark:text-white
                 mb-7 lg:mb-8
               "
               >
@@ -621,12 +621,12 @@ function BrandPartnerships({ onNavigate }) {
                   inline-flex items-center justify-between
                   gap-12
                   pb-2
-                  border-b-2 border-[#111]
+                  border-b-2 border-[#111] dark:border-white
                   font-grift-medium
                   text-[16px] sm:text-[18px] xl:text-[22px]
-                  text-[#111]
-                  hover:text-[#159E00]
-                  hover:border-[#159E00]
+                  text-[#111] dark:text-white
+                  hover:text-[#159E00] dark:hover:text-[#159E00]
+                  hover:border-[#159E00] dark:hover:border-[#159E00]
                   transition-colors duration-200
                   group
                 "
@@ -674,7 +674,7 @@ function BrandPartnerships({ onNavigate }) {
                         className="
                           w-full
                           aspect-[1.32/1]
-                          bg-white
+                          bg-white dark:bg-[#171A18] border border-transparent dark:border-[#27302A]
                           rounded-[12px]
                           sm:rounded-[16px]
                           lg:rounded-[18px]
@@ -736,7 +736,7 @@ const capabilities = [
 
 function ConnectedCapabilities() {
   return (
-    <section className="w-full bg-white">
+    <section className="w-full bg-white dark:bg-[#0B0D0C] transition-colors duration-300">
       <div
         className="
           max-w-[1640px] mx-auto
@@ -818,7 +818,7 @@ function ConnectedCapabilities() {
                 lg:py-9
                 xl:py-10
                 ${index !== capabilities.length - 1
-                  ? "border-b border-[#C8C8C8]"
+                  ? "border-b border-[#C8C8C8] dark:border-[#27302A]"
                   : ""
                 }
               `}
@@ -853,7 +853,7 @@ function ConnectedCapabilities() {
                       text-[18px]
                       sm:text-[24px]
                       leading-[1.08]
-                      text-[#111]
+                      text-[#111] dark:text-white
                       min-w-0
                     "
                   >
@@ -872,7 +872,7 @@ function ConnectedCapabilities() {
                       xl:text-[28px]
                       2xl:text-[30px]
                       leading-[1.25]
-                      text-[#111]
+                      text-[#111] dark:text-white
                     "
                   >
                     {cap.title}
@@ -886,7 +886,7 @@ function ConnectedCapabilities() {
                     mt-3 sm:mt-5
                     lg:mt-0
                     lg:border-l
-                    lg:border-[#BDBDBD]
+                    lg:border-[#BDBDBD] lg:dark:border-[#27302A]
                     lg:pl-8
                     xl:pl-12
                     lg:min-h-[58px]
@@ -914,7 +914,7 @@ function ConnectedCapabilities() {
                 className="
                   min-w-0
                   flex flex-col gap-[3px]
-                  border-l border-[#D0D0D0]
+                  border-l border-[#D0D0D0] dark:border-[#27302A]
                   pl-3
                   sm:pl-5
                   lg:border-l-0
@@ -1171,13 +1171,15 @@ export default function AboutPage({
   onNavigate,
   activeDropdown,
   setActiveDropdown,
+  currentPage,
 }) {
   return (
-    <div className="bg-white min-h-screen text-[#141414] font-grift antialiased">
+    <div className="bg-white dark:bg-[#0B0D0C] min-h-screen text-[#141414] dark:text-[#F3F4F6] font-grift antialiased transition-colors duration-300">
       <AppNav
         activeDropdown={activeDropdown}
         setActiveDropdown={setActiveDropdown}
         onNavigate={onNavigate}
+        currentPage={currentPage || "about"}
       />
       <AboutHero />
       <WhoWeAre />

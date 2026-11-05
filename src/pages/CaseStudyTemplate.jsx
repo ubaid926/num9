@@ -8,6 +8,7 @@ import Footer from "../components/footer";
 import { getCaseStudy, caseStudiesData } from "../data/caseStudiesData";
 
 export default function CaseStudyTemplate({
+  currentPage,
   slug = "lexus",
   caseStudy: caseStudyProp,
   onNavigate,
@@ -28,12 +29,13 @@ export default function CaseStudyTemplate({
   }, [slug]);
 
   return (
-    <div className="bg-white min-h-screen text-[#141414] font-grift antialiased overflow-x-hidden">
+    <div className="bg-white dark:bg-[#0B0D0C] min-h-screen text-[#141414] dark:text-[#F3F4F6] font-grift antialiased overflow-x-hidden transition-colors duration-300">
       {/* Global Navigation */}
       <AppNav
         activeDropdown={activeDropdown}
         setActiveDropdown={setActiveDropdown}
         onNavigate={onNavigate}
+        currentPage={currentPage || "case-study"}
       />
 
       {/* Hero Section */}

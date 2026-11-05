@@ -16,6 +16,20 @@ import shanHeroImg from "../assets/homeHeroSectionImages/hf_20261016_161454_e8b7
 import snacksHeroImg from "../assets/homeHeroSectionImages/hf_20261016_162448_549b8ec4-b231-4ab6-8341-ad5a5b8ffe63 1.webp";
 import almazaHeroImg from "../assets/homeHeroSectionImages/PwC_Enterprise_Dashboard_in_Executive_Office 1 (1).webp";
 
+/* Dedicated 1080x720 mobile hero images to match 1.50 mobile card aspect ratio without zooming or gaps */
+import lexusMobileHeroImg from "../assets/heroMobileImages/lexusMobile.webp";
+import citibankMobileHeroImg from "../assets/heroMobileImages/citibankMobile.webp";
+import safewayMobileHeroImg from "../assets/heroMobileImages/safewayMobile.webp";
+import empireMobileHeroImg from "../assets/heroMobileImages/empireMobile.webp";
+import pwcMobileHeroImg from "../assets/heroMobileImages/pwcMobile.webp";
+import sentralMobileHeroImg from "../assets/heroMobileImages/sentralMobile.webp";
+import lifegiveMobileHeroImg from "../assets/heroMobileImages/lifegiveMobile.webp";
+import snacksMobileHeroImg from "../assets/heroMobileImages/snacksMobile.webp";
+import zee5MobileHeroImg from "../assets/heroMobileImages/zee5Mobile.webp";
+import fairviewMobileHeroImg from "../assets/heroMobileImages/fairviewMobile.webp";
+import shanMobileHeroImg from "../assets/heroMobileImages/shanMobile.webp";
+import almazaMobileHeroImg from "../assets/heroMobileImages/almazaMobile.webp";
+
 import lexusLogo from "../assets/Logos/Layer 7.png";
 import citibankLogo from "../assets/Logos/Layer 6.png";
 import safewayLogo from "../assets/Logos/Layer 12.png";
@@ -64,6 +78,9 @@ const PRIMARY_HERO_IMAGES = [
   lexusHeroImg,
   citibankHeroImg,
   almazaHeroImg,
+  lexusMobileHeroImg,
+  citibankMobileHeroImg,
+  almazaMobileHeroImg,
   lexusLogo,
 ];
 
@@ -77,6 +94,15 @@ const SECONDARY_HERO_IMAGES = [
   fairviewHeroImg,
   shanHeroImg,
   snacksHeroImg,
+  safewayMobileHeroImg,
+  empireMobileHeroImg,
+  pwcMobileHeroImg,
+  sentralMobileHeroImg,
+  lifegiveMobileHeroImg,
+  snacksMobileHeroImg,
+  zee5MobileHeroImg,
+  fairviewMobileHeroImg,
+  shanMobileHeroImg,
 ];
 
 if (typeof window !== "undefined") {
@@ -86,7 +112,7 @@ if (typeof window !== "undefined") {
     const img = new Image();
     img.src = src;
     if (img.decode) {
-      img.decode().catch(() => {});
+      img.decode().catch(() => { });
     }
   });
 
@@ -113,9 +139,10 @@ const slides = [
     id: 1,
     imageUrl: lexusHeroImg,
     brand: "Lexus",
+    mobileImageUrl: lexusMobileHeroImg,
     logoUrl: lexusLogo,
     logoClass:
-      "h-[32px] sm:h-[44px] md:h-[54px] lg:h-[64px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
+      "h-[34px] min-[390px]:h-[38px] sm:h-[44px] md:h-[54px] lg:h-[64px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
     categories: ["3D Configurator", "Interactive Experience"],
     description:
       "An interactive dealership experience for vehicle customization and multimedia.",
@@ -124,10 +151,11 @@ const slides = [
   {
     id: 2,
     imageUrl: citibankHeroImg,
+    mobileImageUrl: citibankMobileHeroImg,
     brand: "CitiBank",
     logoUrl: citibankLogo,
     logoClass:
-      "h-[32px] sm:h-[44px] md:h-[54px] lg:h-[64px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
+      "h-[34px] min-[390px]:h-[38px] sm:h-[44px] md:h-[54px] lg:h-[64px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
     categories: ["Data Visualization", "Digital Experience"],
     description:
       "A comprehensive data visualization dashboard to capture the full landscape and enable internal collaboration across teams at CitiBank.",
@@ -136,10 +164,11 @@ const slides = [
   {
     id: 3,
     imageUrl: safewayHeroImg,
+    mobileImageUrl: safewayMobileHeroImg,
     brand: "Safeway",
     logoUrl: safewayLogo,
     logoClass:
-      "h-[32px] sm:h-[44px] md:h-[54px] lg:h-[64px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
+      "h-[34px] min-[390px]:h-[38px] sm:h-[44px] md:h-[54px] lg:h-[64px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
     categories: ["Web & Mobile", "User Experience"],
     description:
       "A comprehensive web and mobile platform designed to enhance the grocery shopping experience and drive customer loyalty.",
@@ -148,10 +177,11 @@ const slides = [
   {
     id: 4,
     imageUrl: empireHeroImg,
+    mobileImageUrl: empireMobileHeroImg,
     brand: "Empire Cinemas",
     logoUrl: empireLogo,
     logoClass:
-      "h-[32px] sm:h-[44px] md:h-[54px] lg:h-[74px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
+      "h-[34px] min-[390px]:h-[38px] sm:h-[44px] md:h-[54px] lg:h-[74px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
     categories: ["Web Design", "Ticket Reservation"],
     description:
       "A cinema website design bringing movie listings, trailers, showtimes, and seat selection into a connected booking experience.",
@@ -160,10 +190,11 @@ const slides = [
   {
     id: 5,
     imageUrl: pwcHeroImg,
+    mobileImageUrl: pwcMobileHeroImg,
     brand: "PwC",
     logoUrl: pwcLogo,
     logoClass:
-      "h-[32px] sm:h-[44px] md:h-[54px] lg:h-[74px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
+      "h-[34px] min-[390px]:h-[38px] sm:h-[44px] md:h-[54px] lg:h-[74px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
     categories: ["Enterprise UX", "Dashboard Design"],
     description:
       "Specialized internal B2B dashboards streamlining tax policy tracking, active engagements, and resource allocation across multidisciplinary teams.",
@@ -172,10 +203,11 @@ const slides = [
   {
     id: 6,
     imageUrl: sentralHeroImg,
+    mobileImageUrl: sentralMobileHeroImg,
     brand: "Sentral Education",
     logoUrl: sentralLogo,
     logoClass:
-      "h-[32px] sm:h-[44px] md:h-[54px] lg:h-[84px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
+      "h-[34px] min-[390px]:h-[38px] sm:h-[44px] md:h-[54px] lg:h-[84px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
     categories: ["EdTech", "Web & Mobile App"],
     description:
       "An all-in-one parent portal app designed for real-time push notifications, tracking student homework, and handling instant school fee payments.",
@@ -184,10 +216,11 @@ const slides = [
   {
     id: 7,
     imageUrl: lifegiveHeroImg,
+    mobileImageUrl: lifegiveMobileHeroImg,
     brand: "LifeGive",
     logoUrl: lifegiveLogo,
     logoClass:
-      "h-[32px] sm:h-[44px] md:h-[54px] lg:h-[64px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
+      "h-[34px] min-[390px]:h-[38px] sm:h-[44px] md:h-[54px] lg:h-[64px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
     categories: ["D2C E-Commerce", "Health & Wellness"],
     description:
       "A direct-to-consumer e-commerce platform and supplement catalog helping health conscious consumers easily discover plant derived vitamins and minerals.",
@@ -196,10 +229,11 @@ const slides = [
   {
     id: 8,
     imageUrl: snacksHeroImg,
+    mobileImageUrl: snacksMobileHeroImg,
     brand: "Snacks.com",
     logoUrl: snacksLogo,
     logoClass:
-      "h-[32px] sm:h-[44px] md:h-[54px] lg:h-[64px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
+      "h-[34px] min-[390px]:h-[38px] sm:h-[44px] md:h-[54px] lg:h-[64px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
     categories: ["E-commerce", "Digital Marketing"],
     description:
       "A direct-to-consumer platform for Frito-Lay /PepsiCo, combining customizable snack boxes, flexible ordering, and integrated digital marketing.",
@@ -208,10 +242,11 @@ const slides = [
   {
     id: 9,
     imageUrl: zee5HeroImg,
+    mobileImageUrl: zee5MobileHeroImg,
     brand: "ZEE5",
     logoUrl: zee5Logo,
     logoClass:
-      "h-[32px] sm:h-[44px] md:h-[54px] lg:h-[74px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
+      "h-[34px] min-[390px]:h-[38px] sm:h-[44px] md:h-[54px] lg:h-[74px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
     categories: ["Retail Activation", "Affiliate Marketing"],
     description:
       "A branded retail screen initiative showcasing ZEE5 content to South Asian audiences in North American grocery stores.",
@@ -220,10 +255,11 @@ const slides = [
   {
     id: 10,
     imageUrl: fairviewHeroImg,
+    mobileImageUrl: fairviewMobileHeroImg,
     brand: "Fairview",
     logoUrl: fairviewLogo,
     logoClass:
-      "h-[32px] sm:h-[44px] md:h-[54px] lg:h-[74px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
+      "h-[34px] min-[390px]:h-[38px] sm:h-[44px] md:h-[54px] lg:h-[74px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
     categories: ["Web & Mobile", "UI/UX Design"],
     description:
       "A website design showcasing architectural products, project galleries, and sample requests across desktop and mobile layouts.",
@@ -232,10 +268,11 @@ const slides = [
   {
     id: 11,
     imageUrl: shanHeroImg,
+    mobileImageUrl: shanMobileHeroImg,
     brand: "Shan Foods",
     logoUrl: shanLogo,
     logoClass:
-      "h-[32px] sm:h-[44px] md:h-[54px] lg:h-[64px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px] ",
+      "h-[34px] min-[390px]:h-[38px] sm:h-[44px] md:h-[54px] lg:h-[64px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px] ",
     categories: ["Retail Marketing", "Brand Activation"],
     description:
       "A comprehensive retail activation campaign across North American big-box retailers, featuring branded sampling stations and trained brand ambassadors.",
@@ -244,10 +281,11 @@ const slides = [
   {
     id: 12,
     imageUrl: almazaHeroImg,
+    mobileImageUrl: almazaMobileHeroImg,
     brand: "Almaza",
     logoUrl: almazaLogo,
     logoClass:
-      "h-[32px] sm:h-[44px] md:h-[54px] lg:h-[64px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
+      "h-[34px] min-[390px]:h-[38px] sm:h-[44px] md:h-[54px] lg:h-[64px] w-[110px] sm:w-[145px] md:w-[170px] lg:w-[200px]",
     categories: ["Digital Storytelling", "Brand Website"],
     description:
       "An engaging digital brand experience blending rich heritage storytelling, transparent brewing process breakdowns, and user-generated social moments.",
@@ -260,21 +298,21 @@ export default function HeroSection({
   onCaseStudyClick,
   onNavigate,
 }) {
-  
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
-useEffect(() => {
-  // Preload only the upcoming slides
-  const nextIndexes = [
-    (currentIndex + 1) % slides.length,
-    (currentIndex + 2) % slides.length,
-  ];
+  useEffect(() => {
+    // Preload only the upcoming slides
+    const nextIndexes = [
+      (currentIndex + 1) % slides.length,
+      (currentIndex + 2) % slides.length,
+    ];
 
-  nextIndexes.forEach((index) => {
-    const img = new Image();
-    img.src = slides[index].imageUrl;
-  });
-}, [currentIndex]);
+    nextIndexes.forEach((index) => {
+      const img = new Image();
+      img.src = slides[index].imageUrl;
+    });
+  }, [currentIndex]);
 
   const [isShowreelOpen, setIsShowreelOpen] = useState(false);
 
@@ -287,6 +325,16 @@ useEffect(() => {
 
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
+
+  // Auto-play slider: automatically advances to next slide every 4.5s ONLY on mobile (< 640px)
+  useEffect(() => {
+    if (!isMobile || isShowreelOpen) return;
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % slides.length);
+    }, 4500);
+
+    return () => clearInterval(timer);
+  }, [isMobile, currentIndex, isShowreelOpen]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -357,9 +405,8 @@ useEffect(() => {
     <>
       <section
         aria-label="Featured projects"
-        className={`relative w-full overflow-hidden bg-white pt-2 sm:pt-2.5 lg:pt-0 pb-6 sm:pb-8 lg:pb-10 transition-all duration-300 ${
-          isDarkened ? "brightness-50 pointer-events-none blur-[1px]" : ""
-        }`}
+        className={`relative w-full overflow-hidden bg-white dark:bg-[#0B0D0C] pt-0 sm:pt-2.5 lg:pt-0 pb-0 sm:pb-8 lg:pb-10 transition-all duration-300 ${isDarkened ? "brightness-50 pointer-events-none blur-[1px]" : ""
+          }`}
       >
         <div
           onTouchStart={onTouchStart}
@@ -389,10 +436,10 @@ useEffect(() => {
               brightness = 1;
             } else if (distance === 1) {
               if (isMobile) {
-                shiftPercent = offset < 0 ? -17 : 17;
-                scale = 0.82;
-                opacity = 0.95;
-                brightness = 0.55;
+                shiftPercent = offset < 0 ? -100 : 100;
+                scale = 1;
+                opacity = 1;
+                brightness = 1;
               } else if (isDesktop) {
                 shiftPercent = offset < 0 ? -14.2 : 14.2;
                 scale = 0.80;
@@ -405,7 +452,12 @@ useEffect(() => {
                 brightness = 0.7;
               }
             } else if (distance === 2) {
-              if (isDesktop) {
+              if (isMobile) {
+                shiftPercent = offset < 0 ? -200 : 200;
+                scale = 1;
+                opacity = 0;
+                brightness = 1;
+              } else if (isDesktop) {
                 shiftPercent = offset < 0 ? -23.5 : 23.5;
                 scale = 0.68;
                 opacity = 0.72;
@@ -425,35 +477,34 @@ useEffect(() => {
                 onClick={() => {
                   if (!isActive) setCurrentIndex(index);
                 }}
-                className={`hero-slide-card absolute left-1/2 top-1/2 overflow-hidden rounded-[26px] sm:rounded-[22px] border border-white/40 sm:border-white/50 bg-[#121417] transition-[transform,opacity,filter] duration-700 ease-[cubic-bezier(.22,1,.36,1)] select-none ${
-                  isActive
+                className={`hero-slide-card absolute left-1/2 top-1/2 overflow-hidden rounded-none sm:rounded-[22px] border-0 sm:border border-white/40 sm:border-white/50 bg-[#121417] transition-[transform,opacity,filter] duration-700 ease-[cubic-bezier(.22,1,.36,1)] select-none ${isActive
                     ? "z-30"
                     : distance === 1
                       ? "z-20 cursor-pointer"
                       : "z-10 cursor-pointer"
-                } ${distance === 2 ? "hidden sm:block" : ""} ${isVisible ? "visible" : "invisible pointer-events-none"}`}
+                  } ${distance === 2 ? "hidden sm:block" : ""} ${isVisible ? "visible" : "invisible pointer-events-none"}`}
                 style={{
                   transform: `translate(calc(-50% + ${shiftPercent}%), -50%) scale(${scale})`,
                   opacity: isActive ? 1 : opacity,
-                  
-filter: isActive
-  ? "grayscale(0%) brightness(1)"
-  : `grayscale(100%) brightness(${brightness})`,
+
+                  filter: isMobile || isActive
+                    ? "grayscale(0%) brightness(1)"
+                    : `grayscale(100%) brightness(${brightness})`,
 
                 }}
               >
-                
-{isVisible && (
-  <img
-    src={slide.imageUrl}
-    alt={`${slide.brand} project visual`}
-    className="absolute inset-0 h-full w-full object-cover"
-    draggable={false}
-    loading={isActive ? "eager" : "lazy"}
-    fetchPriority={isActive ? "high" : "low"}
-    decoding="async"
-  />
-)}
+
+                {isVisible && (
+                  <img
+                    src={isMobile && slide.mobileImageUrl ? slide.mobileImageUrl : slide.imageUrl}
+                    alt={`${slide.brand} project visual`}
+                    className="absolute inset-0 h-full w-full object-cover object-center"
+                    draggable={false}
+                    loading={isActive ? "eager" : "lazy"}
+                    fetchPriority={isActive ? "high" : "low"}
+                    decoding="async"
+                  />
+                )}
 
                 {/* Smooth black fade on the top and bottom edges of each hero image */}
                 <div
@@ -468,19 +519,17 @@ filter: isActive
                 {isActive && (
                   <>
                     {/* Top-left brand mark — all screen sizes, aligned with bottom-left glass box */}
-                    <div className="absolute z-40 left-[5%] sm:left-[3.3%] top-[7%] sm:top-[5.5%] flex items-center">
+                    <div className="absolute z-40 left-4 min-[390px]:left-5 sm:left-[3.3%] bottom-5 min-[390px]:bottom-6 sm:bottom-auto sm:top-[5.5%] flex items-center">
                       {slide.logoUrl ? (
                         <img
                           src={slide.logoUrl}
                           alt={slide.brand}
-                          className={`object-contain object-left shrink-0 drop-shadow-[0_2px_10px_rgba(0,0,0,0.65)] ${
-                            isColoredLogo(slide.logoUrl)
+                          className={`object-contain object-left shrink-0 drop-shadow-[0_2px_10px_rgba(0,0,0,0.65)] ${isColoredLogo(slide.logoUrl)
                               ? ""
                               : "brightness-0 invert"
-                          } ${
-                            slide.logoClass ||
-                            "h-6 sm:h-9 md:h-12 lg:h-16 max-w-[110px] sm:max-w-[180px] lg:max-w-[220px]"
-                          }`}
+                            } ${slide.logoClass ||
+                            "h-7 min-[390px]:h-8 sm:h-9 md:h-12 lg:h-16 max-w-[125px] sm:max-w-[180px] lg:max-w-[220px]"
+                            }`}
                           loading="eager"
                           decoding="async"
                         />
@@ -509,7 +558,7 @@ filter: isActive
                       type="button"
                       aria-label="Previous project"
                       onClick={handlePrev}
-                      className="absolute z-50 left-3 sm:left-[2.5%] lg:left-[3%] top-1/2 -translate-y-1/2 flex h-10 w-10 sm:h-11 sm:w-11 md:h-13 md:w-13 lg:h-[70px] lg:w-[70px] items-center justify-center rounded-full border border-white/40 sm:border-white/80 bg-black/45 sm:bg-black/30 text-white backdrop-blur-[3px] transition-colors hover:bg-black/60 active:scale-95"
+                      className="hidden sm:flex absolute z-50 left-3 sm:left-[2.5%] lg:left-[3%] top-1/2 -translate-y-1/2 h-10 w-10 sm:h-11 sm:w-11 md:h-13 md:w-13 lg:h-[70px] lg:w-[70px] items-center justify-center rounded-full border border-white/40 sm:border-white/80 bg-black/45 sm:bg-black/30 text-white backdrop-blur-[3px] transition-colors hover:bg-black/60 active:scale-95"
                     >
                       <ChevronLeft
                         className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7"
@@ -520,7 +569,7 @@ filter: isActive
                       type="button"
                       aria-label="Next project"
                       onClick={handleNext}
-                      className="absolute z-50 right-3 sm:right-[2.5%] lg:right-[3%] top-1/2 -translate-y-1/2 flex h-10 w-10 sm:h-11 sm:w-11 md:h-13 md:w-13 lg:h-[70px] lg:w-[70px] items-center justify-center rounded-full border border-white/40 sm:border-white/80 bg-black/45 sm:bg-black/30 text-white backdrop-blur-[3px] transition-colors hover:bg-black/60 active:scale-95"
+                      className="hidden sm:flex absolute z-50 right-3 sm:right-[2.5%] lg:right-[3%] top-1/2 -translate-y-1/2 h-10 w-10 sm:h-11 sm:w-11 md:h-13 md:w-13 lg:h-[70px] lg:w-[70px] items-center justify-center rounded-full border border-white/40 sm:border-white/80 bg-black/45 sm:bg-black/30 text-white backdrop-blur-[3px] transition-colors hover:bg-black/60 active:scale-95"
                     >
                       <ChevronRight
                         className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7"
@@ -557,12 +606,12 @@ filter: isActive
                           window.location.href = url.toString();
                         }
                       }}
-                      className="flex absolute z-40 bottom-[5%] sm:bottom-[6%] right-[3.5%] sm:right-[4%] items-center gap-2 sm:gap-5 lg:gap-8 rounded-full bg-[#22aa00] hover:bg-[#1c9000] px-3 py-2 sm:px-5 sm:py-3 lg:px-8 lg:py-4 text-white font-grift-medium text-[11px] sm:text-[15px] lg:text-[20px] transition-all duration-200 cursor-pointer shadow-[0_4px_14px_rgba(34,170,0,0.4)] hover:shadow-[0_6px_20px_rgba(34,170,0,0.6)] active:scale-95"
+                      className="flex absolute z-40 bottom-5 min-[390px]:bottom-6 sm:bottom-[6%] right-4 min-[390px]:right-5 sm:right-[4%] items-center gap-2 min-[390px]:gap-2.5 sm:gap-5 lg:gap-8 rounded-full bg-[#22aa00] hover:bg-[#1c9000] px-4.5 py-2 min-[390px]:px-5 min-[390px]:py-2.5 sm:px-5 sm:py-3 lg:px-8 lg:py-4 text-white font-grift-medium text-[13px] min-[390px]:text-[14px] sm:text-[15px] lg:text-[20px] transition-all duration-200 cursor-pointer shadow-[0_4px_14px_rgba(34,170,0,0.4)] hover:shadow-[0_6px_20px_rgba(34,170,0,0.6)] active:scale-95"
                     >
                       Case Study{" "}
                       <ChevronRight
-                        className="h-3.5 w-3.5 sm:h-5 sm:w-5 lg:h-6 lg:w-6"
-                        strokeWidth={2.4}
+                        className="h-4 w-4 min-[390px]:h-4.5 min-[390px]:w-4.5 sm:h-5 sm:w-5 lg:h-6 lg:w-6"
+                        strokeWidth={2.5}
                       />
                     </button>
                   </>
@@ -573,7 +622,7 @@ filter: isActive
         </div>
 
         {/* Dot indicator — responsive dot indicators for all hero cards */}
-        <div className="mt-6 flex justify-center items-center gap-1.5 sm:hidden px-4 flex-wrap max-w-full">
+        <div className="hidden mt-6 justify-center items-center gap-1.5 px-4 flex-wrap max-w-full">
           {slides.map((slide, dotIndex) => {
             const isActiveDot = currentIndex === dotIndex;
             return (
@@ -583,9 +632,8 @@ filter: isActive
                 onClick={() => setCurrentIndex(dotIndex)}
                 aria-label={`Go to ${slide.brand}`}
                 aria-current={isActiveDot ? "true" : undefined}
-                className={`h-[8px] rounded-full transition-all duration-300 ${
-                  isActiveDot ? "w-6 bg-[#333333]" : "w-[8px] bg-[#CCCCCC]"
-                }`}
+                className={`h-[8px] rounded-full transition-all duration-300 ${isActiveDot ? "w-6 bg-[#333333] dark:bg-[#15B83E]" : "w-[8px] bg-[#CCCCCC] dark:bg-[#2C362F]"
+                  }`}
               />
             );
           })}

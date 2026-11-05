@@ -1,3 +1,4 @@
+
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
@@ -51,8 +52,11 @@ export default defineConfig({
       },
     }),
   ],
-  base: "/",
+  base: "/num9dev/",
   server: {
+    host: '0.0.0.0',
+    allowedHosts: ['.trycloudflare.com'],
+
     proxy: {
       '/backend': {
         target: 'http://localhost:8000',

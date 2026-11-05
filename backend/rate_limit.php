@@ -15,7 +15,8 @@ if (!defined('NUMBER9_BACKEND')) {
  *
  * @return string
  */
-function get_client_ip() {
+function get_client_ip()
+{
     // Cloudflare connecting IP
     if (!empty($_SERVER['HTTP_CF_CONNECTING_IP'])) {
         $ip = trim($_SERVER['HTTP_CF_CONNECTING_IP']);
@@ -51,7 +52,8 @@ function get_client_ip() {
  * @param int $windowSeconds
  * @return array ['allowed' => bool, 'retry_after' => int, 'remaining' => int]
  */
-function check_rate_limit($ip, $maxRequests = 5, $windowSeconds = 600) {
+function check_rate_limit($ip, $maxRequests = 5, $windowSeconds = 600)
+{
     if ($ip === 'unknown') {
         // Allow if IP could not be resolved, but log warning if desired
         return ['allowed' => true, 'retry_after' => 0, 'remaining' => 1];
@@ -118,9 +120,9 @@ function check_rate_limit($ip, $maxRequests = 5, $windowSeconds = 600) {
         }
 
         return [
-            'allowed'     => false,
+            'allowed' => false,
             'retry_after' => $retryAfter,
-            'remaining'   => 0,
+            'remaining' => 0,
         ];
     }
 
@@ -136,9 +138,9 @@ function check_rate_limit($ip, $maxRequests = 5, $windowSeconds = 600) {
     }
 
     return [
-        'allowed'     => true,
+        'allowed' => true,
         'retry_after' => 0,
-        'remaining'   => max(0, $maxRequests - count($ipHistory)),
+        'remaining' => max(0, $maxRequests - count($ipHistory)),
     ];
 }
 

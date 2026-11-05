@@ -18,6 +18,10 @@ import msLogo from '../assets/mlogo 1.png';
 
 import emiratesLogo from '../assets/Logos/ClientsGrid_Logos/emirates.png';
 
+import msMobileLogo from '../assets/mlogo 1 (1).png';
+import lexusMobileLogo from '../assets/Lexus_Emblem_Transparent_Final.webp';
+import emiratesMobileLogo from '../assets/Red Arabic Emirates Emblem.webp';
+
 
 
 import electricCar from '../assets/electric-car 1.png';
@@ -69,6 +73,8 @@ const originalCaseStudies = [
     image: carImage,
 
     logo: lexuslogo,
+    mobileLogo: lexusMobileLogo,
+    mobileLogoClass: 'w-8 h-8 object-contain',
 
     logoClass:
 
@@ -110,6 +116,8 @@ const originalCaseStudies = [
     image: microsoftImage,
 
     logo: msLogo,
+    mobileLogo: msMobileLogo,
+    mobileLogoClass: 'w-8 h-8 object-contain',
 
     logoClass:
 
@@ -151,6 +159,8 @@ const originalCaseStudies = [
     image: emiratesImage,
 
     logo: emiratesLogo,
+    mobileLogo: emiratesMobileLogo,
+    mobileLogoClass: 'w-8 h-8 object-contain',
 
     logoClass:
 
@@ -391,7 +401,7 @@ const CaseStudies = ({ onNavigate }) => {
 
         mx-auto
 
-        bg-white
+        bg-white dark:bg-[#0B0D0C] transition-colors duration-300
 
         overflow-x-clip
 
@@ -536,7 +546,9 @@ const CaseStudies = ({ onNavigate }) => {
 
             flex
 
-            items-end
+            items-center
+
+            sm:items-end
 
             justify-between
 
@@ -586,43 +598,32 @@ const CaseStudies = ({ onNavigate }) => {
 
           </h2>
 
-          {/* Top-right Navigation Controls: Dots + Prev/Next buttons (as in reference image) */}
-          {/* <div className="hidden sm:flex items-center gap-5 lg:gap-7">
-            <div className="flex items-center gap-2">
-              {[0, 1, 2].map((dotIdx) => (
-                <button
-                  key={dotIdx}
-                  type="button"
-                  onClick={() => setActiveIndex(dotIdx)}
-                  aria-label={`Go to slide ${dotIdx + 1}`}
-                  className={`rounded-full transition-all duration-300 ${
-                    dotIdx === (activeIndex % 3)
-                      ? 'w-2.5 h-2.5 bg-[#17A229]'
-                      : 'w-2.5 h-2.5 bg-gray-300 hover:bg-gray-400'
-                  }`}
-                />
-              ))}
-            </div>
+          {/* View All Work button linking to work page — styled like whatwedo Explore All Services */}
+          <a
+            href="/work"
+            onClick={(e) => handleNavigateClick(e, 'work')}
+            className="flex items-center justify-between shrink-0 pb-1.5 sm:pb-2.5 lg:pb-3 border-b-2 border-black dark:border-white hover:border-[#11C911] dark:hover:border-[#15B83E] text-[13px] sm:text-[16px] lg:text-[22px] text-black dark:text-white hover:text-[#11C911] dark:hover:text-[#15B83E] group gap-3.5 sm:gap-8 lg:gap-14 cursor-pointer transition-colors duration-300 whitespace-nowrap"
+          >
+            <span>View All Work</span>
 
-            <div className="flex items-center gap-3">
-              <button
-                type="button"
-                onClick={handlePrev}
-                aria-label="Previous case study"
-                className="w-11 h-11 lg:w-12 lg:h-12 rounded-full border border-[#17A229] flex items-center justify-center text-[#17A229] bg-white hover:bg-[#17A229] hover:text-white transition-all duration-300 active:scale-95 cursor-pointer"
-              >
-                <ArrowLeft className="w-5 h-5" />
-              </button>
-              <button
-                type="button"
-                onClick={handleNext}
-                aria-label="Next case study"
-                className="w-11 h-11 lg:w-12 lg:h-12 rounded-full border border-[#17A229] flex items-center justify-center text-[#17A229] bg-white hover:bg-[#17A229] hover:text-white transition-all duration-300 active:scale-95 cursor-pointer"
-              >
-                <ArrowRight className="w-5 h-5" />
-              </button>
-            </div>
-          </div> */}
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-3.5 h-3.5 sm:w-5 sm:h-5 lg:w-6 lg:h-6 shrink-0 transition-transform duration-300 group-hover:translate-x-1"
+              aria-hidden="true"
+            >
+              <path
+                d="M1 12H22M14 4L22 12L14 20"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="square"
+                strokeLinejoin="miter"
+              />
+            </svg>
+          </a>
 
         </div>
 
@@ -658,7 +659,7 @@ const CaseStudies = ({ onNavigate }) => {
 
 
 
-       h-[475px]
+       h-[clamp(240px,60vw,275px)]
 sm:h-[580px]
 md:h-[600px]
 lg:h-[530px]
@@ -730,8 +731,8 @@ lg:h-[530px]
                 duration-[700ms]
                 ease-[cubic-bezier(0.22,1,0.36,1)]
 
-                w-[85vw]
-                max-w-[420px]
+                w-[88vw]
+                max-w-[460px]
                 sm:w-[380px]
                 sm:max-w-none
                 md:w-[380px]
@@ -815,19 +816,19 @@ lg:h-[530px]
 
                   h-full
 
-                  rounded-[34px]
+                  rounded-[24px] sm:rounded-[34px]
 
                   overflow-hidden
 
 
 
-                  bg-white
+                  bg-white dark:bg-[#171A18]
 
 
 
                   border
 
-                  border-gray-100
+                  border-gray-100 dark:border-[#27302A]
 
 
 
@@ -856,6 +857,58 @@ ${isActive
                   height: '100%',
                 }}
               >
+                {/* =================================================
+                    MOBILE CARD VIEW (< 640px)
+                    Matching exact layout of reference image
+                ================================================= */}
+                <div className="flex sm:hidden flex-col justify-between h-full p-5 sm:p-6 select-none">
+                  {/* 1. Category Pill Badge */}
+                  <span className="self-start inline-flex items-center rounded-full border border-[#28B023] text-[#28B023] font-medium px-3 py-1 text-[11px] uppercase tracking-wide leading-none">
+                    {study.category}
+                  </span>
+
+                  {/* 2. Middle: Title + Brand Logo (right) + Description */}
+                  <div className="my-auto py-1">
+                    <div className="flex items-start justify-between gap-3 mb-2">
+                      <h3 className="leading-[1.15] flex-1">
+                        <span className="block text-[20px] font-bold tracking-tight text-gray-900 dark:text-white">
+                          {study.titleLine1}
+                        </span>
+                        <span className="block text-[20px] font-bold tracking-tight text-[#1DC16A]">
+                          {study.titleLine2}
+                        </span>
+                      </h3>
+
+                      <div className="w-9 h-9 shrink-0 flex items-center justify-center">
+                        <img
+                          src={study.mobileLogo || study.logo}
+                          alt={`${study.titleLine1} Logo`}
+                          className={`max-w-full max-h-full object-contain ${study.mobileLogoClass || ''}`}
+                        />
+                      </div>
+                    </div>
+
+                    <p className="text-[13px] leading-[1.4] text-gray-600 dark:text-[#A1A1AA] line-clamp-3">
+                      {study.description}
+                    </p>
+                  </div>
+
+                  {/* 3. Bottom Action Row: View Case Study + Round Arrow Button */}
+                  <div className="pt-1 flex items-center justify-between">
+                    <span className="text-[14px] font-semibold text-gray-900 dark:text-white">
+                      View Case Study
+                    </span>
+
+                    <div className="w-9 h-9 rounded-full border border-[#28B023] flex items-center justify-center text-[#28B023] shrink-0 transition-transform active:scale-95">
+                      <ArrowRight className="w-4 h-4 text-[#28B023]" strokeWidth={2.2} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* =================================================
+                    DESKTOP CARD VIEW (>= 640px)
+                ================================================= */}
+                <div className="hidden sm:flex flex-col h-full">
                 {/* =================================================
                     IMAGE
                 ================================================= */}
@@ -1047,7 +1100,8 @@ lg:h-[220px]
     absolute bottom-4 right-4
     w-[44px] h-[44px]
     lg:w-[62px] lg:h-[62px]
-    rounded-full bg-white
+    rounded-full bg-white dark:bg-[#1F2420]
+    border border-transparent dark:border-[#2C362F]
     flex items-center justify-center
     shadow-lg
     transition-all duration-300
@@ -1106,7 +1160,7 @@ lg:h-[220px]
                       <h3 className="leading-[1.12] flex-1">
                         <span
                           className={`block whitespace-nowrap text-[22px] sm:text-[24px] ${isActive ? 'lg:text-[24px] xl:text-[26px] 2xl:text-[42px]' : 'lg:text-[20px] xl:text-[22px] 2xl:text-[34px]'
-                            } font-semibold tracking-[-0.02em] text-gray-900 transition-all duration-300`}
+                            } font-semibold tracking-[-0.02em] text-gray-900 dark:text-white transition-all duration-300`}
                         >
                           {study.titleLine1}
                         </span>
@@ -1133,8 +1187,8 @@ lg:h-[220px]
                     {/* DESCRIPTION */}
                     <p
                       className={`text-[14px] sm:text-[15px] ${isActive
-                        ? 'lg:text-[13px] xl:text-[13.5px] 2xl:text-[20px] leading-[1.38] 2xl:leading-[1.45] text-gray-800'
-                        : 'lg:text-[12px] xl:text-[12.5px] 2xl:text-[16px] leading-[1.38] 2xl:leading-[1.55] text-gray-600'
+                        ? 'lg:text-[13px] xl:text-[13.5px] 2xl:text-[20px] leading-[1.38] 2xl:leading-[1.45] text-gray-800 dark:text-[#D1D5DB]'
+                        : 'lg:text-[12px] xl:text-[12.5px] 2xl:text-[16px] leading-[1.38] 2xl:leading-[1.55] text-gray-600 dark:text-[#A1A1AA]'
                         } transition-all duration-300`}
                     >
                       {study.description}
@@ -1150,8 +1204,8 @@ lg:h-[220px]
                     >
                       <span
                         className={`text-[15px] sm:text-[16px] ${isActive
-                          ? 'lg:text-[15px] xl:text-[16px] 2xl:text-[21px] font-semibold text-gray-900'
-                          : 'lg:text-[13px] xl:text-[14px] 2xl:text-[17px] font-medium text-gray-600'
+                          ? 'lg:text-[15px] xl:text-[16px] 2xl:text-[21px] font-semibold text-gray-900 dark:text-white'
+                          : 'lg:text-[13px] xl:text-[14px] 2xl:text-[17px] font-medium text-gray-600 dark:text-[#CCCCCC]'
                           } transition-all duration-300`}
                       >
                         View Case Study
@@ -1167,6 +1221,7 @@ lg:h-[220px]
                       </div>
                     </a>
                   </div>
+                </div>
                 </div>
 
               </div>
