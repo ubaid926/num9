@@ -5,6 +5,7 @@ import logo from "../assets/logoGreen.webp";
 import whiteLogo from "../assets/logoWhite.webp";
 import menuIcon from "../assets/navMenu.png";
 import ThemeToggle from "./ThemeToggle";
+import { useTheme } from "../context/ThemeContext";
 export default function AppNav({
   activeDropdown,
   setActiveDropdown,
@@ -12,6 +13,7 @@ export default function AppNav({
   currentPage,
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isDark } = useTheme();
 
   const menuButtonRef = useRef(null);
   const menuOverlayRef = useRef(null);
@@ -340,7 +342,9 @@ export default function AppNav({
       {/* OPENED FULL-SCREEN MENU */}
       <div
         ref={menuOverlayRef}
-        className="fixed inset-0 z-[100] h-[100dvh] max-h-[100dvh] bg-[#0e7428] text-white flex flex-col justify-between overflow-y-auto no-scrollbar overscroll-contain"
+        className={`fixed inset-0 z-[100] h-[100dvh] max-h-[100dvh] ${
+          isDark ? "bg-[#09160C]" : "bg-[#0e7428]"
+        } text-white flex flex-col justify-between overflow-y-auto no-scrollbar overscroll-contain transition-colors duration-300`}
         style={{
           clipPath: isMenuOpen
             ? `circle(${menuRadius}px at ${menuOrigin.x}px ${menuOrigin.y}px)`
@@ -363,8 +367,10 @@ export default function AppNav({
           WebkitBackfaceVisibility: "hidden",
           backfaceVisibility: "hidden",
           overscrollBehavior: "contain",
-          backgroundImage:
-            "linear-gradient(135deg, #0d6b24 0%, #0e7428 50%, #11842e 100%)",
+          backgroundColor: isDark ? "#09160C" : "#0e7428",
+          backgroundImage: isDark
+            ? "linear-gradient(135deg, #09160C 0%, #09160C 60%, #0D1E12 100%)"
+            : "linear-gradient(135deg, #0d6b24 0%, #0e7428 50%, #11842e 100%)",
         }}
       >
 
@@ -421,9 +427,16 @@ export default function AppNav({
 
         {/* Content Container (Left-aligned with logo and social links, zero center shift) */}
         <div className="relative z-10 w-full navbar-desktop-container flex-1 min-h-0 flex flex-col justify-center items-start py-1 sm:py-2 lg:py-2">
-          <nav className="flex flex-col items-start w-full">
+          <nav
+            className="flex flex-col items-start w-full"
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
             {menuItems.map((item, idx) => {
               const isHovered = hoveredIndex === idx;
+              const isItemActive =
+                (item.isPage === "home" && isHomePage) ||
+                (currentPage && (currentPage === item.isPage || (item.isPage === "our-work" && currentPage === "clients")));
+              const isDimmed = isHovered || (hoveredIndex === null && isItemActive);
 
               return (
                 <div key={item.label} className="w-full text-left">
@@ -437,8 +450,9 @@ export default function AppNav({
                       setIsMenuOpen(false);
                     }}
                     onMouseEnter={() => setHoveredIndex(idx)}
-                    className={`nav-menu-link inline-block text-left tracking-[0.01em] font-grift-black transition-all duration-200 ${isHovered ? "text-white/50" : "text-white"
-                      }`}
+                    className={`nav-menu-link inline-block text-left tracking-[0.01em] font-grift-black transition-all duration-200 ${
+                      isDimmed ? "text-white/50" : "text-white"
+                    }`}
                   >
                     {item.label}
                   </a>
@@ -459,7 +473,7 @@ export default function AppNav({
             </div>
 
             {/* Social links in place of the old bottom-right Contact button */}
-            <div className="flex flex-wrap items-center justify-start sm:justify-end gap-x-5 gap-y-4 sm:gap-x-7 lg:gap-x-10">
+            <div className="flex flex-wrap items-center justify-start sm:justify-end gap-x-6 sm:gap-x-8 lg:gap-x-10 gap-y-4">
               {[
                 { label: "FACEBOOK", href: "#" },
                 { label: "INSTAGRAM", href: "#" },
@@ -476,11 +490,11 @@ export default function AppNav({
                   className="
                     relative inline-block
                     text-white
-                    text-[16px] sm:text-[19px] lg:text-[24px] xl:text-[26px]
-                    font-bold tracking-[0.12em] uppercase
-                    pb-1.5 transition-opacity duration-200 hover:opacity-60
+                    text-[13px] sm:text-[14px] lg:text-[15px]
+                    font-bold tracking-[0.14em] uppercase
+                    pb-2.5 transition-opacity duration-200 hover:opacity-60
                     after:content-[''] after:absolute after:left-0
-                    after:bottom-0 after:h-[1px] after:w-[26px] after:bg-white/50
+                    after:bottom-0 after:h-[1.5px] after:w-5 after:bg-white/70
                   "
                 >
                   {social.label}

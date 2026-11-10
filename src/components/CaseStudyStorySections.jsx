@@ -5,7 +5,6 @@ import React, {
   useState,
 } from "react";
 import { caseStudiesData } from "../data/caseStudiesData";
-import { slugify } from "../data/serviceDetailData";
 
 /* =========================================
    CUSTOMER INTERACTIONS CARD
@@ -952,7 +951,7 @@ lg:pl-[85px] lg:pr-[55px]
             {services.heading || "Key Services Delivered."}
           </h2>
 
-          {/* SERVICE PILLS */}
+          {/* SERVICE PILLS — display only, non-clickable */}
           <div
             className="
               flex flex-wrap
@@ -961,10 +960,8 @@ lg:pl-[85px] lg:pr-[55px]
             "
           >
             {services.items?.map((service) => (
-              <button
+              <span
                 key={service}
-                type="button"
-                onClick={() => onNavigate?.(`service/${slugify(service)}`)}
                 className="
                   inline-flex items-center justify-center
                   rounded-full
@@ -977,15 +974,12 @@ lg:pl-[85px] lg:pr-[55px]
                   leading-[1.25]
                   text-white
                   whitespace-nowrap
-                  cursor-pointer
-                  hover:bg-white/10
-                  hover:border-white
-                  active:scale-95
-                  transition-all duration-200
+                  cursor-default
+                  select-none
                 "
               >
                 {service}
-              </button>
+              </span>
             ))}
           </div>
         </div>

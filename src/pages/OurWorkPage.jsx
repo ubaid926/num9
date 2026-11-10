@@ -31,7 +31,7 @@ import clientSnacksLogo from "../assets/Logos/ClientsGrid_Logos/Logos/Snack.com_
 import clientZee5Logo from "../assets/Logos/ClientsGrid_Logos/Logos/ZEE5-Logo (1)_trimmed.png";
 import clientSentralLogo from "../assets/Logos/ClientsGrid_Logos/Logos/Sentral Education Ribbon Logo_trimmed.png";
 import clientPwcLogo from "../assets/Logos/ClientsGrid_Logos/Logos/PwC Logo with Layered Warm Blocks_trimmed.png";
-import clientEmpireLogo from "../assets/Logos/hero_logos/empire.png";
+import clientEmpireLogo from "../assets/Logos/ClientsGrid_Logos/Logos/Empire Cinemas Crown Emblem_trimmed.png";
 import clientAlmazaLogo from "../assets/Logos/ClientsGrid_Logos/Logos/Almaza Gem Crest Logo_trimmed.png";
 import clientFairviewLogo from "../assets/Logos/ClientsGrid_Logos/Logos/Fairview Geometric Architecture Logo_trimmed.png";
 import clientLifegiftLogo from "../assets/Logos/ClientsGrid_Logos/Logos/LifeGive Oval Leaf Logo_trimmed.png";
@@ -41,6 +41,15 @@ import clientIcomLogo from "../assets/Logos/Updated_Logos/Clean restored ICOM ne
 import clientGenesisLogo from "../assets/Logos/Updated_Logos/GENESIS.Logo.032218_Site_PNG_RevB.webp";
 import clientStandardCharteredLogo from "../assets/Logos/Updated_Logos/Standard_Chartered__282021_29.webp";
 import clientSkinnyLogo from "../assets/caseStudies/skinny/Jordan_s_Skinny_Mixes_Logo_f5994884-b437-492f-aa4a-b5debcc1c695_1543x_copy_copy.png";
+import clientMezanLogo from "../assets/caseStudies/meezan/mezanLogo.png";
+import clientDeltaLogo from "../assets/caseStudies/Delta Light/deltaLogo_transparent.png";
+import clientDreoLogo from "../assets/caseStudies/DREO IHS 2025/dreoLogo_trimmed.png";
+import clientFinamillLogo from "../assets/caseStudies/Finamill IHS 2025/finamillLogo_trimmed.png";
+import clientKatjesLogo from "../assets/caseStudies/Katjes USA/katjesLogo.svg";
+import clientNakamichiLogo from "../assets/caseStudies/Nakamichi Car Audio/nakamichiLogo.svg";
+import clientScantechLogo from "../assets/caseStudies/SCANTECH The Battery Show North America 2024/scantechLogo.svg";
+import clientSsstcLogo from "../assets/caseStudies/SSSTC Circleexhibit/ssstcLogo.svg";
+import clientShanLogo from "../assets/Logos/hero_logos/White Shan Logo on Black Oval.png";
 import { INDUSTRY_OPTIONS, CLIENT_INDUSTRIES } from "../data/industries";
 
 /* ─── ImageCard ─────────────────────────────────────────── */
@@ -104,6 +113,69 @@ function ImageCard({
 /* ─── ClientsGrid ────────────────────────────────────────── */
 
 const clients = [
+  {
+    logo: clientDeltaLogo,
+    logoClass: "h-[38px] sm:h-[44px] xl:h-[48px] w-auto max-w-[240px]",
+    name: "Delta Light",
+    desc: "Austere architectural rental exhibit with light-blocking ceiling for high-end lighting fixtures.",
+    route: "case-study/delta-light",
+  },
+  {
+    logo: clientDreoLogo,
+    logoClass: "h-[46px] sm:h-[50px] xl:h-[56px] w-auto max-w-[220px]",
+    name: "DREO",
+    desc: "20x30 retail product display booth with live sampling, interactive appliances, and buyer lounge at IHS 2025.",
+    route: "case-study/dreo",
+  },
+  {
+    logo: clientFinamillLogo,
+    logoClass: "h-[48px] sm:h-[52px] xl:h-[58px] w-auto max-w-[230px]",
+    name: "Finamill",
+    desc: "Award-winning spice grinder demonstration booth with hands-on pod sampling and retail displays at IHS 2025.",
+    route: "case-study/finamill",
+  },
+  {
+    logo: clientKatjesLogo,
+    logoClass: "h-[48px] sm:h-[52px] xl:h-[58px] w-auto max-w-[230px]",
+    name: "Katjes USA",
+    desc: "Multi-year brand activation and experiential event staffing for 100% plant-based European confectionery across North America.",
+    route: "case-study/katjes",
+  },
+  {
+    logo: clientNakamichiLogo,
+    logoClass: "h-[46px] sm:h-[50px] xl:h-[56px] w-auto max-w-[310px] xl:max-w-[340px]",
+    name: "Nakamichi Car Audio",
+    desc: "Disciplined 20x20 product-first exhibition booth with perimeter interaction counters and anti-glare illumination at SEMA 2024.",
+    route: "case-study/nakamichi",
+  },
+  {
+    logo: clientScantechLogo,
+    logoClass: "h-[46px] sm:h-[50px] xl:h-[56px] w-auto max-w-[280px] xl:max-w-[310px]",
+    name: "SCANTECH",
+    desc: "Imposing 20x40 industrial 3D metrology booth with live battery scanning and illuminated meeting tunnel at The Battery Show 2024.",
+    route: "case-study/scantech",
+  },
+  {
+    logo: clientSsstcLogo,
+    logoClass: "h-[46px] sm:h-[50px] xl:h-[56px] w-auto max-w-[240px]",
+    name: "SSSTC",
+    desc: "High-density 10x10 enterprise storage inline booth with precision product vitrines and tension fabric backwall at Circleexhibit.",
+    route: "case-study/ssstc",
+  },
+  {
+    logo: clientShanLogo,
+    logoClass: "h-[44px] sm:h-[48px] xl:h-[52px] w-auto max-w-[200px]",
+    name: "Shan Foods",
+    desc: "Global food brand marketing campaign and experiential product launch blending cultural heritage with modern culinary storytelling.",
+    route: "case-study/shan",
+  },
+  {
+    logo: clientMezanLogo,
+    logoClass: "h-[36px] sm:h-[40px] xl:h-[44px] w-auto max-w-[210px]",
+    name: "Mezan Global",
+    desc: "Complete trade show exhibition design, logistics, product sampling, and on-site brand experience at the Summer Fancy Food Show.",
+    route: "case-study/mezan",
+  },
   {
     logo: clientSkinnyLogo,
     logoClass: "h-[40px] sm:h-[44px] xl:h-[48px] w-auto max-w-[210px]",
@@ -225,7 +297,7 @@ const clients = [
   },
   {
     logo: clientEmpireLogo,
-    logoClass: "h-[48px] sm:h-[52px] xl:h-[56px] w-auto max-w-[210px]",
+    logoClass: "h-[50px] sm:h-[56px] xl:h-[62px] w-auto max-w-[220px]",
     name: "Empire Cinemas",
     desc: "Next-generation cinema ticketing systems and interactive entertainment booking experiences.",
     route: "case-study/empire",
@@ -359,7 +431,7 @@ min-[1500px]:px-[42px]
                     block
                     object-contain
                     object-left
-                    ${client.name === "Lexus" ? "dark:invert" : ""}
+                    ${client.name === "Lexus" || client.name === "Delta Light" || client.name === "DREO" ? "dark:invert" : ""}
                     ${client.logoClass}
                   `}
                 />

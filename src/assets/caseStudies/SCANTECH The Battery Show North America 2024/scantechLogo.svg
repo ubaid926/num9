@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 415 80" width="100%" height="100%">
+  <g fill="none" fill-rule="evenodd">
+    <!-- 3D Scanner Geometric Icon -->
+    <g transform="translate(2, 4)">
+      <polygon points="36,2 70,20 70,58 36,76 2,58 2,20" stroke="#0072CE" stroke-width="4.5" fill="#F0F8FF"/>
+      <polygon points="36,15 59,28 59,52 36,65 13,52 13,28" fill="#0072CE"/>
+      <path d="M36,15 L36,65 M13,28 L59,52 M59,28 L13,52" stroke="#FFFFFF" stroke-width="1.8"/>
+      <circle cx="36" cy="40" r="6" fill="#00E5FF"/>
+    </g>
+    <!-- Scantech Wordmark -->
+    <text x="88" y="46" font-family="'Montserrat', 'Arial', sans-serif" font-size="40" font-weight="900" fill="#1A202C" letter-spacing="1.8">SCANTECH</text>
+    <text x="90" y="68" font-family="'Montserrat', 'Arial', sans-serif" font-size="12" font-weight="700" fill="#0072CE" letter-spacing="4.5">3D DIGITIZATION</text>
+  </g>
+</svg>

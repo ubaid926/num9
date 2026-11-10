@@ -11,13 +11,13 @@ export default function ThemeToggle({ variant = "navbar", className = "" }) {
         type="button"
         onClick={toggleTheme}
         aria-label={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
-        className={`inline-flex items-center gap-2.5 px-4 sm:px-5 py-2.5 rounded-full bg-white/15 hover:bg-white/25 active:scale-95 text-white backdrop-blur-md border border-white/25 transition-all duration-200 cursor-pointer text-[13px] sm:text-[14px] font-semibold tracking-wide ${className}`}
+        className={`inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-white/15 active:scale-95 text-white border border-white/25 transition-all duration-200 cursor-pointer text-[12px] sm:text-[13px] font-medium tracking-wide ${className}`}
       >
-        <span className="relative w-4 h-4 flex items-center justify-center">
+        <span className="relative w-3.5 h-3.5 flex items-center justify-center shrink-0">
           {isDark ? (
-            <Sun className="w-4 h-4 text-amber-300 transition-transform duration-300 rotate-0" />
+            <Moon className="w-3.5 h-3.5 text-white transition-transform duration-300" />
           ) : (
-            <Moon className="w-4 h-4 text-white transition-transform duration-300 rotate-0" />
+            <Sun className="w-3.5 h-3.5 text-white transition-transform duration-300" />
           )}
         </span>
         <span>{isDark ? "Light Mode" : "Dark Mode"}</span>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 80" width="100%" height="100%">
+  <g fill="none" fill-rule="evenodd">
+    <!-- High-tech Chip / Storage Icon -->
+    <g transform="translate(2, 6)">
+      <rect x="0" y="0" width="68" height="68" rx="8" fill="#0B2545" stroke="#00A86B" stroke-width="3"/>
+      <path d="M16,18 L34,18 L44,30 L52,30" stroke="#00E5FF" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M16,50 L34,50 L44,38 L52,38" stroke="#00A86B" stroke-width="3.5" stroke-linecap="round"/>
+      <circle cx="16" cy="18" r="4" fill="#00E5FF"/>
+      <circle cx="52" cy="30" r="3" fill="#00E5FF"/>
+      <circle cx="16" cy="50" r="4" fill="#00A86B"/>
+      <circle cx="52" cy="38" r="3" fill="#00A86B"/>
+    </g>
+    <!-- SSSTC Wordmark -->
+    <text x="86" y="48" font-family="'Montserrat', 'Arial', sans-serif" font-size="44" font-weight="900" fill="#0B2545" letter-spacing="3">SSSTC</text>
+    <text x="88" y="69" font-family="'Montserrat', 'Arial', sans-serif" font-size="10.5" font-weight="700" fill="#556980" letter-spacing="1.5">SOLID STATE STORAGE TECH</text>
+  </g>
+</svg>

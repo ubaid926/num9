@@ -22,6 +22,14 @@ import img17 from "../assets/aboutus3rdSect.webp";
 import img18 from "../assets/homeHeroSectionImages/LifeGive Mediterranean Supplement Showcase 1.webp";
 import empireCinemasImg from "../assets/homeHeroSectionImages/Empire Cinemas Grand Lobby 1 (1).webp";
 import skinnyServiceImg from "../assets/caseStudies/skinny/Updated_Image (2).png";
+import mezanServiceImg from "../assets/caseStudies/meezan/mezanHeroBg.jpg";
+import deltaServiceImg from "../assets/caseStudies/Delta Light/delta3.jpg";
+import dreoServiceImg from "../assets/caseStudies/DREO IHS 2025/dreo3.webp";
+import finamillServiceImg from "../assets/caseStudies/Finamill IHS 2025/finamill3.webp";
+import katjesServiceImg from "../assets/caseStudies/Katjes USA/katjes-3.avif";
+import nakamichiServiceImg from "../assets/caseStudies/Nakamichi Car Audio/nakamichi3.webp";
+import scantechServiceImg from "../assets/caseStudies/SCANTECH The Battery Show North America 2024/scantech3.webp";
+import ssstcServiceImg from "../assets/caseStudies/SSSTC Circleexhibit/ssstc3.webp";
 
 import ahmedFoodsVideoImg from "../assets/caseStudies/elipse/digitalVideo/ahmedFoods.webp";
 import bikeVideoImg from "../assets/caseStudies/elipse/digitalVideo/bike.webp";
@@ -131,6 +139,62 @@ export const serviceDetailData = {
     locations: ["New York", "Texas", "California"],
     works: [
       {
+        title: "Delta Light",
+        image: deltaServiceImg,
+        category: "Trade Show Exhibit & Architectural Lighting",
+        description: "Austere architectural rental exhibit with light-blocking ceiling for high-end lighting fixtures.",
+        link: "/case-study/delta-light",
+      },
+      {
+        title: "DREO",
+        image: dreoServiceImg,
+        category: "Retail Product Display & Sampling Booth",
+        description: "20x30 retail product display booth with live sampling, interactive appliances, and buyer lounge at IHS 2025.",
+        link: "/case-study/dreo",
+      },
+      {
+        title: "Finamill",
+        image: finamillServiceImg,
+        category: "Experiential Retail & Product Sampling Exhibit",
+        description: "Award-winning spice grinder demonstration booth with hands-on pod sampling and retail displays at IHS 2025.",
+        link: "/case-study/finamill",
+      },
+      {
+        title: "Katjes USA",
+        image: katjesServiceImg,
+        category: "Trade Show Activation & Experiential Staffing",
+        description: "Multi-year brand activation and experiential event staffing for 100% plant-based European confectionery across North America.",
+        link: "/case-study/katjes",
+      },
+      {
+        title: "Nakamichi Car Audio",
+        image: nakamichiServiceImg,
+        category: "Product-First Automotive Electronics Exhibit",
+        description: "Disciplined 20x20 product-first exhibition booth with perimeter interaction counters and anti-glare illumination at SEMA 2024.",
+        link: "/case-study/nakamichi",
+      },
+      {
+        title: "SCANTECH",
+        image: scantechServiceImg,
+        category: "High-Tech Industrial 3D Metrology Exhibit",
+        description: "Imposing 20x40 industrial 3D metrology booth with live battery scanning and illuminated meeting tunnel at The Battery Show 2024.",
+        link: "/case-study/scantech",
+      },
+      {
+        title: "SSSTC",
+        image: ssstcServiceImg,
+        category: "Small Inline Booth & High-Density Display",
+        description: "High-density 10x10 enterprise storage inline booth with precision product vitrines and tension fabric backwall at Circleexhibit.",
+        link: "/case-study/ssstc",
+      },
+      {
+        title: "Mezan Global",
+        image: mezanServiceImg,
+        category: "Trade Show & Sampling Activation",
+        description: "Complete exhibition design, logistics, product sampling, and brand experience at the Summer Fancy Food Show.",
+        link: "/case-study/mezan",
+      },
+      {
         title: "Skinny Mixes",
         image: skinnyServiceImg,
         category: "Experiential Brand Activation",
@@ -204,6 +268,62 @@ export const serviceDetailData = {
     industries: ["Consumer Goods", "Retail", "Entertainment", "Automotive", "Technology"],
     locations: ["New York", "Texas", "California"],
     works: [
+      {
+        title: "Delta Light",
+        image: deltaServiceImg,
+        category: "Trade Show Exhibit & Architectural Lighting",
+        description: "Austere architectural rental exhibit with light-blocking ceiling for high-end lighting fixtures.",
+        link: "/case-study/delta-light",
+      },
+      {
+        title: "DREO",
+        image: dreoServiceImg,
+        category: "Retail Product Display & Sampling Booth",
+        description: "20x30 retail product display booth with live sampling, interactive appliances, and buyer lounge at IHS 2025.",
+        link: "/case-study/dreo",
+      },
+      {
+        title: "Finamill",
+        image: finamillServiceImg,
+        category: "Experiential Retail & Product Sampling Exhibit",
+        description: "Award-winning spice grinder demonstration booth with hands-on pod sampling and retail displays at IHS 2025.",
+        link: "/case-study/finamill",
+      },
+      {
+        title: "Katjes USA",
+        image: katjesServiceImg,
+        category: "Trade Show Activation & Experiential Staffing",
+        description: "Multi-year brand activation and experiential event staffing for 100% plant-based European confectionery across North America.",
+        link: "/case-study/katjes",
+      },
+      {
+        title: "Nakamichi Car Audio",
+        image: nakamichiServiceImg,
+        category: "Product-First Automotive Electronics Exhibit",
+        description: "Disciplined 20x20 product-first exhibition booth with perimeter interaction counters and anti-glare illumination at SEMA 2024.",
+        link: "/case-study/nakamichi",
+      },
+      {
+        title: "SCANTECH",
+        image: scantechServiceImg,
+        category: "High-Tech Industrial 3D Metrology Exhibit",
+        description: "Imposing 20x40 industrial 3D metrology booth with live battery scanning and illuminated meeting tunnel at The Battery Show 2024.",
+        link: "/case-study/scantech",
+      },
+      {
+        title: "SSSTC",
+        image: ssstcServiceImg,
+        category: "Small Inline Booth & High-Density Display",
+        description: "High-density 10x10 enterprise storage inline booth with precision product vitrines and tension fabric backwall at Circleexhibit.",
+        link: "/case-study/ssstc",
+      },
+      {
+        title: "Mezan Global",
+        image: mezanServiceImg,
+        category: "Trade Show & Sampling Activation",
+        description: "Complete exhibition design, logistics, product sampling, and brand experience at the Summer Fancy Food Show.",
+        link: "/case-study/mezan",
+      },
       {
         title: "Skinny Mixes",
         image: skinnyServiceImg,

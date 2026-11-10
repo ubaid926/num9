@@ -82,6 +82,110 @@ import skinnyImg5 from "../assets/caseStudies/skinny/skinny-mixes-5.avif";
 import skinnyImg6 from "../assets/caseStudies/skinny/skinny-mixes-6.avif";
 import skinnyImg7 from "../assets/caseStudies/skinny/Pink Coffee Activation Cutout.webp";
 
+import mezanLogo from "../assets/caseStudies/meezan/mezanLogo.png";
+import mezanHeroBg from "../assets/caseStudies/meezan/mezanHeroBg.jpg";
+import mezanShowcase from "../assets/caseStudies/meezan/mezanShowcase.jpg";
+import mezanEmptyFloor from "../assets/caseStudies/meezan/mezanEmptyFloor.jpg";
+import mezanSampling from "../assets/caseStudies/meezan/mezanSampling.jpg";
+import mezanBeverages from "../assets/caseStudies/meezan/mezanBeverages.jpg";
+import mezanVisitors from "../assets/caseStudies/meezan/mezanVisitors.jpg";
+import mezanBoothWide from "../assets/caseStudies/meezan/mezanBoothWide.jpg";
+import mezanStaff from "../assets/caseStudies/meezan/mezanStaff.jpg";
+import mezanBoothFront from "../assets/caseStudies/meezan/mezanBoothFront.jpg";
+import mezanCrowd from "../assets/caseStudies/meezan/mezanCrowd.jpg";
+
+// Delta Light
+import deltaLogo from "../assets/caseStudies/Delta Light/deltaLogo_transparent.png";
+import deltaImg1 from "../assets/caseStudies/Delta Light/delta1.jpg";
+import deltaImg2 from "../assets/caseStudies/Delta Light/delta2.jpg";
+import deltaImg3 from "../assets/caseStudies/Delta Light/delta3.jpg";
+import deltaImg4 from "../assets/caseStudies/Delta Light/delta4.jpg";
+import deltaImg5 from "../assets/caseStudies/Delta Light/delta5.jpg";
+
+// DREO IHS 2025
+import dreoLogo from "../assets/caseStudies/DREO IHS 2025/dreoLogo_trimmed.png";
+import dreoImg1 from "../assets/caseStudies/DREO IHS 2025/dreo1.avif";
+import dreoImg2 from "../assets/caseStudies/DREO IHS 2025/dreo2.avif";
+import dreoImg3 from "../assets/caseStudies/DREO IHS 2025/dreo3.webp";
+import dreoImg4 from "../assets/caseStudies/DREO IHS 2025/dreo4.avif";
+
+// Finamill IHS 2025
+import finamillLogo from "../assets/caseStudies/Finamill IHS 2025/finamillLogo_trimmed.png";
+import finamillImg1 from "../assets/caseStudies/Finamill IHS 2025/finamill1.webp";
+import finamillImg2 from "../assets/caseStudies/Finamill IHS 2025/finamill2.avif";
+import finamillImg3 from "../assets/caseStudies/Finamill IHS 2025/finamill3.webp";
+import finamillImg4 from "../assets/caseStudies/Finamill IHS 2025/finamill4.avif";
+import finamillImg5 from "../assets/caseStudies/Finamill IHS 2025/finamill5.webp";
+
+// Katjes USA
+import katjesLogo from "../assets/caseStudies/Katjes USA/katjesLogo.svg";
+import katjesImg1 from "../assets/caseStudies/Katjes USA/katjes-1.avif";
+import katjesImg2 from "../assets/caseStudies/Katjes USA/katjes-2.avif";
+import katjesImg3 from "../assets/caseStudies/Katjes USA/katjes-3.avif";
+import katjesImg4 from "../assets/caseStudies/Katjes USA/katjes-4.avif";
+import katjesImg5 from "../assets/caseStudies/Katjes USA/katjes-5.avif";
+import katjesImg6 from "../assets/caseStudies/Katjes USA/katjes-6.avif";
+import katjesImg7 from "../assets/caseStudies/Katjes USA/katjes-7.avif";
+import katjesImg8 from "../assets/caseStudies/Katjes USA/katjes-8.avif";
+
+// Nakamichi Car Audio
+import nakamichiLogo from "../assets/caseStudies/Nakamichi Car Audio/nakamichiLogo.svg";
+import nakamichiImg1 from "../assets/caseStudies/Nakamichi Car Audio/nakamichi1.avif";
+import nakamichiImg2 from "../assets/caseStudies/Nakamichi Car Audio/nakamichi2.webp";
+import nakamichiImg3 from "../assets/caseStudies/Nakamichi Car Audio/nakamichi3.webp";
+import nakamichiImg4 from "../assets/caseStudies/Nakamichi Car Audio/nakamichi4.avif";
+import nakamichiImg5 from "../assets/caseStudies/Nakamichi Car Audio/nakamichi5.avif";
+import nakamichiImg6 from "../assets/caseStudies/Nakamichi Car Audio/nakamichi6.avif";
+
+// SCANTECH The Battery Show North America 2024
+import scantechLogo from "../assets/caseStudies/SCANTECH The Battery Show North America 2024/scantechLogo.svg";
+import scantechImg1 from "../assets/caseStudies/SCANTECH The Battery Show North America 2024/scantech1.avif";
+import scantechImg2 from "../assets/caseStudies/SCANTECH The Battery Show North America 2024/scantech2.webp";
+import scantechImg3 from "../assets/caseStudies/SCANTECH The Battery Show North America 2024/scantech3.webp";
+import scantechImg4 from "../assets/caseStudies/SCANTECH The Battery Show North America 2024/scantech4.webp";
+import scantechImg5 from "../assets/caseStudies/SCANTECH The Battery Show North America 2024/scantech5.avif";
+
+// SSSTC Circleexhibit
+import ssstcLogo from "../assets/caseStudies/SSSTC Circleexhibit/ssstcLogo.svg";
+import ssstcImg1 from "../assets/caseStudies/SSSTC Circleexhibit/ssstc1.webp";
+import ssstcImg2 from "../assets/caseStudies/SSSTC Circleexhibit/ssstc2.avif";
+import ssstcImg3 from "../assets/caseStudies/SSSTC Circleexhibit/ssstc3.webp";
+
+
+// Architectural Triptych Quote Graphics for all Case Studies
+import delta_light_triptych from "../assets/caseStudiesTriptych/delta-light_triptych.webp";
+import dreo_triptych from "../assets/caseStudiesTriptych/dreo_triptych.webp";
+import finamill_triptych from "../assets/caseStudiesTriptych/finamill_triptych.webp";
+import katjes_triptych from "../assets/caseStudiesTriptych/katjes_triptych.webp";
+import nakamichi_triptych from "../assets/caseStudiesTriptych/nakamichi_triptych.webp";
+import scantech_triptych from "../assets/caseStudiesTriptych/scantech_triptych.webp";
+import ssstc_triptych from "../assets/caseStudiesTriptych/ssstc_triptych.webp";
+import mezan_triptych from "../assets/caseStudiesTriptych/mezan_triptych.webp";
+import skinny_triptych from "../assets/caseStudiesTriptych/skinny_triptych.webp";
+import microsoft_triptych from "../assets/caseStudiesTriptych/microsoft_triptych.webp";
+import pepsico_triptych from "../assets/caseStudiesTriptych/pepsico_triptych.webp";
+import nutrien_triptych from "../assets/caseStudiesTriptych/nutrien_triptych.webp";
+import citibank_triptych from "../assets/caseStudiesTriptych/citibank_triptych.webp";
+import lexus_triptych from "../assets/caseStudiesTriptych/lexus_triptych.webp";
+import argo_triptych from "../assets/caseStudiesTriptych/argo_triptych.webp";
+import medimpact_triptych from "../assets/caseStudiesTriptych/medimpact_triptych.webp";
+import jcpenney_triptych from "../assets/caseStudiesTriptych/jcpenney_triptych.webp";
+import emirates_triptych from "../assets/caseStudiesTriptych/emirates_triptych.webp";
+import safeway_triptych from "../assets/caseStudiesTriptych/safeway_triptych.webp";
+import ymca_triptych from "../assets/caseStudiesTriptych/ymca_triptych.webp";
+import magellan_triptych from "../assets/caseStudiesTriptych/magellan_triptych.webp";
+import snacks_triptych from "../assets/caseStudiesTriptych/snacks_triptych.webp";
+import zee5_triptych from "../assets/caseStudiesTriptych/zee5_triptych.webp";
+import sentral_triptych from "../assets/caseStudiesTriptych/sentral_triptych.webp";
+import pwc_triptych from "../assets/caseStudiesTriptych/pwc_triptych.webp";
+import empire_triptych from "../assets/caseStudiesTriptych/empire_triptych.webp";
+import almaza_triptych from "../assets/caseStudiesTriptych/almaza_triptych.webp";
+import fairview_triptych from "../assets/caseStudiesTriptych/fairview_triptych.webp";
+import lifegive_triptych from "../assets/caseStudiesTriptych/lifegive_triptych.webp";
+import icom_triptych from "../assets/caseStudiesTriptych/icom_triptych.webp";
+import genesis_triptych from "../assets/caseStudiesTriptych/genesis_triptych.webp";
+import standard_chartered_triptych from "../assets/caseStudiesTriptych/standard-chartered_triptych.webp";
+import shaan_triptych from "../assets/caseStudiesTriptych/shaan_triptych.webp";
 
 export const caseStudiesData = {
   lexus: {
@@ -136,7 +240,7 @@ export const caseStudiesData = {
         "Search",
       ],
       quoteSection: {
-        graphicImage: lexusCar,
+        graphicImage: lexus_triptych,
         graphicAlt: "Lexus vehicle experience",
         quote:
           '"Luxury is defined by every interaction a customer has with a brand. Our objective was to create experiences that reflected Lexus\'s commitment to craftsmanship, innovation, and exceptional service. By combining strategic activations with customer-centric engagement, we helped strengthen brand loyalty and elevate the ownership journey."',
@@ -263,7 +367,7 @@ export const caseStudiesData = {
         "Global Deployment",
       ],
       quoteSection: {
-        graphicImage: lexusCar,
+        graphicImage: microsoft_triptych,
         graphicAlt: "Microsoft software workspace",
         quote:
           '"Scalability in enterprise platforms requires an uncompromising focus on developer ergonomics and consistent user experience. Number9 brought architectural precision and modern design standards that helped our teams build faster and deliver world-class digital services to millions of enterprise users."',
@@ -390,7 +494,7 @@ export const caseStudiesData = {
         "Point-of-Sale Integration",
       ],
       quoteSection: {
-        graphicImage: lexusCar,
+        graphicImage: pepsico_triptych,
         graphicAlt: "PepsiCo brand activation",
         quote:
           '"In modern consumer packaged goods, capturing consumer attention requires experiential moments that resonate both in-store and online. Number9 delivered compelling brand activations and campaign systems that elevated consumer excitement and generated strong commercial returns."',
@@ -517,7 +621,7 @@ export const caseStudiesData = {
         "Mobile Optimization",
       ],
       quoteSection: {
-        graphicImage: lexusCar,
+        graphicImage: emirates_triptych,
         graphicAlt: "Emirates digital aviation experience",
         quote:
           '"Excellence in hospitality begins the moment a traveler envisions their destination. Number9 brought creative sophistication and deep technical expertise, crafting seamless digital channels that resonate with the luxury and care Emirates represents around the globe."',
@@ -650,7 +754,7 @@ export const caseStudiesData = {
       ],
 
       quoteSection: {
-        graphicImage: lexusCar,
+        graphicImage: citibank_triptych,
         graphicAlt: "Citibank financial analytics workspace",
         quote:
           '"Clarity in financial data is defined by every interaction an analyst has with a system. Our objective was to create dashboards that reflected Citi\'s commitment to precision, innovation, and enterprise security. By combining strategic data visualization with user-centric architecture, we helped streamline internal workflows and elevate the executive decision-making journey."',
@@ -789,7 +893,7 @@ export const caseStudiesData = {
         "Enterprise Dashboard",
       ],
       quoteSection: {
-        graphicImage: lexusCar,
+        graphicImage: nutrien_triptych,
         graphicAlt: "Nutrien agricultural operations meeting",
         quote:
           '"Modern agriculture relies on real-time operational data. Number9 engineered enterprise dashboards that transformed fragmented data into actionable insights, helping our teams optimize distribution and support growers effectively across North America."',
@@ -916,7 +1020,7 @@ export const caseStudiesData = {
         "Security Architecture",
       ],
       quoteSection: {
-        graphicImage: lexusCar,
+        graphicImage: argo_triptych,
         graphicAlt: "Argo software engineering workspace",
         quote:
           '"When scaling a core technology product, execution speed and architectural stability must go hand in hand. Number9 acted as a true extension of our engineering team, delivering exceptional software quality from initial prototype to production launch."',
@@ -1043,7 +1147,7 @@ export const caseStudiesData = {
         "Accessibility Compliance",
       ],
       quoteSection: {
-        graphicImage: lexusCar,
+        graphicImage: medimpact_triptych,
         graphicAlt: "MedImpact healthcare analytics",
         quote:
           '"In healthcare technology, clarity and trust are vital. Number9 brought genuine empathy and technical expertise, creating digital interfaces that simplify complex pharmacy benefits and empower patients to make informed health decisions."',
@@ -1170,7 +1274,7 @@ export const caseStudiesData = {
         "Store Pickup Flow",
       ],
       quoteSection: {
-        graphicImage: lexusCar,
+        graphicImage: jcpenney_triptych,
         graphicAlt: "JCPenney retail experience",
         quote:
           '"Retail requires continuous innovation to meet the demands of modern shoppers. Number9 helped us modernize key shopping experiences, making it easier for customers to discover products, earn rewards, and shop seamlessly across our stores and digital channels."',
@@ -1303,7 +1407,7 @@ export const caseStudiesData = {
       ],
 
       quoteSection: {
-        graphicImage: lexusCar,
+        graphicImage: safeway_triptych,
         graphicAlt: "Safeway digital grocery experience",
         quote:
           '"Simplifying digital grocery shopping is defined by every interaction a customer has with a platform. Our objective was to create experiences that reflected Safeway\'s commitment to convenience, accessibility, and exceptional service. By combining strategic UX optimizations with user-centric design, we helped strengthen brand loyalty and elevate the everyday shopping journey."',
@@ -1449,7 +1553,7 @@ export const caseStudiesData = {
       ],
 
       quoteSection: {
-        graphicImage: lexusCar,
+        graphicImage: ymca_triptych,
         graphicAlt: "YMCA digital membership experience",
         quote:
           '"Community access is defined by every interaction a member has with facility gates. Our objective was to create mobile experiences that reflected the YMCA\'s commitment to inclusion, health, and operational ease. By combining strategic app design with instant verification workflows, we helped strengthen member satisfaction and elevate the daily check-in journey."',
@@ -1588,7 +1692,7 @@ export const caseStudiesData = {
         "Outcome Analytics",
       ],
       quoteSection: {
-        graphicImage: lexusCar,
+        graphicImage: magellan_triptych,
         graphicAlt: "Magellan Health clinical optimization",
         quote:
           '"Delivering compassionate, effective behavioral healthcare at scale demands both technological sophistication and deep clinical empathy. Number9 delivered an intuitive, data-driven platform that empowers our providers and ensures patients receive timely, tailored support."',
@@ -1721,7 +1825,7 @@ export const caseStudiesData = {
       ],
 
       quoteSection: {
-        graphicImage: lexusCar,
+        graphicImage: shaan_triptych,
         graphicAlt: "Shaan Foods retail brand activation",
         quote:
           '"Culinary heritage is defined by every interaction a shopper has with a brand. Our objective was to create in-store experiences that reflected Shaan\'s commitment to authenticity, quality flavor, and cultural connection. By combining strategic retail activations with consumer-centric engagement, we helped strengthen brand loyalty and elevate the culinary discovery journey."',
@@ -1867,7 +1971,7 @@ export const caseStudiesData = {
       ],
 
       quoteSection: {
-        graphicImage: lexusCar,
+        graphicImage: zee5_triptych,
         graphicAlt: "ZEE5 retail digital signage experience",
         quote:
           '"Entertainment reach is defined by every interaction a viewer has with a screen. Our objective was to create retail media experiences that reflected ZEE5\'s commitment to diverse storytelling, cultural connection, and accessibility. By combining strategic digital displays with community-focused engagement, we helped strengthen brand loyalty and elevate the digital subscription journey."',
@@ -2012,7 +2116,7 @@ export const caseStudiesData = {
       ],
 
       quoteSection: {
-        graphicImage: lexusCar,
+        graphicImage: snacks_triptych,
         graphicAlt: "Frito-Lay direct-to-consumer e-commerce experience",
         quote:
           '"Snack customization is defined by every interaction a fan has with a digital store. Our objective was to create e-commerce experiences that reflected Frito-Lay\'s commitment to fun, flavor variety, and direct convenience. By combining strategic D2C design with engaging social campaigns, we helped strengthen brand loyalty and elevate the home delivery journey."',
@@ -2157,7 +2261,7 @@ export const caseStudiesData = {
       ],
 
       quoteSection: {
-        graphicImage: lexusCar,
+        graphicImage: sentral_triptych,
         graphicAlt: "Sentral Education parent communication platform",
         quote:
           `"School communication is defined by every interaction a parent has with a classroom update. Our objective was to create educational platforms that reflected Sentral's commitment to transparency, collaboration, and student success. By combining strategic app design with real-time messaging, we helped strengthen school communities and elevate the parent engagement journey."`,
@@ -2300,7 +2404,7 @@ export const caseStudiesData = {
       ],
 
       quoteSection: {
-        graphicImage: lexusCar,
+        graphicImage: pwc_triptych,
         graphicAlt: "PwC enterprise tax and engagement dashboard",
         quote:
           `"Professional efficiency is defined by every interaction an advisor has with an internal workflow. Our objective was to create enterprise dashboards that reflected PwC's commitment to precision, data security, and collaborative excellence. By combining strategic UI design with automated task tracking, we helped strengthen operational visibility and elevate the corporate advisory journey."`,
@@ -2446,7 +2550,7 @@ export const caseStudiesData = {
       ],
 
       quoteSection: {
-        graphicImage: lexusCar,
+        graphicImage: empire_triptych,
         graphicAlt: "Empire Cinemas immersive digital booking experience",
         quote:
           `"Cinematic excitement is defined by every interaction a moviegoer has with a booking platform. Our objective was to create digital experiences that reflected Empire's commitment to blockbuster entertainment, immersive design, and booking ease. By combining strategic e-commerce design with bold multimedia touchpoints, we helped strengthen brand engagement and elevate the ticket reservation journey."`,
@@ -2592,7 +2696,7 @@ export const caseStudiesData = {
       ],
 
       quoteSection: {
-        graphicImage: lexusCar,
+        graphicImage: almaza_triptych,
         graphicAlt: "Almaza heritage brand digital experience",
         quote:
           `"Brand legacy is defined by every interaction a consumer has with a digital story. Our objective was to create web experiences that reflected Almaza's commitment to craftsmanship, tradition, and modern social connection. By combining strategic digital storytelling with interactive community features, we helped strengthen brand loyalty and elevate the heritage discovery journey."`,
@@ -2738,7 +2842,7 @@ export const caseStudiesData = {
       ],
 
       quoteSection: {
-        graphicImage: lexusCar,
+        graphicImage: fairview_triptych,
         graphicAlt: "Fairview architectural materials digital experience",
         quote:
           `"Architectural excellence is defined by every interaction a designer has with material specifications. Our objective was to create digital experiences that reflected Fairview's commitment to innovation, structural quality, and professional convenience. By combining strategic catalog architecture with seamless sample requests, we helped strengthen builder connections and elevate the material selection journey."`,
@@ -2883,7 +2987,7 @@ export const caseStudiesData = {
       ],
 
       quoteSection: {
-        graphicImage: lexusCar,
+        graphicImage: lifegive_triptych,
         graphicAlt: "LifeGive plant-derived wellness e-commerce experience",
         quote:
           `"Natural wellness is defined by every interaction a customer has with a health supplement. Our objective was to create e-commerce experiences that reflected LifeGive's commitment to purity, plant-derived nutrition, and direct consumer care. By combining strategic product categorization with seamless checkout flows, we helped strengthen brand loyalty and elevate the healthy living journey."`,
@@ -2994,7 +3098,7 @@ export const caseStudiesData = {
       logoAlt: "ICOM logo",
       stats: [{ targetValue: 10, suffix: "+", label: "Team size", subtext: null }, { targetValue: 5, suffix: "", label: "Engagement length", subtext: "months" }],
       projectTags: ["Global Network", "Museum Platform", "Community Hub", "Digital Strategy", "Content Architecture"],
-      quoteSection: { graphicImage: businessStrategy, graphicAlt: "ICOM digital network", quote: '"Our digital presence needed to reflect the global reach and cultural depth of ICOM. Number9 delivered a platform that truly connects our community."', attributionTitle: "Digital Director", attributionCompany: "ICOM" },
+      quoteSection: { graphicImage: icom_triptych, graphicAlt: "ICOM digital network", quote: '"Our digital presence needed to reflect the global reach and cultural depth of ICOM. Number9 delivered a platform that truly connects our community."', attributionTitle: "Digital Director", attributionCompany: "ICOM" },
     },
     storySection: {
       about: { title: "About", clientName: "ICOM", description: "The International Council of Museums is the leading global organisation for museums and museum professionals, representing over 40,000 members across 141 countries." },
@@ -3027,7 +3131,7 @@ export const caseStudiesData = {
       logoAlt: "GENESIS Exhibits logo",
       stats: [{ targetValue: 8, suffix: "+", label: "Team size", subtext: null }, { targetValue: 4, suffix: "", label: "Engagement length", subtext: "months" }],
       projectTags: ["Portfolio Platform", "3D Showcase", "Client Acquisition", "Digital Storytelling", "Interactive Experience"],
-      quoteSection: { graphicImage: aboutus3rdSect, graphicAlt: "GENESIS Exhibits brand environment", quote: '"Number9 helped us tell our story in a way that resonates with enterprise clients. Our new digital presence has directly contributed to significant new business wins."', attributionTitle: "Chief Creative Officer", attributionCompany: "GENESIS Exhibits" },
+      quoteSection: { graphicImage: genesis_triptych, graphicAlt: "GENESIS Exhibits brand environment", quote: '"Number9 helped us tell our story in a way that resonates with enterprise clients. Our new digital presence has directly contributed to significant new business wins."', attributionTitle: "Chief Creative Officer", attributionCompany: "GENESIS Exhibits" },
     },
     storySection: {
       about: { title: "About", clientName: "GENESIS Exhibits", description: "GENESIS Exhibits is an award-winning trade show and exhibit design firm creating immersive brand environments for Fortune 500 companies at events worldwide." },
@@ -3060,7 +3164,7 @@ export const caseStudiesData = {
       logoAlt: "Standard Chartered logo",
       stats: [{ targetValue: 16, suffix: "+", label: "Team size", subtext: null }, { targetValue: 7, suffix: "", label: "Engagement length", subtext: "months" }],
       projectTags: ["Mobile Banking", "Digital Onboarding", "Wealth Management", "Payment Platform", "Security UX"],
-      quoteSection: { graphicImage: fintechSunset2, graphicAlt: "Standard Chartered digital banking", quote: '"Number9 brought the design precision and technical depth needed to transform how our customers experience banking. The results speak for themselves."', attributionTitle: "Head of Digital Transformation", attributionCompany: "Standard Chartered" },
+      quoteSection: { graphicImage: standard_chartered_triptych, graphicAlt: "Standard Chartered digital banking", quote: '"Number9 brought the design precision and technical depth needed to transform how our customers experience banking. The results speak for themselves."', attributionTitle: "Head of Digital Transformation", attributionCompany: "Standard Chartered" },
     },
     storySection: {
       about: { title: "About", clientName: "Standard Chartered", description: "Standard Chartered is a leading international banking group with a presence in 59 markets, serving customers across Asia, Africa and the Middle East for over 160 years." },
@@ -3118,7 +3222,7 @@ export const caseStudiesData = {
         "Social Content Creation",
       ],
       quoteSection: {
-        graphicImage: skinnyImg7,
+        graphicImage: skinny_triptych,
         graphicAlt: "Skinny Mixes brand ambassador distributing samples in Manhattan",
         quote:
           '"Launching Skinnyccino to New York City consumers required an experiential marketing strategy that cut through the noise of crowded public spaces. Number9 executed a high-energy physical activation and street sampling campaign across Manhattan that drove immediate product discovery, authentic consumer reactions, and massive social engagement."',
@@ -3244,9 +3348,1390 @@ export const caseStudiesData = {
       },
     },
   },
+  mezan: {
+    id: "mezan",
+    slug: "mezan",
+    name: "Mezan Global",
+    breadcrumbName: "Mezan Global",
+    category: "Food & Beverage / Trade Show Exhibition",
+    hero: {
+      subheading: "MEZAN GLOBAL CASE STUDY — SUMMER FANCY FOOD SHOW",
+      titleLine1: "From an empty show floor to a",
+      titleLine2: "fully realized brand experience.",
+      bgImage: mezanEmptyFloor,
+      accentColor: "#ED1C24",
+      tags: [
+        "Exhibition Design",
+        "Trade Show Management",
+        "Product Sampling",
+        "Experiential Marketing",
+        "Event Production",
+      ],
+      pdfCardText: "Get this case study in PDF to your inbox.",
+    },
+    overviewSection: {
+      summaryHeading: "The summary",
+      summaryAccentDot: ".",
+      summaryText:
+        "Number9 Creative & Media partnered with Mezan Global to bring its brand to life at the Specialty Food Association's Summer Fancy Food Show. From exhibition design and logistics to product sampling, staffing, and on-site management, the agency led every stage of the three-day experience. The result was a fully operational branded space that showcased Mezan Global's beverage portfolio, attracted attention from industry professionals and representatives of major retail chains, and created valuable opportunities for product discovery and business connections.",
+      logo: mezanLogo,
+      logoAlt: "Mezan Global logo",
+      showcaseImage: mezanShowcase,
+      showcaseAlt: "Mezan Global Summer Fancy Food Show branded exhibition space",
+      stats: [
+        {
+          targetValue: 3,
+          suffix: " Days",
+          label: "Event duration",
+          subtext: null,
+        },
+        {
+          targetValue: 100,
+          suffix: "%",
+          label: "End-to-End",
+          subtext: "Exhibition management",
+        },
+      ],
+      projectTags: [
+        "Exhibition Design",
+        "Trade Show Management",
+        "Product Sampling",
+        "Experiential Marketing",
+        "Event Production",
+      ],
+      quoteSection: {
+        graphicImage: mezan_triptych,
+        graphicAlt: "Mezan Global teas and fizzy sodas presentation",
+        quote: "The Specialty Food Association's Summer Fancy Food Show provided an opportunity for Mezan Global to showcase its products to a concentrated audience of retailers, distributors, buyers, and food industry professionals. Number9 delivered a complete exhibition experience, from an empty floor to a fully realized brand experience.",
+        attributionTitle: "Executive Leadership",
+        attributionCompany: "Mezan Global",
+      },
+    },
+    storySection: {
+      about: {
+        title: "About",
+        clientName: "Mezan Global",
+        description:
+          "Mezan Global is a food and beverage company with a diverse portfolio of products, including teas and fizzy sodas. With an emphasis on quality, flavor, and product innovation, the company continues to explore opportunities to introduce its offerings to new markets and audiences.\n\nThe Specialty Food Association's Summer Fancy Food Show provided an opportunity for Mezan Global to showcase its products to a concentrated audience of retailers, distributors, buyers, and food industry professionals.\n\nTo make the most of this opportunity, Mezan Global partnered with Number9 Creative & Media to deliver a complete exhibition experience, from the initial planning stages to the final day on the show floor.",
+      },
+      challenge: {
+        heading: "The opportunity",
+        image: mezanHeroBg,
+        imageAlt: "Summer Fancy Food Show exhibition space before setup",
+        leftParagraphs: [
+          "The Summer Fancy Food Show brings together food and beverage brands, major retail chains, distributors, and industry decision-makers, making it an important platform for product discovery and new business relationships.",
+          "For Mezan Global, the opportunity extended beyond simply exhibiting products. The goal was to create a professional, inviting brand presence that would encourage visitors to stop, sample its beverages, and engage with the company.",
+          "Achieving this required more than booth design. The exhibition needed to be built from the ground up, with every element, from registration and compliance to sampling equipment, product deliveries, and staffing, carefully coordinated.",
+        ],
+        rightParagraph:
+          "The objective was to create a seamless, fully operational exhibition that positioned Mezan Global in front of key industry audiences while making its products the center of the experience.",
+      },
+      solution: {
+        heading: "Bringing the vision to life.",
+        image: mezanSampling,
+        imageAlt: "Mezan Global beverage sampling operations and booth experience",
+        description:
+          "Number9 Creative & Media managed the exhibition from concept to completion, transforming an empty floor space into a fully designed and functional branded environment.\n\nThe agency developed the booth design and coordinated every aspect of production, including flooring, signage, lighting, branded displays, and installation. Working closely with contractors, vendors, and Mezan Global's representatives, the team ensured the space was both visually engaging and equipped for continuous product sampling.\n\nBeyond the physical setup, Number9 Creative & Media handled exhibitor registration, insurance, staff credentials, shipping and handling, event documentation, and compliance with the show's standards and procedures. Every operational detail was planned in advance, allowing Mezan Global to arrive at a ready-to-use exhibition space and focus on presenting its products to attendees.\n\nFrom the first registration form to the final installation, Number9 Creative & Media brought together the creative, technical, and logistical elements required to deliver a complete exhibition experience.",
+        customerInteractions: {
+          stat: "3 Days",
+          label: "Of Continuous Exhibition Operations",
+        },
+      },
+      services: {
+        heading: "Key Services Delivered.",
+        items: [
+          "Exhibition Strategy",
+          "Trade Show Management",
+          "Custom Booth Design & Production",
+          "Product Sampling",
+          "Experiential Marketing",
+          "Event Staffing",
+          "Vendor & Logistics Coordination",
+          "Compliance Management",
+          "On-Site Operations",
+        ],
+      },
+      outcome: {
+        heading: "The outcome",
+        intro:
+          "Number9 Creative & Media delivered a complete exhibition experience for Mezan Global, bringing together creative production, logistics, staffing, and on-site execution under one coordinated operation.\n\nThe team:",
+        bullets: [
+          "Designed and produced a complete branded exhibition space, transforming an empty floor into a professional environment with custom flooring, signage, lighting, and product displays.",
+          "Managed all exhibitor logistics and compliance, including registration, insurance, shipping requirements, staff access, and event procedures.",
+          "Coordinated the full beverage sampling experience, sourcing equipment, serving supplies, refrigeration, electrical services, and custom-branded elements.",
+          "Recruited and managed a dedicated sampling team to introduce Mezan Global's teas and fizzy sodas to attendees throughout the event.",
+          "Facilitated product discovery and industry engagement, supporting interactions with visitors, retailers, distributors, and representatives of major chains.",
+          "Oversaw all three days of exhibition operations, coordinating staff, suppliers, deliveries, and day-to-day requirements.",
+          "Managed the complete event breakdown, including dismantling, packing, and post-show coordination.",
+        ],
+        closing:
+          "The result was more than a successful exhibition setup. Number9 Creative & Media created a fully managed brand experience that gave Mezan Global the space, resources, and operational support to showcase its products, engage key industry audiences, and explore new opportunities in the retail and distribution market.",
+        galleryFit: "cover",
+        galleryImages: [
+          {
+            src: mezanBoothWide,
+            images: [
+              {
+                src: mezanBoothWide,
+                position: "center center",
+                title: "Custom Exhibition Booth",
+                subtitle: "SUMMER FANCY FOOD SHOW",
+              },
+              {
+                src: mezanBoothFront,
+                position: "center center",
+                title: "End-to-End Production",
+                subtitle: "BRANDED FLOORING, SIGNAGE & LIGHTING",
+              },
+            ],
+            title: "Custom Exhibition Booth",
+            subtitle: "SUMMER FANCY FOOD SHOW",
+          },
+          {
+            src: mezanSampling,
+            images: [
+              {
+                src: mezanSampling,
+                position: "center center",
+                title: "Product Sampling Operations",
+                subtitle: "TEAS & FIZZY SODAS SAMPLING",
+              },
+              {
+                src: mezanStaff,
+                position: "center center",
+                title: "Dedicated Event Staffing",
+                subtitle: "TRAINED BRAND AMBASSADORS",
+              },
+            ],
+            title: "Product Sampling Operations",
+            subtitle: "TEAS & FIZZY SODAS SAMPLING",
+          },
+          {
+            src: mezanVisitors,
+            images: [
+              {
+                src: mezanVisitors,
+                position: "center center",
+                title: "Industry Engagement",
+                subtitle: "RETAILERS, DISTRIBUTORS & BUYERS",
+              },
+              {
+                src: mezanCrowd,
+                position: "center center",
+                title: "3 Days Continuous Operations",
+                subtitle: "PRODUCT DISCOVERY & CONNECTIONS",
+              },
+            ],
+            title: "Industry Engagement",
+            subtitle: "RETAILERS, DISTRIBUTORS & BUYERS",
+          },
+        ],
+      },
+    },
+  },
+  "delta-light": {
+    id: "delta-light",
+    slug: "delta-light",
+    name: "Delta Light",
+    breadcrumbName: "Delta Light",
+    category: "Industrial, Manufacturing & Engineering / Custom Trade Show Rental Exhibit",
+    hero: {
+      subheading: "Delta Light — Custom Trade Show Rental Exhibit",
+      titleLine1: "Engineering an Immersive, High-End Space",
+      titleLine2: "for Premium Lighting Fixtures.",
+      bgImage: deltaImg1,
+      accentColor: "#D4AF37",
+      tags: [
+        "Custom Booth Design and Fabrication",
+        "Portable Displays",
+        "Marketing Events",
+        "Brand Activation",
+      ],
+      pdfCardText: "Get this case study in PDF to your inbox.",
+    },
+    overviewSection: {
+      summaryHeading: "The summary",
+      summaryAccentDot: ".",
+      summaryText:
+        "Number9 Creative & Media partnered with Delta Light to design and fabricate a premium small rental exhibit tailored for the industrial, manufacturing, and engineering sector. Our trade show design agency engineered a custom immersive space that perfectly supported the brand's high-end, austere aesthetic. By integrating controlled lighting environments and striking structural lines, this custom rental solution allowed Delta Light's premium fixtures to command attention on the show floor.",
+      logo: deltaLogo,
+      logoAlt: "Delta Light logo",
+      showcaseImage: deltaImg2,
+      showcaseAlt: "Delta Light architectural exhibition showcase",
+      stats: [
+        {
+          targetValue: 1,
+          suffix: "",
+          label: "Small",
+          subtext: "Rental Exhibit",
+        },
+        {
+          targetValue: 100,
+          suffix: "%",
+          label: "Industrial & Engineering",
+          subtext: "Target Market",
+        },
+      ],
+      projectTags: [
+        "Custom Trade Show Rentals",
+        "Exhibit Design and Fabrication",
+        "Experiential Marketing",
+        "Brand Activation",
+      ],
+      quoteSection: {
+        graphicImage: delta_light_triptych,
+        graphicAlt: "Delta Light ambient fixture presentation",
+        quote:
+          "Delta Light is a premier manufacturer specializing in high-end, beautifully designed lighting fixtures. Number9 Creative & Media engineered a custom immersive space that perfectly supported the brand's austere aesthetic, allowing Delta Light's fixtures to command attention on the show floor.",
+        attributionTitle: "Industrial & Engineering",
+        attributionCompany: "Delta Light",
+      },
+    },
+    storySection: {
+      about: {
+        title: "About",
+        clientName: "Delta Light",
+        description:
+          "Delta Light is a premier manufacturer specializing in high-end, beautifully designed lighting fixtures for the industrial, manufacturing, and engineering industries. To showcase its premium product line at industry trade shows, Delta Light required an exhibition space that reflected its sophisticated brand identity.\n\nThe company hired Number9 Creative & Media to design a rental exhibit that embodied its austere, modern aesthetic while providing a highly functional product display environment.",
+      },
+      challenge: {
+        heading: "The challenge",
+        image: deltaImg4,
+        imageAlt: "Delta Light booth interior during construction",
+        leftParagraphs: [
+          "Designing a trade show booth for a premium lighting brand requires absolute control over the visual environment.",
+          "Delta Light's fixtures demand a setting that reflects their high-end, austere design language, free from the visual clutter and overpowering ambient lighting typical of large exhibition halls.",
+        ],
+        rightParagraph:
+          "The challenge for Number9 Creative & Media was to engineer a small rental exhibit that could block out harsh venue lighting while maintaining a clean, minimalist structure, ensuring the brand’s lighting products remained the undeniable focal point of the space.",
+      },
+      solution: {
+        heading: "The solution.",
+        image: deltaImg5,
+        imageAlt: "Delta Light finished immersive lighting showcase",
+        description:
+          "Number9 Creative & Media developed a sophisticated, turn-key rental exhibit tailored to Delta Light’s exacting visual standards. Our trade show fabrication team designed the space with an emphasis on clean, simple-but-bold structural lines and a strict monochromatic color palette, creating a sleek, museum-like quality.\n\nTo solve the challenge of venue lighting, we engineered an ambient light-blocking ceiling that transformed the small exhibit into a fully immersive, controlled environment. This strategic structural design allowed Delta Light's beautiful fixtures to truly light the way, providing attendees with a captivating product experience.",
+        customerInteractions: {
+          stat: "Light-Blocking",
+          label: "Custom Ceiling Design",
+        },
+      },
+      services: {
+        heading: "Key Services Delivered.",
+        items: [
+          "Custom Trade Show Rentals",
+          "Exhibit Design and Fabrication",
+          "Custom Booth Branding",
+          "Experiential Marketing",
+          "Brand Activation",
+        ],
+      },
+      outcome: {
+        heading: "The outcome",
+        intro:
+          "The Number9 Creative & Media rental exhibit successfully translated Delta Light’s high-end aesthetic into a powerful physical brand activation. Our trade show design and production teams achieved the following results:",
+        bullets: [
+          "Designed and built a premium small rental exhibit that perfectly mirrored Delta Light's austere, industrial design language.",
+          "Engineered a custom ambient light-blocking ceiling to neutralize harsh show-floor lighting and create an immersive product showcase.",
+          "Utilized a striking monochromatic palette and clean structural lines to keep attendee focus entirely on the lighting fixtures.",
+          "Delivered a highly functional, sophisticated space tailored for the industrial, manufacturing, and engineering market.",
+          "Provided a seamless, turn-key rental exhibit solution that combined the visual impact of a custom build with the efficiency of a rental space.",
+        ],
+        closing:
+          "By integrating architectural lighting control and premium minimalist design, Number9 Creative & Media transformed a standard small footprint into an exclusive, high-end product experience for Delta Light.",
+        galleryFit: "cover",
+        galleryImages: [
+          {
+            src: deltaImg1,
+            images: [
+              {
+                src: deltaImg1,
+                position: "center center",
+                title: "Architectural Rental Exhibit",
+                subtitle: "DELTA LIGHT",
+              },
+              {
+                src: deltaImg2,
+                position: "center center",
+                title: "Monochromatic Design",
+                subtitle: "LIGHTING FIXTURE SHOWCASE",
+              },
+            ],
+            title: "Architectural Rental Exhibit",
+            subtitle: "DELTA LIGHT",
+          },
+          {
+            src: deltaImg3,
+            images: [
+              {
+                src: deltaImg3,
+                position: "center center",
+                title: "Ambient Light-Blocking Ceiling",
+                subtitle: "IMMERSIVE CONTROL",
+              },
+              {
+                src: deltaImg4,
+                position: "center center",
+                title: "Precision Fixture Integration",
+                subtitle: "CLEAN STRUCTURAL LINES",
+              },
+            ],
+            title: "Ambient Light-Blocking Ceiling",
+            subtitle: "IMMERSIVE CONTROL",
+          },
+          {
+            src: deltaImg5,
+            images: [
+              {
+                src: deltaImg5,
+                position: "center center",
+                title: "Austere Elegance",
+                subtitle: "DELTA LIGHT SHOWCASE",
+              },
+              {
+                src: deltaImg1,
+                position: "center center",
+                title: "Architectural Lighting",
+                subtitle: "CUSTOM BOOTH FABRICATION",
+              },
+            ],
+            title: "Austere Elegance",
+            subtitle: "DELTA LIGHT SHOWCASE",
+          },
+        ],
+      },
+    },
+  },
+  dreo: {
+    id: "dreo",
+    slug: "dreo",
+    name: "DREO",
+    breadcrumbName: "DREO",
+    category: "Technology / IHS Trade Show Retail Product Display Booth",
+    hero: {
+      subheading: "DREO — IHS Trade Show Retail Product Display Booth",
+      titleLine1: "Engineering a 20x30 Custom Exhibit for Product Discovery",
+      titleLine2: "and Buyer Engagement in Las Vegas.",
+      bgImage: dreoImg1,
+      accentColor: "#0066FF",
+      tags: [
+        "Brand Activation",
+        "Custom Booth Design and Fabrication",
+        "Experiential Marketing",
+        "Marketing Events",
+        "Portable displays",
+        "Promotional Marketing",
+      ],
+      pdfCardText: "Get this case study in PDF to your inbox.",
+    },
+    overviewSection: {
+      summaryHeading: "The summary",
+      summaryAccentDot: ".",
+      summaryText:
+        "Number9 Creative & Media partnered with DREO to design and build a 20x30 retail product display booth for the IHS trade show in Las Vegas. Our experiential marketing agency engineered a custom exhibition space centered around product sampling, retail display shelves, bold branded surfaces, and dedicated buyer conversation areas. This custom booth design successfully maximized aisle visibility, guiding retail buyers, distributors, and brand partners seamlessly from first glance to hands-on product discovery and buyer conversations.",
+      logo: dreoLogo,
+      logoAlt: "DREO logo",
+      showcaseImage: dreoImg2,
+      showcaseAlt: "DREO 20x30 retail product display booth at IHS trade show in Las Vegas",
+      stats: [
+        {
+          targetValue: 20,
+          suffix: "x30",
+          label: "Retail Display Booth",
+          subtext: null,
+        },
+        {
+          targetValue: 2025,
+          suffix: "",
+          noComma: true,
+          label: "Las Vegas Exhibition",
+          subtext: "IHS 2025",
+        },
+      ],
+      projectTags: [
+        "Custom Booth Design and Fabrication",
+        "Experiential Marketing",
+        "Retail Product Display",
+        "Brand Activation",
+      ],
+      quoteSection: {
+        graphicImage: dreo_triptych,
+        graphicAlt: "DREO retail display shelves and product sampling zones",
+        quote:
+          "To showcase their consumer offerings at the IHS trade show in Las Vegas, DREO partnered with Number9 Creative & Media to deliver a high-impact, 20x30 retail product display booth that combined practical product presentation with clear brand recognition.",
+        attributionTitle: "Technology & Electronics",
+        attributionCompany: "DREO",
+      },
+    },
+    storySection: {
+      about: {
+        title: "About",
+        clientName: "DREO",
+        description:
+          "DREO is a leading brand in the technology and electronics industry. To showcase their consumer offerings at the IHS trade show in Las Vegas, DREO partnered with Number9 Creative & Media.\n\nOur trade show fabrication and experiential marketing team was tasked with delivering a high-impact, 20x30 retail product display booth that combined practical product presentation with clear brand recognition.",
+      },
+      challenge: {
+        heading: "The challenge",
+        image: dreoImg4,
+        imageAlt: "DREO booth layout and aisle flow",
+        leftParagraphs: [
+          "In a competitive trade show environment, retail and consumer product booths must make their offer instantly understandable before attendees step fully into the space.",
+          "DREO needed a booth layout that allowed their products to be easily scanned from the aisle to spark quick discovery before deeper buyer conversations began.",
+        ],
+        rightParagraph:
+          "The challenge for Number9 Creative & Media was to integrate functional retail display shelves, product sampling zones, and secure buyer conversation spaces within a 20x30 footprint, ensuring the brand's graphics and counters worked cohesively to invite attendees in without causing bottlenecks.",
+      },
+      solution: {
+        heading: "The solution.",
+        image: dreoImg1,
+        imageAlt: "DREO retail product display and buyer conversation area",
+        description:
+          "Number9 Creative & Media executed a turn-key custom booth design and fabrication strategy for DREO's 20x30 footprint. We engineered a layout focusing on product visibility, sample display, and shopper-friendly flow. By positioning highly visible retail display shelves, counters, and impactful brand graphics facing the open aisles, we ensured quick product recognition for passing attendees.\n\nBeyond the spatial design, our team managed the complete show-site setup in Las Vegas. We meticulously aligned the booth structure, lighting, retail displays, and final cleanup, ensuring the space was perfectly ready from an aisle-facing perspective before the show floor opened.",
+        customerInteractions: {
+          stat: "Turn-Key",
+          label: "Design, Setup & Fabrication",
+        },
+      },
+      services: {
+        heading: "Key Services Delivered.",
+        items: [
+          "Custom Booth Design and Fabrication",
+          "Retail Product Display",
+          "Experiential Marketing",
+          "Brand Activation",
+          "Trade Show Logistics",
+        ],
+      },
+      outcome: {
+        heading: "The outcome",
+        intro:
+          "The Number9 Creative & Media booth design successfully positioned DREO at the forefront of the IHS trade show, delivering a practical and highly engaging brand activation. Our trade show design and production teams achieved the following results:",
+        bullets: [
+          "Designed and fabricated a custom 20x30 retail product display booth optimized for aisle-facing visitor flow and product discovery.",
+          "Engineered accessible retail display shelves and product sampling zones that allowed attendees to quickly understand the brand offer.",
+          "Produced and installed large-scale branded surfaces and graphics that drove immediate product recognition from the show floor.",
+          "Created comfortable, dedicated buyer conversation spaces for retail buyers, distributors, and brand partners.",
+          "Managed complete show-site setup in Las Vegas, seamlessly aligning structure, lighting, and graphic installation before the event opened.",
+          "Delivered a turn-key experiential marketing solution that balanced compelling brand presentation with practical shopper-friendly movement.",
+        ],
+        closing:
+          "By seamlessly integrating strategic retail layout planning, bold branded graphics, and end-to-end show logistics, Number9 Creative & Media transformed a 20x30 space into a powerful, high-converting trade show asset for DREO.",
+        galleryFit: "cover",
+        galleryImages: [
+          {
+            src: dreoImg1,
+            images: [
+              {
+                src: dreoImg1,
+                position: "center center",
+                title: "20x30 Retail Display",
+                subtitle: "DREO IHS 2025",
+              },
+              {
+                src: dreoImg2,
+                position: "center center",
+                title: "Product Sampling Shelves",
+                subtitle: "RETAIL MERCHANDISING",
+              },
+            ],
+            title: "20x30 Retail Display",
+            subtitle: "DREO IHS 2025",
+          },
+          {
+            src: dreoImg3,
+            images: [
+              {
+                src: dreoImg3,
+                position: "center center",
+                title: "Interactive Demonstration",
+                subtitle: "SMART APPLIANCES",
+              },
+              {
+                src: dreoImg4,
+                position: "center center",
+                title: "Buyer Conversation Lounge",
+                subtitle: "B2B RETAIL MEETINGS",
+              },
+            ],
+            title: "Interactive Demonstration",
+            subtitle: "SMART APPLIANCES",
+          },
+        ],
+      },
+    },
+  },
+  finamill: {
+    id: "finamill",
+    slug: "finamill",
+    name: "Finamill",
+    breadcrumbName: "Finamill",
+    category: "Food & Consumer Products / IHS 2025 Custom Retail & Sampling Exhibit",
+    hero: {
+      subheading: "Finamill — IHS 2025 Custom Retail & Sampling Exhibit",
+      titleLine1: "Designing a 20x30 High-Volume",
+      titleLine2: "Product Discovery Space in Las Vegas.",
+      bgImage: finamillImg1,
+      accentColor: "#E31B23",
+      tags: [
+        "Custom Booth Design and Fabrication",
+        "Experiential Marketing",
+        "Portable Display",
+        "Brand Activation",
+      ],
+      pdfCardText: "Get this case study in PDF to your inbox.",
+    },
+    overviewSection: {
+      summaryHeading: "The summary",
+      summaryAccentDot: ".",
+      summaryText:
+        "Number9 Creative & Media teamed up with Finamill to engineer a 20x30 experiential retail booth for the IHS 2025 trade show. Our custom booth design and fabrication experts created an open-concept space dedicated to active product sampling, dynamic retail shelving, and high-impact brand messaging. By maximizing aisle-facing visibility, this brand activation successfully converted passing floor traffic into hands-on product discovery and high-value buyer conversations.",
+      logo: finamillLogo,
+      logoAlt: "Finamill logo",
+      showcaseImage: finamillImg2,
+      showcaseAlt: "Finamill 20x30 experiential retail booth at IHS 2025",
+      stats: [
+        {
+          targetValue: 20,
+          suffix: "x30",
+          label: "Retail Display Booth",
+          subtext: null,
+        },
+        {
+          targetValue: 2025,
+          suffix: "",
+          noComma: true,
+          label: "Las Vegas Exhibition",
+          subtext: "IHS 2025",
+        },
+      ],
+      projectTags: [
+        "Custom Booth Design and Fabrication",
+        "Experiential Marketing",
+        "Retail Product Display",
+        "Brand Activation",
+      ],
+      quoteSection: {
+        graphicImage: finamill_triptych,
+        graphicAlt: "Finamill culinary product display and retail presentation",
+        quote:
+          "Finamill is a celebrated innovator in the food and consumer products sector, known for bringing high-quality culinary tools to market. Number9 Creative & Media delivered an exhibition environment that showcased their retail product line while facilitating live sampling and direct buyer engagement.",
+        attributionTitle: "Food & Consumer Products",
+        attributionCompany: "Finamill",
+      },
+    },
+    storySection: {
+      about: {
+        title: "About",
+        clientName: "Finamill",
+        description:
+          "Finamill is a celebrated innovator in the food and consumer products sector, known for bringing high-quality culinary tools to market. To elevate their brand presence at the IHS trade show in Las Vegas, Finamill hired Number9 Creative & Media.\n\nOur experiential marketing and fabrication agency was tasked with designing a 20x30 exhibition environment that showcased their retail product line while facilitating live sampling and direct engagement with top-tier buyers and distributors.",
+      },
+      challenge: {
+        heading: "The challenge",
+        image: finamillImg4,
+        imageAlt: "Finamill retail shelving and display walls",
+        leftParagraphs: [
+          "Consumer packaged goods and food brands face a unique hurdle on busy trade show floors: the product experience must be immediately obvious to attendees walking the aisles.",
+          "Finamill required a 20x30 footprint that seamlessly integrated retail product displays with active sampling stations, all without creating traffic bottlenecks.",
+        ],
+        rightParagraph:
+          "The objective for Number9 Creative & Media was to entice retail buyers into the space using intuitive layout design and bold branded graphics, transitioning them smoothly from initial curiosity at the aisle to dedicated buyer conversation areas inside the booth.",
+      },
+      solution: {
+        heading: "The solution.",
+        image: finamillImg5,
+        imageAlt: "Finamill buyer consultation counter and illuminated displays",
+        description:
+          "Number9 Creative & Media executed a turn-key custom booth design and fabrication strategy to bring Finamill's vision to life. We developed a highly navigable 20x30 layout prioritizing product visibility and shopper-friendly flow. By positioning interactive sampling zones alongside prominent retail display shelves at the booth's perimeter, we captured the attention of aisle traffic immediately, ensuring the brand's core offer was recognized at a glance.\n\nFurthermore, our team handled all trade show logistics and show-site setup in Las Vegas. We meticulously aligned the architectural structure, lighting, and branded surfaces, verifying that the entire space functioned perfectly from an aisle-facing perspective long before the event doors opened to attendees.",
+        customerInteractions: {
+          stat: "Turn-Key",
+          label: "Design, Setup & Fabrication",
+        },
+      },
+      services: {
+        heading: "Key Services Delivered.",
+        items: [
+          "Custom Booth Design and Fabrication",
+          "Retail Product Display",
+          "Experiential Marketing",
+          "Brand Activation",
+          "Trade Show Logistics",
+        ],
+      },
+      outcome: {
+        heading: "The outcome",
+        intro:
+          "The Number9 Creative & Media booth design successfully anchored Finamill's presence at IHS 2025, transforming a standard 20x30 footprint into a bustling hub for food and consumer product buyers. Our trade show design and production teams achieved the following results:",
+        bullets: [
+          "Designed and fabricated a 20x30 custom retail product display booth that optimized aisle-to-interior visitor flow.",
+          "Integrated dedicated product sampling zones and accessible retail display shelves to accelerate buyer discovery.",
+          "Installed high-visibility branded surfaces that clearly communicated Finamill’s consumer offer to passing show-floor traffic.",
+          "Engineered comfortable, semi-private buyer conversation spaces to facilitate meetings with distributors and retail partners.",
+          "Managed end-to-end show-site setup in Las Vegas, coordinating structure, lighting, and graphics installation prior to the event launch.",
+          "Provided a turn-key experiential marketing solution that drove both brand activation and tangible buyer engagement.",
+        ],
+        closing:
+          "By seamlessly blending interactive product sampling with strategic retail design and flawless on-site execution, Number9 Creative & Media delivered a powerful, high-converting trade show asset for Finamill.",
+        galleryFit: "cover",
+        galleryImages: [
+          {
+            src: finamillImg1,
+            images: [
+              {
+                src: finamillImg1,
+                position: "center center",
+                title: "20x30 Culinary Showcase",
+                subtitle: "FINAMILL IHS 2025",
+              },
+              {
+                src: finamillImg2,
+                position: "center center",
+                title: "Live Grinding Demo Station",
+                subtitle: "INTERCHANGEABLE PODS",
+              },
+            ],
+            title: "20x30 Culinary Showcase",
+            subtitle: "FINAMILL IHS 2025",
+          },
+          {
+            src: finamillImg3,
+            images: [
+              {
+                src: finamillImg3,
+                position: "center center",
+                title: "Retail Packaging Shelving",
+                subtitle: "RETAIL PRODUCT DISPLAY",
+              },
+              {
+                src: finamillImg4,
+                position: "center center",
+                title: "Branded Graphics & Aisle Flow",
+                subtitle: "IHS LAS VEGAS",
+              },
+            ],
+            title: "Retail Packaging Shelving",
+            subtitle: "RETAIL PRODUCT DISPLAY",
+          },
+          {
+            src: finamillImg5,
+            images: [
+              {
+                src: finamillImg5,
+                position: "center center",
+                title: "Executive Buyer Meetings",
+                subtitle: "COMMERCIAL PARTNERSHIPS",
+              },
+              {
+                src: finamillImg1,
+                position: "center center",
+                title: "Finamill Culinary Innovation",
+                subtitle: "TRADE SHOW EXCELLENCE",
+              },
+            ],
+            title: "Executive Buyer Meetings",
+            subtitle: "COMMERCIAL PARTNERSHIPS",
+          },
+        ],
+      },
+    },
+  },
+  katjes: {
+    id: "katjes",
+    slug: "katjes",
+    name: "Katjes USA",
+    breadcrumbName: "Katjes USA",
+    category: "Food & Beverage / Trade Show Experiential",
+    hero: {
+      subheading: "KATJES USA CASE STUDY — SWEETS & SNACKS TRADE SHOW",
+      titleLine1: "European Candy Excellence &",
+      titleLine2: "Multi-Year Brand Activation.",
+      bgImage: katjesImg1,
+      accentColor: "#E6007E",
+      tags: [
+        "Brand Activation",
+        "Event Staffing",
+        "Sampling Activation",
+        "Experiential Marketing",
+        "Food & Beverage",
+      ],
+      pdfCardText: "Get this case study in PDF to your inbox.",
+    },
+    overviewSection: {
+      summaryHeading: "The summary",
+      summaryAccentDot: ".",
+      summaryText:
+        "Number9 Creative & Media partnered with Katjes USA Inc. to execute high-impact brand activation and sampling staffing across premier confectionery expos, spanning four consecutive years at the Sweets & Snacks Trade Show in Chicago and Indianapolis, as well as KeHE Summer Show and Expo West. Providing expertly trained brand ambassadors, seamless inventory logistics, and vibrant sampling counters, the activation engaged tens of thousands of buyers and attendees, firmly establishing Katjes' 100% plant-based European gummy candies in the North American market.",
+      logo: katjesLogo,
+      logoAlt: "Katjes USA logo",
+      showcaseImage: katjesImg2,
+      showcaseAlt: "Katjes USA trade show sampling activation and brand ambassadors",
+      stats: [
+        {
+          targetValue: 4,
+          suffix: " Years",
+          label: "Partnership span",
+          subtext: "2022–2025",
+        },
+        {
+          targetValue: 15,
+          suffix: " Days",
+          label: "Show days staffed",
+          subtext: "Multi-city trade shows",
+        },
+      ],
+      projectTags: [
+        "Brand Activation",
+        "Event Staffing",
+        "Sampling Activation",
+        "Confectionery",
+        "Trade Show Management",
+      ],
+      quoteSection: {
+        graphicImage: katjes_triptych,
+        graphicAlt: "Katjes plant-based gummy sampling presentation",
+        quote: "Consistent staffing across multiple shows and multiple years has let Katjes maintain a recognizable, energetic presence on the trade show circuit without rebuilding its activation approach each season.",
+        attributionTitle: "Trade Show Marketing Team",
+        attributionCompany: "Katjes USA",
+      },
+    },
+    storySection: {
+      about: {
+        title: "About",
+        clientName: "Katjes USA",
+        description:
+          "Katjes is one of Europe's most beloved confectionery pioneers, celebrated for introducing 100% plant-based, gelatin-free, palm oil-free fruit gummies made with natural colors and flavors. With iconic varieties like Rainbow, Sour, and Lovelies, Katjes has reshaped the candy landscape across Germany and Europe.\n\nAs Katjes expanded its footprint into the United States, breaking into national grocery, convenience, and specialty retail channels required intensive trade show presence at events like Sweets & Snacks, KeHE, and Expo West.\n\nKatjes partnered with Number9 Creative & Media to provide turnkey brand activation, professional event staffing, and engaging product sampling that would turn retail buyers into passionate brand evangelists.",
+      },
+      challenge: {
+        heading: "The confectionery expo challenge",
+        image: katjesImg4,
+        imageAlt: "Katjes trade show booth and sampling station",
+        leftParagraphs: [
+          "The Sweets & Snacks Expo is a hyper-saturated, sugar-fueled environment where thousands of candy manufacturers compete aggressively for buyer attention.",
+          "Katjes needed to cut through the noise not just with cute packaging, but by educating skeptical buyers that plant-based, gelatin-free candy can taste extraordinary.",
+          "Maintaining strict sanitary sampling standards, consistent brand messaging, and unwavering energy across multi-day events in Chicago and Indianapolis required flawless staffing execution.",
+        ],
+        rightParagraph:
+          "The mission was to ensure every retail buyer walking past experienced the irresistible texture and flavor of Katjes firsthand with infectious, knowledgeable enthusiasm.",
+      },
+      solution: {
+        heading: "Consistent multi-year activation & staffing",
+        image: katjesImg5,
+        imageAlt: "Katjes brand ambassadors engaging attendees",
+        description:
+          "Number9 deployed a dedicated, high-energy event staffing model that supported Katjes consistently year after year.\n\nThe relationship spanned four consecutive years of Sweets & Snacks coverage: three days at Chicago's McCormick Place in 2022 and 2023, followed by three days each in Indianapolis in 2024 and 2025, alongside deployments at the KeHE Summer Show in Salt Lake City and Natural Products Expo West in Anaheim.\n\nBrand ambassadors were thoroughly trained in Katjes' brand narrative—highlighting zero animal gelatin, clean ingredients, and European heritage.\n\nTeams managed high-volume sampling trays, tracked visitor responses, collected retailer badges, and replenished stock seamlessly during peak expo hours.",
+        customerInteractions: {
+          stat: "15 Days",
+          label: "Multi-City Event Staffing",
+        },
+      },
+      services: {
+        heading: "Key Services Delivered",
+        items: [
+          "Experiential Event Staffing",
+          "Brand Activation Strategy",
+          "Product Sampling Operations",
+          "Trade Show Staff Management",
+          "Badge & Lead Scanning",
+          "Sanitary Food Handling Compliance",
+          "Multi-City Program Coordination",
+        ],
+      },
+      outcome: {
+        heading: "The outcome",
+        intro:
+          "A sustained four-year partnership that made Katjes a must-visit anchor at every trade show:",
+        bullets: [
+          "15 documented trade show days executed with 100% staffing reliability across 4 major convention cities.",
+          "Tens of thousands of qualified samples distributed directly to retail buyers, category managers, and distributors.",
+          "Substantial distribution gains across leading US supermarket chains and specialty confection retailers.",
+          "A repeatable, cost-effective activation playbook deployed seamlessly season after season.",
+        ],
+        closing:
+          "By pairing European candy excellence with reliable, magnetic on-site staffing, Number9 helped Katjes win the hearts and palates of American retail.",
+        galleryFit: "cover",
+        galleryImages: [
+          {
+            src: katjesImg1,
+            images: [
+              {
+                src: katjesImg1,
+                position: "center center",
+                title: "Plant-Based Candy Sampling",
+                subtitle: "SWEETS & SNACKS EXPO",
+              },
+              {
+                src: katjesImg2,
+                position: "center center",
+                title: "Brand Ambassadors in Action",
+                subtitle: "EXPERIENTIAL STAFFING",
+              },
+            ],
+            title: "Plant-Based Candy Sampling",
+            subtitle: "SWEETS & SNACKS EXPO",
+          },
+          {
+            src: katjesImg3,
+            images: [
+              {
+                src: katjesImg3,
+                position: "center center",
+                title: "European Candy Excellence",
+                subtitle: "KATJES USA",
+              },
+              {
+                src: katjesImg4,
+                position: "center center",
+                title: "Multi-City Trade Show Tour",
+                subtitle: "CHICAGO & INDIANAPOLIS",
+              },
+            ],
+            title: "European Candy Excellence",
+            subtitle: "KATJES USA",
+          },
+          {
+            src: katjesImg5,
+            images: [
+              {
+                src: katjesImg5,
+                position: "center center",
+                title: "Retailer Engagement",
+                subtitle: "PRODUCT DISCOVERY",
+              },
+              {
+                src: katjesImg6,
+                position: "center center",
+                title: "High-Volume Sampling Operations",
+                subtitle: "ZERO GELATIN GUMMIES",
+              },
+            ],
+            title: "Retailer Engagement",
+            subtitle: "PRODUCT DISCOVERY",
+          },
+        ],
+      },
+    },
+  },
+  nakamichi: {
+    id: "nakamichi",
+    slug: "nakamichi",
+    name: "Nakamichi Car Audio",
+    breadcrumbName: "Nakamichi Car Audio",
+    category: "Mobile Electronics & Car Audio / SEMA Show 2024 Trade Show Booth",
+    hero: {
+      subheading: "Nakamichi Car Audio — SEMA Show 2024 Trade Show Booth",
+      titleLine1: "Architecting a 20x20 Product-First",
+      titleLine2: "Audio Electronics Exhibit in Las Vegas.",
+      bgImage: nakamichiImg1,
+      accentColor: "#E21836",
+      tags: [
+        "Custom Booth Design and Fabrication",
+        "Experiential Marketing",
+        "Product portable Display",
+        "Trade Show logistics",
+        "Brand Activation",
+      ],
+      pdfCardText: "Get this case study in PDF to your inbox.",
+    },
+    overviewSection: {
+      summaryHeading: "The summary",
+      summaryAccentDot: ".",
+      summaryText:
+        "Number9 Creative & Media collaborated with Nakamichi Car Audio to architect a highly specialized 20x20 exhibition space for the 2024 SEMA Show. Tasked with cutting through the intense visual clutter of the Las Vegas Convention Center, our production team delivered a product-centric environment driven by stark visual hierarchy, precision lighting, and strategic edge-based interactions. The resulting custom booth elevated the brand's compact automotive tech into a premium, easily readable showcase that commanded attendee attention.",
+      logo: nakamichiLogo,
+      logoAlt: "Nakamichi Car Audio logo",
+      showcaseImage: nakamichiImg2,
+      showcaseAlt: "Nakamichi Car Audio 20x20 trade show booth at SEMA Show 2024",
+      stats: [
+        {
+          targetValue: 20,
+          suffix: "x20",
+          label: "Custom Trade Show Booth",
+          subtext: null,
+        },
+        {
+          targetValue: 2024,
+          suffix: "",
+          noComma: true,
+          label: "Las Vegas Convention Center",
+          subtext: "SEMA Show 2024",
+        },
+      ],
+      projectTags: [
+        "Custom Booth Design and Fabrication",
+        "Experiential Marketing",
+        "Product Display",
+        "Trade Show Logistics",
+      ],
+      quoteSection: {
+        graphicImage: nakamichi_triptych,
+        graphicAlt: "Nakamichi head units and mobile electronics presentation",
+        quote:
+          "As a pioneer in the mobile electronics sector, Nakamichi Car Audio is synonymous with high-fidelity sound systems. Number9 Creative & Media delivered a 20x20 footprint capable of transforming small, complex components into striking focal points, ensuring immediate product clarity.",
+        attributionTitle: "Mobile Electronics",
+        attributionCompany: "Nakamichi Car Audio",
+      },
+    },
+    storySection: {
+      about: {
+        title: "About",
+        clientName: "Nakamichi Car Audio",
+        description:
+          "As a pioneer in the mobile electronics sector, Nakamichi Car Audio is synonymous with high-fidelity sound systems and advanced head units. To make a definitive statement at the SEMA Show, the company tapped Number9 Creative & Media to rethink its trade show presence.\n\nWe were challenged to design and build a 20x20 footprint capable of transforming small, complex components into striking focal points, ensuring immediate product clarity within one of the loudest, most chaotic venues in the automotive industry.",
+      },
+      challenge: {
+        heading: "The challenge",
+        image: nakamichiImg4,
+        imageAlt: "SEMA show floor and Nakamichi booth entrance",
+        leftParagraphs: [
+          "Showcasing small-scale car audio tech at an event like SEMA is inherently difficult. Attendees are bombarded with oversized automotive displays, aggressive lighting, and massive graphic walls, making compact electronics incredibly easy to miss.",
+          "The core obstacle was spatial readability. We had to configure a 20x20 area that prevented the merchandise from blending into a dense retail wall, while simultaneously protecting high-value inventory.",
+        ],
+        rightParagraph:
+          "Furthermore, the layout needed to accommodate heavy foot traffic without sacrificing the calm, technical credibility required for deep audio product demonstrations.",
+      },
+      solution: {
+        heading: "The solution.",
+        image: nakamichiImg5,
+        imageAlt: "Nakamichi interactive perimeter display counters",
+        description:
+          "Rather than competing with the venue’s visual noise, Number9 Creative & Media employed a strategy of disciplined restraint. We designed a highly curated layout that relied on clean structural geometry and striking hero graphics to establish immediate brand authority. By pushing interactive display counters to the perimeter, we captured aisle traffic instantly, allowing visitors to inspect head units and components without clogging the booth's interior.\n\nTo support this architectural approach, our logistics team executed a flawless on-site installation in Las Vegas. We prioritized specialized illumination—ensuring uniform color temperatures that highlighted screen details and printed specs—while strictly managing the unpack order and fixture stability. This rigorous attention to show-floor setup guaranteed a pristine, secure, and highly functional opening-day presentation.",
+        customerInteractions: {
+          stat: "Turn-Key",
+          label: "Design, Setup & Fabrication",
+        },
+      },
+      services: {
+        heading: "Key Services Delivered.",
+        items: [
+          "Custom Booth Design and Fabrication",
+          "Experiential Marketing",
+          "Retail Product Display",
+          "Brand Activation",
+          "Trade Show Logistics",
+        ],
+      },
+      outcome: {
+        heading: "The outcome",
+        intro:
+          "The finished 20x20 space dramatically enhanced Nakamichi Car Audio’s visibility at the SEMA Show, demonstrating that clarity and restraint often outperform sheer volume on a crowded floor. Through targeted design and meticulous execution, our agency delivered:",
+        bullets: [
+          "Constructed a visually disciplined 20x20 framework that shielded compact audio products from surrounding exhibition distractions.",
+          "Shifted interactive touchpoints to the booth’s outer edges, facilitating high-volume attendee engagement while preserving interior space for VIP conversations.",
+          "Deployed precision display lighting to maximize the legibility of digital screens, spec sheets, and intricate electronic components.",
+          "Integrated secure, open-merchandising fixtures to balance hands-on product discovery with necessary asset protection.",
+          "Directed the complete Las Vegas move-in and installation sequence, aligning structural elements and finishes perfectly ahead of opening doors.",
+          "Delivered an elevated, turn-key marketing asset that reinforced Nakamichi’s premium brand identity and streamlined technical product conversations.",
+        ],
+        closing:
+          "By combining architectural restraint, smart perimeter flow, and exacting installation standards, Number9 Creative & Media turned a challenging 20x20 footprint into an authoritative, highly readable brand destination for Nakamichi Car Audio.",
+        galleryFit: "cover",
+        galleryImages: [
+          {
+            src: nakamichiImg1,
+            images: [
+              {
+                src: nakamichiImg1,
+                position: "center center",
+                title: "20x20 Automotive Electronics",
+                subtitle: "NAKAMICHI SEMA 2024",
+              },
+              {
+                src: nakamichiImg2,
+                position: "center center",
+                title: "Perimeter Interaction Counters",
+                subtitle: "TACTILE DISPLAY",
+              },
+            ],
+            title: "20x20 Automotive Electronics",
+            subtitle: "NAKAMICHI SEMA 2024",
+          },
+          {
+            src: nakamichiImg3,
+            images: [
+              {
+                src: nakamichiImg3,
+                position: "center center",
+                title: "Controlled Lighting Architecture",
+                subtitle: "ANTI-GLARE DISPLAY",
+              },
+              {
+                src: nakamichiImg4,
+                position: "center center",
+                title: "Multi-Angle Brand Consistency",
+                subtitle: "HERO GRAPHIC WALL",
+              },
+            ],
+            title: "Controlled Lighting Architecture",
+            subtitle: "ANTI-GLARE DISPLAY",
+          },
+          {
+            src: nakamichiImg5,
+            images: [
+              {
+                src: nakamichiImg5,
+                position: "center center",
+                title: "Clean Walk-Up Presentation",
+                subtitle: "SEMA SHOW FLOOR",
+              },
+              {
+                src: nakamichiImg6,
+                position: "center center",
+                title: "High-End Car Audio Systems",
+                subtitle: "PREMIUM FINISHES",
+              },
+            ],
+            title: "Clean Walk-Up Presentation",
+            subtitle: "SEMA SHOW FLOOR",
+          },
+        ],
+      },
+    },
+  },
+  scantech: {
+    id: "scantech",
+    slug: "scantech",
+    name: "SCANTECH",
+    breadcrumbName: "SCANTECH",
+    category: "Energy & Industrial / The Battery Show North America Trade Show Booth",
+    hero: {
+      subheading: "SCANTECH — The Battery Show North America Trade Show Booth",
+      titleLine1: "Engineering a 20x40 High-Tech Industrial Exhibit",
+      titleLine2: "for Battery Manufacturing Innovations in Detroit.",
+      bgImage: scantechImg1,
+      accentColor: "#0072CE",
+      tags: [
+        "Custom Booth Design and Fabrication",
+        "Experiential Marketing",
+        "Product Display",
+        "Trade Show Logistics",
+      ],
+      pdfCardText: "Get this case study in PDF to your inbox.",
+    },
+    overviewSection: {
+      summaryHeading: "The summary",
+      summaryAccentDot: ".",
+      summaryText:
+        "Number9 Creative & Media partnered with SCANTECH to engineer a massive 20x40 industrial product booth for The Battery Show North America in Detroit. Tasked with translating complex battery manufacturing systems into an accessible physical space, our trade show fabrication agency developed a layout that balanced heavy equipment displays with dedicated technical explanation zones. The resulting custom exhibit empowered technical buyers and industrial decision-makers to effortlessly navigate from initial product discovery to deep-dive application conversations.",
+      logo: scantechLogo,
+      logoAlt: "SCANTECH logo",
+      showcaseImage: scantechImg2,
+      showcaseAlt: "SCANTECH 20x40 industrial product booth at The Battery Show North America in Detroit",
+      stats: [
+        {
+          targetValue: 20,
+          suffix: "x40",
+          label: "Custom Industrial Exhibit",
+          subtext: null,
+        },
+        {
+          targetValue: 1,
+          suffix: "",
+          label: "Huntington Place",
+          subtext: "Detroit, Michigan",
+        },
+      ],
+      projectTags: [
+        "Custom Booth Design and Fabrication",
+        "Experiential Marketing",
+        "Industrial Product Display",
+        "Trade Show Logistics",
+      ],
+      quoteSection: {
+        graphicImage: scantech_triptych,
+        graphicAlt: "SCANTECH battery manufacturing systems demonstration",
+        quote:
+          "As a leader in the energy and industrial sector, SCANTECH provides advanced measurement systems for Battery Gigafactories. Number9 Creative & Media designed a 20x40 booth that supported heavy hardware displays while projecting an authoritative brand image to industry engineers and executives.",
+        attributionTitle: "Energy & Industrial",
+        attributionCompany: "SCANTECH",
+      },
+    },
+    storySection: {
+      about: {
+        title: "About",
+        clientName: "SCANTECH",
+        description:
+          "As a leader in the energy and industrial sector, SCANTECH provides advanced measurement and manufacturing systems for Battery Gigafactories. To debut their latest complex equipment at The Battery Show North America, the company required an exhibition partner capable of handling large-scale industrial product presentations.\n\nSCANTECH selected Number9 Creative & Media to design a 20x40 booth that could support heavy hardware displays while projecting a highly technical, authoritative brand image to industry engineers and executives.",
+      },
+      challenge: {
+        heading: "The challenge",
+        image: scantechImg4,
+        imageAlt: "SCANTECH illuminated meeting tunnel and structural graphics",
+        leftParagraphs: [
+          "Exhibiting at major energy industry events requires a delicate balance between showcasing massive machinery and providing comfortable spaces for high-level technical discourse.",
+          "SCANTECH needed to present intricate Gigafactory manufacturing systems without allowing the 20x40 footprint to feel cramped or overwhelming.",
+        ],
+        rightParagraph:
+          "The primary obstacle for Number9 Creative & Media was creating a logical spatial flow that guided attendees from aisle-side curiosity through equipment demonstration zones, ultimately leading to semi-private areas for detailed technical reviews—all while keeping the overarching brand narrative clear and digestible.",
+      },
+      solution: {
+        heading: "The solution.",
+        image: scantechImg5,
+        imageAlt: "SCANTECH Battery Gigafactory graphics and equipment display",
+        description:
+          "To solve this complex spatial puzzle, Number9 Creative & Media architected a custom booth design centered around a striking illuminated meeting tunnel and large-scale technical graphics. We mapped the 20x40 layout into distinct functional zones: high-visibility perimeter equipment displays to capture aisle traffic, and interior technical display walls featuring wall-mounted screens to support in-depth application explanations.\n\nOur experiential fabrication team also managed the rigorous on-site installation at Huntington Place in Detroit. We ensured that the heavy black exhibit structures, overhead brand signage, and Battery Gigafactory wall graphics were safely rigged and perfectly aligned, delivering an organized, ready-to-present environment for SCANTECH’s technical team well before the show floor opened.",
+        customerInteractions: {
+          stat: "Turn-Key",
+          label: "Design, Setup & Fabrication",
+        },
+      },
+      services: {
+        heading: "Key Services Delivered.",
+        items: [
+          "Custom Booth Design and Fabrication",
+          "Heavy Equipment Display",
+          "Experiential Marketing",
+          "Trade Show Logistics",
+          "Brand Activation",
+        ],
+      },
+      outcome: {
+        heading: "The outcome",
+        intro:
+          "The finished 20x40 industrial exhibit successfully established SCANTECH as a dominant force at The Battery Show North America. Our trade show design and production experts achieved the following milestones:",
+        bullets: [
+          "Engineered a 20x40 custom industrial exhibit that flawlessly integrated heavy equipment zones with specialized technical meeting areas.",
+          "Constructed a striking illuminated meeting tunnel to facilitate uninterrupted, high-level conversations with industrial decision-makers.",
+          "Designed and installed Battery Gigafactory wall graphics and technical process visuals that translated complex systems into clear, scannable brand messaging.",
+          "Deployed wall-mounted screens and product measurement displays to support dynamic, hands-on technical presentations.",
+          "Managed complex show-site logistics at Detroit's Huntington Place, coordinating the safe rigging of overhead signage and heavy structural assembly.",
+          "Delivered a turn-key experiential marketing asset that optimized visitor flow and accelerated the technical sales cycle for SCANTECH’s engineering team.",
+        ],
+        closing:
+          "By integrating architectural ingenuity, precise industrial merchandising, and flawless event logistics, Number9 Creative & Media transformed a 20x40 space into an authoritative, highly functional technical showcase for SCANTECH.",
+        galleryFit: "cover",
+        galleryImages: [
+          {
+            src: scantechImg1,
+            images: [
+              {
+                src: scantechImg1,
+                position: "center center",
+                title: "20x40 Industrial Architecture",
+                subtitle: "SCANTECH BATTERY SHOW 2024",
+              },
+              {
+                src: scantechImg2,
+                position: "center center",
+                title: "Live 3D Metrology Station",
+                subtitle: "MICRON PRECISION DEMOS",
+              },
+            ],
+            title: "20x40 Industrial Architecture",
+            subtitle: "SCANTECH BATTERY SHOW 2024",
+          },
+          {
+            src: scantechImg3,
+            images: [
+              {
+                src: scantechImg3,
+                position: "center center",
+                title: "Illuminated Meeting Tunnel",
+                subtitle: "ENGINEERING CONSULTATION",
+              },
+              {
+                src: scantechImg4,
+                position: "center center",
+                title: "Gigafactory Wall Graphics",
+                subtitle: "TECHNICAL STORYTELLING",
+              },
+            ],
+            title: "Illuminated Meeting Tunnel",
+            subtitle: "ENGINEERING CONSULTATION",
+          },
+          {
+            src: scantechImg5,
+            images: [
+              {
+                src: scantechImg5,
+                position: "center center",
+                title: "Overhead Truss Branding",
+                subtitle: "HUNTINGTON PLACE DETROIT",
+              },
+              {
+                src: scantechImg1,
+                position: "center center",
+                title: "Automated Inspection Systems",
+                subtitle: "BATTERY CELL QUALITY",
+              },
+            ],
+            title: "Overhead Truss Branding",
+            subtitle: "HUNTINGTON PLACE DETROIT",
+          },
+        ],
+      },
+    },
+  },
+  ssstc: {
+    id: "ssstc",
+    slug: "ssstc",
+    name: "SSSTC",
+    breadcrumbName: "SSSTC",
+    category: "Small Inline / Circle Exhibit 2023 Trade Show Booth Design",
+    hero: {
+      subheading: "SSSTC — Circle Exhibit 2023 Trade Show Booth Design",
+      titleLine1: "Maximizing Brand Impact with a",
+      titleLine2: "10x10 Custom Inline Booth in Las Vegas.",
+      bgImage: ssstcImg1,
+      accentColor: "#00A86B",
+      tags: [
+        "Brand Activation",
+        "Custom Booth Design and Fabrication",
+        "Experiential Marketing",
+        "Marketing Events",
+        "Portable displays",
+      ],
+      pdfCardText: "Get this case study in PDF to your inbox.",
+    },
+    overviewSection: {
+      summaryHeading: "The summary",
+      summaryAccentDot: ".",
+      summaryText:
+        "Number9 Creative & Media partnered with SSSTC to design, build, and manage a high-impact 10x10 small inline booth at Circle Exhibit 2023 in Las Vegas. Our trade show fabrication agency engineered a space centered on compact product displays, striking branded backwall graphics, and efficient aisle-facing visitor flow. This custom booth design successfully optimized a smaller footprint, keeping visitor access clear while fully supporting interactive technology demonstrations and critical buyer conversations.",
+      logo: ssstcLogo,
+      logoAlt: "SSSTC logo",
+      showcaseImage: ssstcImg2,
+      showcaseAlt: "SSSTC 10x10 small inline booth at Circle Exhibit 2023",
+      stats: [
+        {
+          targetValue: 10,
+          suffix: "x10",
+          label: "Small Inline Booth",
+          subtext: null,
+        },
+        {
+          targetValue: 2023,
+          suffix: "",
+          noComma: true,
+          label: "Circle Exhibit Las Vegas",
+          subtext: "2023",
+        },
+      ],
+      projectTags: [
+        "Custom Booth Design and Fabrication",
+        "Trade Show Logistics",
+        "Brand Activation",
+        "Experiential Marketing",
+      ],
+      quoteSection: {
+        graphicImage: ssstc_triptych,
+        graphicAlt: "SSSTC solid state storage product display",
+        quote:
+          "SSSTC is a technology innovator requiring a specialized exhibition space to showcase its products directly to industry buyers and technical teams. Number9 Creative & Media created a highly functional, visually engaging brand activation hosting technical product demonstrations within a strict small inline footprint.",
+        attributionTitle: "Technology & Storage",
+        attributionCompany: "SSSTC",
+      },
+    },
+    storySection: {
+      about: {
+        title: "About",
+        clientName: "SSSTC",
+        description:
+          "SSSTC is a technology innovator requiring a specialized exhibition space to showcase its products directly to industry buyers and technical teams. To maximize its impact at Circle Exhibit 2023 in Las Vegas, SSSTC hired Number9 Creative & Media to handle its trade show booth design and on-site setup.\n\nOur experiential marketing and fabrication agency was tasked with creating a highly functional, visually engaging brand activation that could seamlessly host technical product demonstrations within a strict small inline footprint.",
+      },
+      challenge: {
+        heading: "The challenge",
+        image: ssstcImg1,
+        imageAlt: "SSSTC inline booth setup and graphic backwall",
+        leftParagraphs: [
+          "Designing a 10x10 small inline trade show booth requires meticulous spatial planning and strategic branding. SSSTC needed a compact booth layout that maintained clear aisle visibility and organized visitor access without overcrowding the space.",
+          "In a limited footprint, every structural surface and counter must serve a distinct purpose—whether supporting product explanation, secure storage, or visitor conversation.",
+        ],
+        rightParagraph:
+          "The challenge for Number9 Creative & Media was to balance premium brand presence with practical aisle access, ensuring the booth did not lose its show-floor message or feel cluttered during high-traffic technology product demonstrations.",
+      },
+      solution: {
+        heading: "The solution.",
+        image: ssstcImg2,
+        imageAlt: "SSSTC compact product counter and display pedestal",
+        description:
+          "Number9 Creative & Media delivered a turn-key custom booth design and fabrication solution tailored specifically for SSSTC's 10x10 exhibition space. Our agency engineered a compact layout featuring a streamlined product display point and high-impact branded backwall graphics. By ensuring the messaging on the backwall was easily readable from the aisle, we effectively drew attendees into the space while supporting deeper product details and meeting counters on the interior.\n\nBeyond design and fabrication, our team managed the comprehensive show-site setup in Las Vegas. We meticulously aligned the booth structure, installed backwall graphics, optimized display lighting, and integrated the technology product displays. By ensuring the booth was fully ready for visitors from an aisle-facing perspective before the show opened, Number9 provided a highly efficient, organized marketing event environment.",
+        customerInteractions: {
+          stat: "Turn-Key",
+          label: "Design, Setup & Fabrication",
+        },
+      },
+      services: {
+        heading: "Key Services Delivered.",
+        items: [
+          "Custom Booth Design and Fabrication",
+          "Portable Displays",
+          "Trade Show Logistics",
+          "Brand Activation",
+          "Marketing Events",
+        ],
+      },
+      outcome: {
+        heading: "The outcome",
+        intro:
+          "The Number9 Creative & Media booth design successfully anchored SSSTC’s presence at Circle Exhibit 2023, delivering a highly functional and visually compelling brand activation within a small footprint. Our trade show design and production teams achieved the following results:",
+        bullets: [
+          "Designed and fabricated a custom 10x10 small inline booth optimized for aisle-facing visitor flow and attendee engagement.",
+          "Produced and installed large-scale branded backwall graphics that communicated SSSTC's brand message clearly to show-floor traffic.",
+          "Engineered compact product display counters that facilitated hands-on technology demonstrations without obstructing visitor access.",
+          "Managed complete show-site setup in Las Vegas, seamlessly coordinating structure assembly, lighting, and graphic installation.",
+          "Delivered an organized, highly functional exhibition space that comfortably supported in-depth buyer conversations and technical team meetings.",
+          "Provided a turn-key trade show solution that maximized the ROI of a smaller footprint by balancing premium brand presence with efficient spatial planning.",
+        ],
+        closing:
+          "By integrating strategic spatial design, bold branded graphics, and seamless on-site logistics, Number9 Creative & Media transformed a 10x10 inline space into a powerful, high-functioning trade show marketing asset for SSSTC.",
+        galleryFit: "cover",
+        galleryImages: [
+          {
+            src: ssstcImg1,
+            images: [
+              {
+                src: ssstcImg1,
+                position: "center center",
+                title: "10x10 Small Inline Booth",
+                subtitle: "SSSTC CIRCLEEXHIBIT 2023",
+              },
+              {
+                src: ssstcImg2,
+                position: "center center",
+                title: "Compact Enterprise SSD Showcase",
+                subtitle: "SOLID STATE STORAGE",
+              },
+            ],
+            title: "10x10 Small Inline Booth",
+            subtitle: "SSSTC CIRCLEEXHIBIT 2023",
+          },
+          {
+            src: ssstcImg3,
+            images: [
+              {
+                src: ssstcImg3,
+                position: "center center",
+                title: "Branded Tension Fabric Backwall",
+                subtitle: "CLEAN AISLE VISIBILITY",
+              },
+              {
+                src: ssstcImg1,
+                position: "center center",
+                title: "Space Efficiency",
+                subtitle: "LAS VEGAS TRADE SHOW",
+              },
+            ],
+            title: "Branded Tension Fabric Backwall",
+            subtitle: "CLEAN AISLE VISIBILITY",
+          },
+        ],
+      },
+    },
+  },
 };
 
 caseStudiesData["skinny-mixes"] = caseStudiesData.skinny;
+caseStudiesData["mezan-global"] = caseStudiesData.mezan;
+caseStudiesData["meezan"] = caseStudiesData.mezan;
+caseStudiesData["delta"] = caseStudiesData["delta-light"];
+caseStudiesData["deltalight"] = caseStudiesData["delta-light"];
+caseStudiesData["dreo-ihs-2025"] = caseStudiesData.dreo;
+caseStudiesData["finamill-ihs-2025"] = caseStudiesData.finamill;
+caseStudiesData["katjes-usa"] = caseStudiesData.katjes;
+caseStudiesData["nakamichi-car-audio"] = caseStudiesData.nakamichi;
+caseStudiesData["scantech-battery-show-2024"] = caseStudiesData.scantech;
+caseStudiesData["scantech-the-battery-show-north-america-2024"] = caseStudiesData.scantech;
+caseStudiesData["ssstc-circleexhibit"] = caseStudiesData.ssstc;
 
 
 
@@ -3263,5 +4748,13 @@ export function getCaseStudy(slug) {
   if (key === "lifegift") return caseStudiesData.lifegive;
   if (key === "standard-chartered") return caseStudiesData["standard-chartered"];
   if (key === "skinny" || key === "skinny-mixes") return caseStudiesData.skinny;
+  if (key === "mezan" || key === "mezan-global" || key === "meezan") return caseStudiesData.mezan;
+  if (key === "delta" || key === "deltalight" || key === "delta-light") return caseStudiesData["delta-light"];
+  if (key === "dreo" || key === "dreo-ihs-2025") return caseStudiesData.dreo;
+  if (key === "finamill" || key === "finamill-ihs-2025") return caseStudiesData.finamill;
+  if (key === "katjes" || key === "katjes-usa") return caseStudiesData.katjes;
+  if (key === "nakamichi" || key === "nakamichi-car-audio") return caseStudiesData.nakamichi;
+  if (key === "scantech" || key === "scantech-battery-show-2024" || key === "scantech-the-battery-show-north-america-2024") return caseStudiesData.scantech;
+  if (key === "ssstc" || key === "ssstc-circleexhibit") return caseStudiesData.ssstc;
   return caseStudiesData[key] || caseStudiesData.lexus;
 }

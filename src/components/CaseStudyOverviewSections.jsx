@@ -246,7 +246,7 @@ export default function CaseStudyOverviewSections({
                 md:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]
 
                 gap-8 md:gap-[50px] lg:gap-[65px]
-                items-stretch
+                items-start md:items-center
 
                 py-[36px] sm:py-[50px]
                 md:py-[65px] lg:py-[80px]
@@ -308,31 +308,22 @@ export default function CaseStudyOverviewSections({
                 </p>
               </div>
 
-              {/* RIGHT LOGO / SHOWCASE (ENLARGED & ALIGNED BILKUL TEXT K SAMNE) */}
+              {/* RIGHT LOGO / SHOWCASE (RECTANGLE: WIDER WIDTH, LESSER HEIGHT) */}
               <div
                 className="
                   w-full min-w-0
                   flex items-center justify-center
                   bg-white dark:bg-[#171A18] overflow-hidden
 
-                  mt-[30px]
-                  h-[220px]
+                  mt-[30px] sm:mt-[36px] md:mt-0
+                  w-full max-w-[560px]
+                  aspect-[1.48/1]
+                  self-center
+                  mx-auto md:mx-0 md:ml-auto
+
                   border border-[#D0D0D0] dark:border-[#27302A]
-                  rounded-[20px]
-
-                  sm:mt-[36px]
-                  sm:h-[260px]
-
-                  md:mt-0
-                  md:h-auto
-                  md:min-h-[380px]
-                  lg:min-h-[440px]
-                  self-stretch
-
-                  md:border
                   md:border-[#BDBDBD] md:dark:border-[#27302A]
-                  md:rounded-[28px]
-                  lg:rounded-[36px]
+                  rounded-[20px] md:rounded-[28px] lg:rounded-[36px]
                   shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.3)]
                   p-6 sm:p-8 lg:p-12
                 "
@@ -345,19 +336,19 @@ export default function CaseStudyOverviewSections({
                     decoding="async"
                     className={`
                       block
-                      w-[80%]
+                      w-[68%] sm:w-[62%]
                       h-auto
-                      max-w-[340px]
-                      sm:max-w-[380px]
-                      lg:max-w-[420px]
-                      max-h-[160px]
-                      sm:max-h-[200px]
-                      md:max-h-[240px]
-                      lg:max-h-[270px]
+                      max-w-[280px]
+                      sm:max-w-[320px]
+                      lg:max-w-[360px]
+                      max-h-[120px]
+                      sm:max-h-[140px]
+                      md:max-h-[160px]
+                      lg:max-h-[180px]
 
                       object-contain
                       object-center
-                      ${caseStudy?.slug === 'lexus' || overview.logoAlt === 'Lexus' ? 'dark:invert' : ''}
+                      ${caseStudy?.slug === 'lexus' || overview.logoAlt === 'Lexus' || caseStudy?.slug === 'delta-light' || caseStudy?.slug === 'dreo' ? 'dark:invert' : ''}
                     `}
                   />
                 )}

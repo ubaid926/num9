@@ -39,6 +39,14 @@ export const CLIENT_INDUSTRIES = {
   "GENESIS Exhibits": ["Media & Entertainment", "Architecture"],
   "Standard Chartered": ["Financial Services", "Enterprise"],
   "Skinny Mixes": ["Retail", "Food & Beverage"],
+  "Mezan Global": ["Food & Beverage", "Retail"],
+  "Delta Light": ["Architecture", "Enterprise"],
+  DREO: ["Retail", "Enterprise"],
+  Finamill: ["Retail", "Food & Beverage"],
+  "Katjes USA": ["Food & Beverage", "Retail"],
+  "Nakamichi Car Audio": ["Automotive", "Retail"],
+  SCANTECH: ["Enterprise", "Automotive"],
+  SSSTC: ["Enterprise"],
 
   // Brands that appear only in service "work" cards
   "Shan Foods": ["Food & Beverage", "Retail"],

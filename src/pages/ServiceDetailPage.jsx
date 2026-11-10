@@ -35,6 +35,14 @@ import clientGenesisLogo from "../assets/Logos/Updated_Logos/GENESIS.Logo.032218
 import clientIcomLogo from "../assets/Logos/Updated_Logos/Clean restored ICOM network logo.webp";
 import clientStandardCharteredLogo from "../assets/Logos/Updated_Logos/Standard_Chartered__282021_29.webp";
 import clientSkinnyLogo from "../assets/caseStudies/skinny/Jordan_s_Skinny_Mixes_Logo_f5994884-b437-492f-aa4a-b5debcc1c695_1543x_copy_copy.png";
+import clientMezanLogo from "../assets/caseStudies/meezan/mezanLogo.png";
+import clientDeltaLogo from "../assets/caseStudies/Delta Light/deltaLogo_transparent.png";
+import clientDreoLogo from "../assets/caseStudies/DREO IHS 2025/dreoLogo_trimmed.png";
+import clientFinamillLogo from "../assets/caseStudies/Finamill IHS 2025/finamillLogo_trimmed.png";
+import clientKatjesLogo from "../assets/caseStudies/Katjes USA/katjesLogo.svg";
+import clientNakamichiLogo from "../assets/caseStudies/Nakamichi Car Audio/nakamichiLogo.svg";
+import clientScantechLogo from "../assets/caseStudies/SCANTECH The Battery Show North America 2024/scantechLogo.svg";
+import clientSsstcLogo from "../assets/caseStudies/SSSTC Circleexhibit/ssstcLogo.svg";
 
 function getClientMeta(title, customLogo) {
   if (customLogo) {
@@ -70,6 +78,14 @@ function getClientMeta(title, customLogo) {
   if (t.includes("icom")) return { logo: clientIcomLogo, brand: "ICOM", route: "case-study/icom", logoClass: "h-[46px] sm:h-[54px] lg:h-[62px] xl:h-[68px] w-auto max-w-[240px] sm:max-w-[280px]" };
   if (t.includes("standard chartered")) return { logo: clientStandardCharteredLogo, brand: "Standard Chartered", route: "case-study/standard-chartered", logoClass: "h-[46px] sm:h-[54px] lg:h-[62px] xl:h-[68px] w-auto max-w-[250px] sm:max-w-[290px]" };
   if (t.includes("skinny")) return { logo: clientSkinnyLogo, brand: "Skinny Mixes", route: "case-study/skinny", logoClass: "h-[74px] sm:h-[90px] lg:h-[106px] xl:h-[118px] w-auto max-w-[240px] sm:max-w-[280px]" };
+  if (t.includes("mezan") || t.includes("meezan")) return { logo: clientMezanLogo, brand: "Mezan Global", route: "case-study/mezan", isColored: true, logoClass: "h-[50px] sm:h-[60px] lg:h-[72px] xl:h-[80px] w-auto max-w-[240px] sm:max-w-[280px]" };
+  if (t.includes("delta light") || t.includes("delta")) return { logo: clientDeltaLogo, brand: "Delta Light", route: "case-study/delta-light", logoClass: "h-[38px] sm:h-[46px] lg:h-[54px] xl:h-[60px] w-auto max-w-[240px]" };
+  if (t.includes("dreo")) return { logo: clientDreoLogo, brand: "DREO", route: "case-study/dreo", logoClass: "h-[46px] sm:h-[54px] lg:h-[62px] xl:h-[70px] w-auto max-w-[240px]" };
+  if (t.includes("finamill")) return { logo: clientFinamillLogo, brand: "Finamill", route: "case-study/finamill", logoClass: "h-[46px] sm:h-[54px] lg:h-[62px] xl:h-[70px] w-auto max-w-[240px]" };
+  if (t.includes("katjes")) return { logo: clientKatjesLogo, brand: "Katjes USA", route: "case-study/katjes", isColored: true, logoClass: "h-[48px] sm:h-[56px] lg:h-[64px] xl:h-[72px] w-auto max-w-[240px]" };
+  if (t.includes("nakamichi")) return { logo: clientNakamichiLogo, brand: "Nakamichi Car Audio", route: "case-study/nakamichi", logoClass: "h-[46px] sm:h-[54px] lg:h-[62px] xl:h-[70px] w-auto max-w-[280px]" };
+  if (t.includes("scantech")) return { logo: clientScantechLogo, brand: "SCANTECH", route: "case-study/scantech", logoClass: "h-[46px] sm:h-[54px] lg:h-[62px] xl:h-[70px] w-auto max-w-[260px]" };
+  if (t.includes("ssstc")) return { logo: clientSsstcLogo, brand: "SSSTC", route: "case-study/ssstc", logoClass: "h-[46px] sm:h-[54px] lg:h-[62px] xl:h-[70px] w-auto max-w-[240px]" };
   if (t.includes("ymca")) return { logo: clientYmcaLogo, brand: "YMCA", route: "case-study/ymca", logoClass: "h-[50px] sm:h-[58px] lg:h-[68px] xl:h-[74px] w-auto" };
   if (t.includes("magellan")) return { logo: clientMagellanLogo, brand: "Magellan Health", route: "case-study/magellan", logoClass: "h-[44px] sm:h-[52px] lg:h-[60px] xl:h-[66px] w-auto max-w-[240px] sm:max-w-[280px]" };
   if (t.includes("nutrien")) return { logo: clientNutrienLogo, brand: "Nutrien", route: "case-study/nutrien", logoClass: "h-[42px] sm:h-[50px] lg:h-[58px] xl:h-[64px] w-auto max-w-[240px] sm:max-w-[280px]" };

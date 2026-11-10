@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 290 85" width="100%" height="100%">
+  <g fill="none" fill-rule="evenodd">
+    <!-- Cat Icon Silhouette -->
+    <g transform="translate(0, 5)">
+      <path d="M42,75 C23,75 8,62 8,44 C8,33 15,24 23,19 L19,4 C18,1 21,-1 24,1 L33,10 C37,9 41,8 45,8 C49,8 53,9 57,10 L66,1 C69,-1 72,1 71,4 L67,19 C75,24 82,33 82,44 C82,62 67,75 48,75 Z" fill="#E6007E"/>
+      <path d="M23,12 L30,16 C27,19 25,23 24,26 L23,12 Z" fill="#FFFFFF" opacity="0.8"/>
+      <path d="M67,12 L66,26 C65,23 63,19 60,16 L67,12 Z" fill="#FFFFFF" opacity="0.8"/>
+      <circle cx="34" cy="40" r="4.2" fill="#FFFFFF"/>
+      <circle cx="56" cy="40" r="4.2" fill="#FFFFFF"/>
+      <polygon points="45,47 41,51 49,51" fill="#FFFFFF"/>
+      <line x1="16" y1="46" x2="28" y2="48" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="15" y1="53" x2="28" y2="52" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="74" y1="46" x2="62" y2="48" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="75" y1="53" x2="62" y2="52" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M41,56 Q45,59 49,56" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    </g>
+    <!-- Brand Wordmark -->
+    <text x="96" y="55" font-family="'Poppins', 'Arial Rounded MT Bold', 'Montserrat', sans-serif" font-size="56" font-weight="900" fill="#222222" letter-spacing="-1">Katjes</text>
+    <text x="98" y="75" font-family="'Poppins', 'Montserrat', sans-serif" font-size="13" font-weight="700" fill="#E6007E" letter-spacing="3">EUROPEAN CANDY</text>
+  </g>
+</svg>

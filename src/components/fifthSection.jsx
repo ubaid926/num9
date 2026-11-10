@@ -1,4 +1,4 @@
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 
 
@@ -818,82 +818,116 @@ export default function FifthSection({ onNavigate }) {
 
 
 
-  // Touch swipe tracking
+  // Drag / swipe state and refs
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragOffset, setDragOffset] = useState(0);
+  const isDraggingRef = useRef(false);
+  const dragStartX = useRef(0);
+  const dragStartY = useRef(0);
+  const dragDeltaX = useRef(0);
+  const hasDragged = useRef(false);
+  const dragDirectionLocked = useRef(null); // null, 'horizontal', 'vertical'
+  const activePointerId = useRef(null);
 
+  const handlePointerDown = (e) => {
+    // Only primary mouse button (0) or touch/pen
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    if (isSliding.current || isLoopResetting) return;
 
-
-  const touchStartX = useRef(null);
-
-
-
-  const touchStartY = useRef(null);
-
-
-
-
-
-
-
-  const handleTouchStart = (e) => {
-
-
-
-    touchStartX.current = e.touches[0].clientX;
-
-
-
-    touchStartY.current = e.touches[0].clientY;
-
-
-
+    activePointerId.current = e.pointerId;
+    isDraggingRef.current = true;
+    dragStartX.current = e.clientX;
+    dragStartY.current = e.clientY;
+    dragDeltaX.current = 0;
+    hasDragged.current = false;
+    dragDirectionLocked.current = null;
   };
 
+  const handlePointerMove = (e) => {
+    if (!isDraggingRef.current || e.pointerId !== activePointerId.current) return;
 
+    const dx = e.clientX - dragStartX.current;
+    const dy = e.clientY - dragStartY.current;
 
-
-
-
-
-  const handleTouchEnd = (e) => {
-
-
-
-    if (touchStartX.current === null) return;
-
-
-
-    const dx = e.changedTouches[0].clientX - touchStartX.current;
-
-
-
-    const dy = e.changedTouches[0].clientY - touchStartY.current;
-
-
-
-    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
-
-
-
-      if (dx < 0) next();
-
-
-
-      else prev();
-
-
-
+    if (dragDirectionLocked.current === null) {
+      if (Math.abs(dx) > 8 || Math.abs(dy) > 8) {
+        if (Math.abs(dx) >= Math.abs(dy)) {
+          dragDirectionLocked.current = 'horizontal';
+          setIsDragging(true);
+          try {
+            e.currentTarget.setPointerCapture(e.pointerId);
+          } catch (_) {}
+        } else {
+          dragDirectionLocked.current = 'vertical';
+          isDraggingRef.current = false;
+          setIsDragging(false);
+          setDragOffset(0);
+          return;
+        }
+      } else {
+        return;
+      }
     }
 
+    if (dragDirectionLocked.current !== 'horizontal') return;
 
+    if (Math.abs(dx) > 8) {
+      hasDragged.current = true;
+    }
 
-    touchStartX.current = null;
+   dragDeltaX.current = dx;
+// Drag ke waqt track ko move nahi karna
+  };
 
+  const handlePointerUp = (e) => {
+    if (!isDraggingRef.current || e.pointerId !== activePointerId.current) return;
+    isDraggingRef.current = false;
+    setIsDragging(false);
+    activePointerId.current = null;
 
+    try {
+      if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+        e.currentTarget.releasePointerCapture(e.pointerId);
+      }
+    } catch (_) {}
 
-    touchStartY.current = null;
+    const dx = dragDeltaX.current;
+    const step = cardW + rowGap;
+    const threshold = Math.min(cardW * 0.15, 45);
 
+    setDragOffset(0);
 
+    if (Math.abs(dx) >= threshold) {
+    isSliding.current = true;
 
+    const direction = dx < 0 ? 1 : -1;
+
+    setOffset((curr) => curr + direction);
+}
+
+    if (hasDragged.current) {
+      setTimeout(() => {
+        hasDragged.current = false;
+      }, 80);
+    }
+  };
+
+  const handlePointerCancel = (e) => {
+    if (!isDraggingRef.current) return;
+    isDraggingRef.current = false;
+    setIsDragging(false);
+    setDragOffset(0);
+    activePointerId.current = null;
+
+    try {
+      if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+        e.currentTarget.releasePointerCapture(e.pointerId);
+      }
+    } catch (_) {}
+
+    setTimeout(() => {
+      hasDragged.current = false;
+    }, 80);
   };
 
 
@@ -933,6 +967,8 @@ export default function FifthSection({ onNavigate }) {
       : isTablet
         ? 24
         : CARD_VISUAL_GAP;
+
+  const centerOffset = isMobile ? Math.max(0, Math.round((viewportWidth - cardW) / 2)) : 0;
 
   const logoScale = isMobile ? 0.85 : 1;
 
@@ -1004,38 +1040,55 @@ export default function FifthSection({ onNavigate }) {
   const carouselContainerRef = useRef(null);
 
   const handleCardClick = (e, t) => {
+    if (hasDragged.current) {
+      e?.preventDefault?.();
+      e?.stopPropagation?.();
+      return;
+    }
     if (isSliding.current || isLoopResetting) return;
 
-    if (isMobile) {
-      const cardRect = e.currentTarget.getBoundingClientRect();
-      if (cardRect.left >= 0 && cardRect.left < 50) {
-        handleNavigateClick(t.route);
-      } else if (cardRect.left >= 50) {
-        next();
-      } else {
-        prev();
+    const cardEl = e.currentTarget;
+    if (!cardEl) return;
+
+    const trackEl = cardEl.parentElement;
+    const screenCenter = window.innerWidth / 2;
+
+    // Find the card whose center is closest to screen center
+    let closestCard = null;
+    let minDistance = Infinity;
+    if (trackEl && trackEl.children) {
+      for (const child of trackEl.children) {
+        const r = child.getBoundingClientRect();
+        const dist = Math.abs(r.left + r.width / 2 - screenCenter);
+        if (dist < minDistance) {
+          minDistance = dist;
+          closestCard = child;
+        }
       }
+    }
+
+    // Center card: click opens its page
+    if (closestCard === cardEl) {
+      handleNavigateClick(t.route);
       return;
     }
 
-    const cardRect = e.currentTarget.getBoundingClientRect();
+    // Non-center card:
+    // If clicked card is to the right of center, slide cards left (advance offset)
+    // If clicked card is to the left of center, slide cards right (decrease offset)
+    const cardRect = cardEl.getBoundingClientRect();
     const cardCenter = cardRect.left + cardRect.width / 2;
-
-    const containerRect = carouselContainerRef.current?.getBoundingClientRect();
-    const centerRef = containerRect
-      ? containerRect.left + containerRect.width / 2
-      : window.innerWidth / 2;
-
+    const diff = cardCenter - screenCenter;
     const step = cardW + rowGap;
-    const distance = cardCenter - centerRef;
-    const stepsToMove = Math.round(distance / step);
+    const steps = Math.max(1, Math.round(Math.abs(diff) / step));
+    const direction = diff > 0 ? 1 : -1;
 
-    if (stepsToMove !== 0) {
-      isSliding.current = true;
-      setOffset((current) => current + stepsToMove);
-    } else {
-      handleNavigateClick(t.route);
-    }
+    isSliding.current = true;
+    setOffset((curr) => curr + direction * steps);
+
+    setTimeout(() => {
+      isSliding.current = false;
+    }, 600);
   };
 
   const desktopTrackWidth =
@@ -1128,7 +1181,7 @@ export default function FifthSection({ onNavigate }) {
 
 
 
-          <div className="flex-1 min-w-0 flex flex-col gap-5 sm:gap-6 lg:gap-7 justify-start pt-6 sm:pt-8 lg:pt-[clamp(65px,6vw,120px)] px-6 sm:px-10 lg:pl-12 xl:pl-16 pb-3 sm:pb-4 lg:pb-6">
+          <div className="flex-1 min-w-0 flex flex-col gap-6 sm:gap-7 lg:gap-8 justify-start pt-8 sm:pt-12 lg:pt-[clamp(115px,9.5vw,190px)] px-6 sm:px-10 lg:pl-12 xl:pl-16 pb-4 sm:pb-6 lg:pb-8">
 
 
 
@@ -1167,7 +1220,7 @@ export default function FifthSection({ onNavigate }) {
             <button
               type="button"
               onClick={() => handleNavigateClick('our-work')}
-              className="group flex items-center gap-18 font-medium text-[14px] sm:text-[22px] text-black dark:text-white border-b-2 border-black dark:border-white pb-2 w-fit hover:text-[#11C911] dark:hover:text-[#15B83E] hover:border-[#11C911] dark:hover:border-[#15B83E] transition-colors duration-300 mt-3 sm:mt-4 cursor-pointer"
+              className="group flex items-center gap-18 font-medium text-[14px] sm:text-[22px] text-black dark:text-white border-b-2 border-black dark:border-white pb-2 w-fit hover:text-[#11C911] dark:hover:text-[#15B83E] hover:border-[#11C911] dark:hover:border-[#15B83E] transition-colors duration-300 mt-5 sm:mt-6 cursor-pointer"
             >
               View Our Work
               <ArrowRight className="w-4 h-4 xl:w-8 xl:h-8 group-hover:translate-x-1 transition-transform" />
@@ -1194,7 +1247,7 @@ export default function FifthSection({ onNavigate }) {
     
 {/* ══ CARDS ROW ══ */}
 
-<div className="w-full py-2 lg:absolute lg:top-[38%] lg:left-0 lg:z-20">
+<div className="w-full py-2 lg:absolute lg:top-[45%] lg:left-0 lg:z-20">
 
 
 
@@ -1208,42 +1261,19 @@ export default function FifthSection({ onNavigate }) {
 
 
             <div
-
-
-
-              className={`flex w-max ease-in-out px-4 lg:px-0 ${isLoopResetting ? 'transition-none' : 'transition-transform duration-500'}`}
-
-
-
-              onTouchStart={handleTouchStart}
-
-
-
-              onTouchEnd={handleTouchEnd}
+              className={`flex w-max ease-in-out ${isMobile ? 'px-0' : 'px-4 lg:px-0'} select-none touch-pan-y cursor-grab active:cursor-grabbing ${
+                isDragging || isLoopResetting ? 'transition-none' : 'transition-transform duration-500'
+              }`}
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerCancel}
               onTransitionEnd={handleCarouselTransitionEnd}
-
-
-
               style={{
-
-
-
                 gap: `${rowGap}px`,
-
-
-
-                transform: `translateX(calc(-${offset * (cardW + rowGap)}px))`,
-
-
-
+             transform: `translateX(${centerOffset - offset * (cardW + rowGap)}px)`,
                 width: 'max-content',
-
-
-
               }}
-
-
-
             >
 
 
@@ -1303,7 +1333,8 @@ export default function FifthSection({ onNavigate }) {
                         loading="lazy"
                         decoding="async"
                         alt={t.logoAlt}
-                        className={`object-contain transition-all duration-300 ${t.logoAlt === 'Lexus' ? 'dark:invert' : ''}`}
+                        draggable={false}
+                        className={`object-contain pointer-events-none select-none transition-all duration-300 ${t.logoAlt === 'Lexus' ? 'dark:invert' : ''}`}
                         style={{
                           width: `${Math.round(t.logoWidth * logoScale)}px`,
                           height: `${Math.round(t.logoHeight * logoScale)}px`,
@@ -1345,6 +1376,7 @@ export default function FifthSection({ onNavigate }) {
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
+                      if (hasDragged.current) return;
                       handleNavigateClick(t.route);
                     }}
                     className="sm:block text-left hover:underline w-fit mt-4 text-[17px] min-[390px]:text-[18px] sm:text-[20px] text-black dark:text-[#15B83E] cursor-pointer"
@@ -1377,7 +1409,7 @@ export default function FifthSection({ onNavigate }) {
           {/* =================================================
               DOTS — below the carousel
           ================================================= */}
-          <div className="flex items-center justify-center gap-2 sm:gap-2.5 mt-8 sm:mt-10">
+          <div className="flex items-center justify-center gap-2 sm:gap-2.5 mt-6 sm:mt-8 pb-3 sm:pb-4">
             {testimonials.map((_, index) => {
               const activeIndex = ((offset % testimonials.length) + testimonials.length) % testimonials.length;
               const isActiveDot = index === activeIndex;
@@ -1403,60 +1435,6 @@ export default function FifthSection({ onNavigate }) {
             })}
           </div>
 
-          {/* Arrows — centered, both green, desktop only */}
-
-
-
-          <div className="hidden sm:flex items-center justify-center gap-4 mt-10 sm:mt-12 lg:mt-14 pb-5">
-
-
-
-            <button
-
-
-
-              onClick={prev}
-
-
-              className={`w-[44px] h-[44px] rounded-full border flex items-center justify-center transition-colors
-
-
-
-                border-[#11C911] text-[#11C911] hover:bg-[#11C911] hover:text-white cursor-pointer`}
-
-            >
-
-              <ChevronLeft size={22} />
-
-            </button>
-
-            <button
-
-              onClick={next}
-
-
-              className={`w-[44px] h-[44px] rounded-full border flex items-center justify-center transition-colors
-
-
-
-                border-[#11C911] text-[#11C911] hover:bg-[#11C911] hover:text-white cursor-pointer`}
-
-
-
-            >
-
-
-
-              <ChevronRight size={22} />
-
-
-
-            </button>
-
-
-
-          </div>
-
 
 
         </div>
@@ -1478,7 +1456,7 @@ export default function FifthSection({ onNavigate }) {
     relative z-10 mx-auto w-full
     max-w-[1600px]
     px-0 sm:px-6 lg:px-8
-    mt-8 sm:mt-10 lg:-mt-[80px]
+    mt-6 sm:mt-8 lg:-mt-[120px]
   "
       >
         <div

@@ -465,17 +465,17 @@ const ServiceCard = ({ service, onNavigate }) => {
         max-w-full
         flex
         flex-col
-        rounded-[24px]
-        min-[390px]:rounded-[28px]
+        rounded-[18px]
+        min-[390px]:rounded-[20px]
         md:rounded-[18px]
-   ${decoration === "star"
+        ${decoration === "star"
           ? "overflow-hidden md:overflow-visible"
           : "overflow-visible"
         }
-   ${decoration === "laptop"
-          ? "min-h-[540px] min-[390px]:min-h-[580px] sm:min-h-[610px] md:min-h-[420px]"
-          : "min-h-[520px] min-[390px]:min-h-[550px] sm:min-h-[580px] md:min-h-[420px]"
-        }
+${decoration === "star"
+  ? "min-h-[445px] min-[360px]:min-h-[455px] min-[390px]:min-h-[465px] sm:min-h-[490px] md:min-h-[420px]"
+  : "min-h-[415px] min-[360px]:min-h-[425px] min-[390px]:min-h-[435px] sm:min-h-[460px] md:min-h-[420px]"
+}
         lg:min-h-[460px]
         xl:min-h-[500px]
         2xl:min-h-[530px]
@@ -513,11 +513,15 @@ const ServiceCard = ({ service, onNavigate }) => {
           lg:min-h-[460px]
           xl:min-h-[500px]
           2xl:min-h-[530px]
-          px-5
-          pt-7
+          px-4
+          pt-5
           pb-0
+          min-[360px]:px-5
+          min-[360px]:pt-5
+          min-[390px]:px-6
+          min-[390px]:pt-6
           sm:px-8
-          sm:pt-9
+          sm:pt-8
           sm:pb-0
           md:px-10
           md:py-12
@@ -542,16 +546,17 @@ const ServiceCard = ({ service, onNavigate }) => {
         {/* Heading */}
         <h3
           className={`
-            text-[24px]
-            min-[360px]:text-[26px]
-            min-[390px]:text-[28px]
-            sm:text-[34px]
+            text-[20px]
+            min-[360px]:text-[22px]
+            min-[390px]:text-[24px]
+            sm:text-[28px]
             md:text-[34px]
             lg:text-[42px]
             xl:text-[54px]
             2xl:text-[66px]
             font-bold
-            leading-[1.05]
+            leading-[1.08]
+            min-[390px]:leading-[1.06]
             sm:leading-[1.05]
             md:leading-[0.98]
             lg:leading-[1.0]
@@ -639,24 +644,27 @@ const ServiceCard = ({ service, onNavigate }) => {
           className={`
             whitespace-normal
             lg:whitespace-pre-line
-            mt-5
-            min-[390px]:mt-6
-            sm:mt-7
+            mt-2.5
+            min-[360px]:mt-3
+            min-[390px]:mt-3.5
+            sm:mt-5
             md:mt-6
             lg:mt-7
             xl:mt-8
-            text-[13.5px]
-            min-[390px]:text-[14.5px]
-            sm:text-[16px]
+            text-[12px]
+            min-[360px]:text-[12.5px]
+            min-[390px]:text-[13px]
+            sm:text-[15px]
             md:text-[17px]
             lg:text-[20px]
             xl:text-[24px]
             2xl:text-[26px]
             font-normal
-            leading-[1.3]
+            leading-[1.32]
             min-[390px]:leading-[1.35]
             md:leading-[1.35]
-            max-w-full
+            max-w-[94%]
+            min-[390px]:max-w-[90%]
             md:max-w-[440px]
             lg:max-w-[480px]
             xl:max-w-[540px]
@@ -676,23 +684,40 @@ const ServiceCard = ({ service, onNavigate }) => {
             if (onNavigate) onNavigate(service.route || "services");
           }}
           className={`
-            mt-6 min-[390px]:mt-7 sm:mt-8 md:mt-8 lg:mt-10 xl:mt-12
+            mt-3.5
+            min-[360px]:mt-3.5
+            min-[390px]:mt-4
+            sm:mt-5
+            md:mt-8
+            lg:mt-10
+            xl:mt-12
             inline-flex
             w-fit
             items-center
             justify-between
-            gap-3.5 min-[390px]:gap-4 sm:gap-6 lg:gap-10
-            pl-4 pr-3
-            min-[390px]:pl-5 min-[390px]:pr-4
-            sm:pl-6 sm:pr-5
-            h-[35px]
-            min-[390px]:h-[38px]
-            sm:h-[46px]
+            gap-2.5
+            min-[360px]:gap-3
+            min-[390px]:gap-3.5
+            sm:gap-6
+            lg:gap-10
+            pl-3.5
+            pr-2.5
+            min-[360px]:pl-4
+            min-[360px]:pr-3
+            min-[390px]:pl-4
+            min-[390px]:pr-3
+            sm:pl-6
+            sm:pr-5
+            h-[29px]
+            min-[360px]:h-[31px]
+            min-[390px]:h-[33px]
+            sm:h-[40px]
             lg:h-[54px]
             rounded-full
-            text-[12.5px]
-            min-[390px]:text-[13.5px]
-            sm:text-[16px]
+            text-[11.5px]
+            min-[360px]:text-[12px]
+            min-[390px]:text-[12.5px]
+            sm:text-[15px]
             lg:text-[20px]
             xl:text-[25px]
             font-medium
@@ -716,9 +741,10 @@ const ServiceCard = ({ service, onNavigate }) => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="
-              w-[28px]
-              min-[390px]:w-[32px]
-              sm:w-[45px]
+              w-[20px]
+              min-[360px]:w-[22px]
+              min-[390px]:w-[24px]
+              sm:w-[35px]
               lg:w-[55px]
               h-auto
               shrink-0
@@ -747,14 +773,18 @@ const ServiceCard = ({ service, onNavigate }) => {
             absolute
             z-10
             pointer-events-none
-            bottom-[-135px]
             right-[-25px]
-            w-[380px] h-[380px]
-            min-[390px]:bottom-[-145px]
+            top-[195px]
+            w-[360px] h-[360px]
+            min-[360px]:top-[200px]
+            min-[390px]:top-[210px]
+            sm:top-[220px]
+            min-[360px]:right-[-28px]
+            min-[360px]:w-[380px]
+            min-[360px]:h-[380px]
             min-[390px]:right-[-30px]
             min-[390px]:w-[410px]
             min-[390px]:h-[410px]
-            sm:bottom-[-160px]
             sm:right-[-35px]
             sm:w-[450px]
             sm:h-[450px]
@@ -770,7 +800,7 @@ const ServiceCard = ({ service, onNavigate }) => {
             <g
               transform="
                 translate(396 238)
-                scale(1.37)
+                scale(1.27)
                 translate(-376 -308)
                 translate(-14 38)
               "
@@ -808,12 +838,12 @@ const ServiceCard = ({ service, onNavigate }) => {
             className="
               absolute
               z-10
-              bottom-[-16px] min-[390px]:bottom-[-20px] sm:bottom-[-20px]
-              -left-4 min-[390px]:-left-5 sm:-left-4
-              w-[260px] h-[260px]
-              min-[390px]:w-[285px] min-[390px]:h-[285px]
-              min-[480px]:w-[315px] min-[480px]:h-[315px]
-              sm:w-[350px] sm:h-[350px]
+              bottom-[-26px] min-[360px]:bottom-[-30px] min-[390px]:bottom-[-36px] sm:bottom-[-40px]
+              -left-2 min-[360px]:-left-2.5 min-[390px]:-left-3 sm:-left-4
+              w-[205px] h-[205px]
+              min-[360px]:w-[225px] min-[360px]:h-[225px]
+              min-[390px]:w-[245px] min-[390px]:h-[245px]
+              sm:w-[280px] sm:h-[280px]
             "
           />
 
@@ -824,12 +854,12 @@ const ServiceCard = ({ service, onNavigate }) => {
             className="
               absolute
               z-20
-              bottom-[195px] min-[390px]:bottom-[210px] sm:bottom-[215px]
-              right-[16%] min-[390px]:right-[18%] min-[480px]:right-[24%] sm:right-[28%]
-              w-[78px] h-[78px]
-              min-[390px]:w-[88px] min-[390px]:h-[88px]
-              min-[480px]:w-[108px] min-[480px]:h-[108px]
-              sm:w-[130px] sm:h-[130px]
+              bottom-[122px] min-[360px]:bottom-[128px] min-[390px]:bottom-[136px] sm:bottom-[150px]
+              right-[15%] min-[360px]:right-[17%] min-[390px]:right-[19%] sm:right-[22%]
+              w-[76px] h-[76px]
+              min-[360px]:w-[86px] min-[360px]:h-[86px]
+              min-[390px]:w-[96px] min-[390px]:h-[96px]
+              sm:w-[110px] sm:h-[110px]
             "
           />
 
@@ -840,76 +870,97 @@ const ServiceCard = ({ service, onNavigate }) => {
             className="
               absolute
               z-10
-              bottom-[105px] min-[390px]:bottom-[118px] sm:bottom-[105px]
-              -right-1 min-[390px]:right-[1%] min-[480px]:right-[4%] sm:right-[8%]
-              w-[72px] h-[72px]
-              min-[390px]:w-[82px] min-[390px]:h-[82px]
-              min-[480px]:w-[100px] min-[480px]:h-[100px]
-              sm:w-[120px] sm:h-[120px]
+              bottom-[68px] min-[360px]:bottom-[74px] min-[390px]:bottom-[80px] sm:bottom-[92px]
+              -right-2.5 min-[360px]:-right-3 min-[390px]:-right-3.5 sm:-right-4
+              w-[68px] h-[68px]
+              min-[360px]:w-[76px] min-[360px]:h-[76px]
+              min-[390px]:w-[86px] min-[390px]:h-[86px]
+              sm:w-[98px] sm:h-[98px]
             "
           />
         </div>
       )}
 
-      {decoration === "circles" && (
-        <div
-          className="
-            md:hidden
-            absolute
-            pointer-events-none
-            overflow-visible
-            z-10
-            flex
-            items-end
-            justify-end
-            bottom-[-8px] min-[390px]:bottom-[-10px] sm:bottom-[-8px]
-            right-[2px] min-[390px]:right-[4px] sm:right-[8px]
-            w-[265px] min-[360px]:w-[280px] min-[390px]:w-[305px] min-[440px]:w-[330px] sm:w-[360px]
-            max-w-[88%]
-          "
-        >
-          <img
-            src={service.mobileImage || service.image}
-            alt="Digital Video Productions"
-            loading="lazy"
-            decoding="async"
-            draggable={false}
-            className="w-full h-auto object-contain object-bottom-right drop-shadow-md"
-          />
-        </div>
-      )}
 
-      {decoration === "laptop" && (
-        <div
-          className="
-            md:hidden
-            absolute
-          bottom-8
-min-[390px]:bottom-10
-sm:bottom-12
-            left-1/2
-            -translate-x-1/2
-           w-[105%]
-min-[390px]:w-[110%]
-max-w-[480px]
-sm:max-w-[520px]
-            pointer-events-none
-            overflow-visible
-            z-10
-            flex
-            items-end
-            justify-center
-          "
-        >
-          <img
-            src={service.image}
-            alt="Digital Marketing Dashboard"
-            loading="lazy"
-            decoding="async"
-            className="w-full h-auto object-contain drop-shadow-2xl"
-          />
-        </div>
-      )}
+{decoration === "circles" && (
+  <div
+    className="
+      md:hidden
+      absolute
+      pointer-events-none
+      overflow-visible
+      z-10
+
+      bottom-[-5px]
+      right-[-3%]
+
+      w-[88%]
+      min-[360px]:w-[89%]
+      min-[390px]:w-[90%]
+      sm:w-[88%]
+
+      flex
+      items-end
+      justify-end
+    "
+  >
+    <img
+      src={service.mobileImage || service.image}
+      alt="Digital Video Productions"
+      loading="lazy"
+      decoding="async"
+      draggable={false}
+      className="
+        block
+        w-full
+        h-auto
+        object-contain
+        object-bottom-right
+      "
+    />
+  </div>
+)}
+
+
+{decoration === "laptop" && (
+  <div
+    className="
+      md:hidden
+      absolute
+      pointer-events-none
+      overflow-visible
+      z-10
+
+  bottom-[-16px]
+right-[-2%]
+
+w-[100%]
+min-[360px]:w-[102%]
+min-[390px]:w-[105%]
+sm:w-[100%]
+
+      flex
+      items-end
+      justify-end
+    "
+  >
+    <img
+      src={service.image}
+      alt="Digital Marketing Dashboard"
+      loading="lazy"
+      decoding="async"
+      draggable={false}
+      className="
+        block
+        w-full
+        h-auto
+        object-contain
+        object-bottom-right
+        drop-shadow-xl
+      "
+    />
+  </div>
+)}
 
       {/* ── Desktop-only decorations (md+) — perfectly preserved as original ── */}
       <div className="hidden md:block pointer-events-none">
@@ -1042,8 +1093,8 @@ const WhatWeDo = ({ onNavigate }) => {
     <section className="w-full bg-white dark:bg-[#0B0D0C] pt-7 sm:pt-[54px] lg:pt-[58px] xl:pt-[60px] pb-12 sm:pb-16 lg:pb-20 xl:pb-24 xl:pb-40 transition-colors duration-300">
       <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-8 md:px-10 lg:px-14 xl:px-16 2xl:px-20">
         {/* Section header */}
-        <div className="flex items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12 md:mb-16 lg:mb-20">
-          <h2 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[64px] xl:text-[72px] font-bold tracking-[-0.035em] leading-none text-black dark:text-white transition-colors">
+        <div className="flex items-end justify-between gap-4 sm:gap-6 mb-5 min-[390px]:mb-6 sm:mb-10 md:mb-16 lg:mb-20">
+          <h2 className="text-[28px] min-[360px]:text-[32px] sm:text-[40px] md:text-[48px] lg:text-[64px] xl:text-[72px] font-bold tracking-[-0.035em] leading-none text-black dark:text-white transition-colors">
             What We Do
           </h2>
 
@@ -1075,7 +1126,7 @@ const WhatWeDo = ({ onNavigate }) => {
         </div>
 
         {/* Service Cards */}
-        <div className="flex flex-col gap-12 min-[390px]:gap-[50px] sm:gap-[54px] md:gap-[54px] lg:gap-[54px] xl:gap-[54px]">
+     <div className="flex flex-col gap-8 min-[360px]:gap-10 min-[390px]:gap-12 sm:gap-14 md:gap-[54px] lg:gap-[54px] xl:gap-[54px]">
           {services.map((service) => (
             <ServiceCard key={service.id} service={service} onNavigate={onNavigate || handleNavigateClick} />
           ))}

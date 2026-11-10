@@ -1054,30 +1054,13 @@ lg:h-[220px]
 
 
 
-                    <img
-
-                      src={study.logo}
-                      loading="lazy"
-                      decoding="async"
-
-                      alt="Brand Logo"
-
-                      className={`
-
-                        object-left
-
-                        object-contain
-
-                        drop-shadow-lg
-  ${study.id === '02' || study.id === '05'
-    ? '-mt-1 sm:mt-0'
-    : ''
-  }
-                        ${study.logoClass}
-
-                      `}
-
-                    />
+                <img
+  src={study.mobileLogo || study.logo}
+  loading="lazy"
+  decoding="async"
+  alt={`${study.titleLine1} Logo`}
+  className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 2xl:w-20 2xl:h-20 object-contain drop-shadow-lg"
+/>
 
                   </div>
 

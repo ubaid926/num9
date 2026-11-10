@@ -629,6 +629,10 @@ body {
 .nav-toggle-btn--close:focus-visible {
   color: #0e7428;
 }
+.dark .nav-toggle-btn--close:hover,
+.dark .nav-toggle-btn--close:focus-visible {
+  color: #09160C;
+}
 .nav-toggle-btn--close:hover > .nav-toggle-icon,
 .nav-toggle-btn--close:focus-visible > .nav-toggle-icon {
   transform: rotate(90deg);
